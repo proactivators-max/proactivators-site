@@ -541,6 +541,7 @@ footer{
   .pillar:nth-child(2n){border-right:none}
   .pillar:nth-child(5),.pillar:nth-child(6){border-bottom:none}
   .pillar:nth-child(4){border-bottom:1px solid var(--border)}
+  .section-pad{padding:70px 5vw}
   .founder-layout{grid-template-columns:1fr;gap:3rem}
   .founder-img-wrap{position:relative;top:0;max-width:260px}
   .podcast-layout{grid-template-columns:1fr;gap:3rem}
@@ -554,11 +555,17 @@ footer{
 @media(max-width:560px){
   .nav-cta{display:none}
   .pillars-grid{grid-template-columns:1fr}
+  .section-pad{padding:56px 5vw}
   .pillar{border-right:none!important;border-bottom:1px solid var(--border)!important}
   .pillar:last-child{border-bottom:none!important}
 }
 
 .join-iframe-wrap{width:100%;max-width:520px;margin:2rem auto 1rem;padding:2px;background:var(--blue-border);}
+
+@media(max-width:560px){
+  .hero-eyebrow,.hero-h1,.hero-question,.hero-scroll{animation-delay:0s!important}
+  .hero-h1{font-size:clamp(56px,18vw,120px)}
+}
 /* HAMBURGER MENU */
 .nav-hamburger{
   display:none;flex-direction:column;justify-content:center;gap:5px;
@@ -840,9 +847,9 @@ footer{
       </p>
       <a class="btn-blue mono" href="https://www.buzzsprout.com/2508502" target="_blank" rel="noopener">Listen on All Platforms</a>
     </div>
-    <div class="episodes reveal">
+    <div class="episodes reveal" style="min-height:120px">
       <div id="buzzsprout-player-2508502"></div>
-      <script data-cfasync="false" src="https://www.buzzsprout.com/2508502.js?container_id=buzzsprout-player-2508502&player=full" charset="utf-8"></script>
+      <script data-cfasync="false" src="https://www.buzzsprout.com/2508502.js?container_id=buzzsprout-player-2508502&player=small" charset="utf-8"></script>
     </div>
   </div>
 </section>
@@ -921,7 +928,7 @@ function closeMobileMenu(){
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+},{threshold:.05,rootMargin:'0px 0px -10px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function handleJoin(){
   const nameInp=document.getElementById('name-input');
