@@ -455,7 +455,7 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
   font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.1em;
   color:var(--blue);margin-top:1.5rem;line-height:1.6;
 }
-.book-btns{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap}
+.book-coming{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-top:2rem;margin-bottom:.5rem}.book-btns{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
 
 /* JOIN */
 #join{
@@ -480,7 +480,7 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
   font-size:clamp(17px,1.7vw,22px);color:var(--steel-lt);
   margin-bottom:3.5rem;position:relative;
 }
-.join-form{display:flex;max-width:500px;margin:0 auto;position:relative}
+.join-form{display:flex;flex-direction:column;max-width:500px;margin:0 auto;gap:.75rem;position:relative}
 .join-input{
   flex:1;background:rgba(240,235,224,.05);
   border:1px solid var(--border);border-right:none;
@@ -547,7 +547,7 @@ footer{
   .book-layout{grid-template-columns:1fr;gap:3rem}
   .book-wrap{display:flex;justify-content:center}
   .join-form{flex-direction:column}
-  .join-input{border-right:1px solid var(--border);border-bottom:none}
+  
   .footer-copy{text-align:left}
   .hero-question{flex-direction:column;gap:1.5rem}
 }
@@ -758,7 +758,26 @@ footer{
         <p>Today Gabriel leads a growing community of leaders who refuse to accept mediocrity as their ceiling. Because he has been exactly where they are. And he found the way out.</p>
       </div>
       <div style="margin-top:2.5rem">
-        <button class="btn-blue mono">Read His Full Story</button>
+        <button class="btn-blue mono" onclick="var el=document.getElementById('founder-more');el.style.display=el.style.display==='none'?'block':'none'">Read His Full Story</button><div id="founder-more" style="display:none;margin-top:2.5rem"><div class="founder-body">
+<p><strong>Gabriel Golindano</strong> is the founder of the ProActivators movement — a philosophy built on a simple but demanding idea: people are capable of far more than they currently believe, but potential without discipline often leads to drift.</p>
+<p>Gabriel knows this firsthand.</p>
+<p>For many years he lived in the frustrating space between knowing who he could become and repeatedly falling short of it. Like many people who care deeply about growth, he spent decades studying personal development, leadership, and the habits that shape a meaningful life. From his teenage years into adulthood, he read, studied, and worked to apply what he was learning.</p>
+<p>But the journey was far from smooth.</p>
+<p>There were seasons of progress followed by seasons of drift. Moments of clarity followed by setbacks. Times when discipline was strong, and times when inconsistency crept back in.</p>
+<p>The story of ProActivators is not the story of someone who had everything figured out. It is the story of someone who fell down many times — and chose to get back up every time.</p>
+<p>Through years of rebuilding, reflection, and relentless effort to improve, Gabriel began to notice a pattern. The people who truly transformed their lives were not simply motivated — they developed identities rooted in discipline, consistency, and structure.</p>
+<p>That realization gave birth to the concept of the ProActivator.</p>
+<p>A ProActivator is someone who refuses to drift through life. Someone who intentionally terminates habits that weaken them and replaces them with habits that strengthen them. Someone who takes responsibility for their direction and understands that transformation is not a single decision, but a daily practice.</p>
+<p>Today Gabriel writes, speaks, and mentors others through the ProActivators platform — sharing lessons drawn from years of struggle, rebuilding, and personal growth.</p>
+<p>But the mission is bigger than one person.</p>
+<p>The goal of ProActivators is not simply to inspire people. It is to help people embody the identity of a ProActivator — to adopt a mindset of intentional action, disciplined habits, and personal leadership.</p>
+<div style="margin:2rem 0;padding:1.5rem;border-left:2px solid var(--blue);background:rgba(58,180,242,0.05)">
+<p style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--blue);margin-bottom:1rem">ANYONE CAN BECOME A PROACTIVATOR</p>
+<p>A student. A parent. An entrepreneur. Anyone who chooses intentional action over drift.</p>
+</div>
+<p>And when people embrace that identity, something powerful begins to happen. They start activating others. Families change. Communities improve. Standards rise.</p>
+<p style="font-style:italic;color:var(--steel-lt)">Because proactive living is contagious. And every movement begins the moment someone decides to stop drifting — and start living with intention.</p>
+</div></div>
       </div>
     </div>
   </div>
@@ -783,7 +802,7 @@ footer{
     </div>
     <div class="episodes reveal">
       <div id="buzzsprout-player-2508502"></div>
-      <script data-cfasync="false" src="https://www.buzzsprout.com/2508502.js?container_id=buzzsprout-player-2508502&player=small" charset="utf-8"></script>
+      <script data-cfasync="false" src="https://www.buzzsprout.com/2508502.js?container_id=buzzsprout-player-2508502&player=full" charset="utf-8"></script>
     </div>
   </div>
 </section>
@@ -805,9 +824,9 @@ footer{
       <p class="book-desc">The intellectual framework behind the movement — a blueprint for anyone ready to stop drifting and start leading with intention, discipline, and unshakable purpose.</p>
       <p class="book-desc">Every chapter is a weapon against mediocrity, apathy, and the comfortable lies we tell ourselves. <em>Unleash the ProActivator</em> is not self-help. It is doctrine. A declaration that the drift ends here.</p>
       <div class="book-tagline mono">Terminate Procrastination. Build Relentless Discipline. Lead with Unshakable Purpose.</div>
+      <p class="book-coming mono">&#9670; Coming Soon &mdash; Be First to Know</p>
       <div class="book-btns">
-        <button class="btn-blue mono">Get the Book</button>
-        <button class="btn-outline mono">Preview a Chapter</button>
+        <button class="btn-blue mono" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join the Waitlist</button>
       </div>
     </div>
   </div>
@@ -819,6 +838,7 @@ footer{
   <h2 class="join-h2 bebas">STOP DRIFTING.<br/><span class="blue">START THRIVING.</span></h2>
   <p class="join-sub">Weekly dispatches from the front lines of discipline and leadership — for anyone ready to lead.</p>
   <div class="join-form" id="join-form">
+    <input class="join-input mono" type="text" id="name-input" placeholder="Your full name"/>
     <input class="join-input mono" type="email" id="email-input" placeholder="Your email address"/>
     <button class="join-submit mono" onclick="handleJoin()">Activate</button>
   </div>
@@ -851,16 +871,26 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function handleJoin(){
-  const inp=document.getElementById('email-input');
-  if(inp.value.includes('@')){
-    document.getElementById('join-form').style.display='none';
-    document.getElementById('join-success').style.display='block';
-  } else {
-    inp.style.borderColor='#991f1f';inp.focus();
-    setTimeout(()=>inp.style.borderColor='',1400);
+  const nameInp=document.getElementById('name-input');
+  const emailInp=document.getElementById('email-input');
+  if(!emailInp.value.includes('@')){
+    emailInp.style.borderColor='#991f1f';emailInp.focus();
+    setTimeout(()=>emailInp.style.borderColor='',1400);
+    return;
   }
+  const data=new FormData();
+  data.append('full_name',nameInp.value.trim());
+  data.append('email',emailInp.value.trim());
+  data.append('formId','DJms5nxFW70Q2MhKDACx');
+  data.append('location_id','zSB9xquHa4ZF0IzUfusq');
+  fetch('https://backend.leadconnectorhq.com/hooks/zSB9xquHa4ZF0IzUfusq/contact-form/DJms5nxFW70Q2MhKDACx',{
+    method:'POST',mode:'no-cors',body:data
+  }).catch(()=>{});
+  document.getElementById('join-form').style.display='none';
+  document.getElementById('join-success').style.display='block';
 }
 document.getElementById('email-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleJoin()});
+document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleJoin()});
 </script>
 </body>
 </html>
