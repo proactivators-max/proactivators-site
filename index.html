@@ -858,9 +858,11 @@ footer{
       </p>
       <a class="btn-blue mono" href="https://www.buzzsprout.com/2508502" target="_blank" rel="noopener">Listen on All Platforms</a>
     </div>
-    <div class="episodes reveal" style="min-height:120px">
-      <div id="buzzsprout-player-2508502"></div>
-      <script data-cfasync="false" src="https://www.buzzsprout.com/2508502.js?container_id=buzzsprout-player-2508502&player=small" charset="utf-8"></script>
+    <div class="episodes reveal" id="podcast-episodes">
+      <p class="ep-loading mono">Loading episodes...</p>
+    </div>
+    <div class="view-all-wrap reveal">
+      <a class="btn-outline mono" href="https://www.buzzsprout.com/2508502" target="_blank" rel="noopener">View All Episodes &rsaquo;</a>
     </div>
   </div>
 </section>
@@ -923,6 +925,32 @@ footer{
 </footer>
 
 <script>
+
+// Podcast: fetch 4 latest episodes from RSS
+(function(){
+  var container=document.getElementById('podcast-episodes');
+  if(!container)return;
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.buzzsprout.com%2F2508502.rss&count=4')
+    .then(function(r){return r.json()})
+    .then(function(data){
+      if(!data.items||!data.items.length){container.innerHTML='<p class="ep-loading mono">No episodes found.</p>';return;}
+      var html='';
+      data.items.slice(0,4).forEach(function(ep,i){
+        var mins=ep.itunes_duration?Math.round(ep.itunes_duration/60)+'&nbsp;min':'';
+        var url=ep.link||ep.enclosure&&ep.enclosure.link||'https://www.buzzsprout.com/2508502';
+        var num=(i+1<10?'0'+(i+1):i+1);
+        var title=ep.title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        html+='<a class="episode" href="'+url+'" target="_blank" rel="noopener">';
+        html+='<div class="ep-num mono">'+num+'</div>';
+        html+='<div class="ep-info"><div class="ep-title">'+title+'</div>';
+        if(mins)html+='<div class="ep-dur mono">'+mins+'</div>';
+        html+='</div>';
+        html+='<div class="ep-arrow mono">&rsaquo;</div></a>';
+      });
+      container.innerHTML=html;
+    })
+    .catch(function(){container.innerHTML='<p class="ep-loading mono">Could not load episodes. <a href="https://www.buzzsprout.com/2508502" target="_blank" style="color:var(--blue)">Listen on Buzzsprout &rsaquo;</a></p>';});
+})();
 const nav=document.getElementById('nav');
 function toggleMobileMenu(){
   const menu=document.getElementById('mobile-menu');
