@@ -583,7 +583,7 @@ footer{
   .pillar:last-child{border-bottom:none!important}
 }
 
-.join-iframe-wrap{width:100%;max-width:520px;margin:2rem auto 1rem;}
+.join-form{margin-top:2rem}
 
 @media(max-width:560px){
   .hero-eyebrow,.hero-h1,.hero-question,.hero-scroll{animation-delay:0s!important}
@@ -909,23 +909,12 @@ footer{
   <div class="join-halo"></div>
   <h2 class="join-h2 bebas">STOP DRIFTING.<br/><span class="blue">START THRIVING.</span></h2>
   <p class="join-sub">Weekly dispatches from the front lines of discipline and leadership — for anyone ready to lead.</p>
-  <div class="join-iframe-wrap">
-    <iframe src="https://link.conversiondash.com/widget/form/DJms5nxFW70Q2MhKDACx"
-      style="width:100%;height:265px;border:none;border-radius:3px;display:block;margin:0 auto;"
-      id="inline-DJms5nxFW70Q2MhKDACx"
-      data-layout="{'id':'INLINE'}"
-      data-trigger-type="alwaysShow"
-      data-activation-type="alwaysActivated"
-      data-deactivation-type="neverDeactivate"
-      data-form-name="Newsletter"
-      data-height="265"
-      data-layout-iframe-id="inline-DJms5nxFW70Q2MhKDACx"
-      data-form-id="DJms5nxFW70Q2MhKDACx"
-      title="Newsletter"
-      loading="lazy">
-    </iframe>
-  </div>
-  <script src="https://link.conversiondash.com/js/form_embed.js"></script>
+  <form id="join-form" class="join-form" onsubmit="event.preventDefault();handleJoin()">
+    <input id="name-input" class="join-input" type="text" placeholder="Your Name" autocomplete="name"/>
+    <input id="email-input" class="join-input" type="email" placeholder="Your Email" required autocomplete="email"/>
+    <button type="submit" class="join-submit">Join the Movement</button>
+  </form>
+  <div id="join-success" class="join-success">You're in. Welcome to the movement.</div>
   <p class="join-note mono">No spam. No fluff. Only what builds you.</p>
 </section>
 
@@ -991,6 +980,35 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
 },{threshold:.05,rootMargin:'0px 0px -10px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function handleJoin(){
+  const nameInp=document.getElementById('name-input');
+  const emailInp=document.getElementById('email-input');
+  if(!emailInp.value.includes('@')){
+    emailInp.style.borderColor='#991f1f';emailInp.focus();
+    setTimeout(()=>emailInp.style.borderColor='',1400);
+    return;
+  }
+  const btn=document.querySelector('.join-submit');
+  btn.disabled=true;btn.textContent='Sending...';
+  fetch('/.netlify/functions/join',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:nameInp.value.trim(),email:emailInp.value.trim()})
+  }).then(r=>{
+    if(r.ok){
+      document.getElementById('join-form').style.display='none';
+      document.getElementById('join-success').style.display='block';
+    }else{
+      btn.disabled=false;btn.textContent='Join the Movement';
+      alert('Something went wrong. Please try again.');
+    }
+  }).catch(()=>{
+    btn.disabled=false;btn.textContent='Join the Movement';
+    alert('Something went wrong. Please try again.');
+  });
+}
+document.getElementById('email-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleJoin()});
+document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleJoin()});
 </script>
 </body>
 </html>
