@@ -74,23 +74,25 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
 .hero-grid{
   position:absolute;inset:0;z-index:0;
   background-image:
-    linear-gradient(rgba(58,180,242,0.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(58,180,242,0.04) 1px,transparent 1px);
-  background-size:72px 72px;
+    linear-gradient(rgba(58,180,242,0.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(58,180,242,0.07) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,black 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,black 30%,transparent 80%);
 }
-/* Blue glow orb */
+/* Blue glow orbs */
 .hero-glow{
   position:absolute;z-index:0;
-  right:-10vw;top:50%;transform:translateY(-50%);
-  width:60vw;height:80vh;
-  background:radial-gradient(ellipse at center,rgba(58,180,242,0.08) 0%,transparent 65%);
+  right:-8vw;top:45%;transform:translateY(-50%);
+  width:65vw;height:85vh;
+  background:radial-gradient(ellipse at center,rgba(58,180,242,0.12) 0%,rgba(58,180,242,0.04) 40%,transparent 70%);
   pointer-events:none;
 }
 .hero-glow2{
   position:absolute;z-index:0;
-  left:-5vw;bottom:0;
-  width:40vw;height:40vh;
-  background:radial-gradient(ellipse at bottom left,rgba(58,180,242,0.05) 0%,transparent 70%);
+  left:-8vw;bottom:-10vh;
+  width:50vw;height:50vh;
+  background:radial-gradient(ellipse at bottom left,rgba(58,180,242,0.08) 0%,transparent 70%);
   pointer-events:none;
 }
 /* Vertical accent line */
