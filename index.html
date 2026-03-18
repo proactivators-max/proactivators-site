@@ -583,7 +583,7 @@ footer{
   .pillar:last-child{border-bottom:none!important}
 }
 
-.join-iframe-wrap{width:100%;max-width:520px;margin:2rem auto 1rem;padding:2px;background:var(--blue-border);}
+.join-form{margin-top:2rem}
 
 @media(max-width:560px){
   .hero-eyebrow,.hero-h1,.hero-question,.hero-scroll{animation-delay:0s!important}
@@ -909,13 +909,12 @@ footer{
   <div class="join-halo"></div>
   <h2 class="join-h2 bebas">STOP DRIFTING.<br/><span class="blue">START THRIVING.</span></h2>
   <p class="join-sub">Weekly dispatches from the front lines of discipline and leadership — for anyone ready to lead.</p>
-  <div class="join-iframe-wrap">
-    <iframe src="https://api.leadconnectorhq.com/widget/form/DJms5nxFW70Q2MhKDACx"
-      style="width:100%;height:280px;border:none;display:block;margin:0 auto;"
-      loading="lazy"
-      title="Join the ProActivators Movement">
-    </iframe>
-  </div>
+  <form id="join-form" class="join-form" onsubmit="event.preventDefault();handleJoin()">
+    <input id="name-input" class="join-input" type="text" placeholder="Your Name" autocomplete="name"/>
+    <input id="email-input" class="join-input" type="email" placeholder="Your Email" required autocomplete="email"/>
+    <button type="submit" class="join-submit">Join the Movement</button>
+  </form>
+  <div id="join-success" class="join-success">You're in. Welcome to the movement.</div>
   <p class="join-note mono">No spam. No fluff. Only what builds you.</p>
 </section>
 
