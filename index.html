@@ -3,30 +3,19 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://proactivatorsclub.com/"/>
-  <meta property="og:title" content="ProActivators — Building State of the Art Leaders"/>
-  <meta property="og:description" content="Terminate Procrastination. Build Relentless Discipline. Lead with Unshakable Purpose. Join the ProActivators movement."/>
-  <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="1200"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="ProActivators — Building State of the Art Leaders"/>
-  <meta name="twitter:description" content="Terminate Procrastination. Build Relentless Discipline. Lead with Unshakable Purpose."/>
-  <meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg"/>
-  <title>ProActivators — Building State of the Art Leaders</title>
+<meta name="description" content="Terminate Procrastination. Build Relentless Discipline. Lead with Unshakable Purpose. Join the ProActivators movement."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://proactivatorsclub.com/"/>
 <meta property="og:title" content="ProActivators — Building State of the Art Leaders"/>
 <meta property="og:description" content="A movement for those who refuse to drift. Terminate what destroys. Activate what builds. Join the ProActivators movement."/>
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg"/>
-<meta property="og:image:width" content="1080"/>
-<meta property="og:image:height" content="1080"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="1200"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="ProActivators — Building State of the Art Leaders"/>
 <meta name="twitter:description" content="A movement for those who refuse to drift. Terminate what destroys. Activate what builds."/>
 <meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg"/>
+<title>ProActivators — Building State of the Art Leaders</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
@@ -79,7 +68,7 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
 #hero{
   min-height:100vh;position:relative;
   display:flex;flex-direction:column;justify-content:center;
-  padding:0 5vw;overflow:hidden;
+  padding:100px 6vw 120px;overflow:hidden;max-width:100vw;
 }
 /* Subtle grid atmosphere */
 .hero-grid{
@@ -585,39 +574,98 @@ footer{
 
 .join-form{margin-top:2rem}
 
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  #hero{padding:90px 5vw 80px}
+  .hero-h1{font-size:12vw;line-height:.93;letter-spacing:.01em}
+  .hero-actions{width:100%;flex-direction:column}
+  .btn-blue,.btn-outline{width:100%;justify-content:center;padding:.95rem 1.5rem}
+  .hero-line{display:none}
+  .hero-scroll{display:none}
+}
 @media(max-width:560px){
   .hero-eyebrow,.hero-h1,.hero-question,.hero-scroll{animation-delay:0s!important}
   .hero-h1{font-size:clamp(56px,18vw,120px)}
 }
 /* HAMBURGER MENU */
 .nav-hamburger{
-  display:none;flex-direction:column;justify-content:center;gap:5px;
-  width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px;z-index:400;
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:.4rem;z-index:310;
 }
 .nav-hamburger span{
-  display:block;height:1px;background:var(--off-white);
-  transition:transform .3s,opacity .3s;transform-origin:center;
+  display:block;width:24px;height:2px;
+  background:var(--off-white);transition:all .3s;
 }
-.nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.nav-hamburger.open span:nth-child(2){opacity:0}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 .mobile-menu{
-  display:none;position:fixed;inset:0;z-index:200;
-  background:rgba(5,5,5,.98);backdrop-filter:blur(14px);
+  display:none;position:fixed;inset:0;z-index:290;
+  background:rgba(5,5,5,.97);
   flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  opacity:0;transition:opacity .3s;pointer-events:none;
 }
-.mobile-menu.open{display:flex}
+.mobile-menu.open{display:flex;opacity:1;pointer-events:all}
 .mobile-menu a{
-  font-family:'Space Mono',monospace;font-size:1rem;
-  letter-spacing:.18em;text-transform:uppercase;
-  color:var(--off-white);text-decoration:none;transition:color .2s;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(36px,10vw,56px);
+  letter-spacing:.08em;color:var(--off-white);
+  text-decoration:none;transition:color .2s;
 }
 .mobile-menu a:hover{color:var(--blue)}
 .mobile-menu .mobile-cta{
-  font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.16em;
+  font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--black);background:var(--blue);
-  border:none;padding:1rem 2.5rem;cursor:pointer;margin-top:1rem;
+  border:none;padding:1rem 3rem;cursor:pointer;margin-top:1rem;
 }
+/* TESTIMONIALS */
+#testimonials{background:var(--black);position:relative;overflow:hidden}
+#testimonials::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(58,180,242,0.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.testimonials-inner{padding:130px 5vw;position:relative;z-index:1}
+.testimonials-header{margin-bottom:5rem}
+.testimonials-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);border:1px solid var(--border);
+}
+.testimonial-card{
+  background:var(--surface);padding:2.8rem 2.4rem;position:relative;
+  transition:background 0.3s;display:flex;flex-direction:column;gap:1.6rem;
+}
+.testimonial-card:hover{background:rgba(58,180,242,0.04)}
+.testimonial-quote-mark{
+  font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:.7;
+  color:var(--blue);opacity:0.25;display:block;margin-bottom:-.5rem;
+}
+.testimonial-text{
+  font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.75;
+  color:rgba(240,235,224,0.75);font-style:italic;flex:1;
+}
+.testimonial-text em{color:var(--off-white);font-style:normal;font-weight:500}
+.testimonial-footer{
+  display:flex;align-items:center;gap:1.2rem;
+  border-top:1px solid var(--border);padding-top:1.4rem;margin-top:auto;
+}
+.testimonial-avatar{
+  width:44px;height:44px;border-radius:50%;background:var(--surface2);
+  border:1px solid var(--blue-border);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;
+  color:var(--blue);letter-spacing:.05em;
+}
+.testimonial-name{
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--off-white);
+}
+.testimonial-role{
+  font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--steel);margin-top:.25rem;
+}
+.testimonial-stars{margin-left:auto;color:var(--blue);font-size:.7rem;letter-spacing:.1em}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -642,6 +690,7 @@ footer{
     <li><a href="#book">Book</a></li>
   </ul>
   <button class="nav-cta mono" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join</button>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO — pure typographic, atmospheric, no photo -->
@@ -678,13 +727,13 @@ footer{
     <span>ACTIVATE WHAT BUILDS</span><span class="dot">&#183;</span>
     <span>DRIFTING OR THRIVING?</span><span class="dot">&#183;</span>
     <span>DISCIPLINE WEIGHS OUNCES. REGRET WEIGHS TONS.</span><span class="dot">&#183;</span>
-    <span>FAITH &#183; FITNESS &#183; FINANCES &#183; FAMILY &#183; FOCUS &#183; FULFILLMENT</span><span class="dot">&#183;</span>
+    <span>FAITH &#183; FAMILY &#183; FITNESS &#183; FINANCES &#183; FOCUS &#183; FULFILLMENT</span><span class="dot">&#183;</span>
     <span>BUILDING STATE OF THE ART LEADERS</span><span class="dot">&#183;</span>
     <span>TERMINATE WHAT DESTROYS</span><span class="dot">&#183;</span>
     <span>ACTIVATE WHAT BUILDS</span><span class="dot">&#183;</span>
     <span>DRIFTING OR THRIVING?</span><span class="dot">&#183;</span>
     <span>DISCIPLINE WEIGHS OUNCES. REGRET WEIGHS TONS.</span><span class="dot">&#183;</span>
-    <span>FAITH &#183; FITNESS &#183; FINANCES &#183; FAMILY &#183; FOCUS &#183; FULFILLMENT</span><span class="dot">&#183;</span>
+    <span>FAITH &#183; FAMILY &#183; FITNESS &#183; FINANCES &#183; FOCUS &#183; FULFILLMENT</span><span class="dot">&#183;</span>
     <span>BUILDING STATE OF THE ART LEADERS</span><span class="dot">&#183;</span>
   </div>
 </div>
@@ -709,6 +758,47 @@ footer{
       <p style="font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-top:1.5rem">
         The choice is made every morning.
       </p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header reveal">
+      <div class="label mono"><span class="label-num">—</span> Testimonials</div>
+      <h2 class="section-h2 bebas">What People Are<br/><span style="color:var(--blue)">Saying</span></h2>
+    </div>
+    <div class="testimonials-grid reveal">
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">The Six Pillars framework gave me <em>clarity I didn't know I was missing.</em> I stopped drifting and started building — my marriage, my health, my finances. Everything shifted.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">MR</div>
+          <div><div class="testimonial-name">Marco R.</div><div class="testimonial-role">Entrepreneur</div></div>
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">Mental Meat hit different. No fluff, no sugar — just <em>raw truth that made me uncomfortable</em> enough to change. I've never felt more intentional about my life.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">JL</div>
+          <div><div class="testimonial-name">Jason L.</div><div class="testimonial-role">Coach & Father</div></div>
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">I was the guy who looked fine on the outside but was hollow inside. Gabriel's story <em>mirrored my own.</em> ProActivators gave me the blueprint to rebuild.</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar">DP</div>
+          <div><div class="testimonial-name">David P.</div><div class="testimonial-role">Financial Advisor</div></div>
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
