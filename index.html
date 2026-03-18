@@ -1121,19 +1121,25 @@ function handleJoin(){
   }
   const btn=document.querySelector('.join-submit');
   btn.disabled=true;btn.textContent='Sending...';
-  fetch('/.netlify/functions/join',{
+  var nm=nameInp.value.trim();
+  var em=emailInp.value.trim();
+  var parts=nm.split(' ');
+  var firstName=parts[0]||'';
+  var lastName=parts.slice(1).join(' ')||'';
+  fetch('https://rest.gohighlevel.com/v1/contacts/',{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:nameInp.value.trim(),email:emailInp.value.trim()})
-  }).then(r=>{
-    if(r.ok){
-      document.getElementById('join-form').style.display='none';
-      document.getElementById('join-success').style.display='block';
-    }else{
-      btn.disabled=false;btn.textContent='Join the Movement';
-      alert('Something went wrong. Please try again.');
+    headers:{'Content-Type':'application/json','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6InpTQjl4cXVIYTRaRjBJelVmdXNxIiwidmVyc2lvbiI6MSwiaWF0IjoxNzczODQ3NTE4MDM4LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.DVBF1PKxAIOedY15FFkfsX1LyFogQaaSTZQSf45Ykt8'},
+    body:JSON.stringify({firstName:firstName,lastName:lastName,name:nm,email:em,source:'website form',tags:['website']})
+  }).then(function(r){return r.json()}).then(function(data){
+    if(data.contact&&data.contact.id){
+      fetch('https://rest.gohighlevel.com/v1/contacts/'+data.contact.id+'/workflow/f32c3ef5-ca07-4961-b874-0daec0b5c760',{
+        method:'POST',
+        headers:{'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6InpTQjl4cXVIYTRaRjBJelVmdXNxIiwidmVyc2lvbiI6MSwiaWF0IjoxNzczODQ3NTE4MDM4LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.DVBF1PKxAIOedY15FFkfsX1LyFogQaaSTZQSf45Ykt8'}
+      }).catch(function(){});
     }
-  }).catch(()=>{
+    document.getElementById('join-form').style.display='none';
+    document.getElementById('join-success').style.display='block';
+  }).catch(function(){
     btn.disabled=false;btn.textContent='Join the Movement';
     alert('Something went wrong. Please try again.');
   });
