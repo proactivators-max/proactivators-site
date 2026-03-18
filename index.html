@@ -572,6 +572,7 @@ footer{
   
   .footer-copy{text-align:left}
   .hero-question{flex-direction:column;gap:1.5rem}
+  .hero-lower{flex-direction:column;gap:1.5rem}
 }
 @media(max-width:560px){
   .nav-cta{display:none}
@@ -589,9 +590,11 @@ footer{
   #hero{padding:90px 5vw 80px}
   .hero-h1{font-size:12vw;line-height:.93;letter-spacing:.01em}
   .hero-actions{width:100%;flex-direction:column}
+  .hero-lower{flex-direction:column;gap:1.5rem;margin-top:0}
   .btn-blue,.btn-outline{width:100%;justify-content:center;padding:.95rem 1.5rem}
   .hero-line{display:none}
   .hero-scroll{display:none}
+  .hero-mission span{font-size:2.8vw!important;white-space:normal!important}
 }
 @media(max-width:560px){
   .hero-eyebrow,.hero-h1,.hero-question,.hero-scroll{animation-delay:0s!important}
@@ -710,14 +713,15 @@ footer{
   <div class="hero-line"></div>
 
   <div class="hero-content">
-    <div class="hero-eyebrow mono">The ProActivators Movement</div>
     <h1 class="hero-h1 bebas">
-      BUILDING<br/>STATE OF<br/>THE ART<br/><span class="blue">LEADERS</span>
+      ARE YOU<br/><span class="hero-cycle-wrap"><span class="hero-cycle" id="hero-cycle">DRIFTING</span></span><br/>OR<br/><span class="hero-thriving">THRIVING?</span>
     </h1>
-    <div class="hero-question">
-      <div class="hero-q-text bebas">
-        ARE YOU <span class="hero-cycle-wrap"><span class="hero-cycle" id="hero-cycle">DRIFTING</span></span><br/>OR <span class="hero-thriving">THRIVING?</span>
-      </div>
+    <div class="hero-mission" style="display:flex;align-items:center;gap:1.4rem;margin:2rem 0 2.2rem;opacity:0;animation:fadeUp .8s .45s forwards">
+      <span class="bebas" style="font-size:clamp(13px,1.8vw,22px);letter-spacing:.14em;color:var(--blue);white-space:nowrap;text-transform:uppercase">BUILDING STATE OF THE ART LEADERS</span>
+      <span style="flex:1;height:1px;background:linear-gradient(to right,rgba(58,180,242,0.4),transparent)"></span>
+    </div>
+    <div class="hero-lower" style="display:flex;align-items:flex-start;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .6s forwards">
+      <p style="font-size:clamp(14px,1.6vw,18px);color:rgba(240,235,224,0.6);line-height:1.75;max-width:420px">Most people aren't failing — they're drifting. Terminate what destroys you. Activate what builds you.</p>
       <div class="hero-actions">
         <button class="btn-blue mono" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join the Movement</button>
         <a href="#podcast" class="btn-outline mono">&#9658;&nbsp; Listen Now</a>
