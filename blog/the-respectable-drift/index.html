@@ -1,0 +1,390 @@
+<!--
+  BLOG POST TEMPLATE
+  ====================
+  To create a new blog post:
+  1. Copy this file to /blog/your-post-slug/index.html
+  2. Replace all {{PLACEHOLDERS}} with real content
+  3. Push to main branch
+
+  Example: /blog/the-drift-is-the-real-enemy/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Most people aren’t failing — they’re drifting. Learn how the Respectable Drift silently destroys your potential and the 4 steps to break free."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://proactivatorsclub.com/blog/the-respectable-drift/"/>
+<meta property="og:title" content="The Respectable Drift — Why “Good Enough” Is Destroying Your Life â ProActivators"/>
+<meta property="og:description" content="Most people aren’t failing — they’re drifting. Learn how the Respectable Drift silently destroys your potential and the 4 steps to break free."/>
+<meta property="og:image" content="/blog/the-respectable-drift/featured.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>The Respectable Drift — Why “Good Enough” Is Destroying Your Life â ProActivators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#050505;
+  --deep:#0b0b0b;
+  --surface:#141414;
+  --surface2:#1c1c1c;
+  --off-white:#f0ebe0;
+  --steel:#888;
+  --steel-lt:#aaa;
+  --blue:#3ab4f2;
+  --blue-dim:rgba(58,180,242,0.1);
+  --blue-border:rgba(58,180,242,0.22);
+  --border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--off-white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--blue)}
+.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+.mono{font-family:'Space Mono',monospace}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);
+}
+.nav-logo img{height:30px;display:block}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--black);background:var(--blue);
+  border:none;padding:.65rem 1.7rem;cursor:pointer;transition:opacity .2s;text-decoration:none;
+}
+.nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:400}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--off-white);margin:5px 0;transition:.3s}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:350;
+  background:rgba(5,5,5,.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.mobile-menu.open{display:flex;opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;
+  color:var(--off-white);text-decoration:none;transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* ARTICLE HEADER */
+.post-header{
+  padding:140px 6vw 40px;
+  max-width:800px;margin:0 auto;
+}
+.post-back{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.post-back:hover{color:var(--blue)}
+.post-meta{
+  display:flex;align-items:center;gap:1rem;margin-top:2rem;
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--steel);
+}
+.post-category{color:var(--blue)}
+.post-title{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);
+  letter-spacing:.04em;line-height:1.1;margin-top:1rem;
+}
+
+/* FEATURED IMAGE */
+.post-featured{
+  max-width:800px;margin:2rem auto 0;padding:0 6vw;
+}
+.post-featured img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;
+  border:1px solid var(--border);
+}
+
+/* ARTICLE BODY */
+.post-body{
+  max-width:680px;margin:3rem auto;padding:0 6vw;
+  font-size:1.05rem;line-height:1.85;color:var(--off-white);
+}
+.post-body h2{
+  font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;
+  margin:2.5rem 0 1rem;color:var(--off-white);
+}
+.post-body h3{
+  font-family:'DM Sans',sans-serif;font-size:1.2rem;font-weight:500;
+  margin:2rem 0 .8rem;
+}
+.post-body p{margin-bottom:1.5rem}
+.post-body blockquote{
+  border-left:3px solid var(--blue);
+  padding:1rem 1.5rem;margin:2rem 0;
+  font-style:italic;color:var(--steel-lt);
+  background:var(--surface);
+}
+.post-body ul,.post-body ol{
+  margin:1.5rem 0;padding-left:1.5rem;
+}
+.post-body li{margin-bottom:.5rem}
+.post-body a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-border)}
+.post-body a:hover{border-bottom-color:var(--blue)}
+.post-body img{
+  max-width:100%;height:auto;margin:2rem 0;
+  border:1px solid var(--border);
+}
+.post-body strong{color:var(--off-white);font-weight:500}
+
+/* AUTHOR BOX */
+.post-author{
+  max-width:680px;margin:4rem auto;padding:2rem 6vw;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:1.5rem;
+}
+.post-author-avatar{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;font-size:.7rem;color:var(--blue);
+  flex-shrink:0;
+}
+.post-author-info{
+  font-size:.85rem;color:var(--steel-lt);line-height:1.6;
+}
+.post-author-name{
+  font-family:'Space Mono',monospace;font-size:.65rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--off-white);
+}
+
+/* FOOTER */
+footer{
+  padding:60px 6vw 40px;border-top:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem;
+}
+.footer-logo img{height:24px}
+.footer-tagline{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-top:.4rem;
+}
+.footer-socials{display:flex;gap:1.2rem;margin-top:.8rem}
+.footer-socials a{color:var(--steel);transition:color .2s}
+.footer-socials a:hover{color:var(--blue)}
+.footer-nav{display:flex;gap:2.5rem;list-style:none;flex-wrap:wrap}
+.footer-nav a{
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.footer-nav a:hover{color:var(--blue)}
+.footer-copy{
+  font-family:'Space Mono',monospace;font-size:.53rem;
+  letter-spacing:.1em;color:var(--steel);text-align:right;line-height:1.8;
+}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .footer-copy{text-align:left}
+}
+@media(max-width:560px){
+  .nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .post-author{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  <a href="/#manifesto" onclick="closeMobileMenu()">Movement</a>
+  <a href="/#pillars" onclick="closeMobileMenu()">Pillars</a>
+  <a href="/#founder" onclick="closeMobileMenu()">About</a>
+  <a href="/#podcast" onclick="closeMobileMenu()">Podcast</a>
+  <a href="/#book" onclick="closeMobileMenu()">Book</a>
+  <a href="/blog/" onclick="closeMobileMenu()" style="color:var(--blue)">Blog</a>
+</div>
+
+<nav id="nav">
+  <a href="/"><img src="/logo.png" alt="ProActivators"/></a>
+  <ul class="nav-links">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+  </ul>
+  <a href="/#join" class="nav-cta mono">Join</a>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="post-header">
+  <a href="/blog/" class="post-back">&larr; Back to Blog</a>
+  <div class="post-meta">
+    <span class="post-category">Drift</span>
+    <span>Mar 25, 2026</span>
+    <span>Gabriel Golindano</span>
+  </div>
+  <h1 class="post-title bebas">The Respectable Drift — Why “Good Enough” Is Destroying Your Life</h1>
+</header>
+
+<!-- FEATURED IMAGE (remove if no image) -->
+<div class="post-featured">
+  <img src="/blog/the-respectable-drift/featured.png" alt="The Respectable Drift — Why “Good Enough” Is Destroying Your Life"/>
+</div>
+
+<!-- ARTICLE BODY -->
+<article class="post-body">
+
+  <h2>You're Not Failing â You're Drifting</h2>
+
+<p>Here is a truth that will hit harder than any alarm clock: most people are not failing. They are drifting. They are floating through a life that looks "fine" on paper â steady job, decent relationship, respectable routine â while something inside slowly dies. Not from a catastrophic event. From a slow, silent erosion of potential that they never even noticed happening.</p>
+
+<p>This is what I call <strong>The Respectable Drift</strong> â and it is the most dangerous enemy you will ever face. Not because it is loud or dramatic, but because it is invisible. It wears a suit. It pays its bills on time. It shows up to work and smiles at the neighbors. And it is absolutely destroying your life.</p>
+
+<h2>The Myth of the Final Victory</h2>
+
+<p>After my rock bottom moment in Miami â the one that happened over a dirty glass coffee table and a phone call from a man who refused to sugarcoat the truth â I rebuilt myself. I went from a man drowning in substance abuse to someone operating at 150% capacity. I moved to Fort Myers with raw, unrefined drive and started my own satellite installation business from scratch. Success poured in. I was training technicians, leading a team, making real money.</p>
+
+<p>And that is exactly where the trap was set.</p>
+
+<p>I fell into the deadliest belief a high-achiever can hold: <strong>The Myth of the Final Victory.</strong> I believed that because I had conquered my past, I was safe forever. I stopped building the systems that kept me strong. I drifted away from the people who held me accountable. I let isolation creep in â and isolation is the playground of the Drift.</p>
+
+<p>Without an anchor, it did not start with a crash. It started with a quiet thought: <em>âI've got this. I can handle this on my own.â</em> Little by little, old habits returned. Drinking. Smoking. Chaos. Within two or three years, the business collapsed. I packed up and moved back to Miami with my tail between my legs, sleeping in my uncleâs spare room.</p>
+
+<h2>When âGood Enoughâ Becomes the Enemy</h2>
+
+<p>But the story does not end there â because the Drift was not done with me. It simply changed its costume.</p>
+
+<p>After rebuilding my faith, finding my wife Maydi, and creating a life that was genuinely honorable, I thought I had finally won for good. I was a young husband, a new father, and a provider. My private reality matched my public reputation for the first time in my life.</p>
+
+<p>And that feeling of safety is precisely where the next abyss opened.</p>
+
+<p>The âLoud Driftâ â the drugs, the drama, the obvious destruction â was a dragon I knew how to fight. I could see it breathing fire from a mile away. But this new monster did not growl. It purred. It did not offer a needle. It offered a leather recliner and a remote control.</p>
+
+<p>It started the night I sat down to âdecompressâ after a long day and landed on a Miami Heat game. LeBron James had just signed, and the city was electric. I told myself, <em>âIâll just watch this one game.â</em></p>
+
+<p>That one game became two. Two became a week. A week became a season. Before I knew it, I was checking scores during dinner, debating trades with strangers, and spending every free hour glued to a screen. Then the NBA was not enough â the NFL pulled me in deeper. I had replaced the chaos of my twenties with what I now call <strong>Sportscenter Sedation</strong> â a recipe for total spiritual and mental numbness disguised as normal behavior.</p>
+
+<h2>The Invoice in Years</h2>
+
+<p>Here is what makes the Respectable Drift so devastating: it is a patient creditor. When you are in a Loud Drift, the invoice arrives in days. You party tonight, you feel like death tomorrow. You spend the money today, you are broke by Friday.</p>
+
+<p>But the Respectable Drift allows you to rack up a massive debt of wasted time, neglected health, and stagnant growth â and it does not ask for payment until five, ten, or fifteen years have passed.</p>
+
+<p>One morning I stood in front of the mirror, and the man looking back was 30 to 40 pounds overweight. My face was rounder. My edge was duller. My stamina was nonexistent. I had traded my hunger for a suburban slumber. My work was âfineâ but no longer excellent. My hobbies had become my primary outlet, and my calling had become a secondary chore.</p>
+
+<p>That is the moment the invoice arrives â all at once. You look at your spouse and realize you have not pursued their heart in years. You look at your children and realize they grew up watching the back of your head while you watched a game. You look in the mirror and realize the weight problem is now a permanent health crisis.</p>
+
+<p><strong>âGood enoughâ is the greatest enemy of your calling.</strong> The reason most people never become great is not that they failed spectacularly. It is that they settled for being âgood.â They made peace with the paycheck, the respectable weight gain, and the average marriage. They made peace with the Drift.</p>
+
+<h2>The River and the Mountain</h2>
+
+<p>Think about it this way. When you drift, you are in a river. You do not steer. You do not paddle. You float until something stronger than you decides the direction. It feels easy â especially when the current is moving fast â but rivers do not care about your destination. They care about gravity.</p>
+
+<p>When you decide to stop drifting, you step out of the water and onto the trail. You become a hiker. And the trail is not easy. Your legs burn, your lungs argue with the thinning air, and your body screams for the comfort of the river you just left.</p>
+
+<p>But on the mountain, the view changes. In the river, your perspective is limited by the banks. On the mountain, you start to see the horizon. You see where you have been, and you see exactly where you are going. You start to see the leader you were actually called to be â the one who is not sedated by the screen but is fueled by the Spirit.</p>
+
+<p>You have to stand up in the river. You have to admit that you have been drifting. <strong>You are allowed to disappoint your comfort to deliver on your calling.</strong></p>
+
+<h2>4 Steps to Break the Respectable Drift Today</h2>
+
+<p>If you recognize yourself in any of this â and most people do â here is your action plan. These are not theories. They come from the same framework that pulled me out of the Drift and into a life of discipline, structure, and purpose.</p>
+
+<p><strong>1. Identify Your River.</strong> Where are you currently floating? The Drift usually lives in the area where you have accepted âgood enough.â Is it your health? Your marriage? Your finances? Your spiritual life? Write down the exact area where you know you are coasting.</p>
+
+<p><strong>2. Calculate Your Invoice.</strong> If you change nothing about your current habits, what will the cost be in five years? In ten? Write down the future price of your current comfort. Be brutally honest. That number is the alarm clock most people never set.</p>
+
+<p><strong>3. Name Your Sedation.</strong> What is the specific distraction keeping you numb? Endless social media scrolling? Binge-watching television? Video games? Identify the exact âMental Candyâ that is keeping you on the couch while your potential collects dust.</p>
+
+<p><strong>4. Make One Non-Negotiable Decision.</strong> You cannot stay in the river and climb the mountain at the same time. Choose one action you will take today â tomorrow, today â to step out of the current. Wake up an hour earlier. Cancel a subscription. Have the hard conversation. Write it down and treat it like law.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is the Respectable Drift?</h3>
+<p>The Respectable Drift is the slow, invisible erosion of your potential that happens when your life looks âgood enoughâ on the outside but lacks intentionality, discipline, and purpose on the inside. It is the silent compromise of settling for comfortable instead of pursuing your calling.</p>
+
+<h3>How do I know if I am stuck in the Respectable Drift?</h3>
+<p>Signs include: feeling like life is happening to you instead of being built by you, replacing productive time with passive entertainment, knowing you are capable of more but not acting on it, and having a growing gap between who people think you are and who you actually are.</p>
+
+<h3>What is the difference between the Loud Drift and the Respectable Drift?</h3>
+<p>The Loud Drift is obvious â substance abuse, destructive relationships, financial ruin. The Respectable Drift is far more dangerous because it looks normal. It is the steady job with no growth, the marriage on autopilot, the health decline disguised as âjust getting older.â Its invoice arrives in years, not days.</p>
+
+<h3>How do I stop drifting and start living with purpose?</h3>
+<p>Start by identifying the specific area where you have been coasting. Calculate the long-term cost of your current habits. Name the distractions keeping you sedated. Then make one non-negotiable decision today to step out of the current. The ProActivator framework â built on the Six Pillars of Faith, Family, Fitness, Finances, Focus, and Fulfillment â provides the complete architecture for building a life of discipline and intention.</p>
+
+<div class="blog-cta" style="background: rgba(0,212,255,0.05); border-left: 4px solid #00d4ff; padding: 24px; margin: 32px 0; border-radius: 0 8px 8px 0;">
+  <p style="font-size: 1.1em; font-weight: 600; margin-bottom: 12px;">Ready to Terminate the Drift?</p>
+  <p>The Respectable Drift does not fix itself. It requires a decision, a framework, and relentless execution. <em>Unleash the ProActivator</em> gives you the complete Six-Pillar system to break the cycle and build a life of purpose, discipline, and impact. <a href="/book/" style="color: #00d4ff; font-weight: 600;">Get the book</a> or <a href="/podcast/" style="color: #00d4ff; font-weight: 600;">listen to the ProActivators Podcast</a> to start your transformation today.</p>
+</div>
+
+
+  <!--
+    Write your content here using standard HTML:
+    <p>Paragraph text</p>
+    <h2>Section Heading</h2>
+    <blockquote>Pull quote</blockquote>
+    <ul><li>List item</li></ul>
+    <strong>Bold text</strong>
+    <a href="url">Link</a>
+  -->
+
+</article>
+
+<!-- AUTHOR BOX -->
+<div class="post-author">
+  <div class="post-author-avatar">GG</div>
+  <div class="post-author-info">
+    <div class="post-author-name">Gabriel Golindano</div>
+    Founder, ProActivators. Building state of the art leaders.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><img src="/logo.png" alt="ProActivators"/></div>
+    <div class="footer-tagline mono">Terminate. Activate. Lead.</div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/proactivatorsclub/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.youtube.com/@ProActivatorsClub" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      <a href="https://www.facebook.com/proactivatorsclub" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://open.spotify.com/show/2Kifn9YMS4Q48VIq0bL3xg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    </div>
+  </div>
+  <ul class="footer-nav">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#join">Newsletter</a></li>
+  </ul>
+  <div class="footer-copy mono">&#169; 2026 ProActivators<br/>We don't drift. We decide.</div>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobile-menu').classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
