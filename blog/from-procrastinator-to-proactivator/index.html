@@ -1,0 +1,420 @@
+<!--
+  BLOG POST TEMPLATE
+  ====================
+  To create a new blog post:
+  1. Copy this file to /blog/your-post-slug/index.html
+  2. Replace all  with real content
+  3. Push to main branch
+
+  Example: /blog/the-drift-is-the-real-enemy/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Stop procrastinating for good by shifting your identity. Learn the ProActivator framework — a discipline-driven system that replaces motivation with mission."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://proactivatorsclub.com/blog/from-procrastinator-to-proactivator/"/>
+<meta property="og:title" content="From Procrastinator to ProActivator — The Identity Shift That Changes Everything â ProActivators"/>
+<meta property="og:description" content="Stop procrastinating for good by shifting your identity. Learn the ProActivator framework — a discipline-driven system that replaces motivation with mission."/>
+<meta property="og:image" content="/blog/from-procrastinator-to-proactivator/featured.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>From Procrastinator to ProActivator — The Identity Shift That Changes Everything â ProActivators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#050505;
+  --deep:#0b0b0b;
+  --surface:#141414;
+  --surface2:#1c1c1c;
+  --off-white:#f0ebe0;
+  --steel:#888;
+  --steel-lt:#aaa;
+  --blue:#3ab4f2;
+  --blue-dim:rgba(58,180,242,0.1);
+  --blue-border:rgba(58,180,242,0.22);
+  --border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--off-white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--blue)}
+.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+.mono{font-family:'Space Mono',monospace}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);
+}
+.nav-logo img{height:30px;display:block}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--black);background:var(--blue);
+  border:none;padding:.65rem 1.7rem;cursor:pointer;transition:opacity .2s;text-decoration:none;
+}
+.nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:400}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--off-white);margin:5px 0;transition:.3s}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:350;
+  background:rgba(5,5,5,.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.mobile-menu.open{display:flex;opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;
+  color:var(--off-white);text-decoration:none;transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* ARTICLE HEADER */
+.post-header{
+  padding:140px 6vw 40px;
+  max-width:800px;margin:0 auto;
+}
+.post-back{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.post-back:hover{color:var(--blue)}
+.post-meta{
+  display:flex;align-items:center;gap:1rem;margin-top:2rem;
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--steel);
+}
+.post-category{color:var(--blue)}
+.post-title{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);
+  letter-spacing:.04em;line-height:1.1;margin-top:1rem;
+}
+
+/* FEATURED IMAGE */
+.post-featured{
+  max-width:800px;margin:2rem auto 0;padding:0 6vw;
+}
+.post-featured img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;
+  border:1px solid var(--border);
+}
+
+/* ARTICLE BODY */
+.post-body{
+  max-width:680px;margin:3rem auto;padding:0 6vw;
+  font-size:1.05rem;line-height:1.85;color:var(--off-white);
+}
+.post-body h2{
+  font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;
+  margin:2.5rem 0 1rem;color:var(--off-white);
+}
+.post-body h3{
+  font-family:'DM Sans',sans-serif;font-size:1.2rem;font-weight:500;
+  margin:2rem 0 .8rem;
+}
+.post-body p{margin-bottom:1.5rem}
+.post-body blockquote{
+  border-left:3px solid var(--blue);
+  padding:1rem 1.5rem;margin:2rem 0;
+  font-style:italic;color:var(--steel-lt);
+  background:var(--surface);
+}
+.post-body ul,.post-body ol{
+  margin:1.5rem 0;padding-left:1.5rem;
+}
+.post-body li{margin-bottom:.5rem}
+.post-body a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-border)}
+.post-body a:hover{border-bottom-color:var(--blue)}
+.post-body img{
+  max-width:100%;height:auto;margin:2rem 0;
+  border:1px solid var(--border);
+}
+.post-body strong{color:var(--off-white);font-weight:500}
+
+/* AUTHOR BOX */
+.post-author{
+  max-width:680px;margin:4rem auto;padding:2rem 6vw;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:1.5rem;
+}
+.post-author-avatar{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;font-size:.7rem;color:var(--blue);
+  flex-shrink:0;
+}
+.post-author-info{
+  font-size:.85rem;color:var(--steel-lt);line-height:1.6;
+}
+.post-author-name{
+  font-family:'Space Mono',monospace;font-size:.65rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--off-white);
+}
+
+/* FOOTER */
+footer{
+  padding:60px 6vw 40px;border-top:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem;
+}
+.footer-logo img{height:24px}
+.footer-tagline{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-top:.4rem;
+}
+.footer-socials{display:flex;gap:1.2rem;margin-top:.8rem}
+.footer-socials a{color:var(--steel);transition:color .2s}
+.footer-socials a:hover{color:var(--blue)}
+.footer-nav{display:flex;gap:2.5rem;list-style:none;flex-wrap:wrap}
+.footer-nav a{
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.footer-nav a:hover{color:var(--blue)}
+.footer-copy{
+  font-family:'Space Mono',monospace;font-size:.53rem;
+  letter-spacing:.1em;color:var(--steel);text-align:right;line-height:1.8;
+}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .footer-copy{text-align:left}
+}
+@media(max-width:560px){
+  .nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .post-author{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  <a href="/#manifesto" onclick="closeMobileMenu()">Movement</a>
+  <a href="/#pillars" onclick="closeMobileMenu()">Pillars</a>
+  <a href="/#founder" onclick="closeMobileMenu()">About</a>
+  <a href="/#podcast" onclick="closeMobileMenu()">Podcast</a>
+  <a href="/#book" onclick="closeMobileMenu()">Book</a>
+  <a href="/blog/" onclick="closeMobileMenu()" style="color:var(--blue)">Blog</a>
+</div>
+
+<nav id="nav">
+  <a href="/"><img src="/logo.png" alt="ProActivators"/></a>
+  <ul class="nav-links">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+  </ul>
+  <a href="/#join" class="nav-cta mono">Join</a>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="post-header">
+  <a href="/blog/" class="post-back">&larr; Back to Blog</a>
+  <div class="post-meta">
+    <span class="post-category">Mindset</span>
+    <span>Mar 30, 2026</span>
+    <span>Gabriel Golindano</span>
+  </div>
+  <h1 class="post-title bebas">From Procrastinator to ProActivator — The Identity Shift That Changes Everything</h1>
+</header>
+
+<!-- FEATURED IMAGE (remove if no image) -->
+<div class="post-featured">
+  <img src="/blog/from-procrastinator-to-proactivator/featured.png" alt="From Procrastinator to ProActivator — The Identity Shift That Changes Everything"/>
+</div>
+
+<!-- ARTICLE BODY -->
+<article class="post-body">
+
+  <p>You have tried to stop procrastinating before. You set the alarm earlier. You downloaded the productivity app. You told yourself "this time is different." And for a few days, maybe even a couple of weeks, it worked. Then something slipped. The old patterns crept back in. The snooze button won. The to-do list piled up again. And you were right back where you started — frustrated, disappointed, and convinced that maybe discipline just is not your thing.</p>
+
+<p>Here is the truth no one tells you: procrastination is not a behavior problem. It is an identity problem. You cannot out-hack a broken identity with better systems. You have to change who you are at the core — not just what you do on the surface.</p>
+
+<p>That shift is exactly what the ProActivator identity is built on. It is not another productivity trick. It is a fundamental rewiring of how you see yourself, your time, and your capacity to lead your own life.</p>
+
+<h2>Why Motivation Always Fails</h2>
+
+<p>Motivation is a starter fluid. It burns hot and it burns fast. You feel a surge of energy after watching a powerful video or reading an inspiring quote, and you ride that wave for 48 hours. But by day three, the wave is gone and you are standing on dry land wondering what happened.</p>
+
+<p>The problem is that motivation is an emotion — and emotions are temporary by design. They fluctuate with your sleep, your stress, your environment, and a hundred other variables you cannot control. Building your entire approach to productivity on motivation is like building a house on sand. It will not hold.</p>
+
+<p>A ProActivator does not operate on motivation. A ProActivator operates on identity. The difference is everything. When your identity says "I am the kind of person who shows up whether I feel like it or not," the alarm clock is no longer a negotiation. It is a non-negotiable. You do not debate with yourself at 4:00 AM because the debate was settled the moment you decided who you are.</p>
+
+<h2>The Terminator Psychology</h2>
+
+<p>The word "ProActivator" was not born in a boardroom or a self-help seminar. It was born in a library — and it was forged by watching <em>The Terminator</em>.</p>
+
+<p>Picture that machine: shot, burned, blown up — and it kept coming. No emotion. No hesitation. Mission locked. It did not stop because it got tired. It did not quit because the odds were bad. It operated on programming, not feelings.</p>
+
+<p>That image crystallized a formula that changes everything: <strong>Terminate + Activate = ProActivator.</strong></p>
+
+<p>A ProActivator is someone who ruthlessly terminates the bad habits that are destroying their life and intentionally activates the standards that build it. It does not matter what your mood is. It does not matter what your feelings say. You execute because that is your identity — not because you had a good night of sleep or a motivational podcast queued up.</p>
+
+<p>This is not about becoming a robot. It is about becoming someone whose standards are stronger than their excuses.</p>
+
+<h2>The Procrastinator vs. The ProActivator</h2>
+
+<p>Let us put these two identities side by side so you can see exactly where you stand today.</p>
+
+<p><strong>The Procrastinator</strong> waits for motivation to strike. They sleep until the last possible minute. They let their phone dictate the first hour of the day. They live by moods and feelings instead of plans. They react defensively to problems. They spend their energy complaining about things they cannot control.</p>
+
+<p><strong>The ProActivator</strong> shows up whether they feel like it or not. They master the first hour of the day before anyone else is awake. They write their own rules and live by them. They treat time as sacred and plan before they act. They eliminate distractions before those distractions ever strike. They focus their energy exclusively on what they can actually move.</p>
+
+<p>Every single day, you are casting a vote for one of these two identities. Every time you hit snooze, you vote for the Procrastinator. Every time you show up and do the work regardless of how you feel, you vote for the ProActivator. The votes compound. And over time, they become your reality.</p>
+
+<h2>The Civil War You Have to Win</h2>
+
+<p>Make no mistake — this shift is not comfortable. When you decide to stop procrastinating and step into the ProActivator identity, you are declaring war on your old self. And your old self will not go quietly.</p>
+
+<p>It will bargain with you. "Just five more minutes." It will tempt you. "You deserve a break — you worked hard yesterday." It will scream at you when the alarm goes off in the dark and every cell in your body wants to stay under the covers.</p>
+
+<p>Think of it like pushing a heavy motorcycle up a steep, rocky hill. Every step demands maximum force. Gravity is fighting you. Your muscles burn, your boots slip, and the machine wants to drag you back to the bottom. That is what breaking a procrastination habit feels like — you are pushing the dead weight of your past against the gravity of your comfort zone.</p>
+
+<p>But here is what happens if you keep pushing: your body eventually surrenders to your spirit. The urges quiet down. The resistance fades. Studies on habit formation confirm this — when you perform a behavior consistently in the same context, your brain automates it. What once took every ounce of willpower becomes your default setting.</p>
+
+<p>That is when you become truly dangerous to the Drift — because now discipline is not effort. It is who you are.</p>
+
+<h2>Time Is Not Yours to Waste</h2>
+
+<p>One of the most powerful shifts a ProActivator makes is how they view time. Most people treat time like it belongs to them — so they spend it however they feel. Scrolling, binging, drifting from one distraction to the next.</p>
+
+<p>A ProActivator treats time as a stewardship. You would not let someone reach into your wallet and take fifty dollars without a fight. But every single day, your phone, your distractions, and other people's emergencies reach into your schedule and steal hours from you — and you let them.</p>
+
+<p>When you give every hour a name — when you budget your time the way you would budget your money — you stop being ruled by moods. You stop living reactively. You start operating with the kind of clarity and intentionality that separates people who talk about change from people who actually build it.</p>
+
+<h2>Real People, Real Transformation</h2>
+
+<p>This identity shift is not theory. It has been tested and proven in real lives.</p>
+
+<p>One man — we will call him Darwin — came into a ProActivators group at rock bottom. His marriage was in shambles. He was separated from his wife and kids, living in his uncle's house with no car and no stability. But he stopped pointing the finger outward. He stopped blaming his circumstances. He took absolute ownership, got steady work, started showing up for his kids even when it meant walking — and six months later, he was standing with his family in front of the house they had just bought together.</p>
+
+<p>A woman named Maria came into the group carrying no dramatic story — just the quiet weight of a life spent putting everyone else first until she had nothing left and no idea who she was anymore. She started by reclaiming the first 20 minutes of her morning. No phone. No notifications. Just prayer and three written intentions for the day. That one act of ownership told her brain something it had forgotten: <em>you are in charge.</em> Six months later, she told the group something unforgettable: "For the first time in years, I feel like a person — not just a role."</p>
+
+<p>The ProActivator framework is universal because procrastination and the Drift are universal. They do not care if you are a CEO, a parent, or a student. The river pulls everyone. But the mountain is open to anyone willing to climb.</p>
+
+<h2>Your Identity Shift Starts Now</h2>
+
+<p>You do not need another app. You do not need to wait until Monday. You do not need the perfect morning routine mapped out before you begin. You need one decision: <strong>I am done casting votes for the Procrastinator.</strong></p>
+
+<p>Here is your field note — three actions you can take today:</p>
+
+<p><strong>1. Identify your Circle of Influence.</strong> Write down two things you are stressing about that you cannot control. Cross them out. Now write down two actions you can take today that are entirely within your power. Focus there.</p>
+
+<p><strong>2. Budget your next 24 hours.</strong> Give every hour a name. When will you wake up? When will you train? When will you do your most important work? When will you rest? No hour gets left unnamed.</p>
+
+<p><strong>3. Make the ProActivator Pledge.</strong> Identify one destructive habit you will terminate today and one proactive habit you will activate in its place. Write it down: "I will terminate __________, and I will activate __________."</p>
+
+<p>Every action you take is a vote for the person you are becoming. Stop negotiating with the weaker version of yourself. The ProActivator inside you is ready — the only question is whether you are willing to let that identity lead.</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is a ProActivator?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">A ProActivator is someone who ruthlessly terminates destructive habits and intentionally activates the standards that build their life. The term combines "Terminate" and "Activate" — it represents an identity rooted in discipline, consistency, and structure rather than motivation or willpower.</p>
+</div></div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How is this different from regular productivity advice?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Most productivity advice focuses on systems and tools — apps, planners, time-blocking techniques. The ProActivator approach starts with identity. When you change who you are at the core, the right behaviors follow naturally. Systems without identity always collapse.</p>
+</div></div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Can anyone become a ProActivator?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Absolutely. The ProActivator framework is universal. It has transformed the lives of men and women from all backgrounds — executives, parents, students, and people starting from rock bottom. The Drift does not discriminate, and neither does the solution.</p>
+</div></div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How long does it take to stop procrastinating with this approach?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">The decision is instant — the rewiring takes consistency. Research on habit formation shows that repeated behavior in the same context eventually automates in the brain. Most people begin to feel a real shift within two to four weeks of daily discipline, but the key is to never stop casting votes for the ProActivator identity.</p>
+</div></div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is the Respectable Drift?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">The Respectable Drift is the quiet, gradual slide into a "good enough" life — where you are stable, responsible, maybe even admired, but not actually living at your full potential. It is the most dangerous form of procrastination because it looks respectable from the outside. <a href="/blog/the-respectable-drift/">Read our full deep-dive on the Respectable Drift here.</a></p>
+</div></div>
+
+<p><strong>Ready to go deeper?</strong> The ProActivator identity is built on six foundational pillars — Faith, Family, Fitness, Finances, Focus, and Fulfillment. <a href="/blog/the-six-pillars-of-a-proactivator/">Explore the complete Six Pillars framework here</a> and start building a life of structure, discipline, and purpose. And if you want the full blueprint, Gabriel's book <em>Unleash the ProActivator</em> lays out the entire system from rock bottom to revolution.</p>
+
+  <!--
+    Write your content here using standard HTML:
+    <p>Paragraph text</p>
+    <h2>Section Heading</h2>
+    <blockquote>Pull quote</blockquote>
+    <ul><li>List item</li></ul>
+    <strong>Bold text</strong>
+    <a href="url">Link</a>
+  -->
+
+</article>
+
+<!-- AUTHOR BOX -->
+<div class="post-author">
+  <div class="post-author-avatar">GG</div>
+  <div class="post-author-info">
+    <div class="post-author-name">Gabriel Golindano</div>
+    Founder, ProActivators. Building state of the art leaders.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><img src="/logo.png" alt="ProActivators"/></div>
+    <div class="footer-tagline mono">Terminate. Activate. Lead.</div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/proactivatorsclub/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.youtube.com/@ProActivatorsClub" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      <a href="https://www.facebook.com/proactivatorsclub" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://open.spotify.com/show/2Kifn9YMS4Q48VIq0bL3xg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    </div>
+  </div>
+  <ul class="footer-nav">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#join">Newsletter</a></li>
+  </ul>
+  <div class="footer-copy mono">&#169; 2026 ProActivators<br/>We don't drift. We decide.</div>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobile-menu').classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
