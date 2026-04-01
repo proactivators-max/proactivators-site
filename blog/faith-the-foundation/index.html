@@ -1,0 +1,308 @@
+<!--
+  BLOG POST TEMPLATE
+  ====================
+  To create a new blog post:
+  1. Copy this file to /blog/your-post-slug/index.html
+  2. Replace all  with real content
+  3. Push to main branch
+
+  Example: /blog/the-drift-is-the-real-enemy/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Faith is the bedrock of the ProActivator framework. Learn why discipline without faith eventually breaks and how to build a foundation that holds."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://proactivatorsclub.com/blog/faith-the-foundation/"/>
+<meta property="og:title" content="Faith: The Foundation of Everything You Build â ProActivators"/>
+<meta property="og:description" content="Faith is the bedrock of the ProActivator framework. Learn why discipline without faith eventually breaks and how to build a foundation that holds."/>
+<meta property="og:image" content="/blog/faith-the-foundation/featured.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>Faith: The Foundation of Everything You Build â ProActivators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#050505;
+  --deep:#0b0b0b;
+  --surface:#141414;
+  --surface2:#1c1c1c;
+  --off-white:#f0ebe0;
+  --steel:#888;
+  --steel-lt:#aaa;
+  --blue:#3ab4f2;
+  --blue-dim:rgba(58,180,242,0.1);
+  --blue-border:rgba(58,180,242,0.22);
+  --border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--off-white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--blue)}
+.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+.mono{font-family:'Space Mono',monospace}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);
+}
+.nav-logo img{height:30px;display:block}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--black);background:var(--blue);
+  border:none;padding:.65rem 1.7rem;cursor:pointer;transition:opacity .2s;text-decoration:none;
+}
+.nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:400}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--off-white);margin:5px 0;transition:.3s}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:350;
+  background:rgba(5,5,5,.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.mobile-menu.open{display:flex;opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;
+  color:var(--off-white);text-decoration:none;transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* ARTICLE HEADER */
+.post-header{
+  padding:140px 6vw 40px;
+  max-width:800px;margin:0 auto;
+}
+.post-back{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.post-back:hover{color:var(--blue)}
+.post-meta{
+  display:flex;align-items:center;gap:1rem;margin-top:2rem;
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--steel);
+}
+.post-category{color:var(--blue)}
+.post-title{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);
+  letter-spacing:.04em;line-height:1.1;margin-top:1rem;
+}
+
+/* FEATURED IMAGE */
+.post-featured{
+  max-width:800px;margin:2rem auto 0;padding:0 6vw;
+}
+.post-featured img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;
+  border:1px solid var(--border);
+}
+
+/* ARTICLE BODY */
+.post-body{
+  max-width:680px;margin:3rem auto;padding:0 6vw;
+  font-size:1.05rem;line-height:1.85;color:var(--off-white);
+}
+.post-body h2{
+  font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;
+  margin:2.5rem 0 1rem;color:var(--off-white);
+}
+.post-body h3{
+  font-family:'DM Sans',sans-serif;font-size:1.2rem;font-weight:500;
+  margin:2rem 0 .8rem;
+}
+.post-body p{margin-bottom:1.5rem}
+.post-body blockquote{
+  border-left:3px solid var(--blue);
+  padding:1rem 1.5rem;margin:2rem 0;
+  font-style:italic;color:var(--steel-lt);
+  background:var(--surface);
+}
+.post-body ul,.post-body ol{
+  margin:1.5rem 0;padding-left:1.5rem;
+}
+.post-body li{margin-bottom:.5rem}
+.post-body a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-border)}
+.post-body a:hover{border-bottom-color:var(--blue)}
+.post-body img{
+  max-width:100%;height:auto;margin:2rem 0;
+  border:1px solid var(--border);
+}
+.post-body strong{color:var(--off-white);font-weight:500}
+
+/* AUTHOR BOX */
+.post-author{
+  max-width:680px;margin:4rem auto;padding:2rem 6vw;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:1.5rem;
+}
+.post-author-avatar{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;font-size:.7rem;color:var(--blue);
+  flex-shrink:0;
+}
+.post-author-info{
+  font-size:.85rem;color:var(--steel-lt);line-height:1.6;
+}
+.post-author-name{
+  font-family:'Space Mono',monospace;font-size:.65rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--off-white);
+}
+
+/* FOOTER */
+footer{
+  padding:60px 6vw 40px;border-top:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem;
+}
+.footer-logo img{height:24px}
+.footer-tagline{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-top:.4rem;
+}
+.footer-socials{display:flex;gap:1.2rem;margin-top:.8rem}
+.footer-socials a{color:var(--steel);transition:color .2s}
+.footer-socials a:hover{color:var(--blue)}
+.footer-nav{display:flex;gap:2.5rem;list-style:none;flex-wrap:wrap}
+.footer-nav a{
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.footer-nav a:hover{color:var(--blue)}
+.footer-copy{
+  font-family:'Space Mono',monospace;font-size:.53rem;
+  letter-spacing:.1em;color:var(--steel);text-align:right;line-height:1.8;
+}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .footer-copy{text-align:left}
+}
+@media(max-width:560px){
+  .nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .post-author{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  <a href="/#manifesto" onclick="closeMobileMenu()">Movement</a>
+  <a href="/#pillars" onclick="closeMobileMenu()">Pillars</a>
+  <a href="/#founder" onclick="closeMobileMenu()">About</a>
+  <a href="/#podcast" onclick="closeMobileMenu()">Podcast</a>
+  <a href="/#book" onclick="closeMobileMenu()">Book</a>
+  <a href="/blog/" onclick="closeMobileMenu()" style="color:var(--blue)">Blog</a>
+</div>
+
+<nav id="nav">
+  <a href="/"><img src="/logo.png" alt="ProActivators"/></a>
+  <ul class="nav-links">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+  </ul>
+  <a href="/#join" class="nav-cta mono">Join</a>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="post-header">
+  <a href="/blog/" class="post-back">&larr; Back to Blog</a>
+  <div class="post-meta">
+    <span class="post-category">Faith</span>
+    <span>Apr 1, 2026</span>
+    <span>Gabriel Golindano</span>
+  </div>
+  <h1 class="post-title bebas">Faith: The Foundation of Everything You Build</h1>
+</header>
+
+<!-- FEATURED IMAGE (remove if no image) -->
+<div class="post-featured">
+  <img src="/blog/faith-the-foundation/featured.png" alt="Faith: The Foundation of Everything You Build"/>
+</div>
+
+<!-- ARTICLE BODY -->
+<article class="post-body">
+
+  <p>You can build the most disciplined morning routine on earth. You can track every dollar, meal-prep every Sunday, and fill your calendar with purpose-driven blocks. But if you skip the foundation, every structure you build is sitting on sand — and the first real storm will prove it.</p><p>Faith is not just one of the six pillars of a ProActivator’s life. Faith is the bedrock beneath all of them. It is the anchor that holds when your career shifts, your health falters, your finances dip, and the people around you let you down. Without it, discipline becomes a grind with no deeper purpose. With it, every pillar transforms from an obligation into an act of worship.</p><h2>Why Talent, Hustle, and Money Make Terrible Foundations</h2><p>The world tells you to build your life on talent, hustle, status, or money. Those things are fine tools — but they are terrible foundations.</p><p>If you build your identity on your job, what happens when you get fired? It crumbles. If you build on your bank account, what happens when the market turns? Your confidence evaporates. If you build on the applause of others, what happens when they stop clapping? Your motivation vanishes overnight.</p><p>Faith roots you in something that cannot be taken away. It reminds you that you are not just a collection of habits and goals — you are a created being with a purpose. And purpose is what gets you out of bed when motivation is gone. Purpose is what keeps you doing the right thing when nobody is watching.</p><p>If you skip this pillar, you will spend your life building a state-of-the-art structure on a shaky footing.</p><h2>The Prodigal Who Kept Showing Up</h2><p>Gabriel accepted Christ at eleven years old. He did not know all the deep theology. He could not explain a detailed doctrinal framework in perfect terms. But he understood the Gospel and he knew one thing for certain: he needed God.</p><p>That decision planted a seed. But as he grew into a young man, the environment of Coconut Grove pulled him into the dark. Drugs, alcohol, rebellion — he became the prodigal son. He drank from the world’s waterfalls, and every single one of them left him empty.</p><p>But because that foundation had been poured early, there was a quiet voice inside that never fully went away. When he finally hit rock bottom, he did not just run away from his habits — he ran back to his Creator. With baggage. With bad habits. But he came back.</p><p>Here is the part most people miss: coming back to faith did not mean the struggles permanently ended. The <a href="/blog/the-respectable-drift/">Respectable Drift</a> still crept in. A twenty-year war with food and sugar raged on. Financial inconsistency plagued him. Weight went up, came down, and went back up again.</p><p>But there was one habit he never gave up during those dark, frustrating years: he kept going to church. Even while overeating. Even while mismanaging money. Even while feeling like a failure. That was the Spiritual Anchor. Because he kept showing up and putting himself in the room, the voice of conviction never went silent — until eventually, he had no choice but to pay attention to it.</p><h2>Go Straight to the Source</h2><p>Almost every valid principle in a modern self-help book is a remix of an ancient Biblical principle. “Visualization” is just faith. “Generosity” is just stewardship. “Mindset” is just the renewing of the mind.</p><p>If the principles work, it is because they trace back to the Designer. A ProActivator stops relying only on the remixes and goes straight to the Source.</p><p>There was a season deep in the Drift where Gabriel consumed self-help content like oxygen. A new book every month. Podcasts on the commute. YouTube lectures at night. He was learning constantly, yet nothing was sticking. A forty-eight-hour surge of motivation, then the old patterns crept back in. He was treating personal development like a buffet — sampling everything, committing to nothing.</p><p>Then one morning, a podcast host quoted a principle about renewing the mind. Something clicked. He put the earbuds down, opened his Bible, and read Romans 12:2 for himself. That host did not invent anything — he repackaged what God said thousands of years ago. The difference was this: when Gabriel read it from the Source, it did not give him a forty-eight-hour high. It gave him a foundation he could stand on when the high wore off. That was the last day Scripture was treated as a supplement. It became the main course.</p><h2>The Civil War You Must Win Every Day</h2><p>Faith does not make the battle go away. It gives you the weapons to fight it.</p><p>Even with decades of following Christ, the human body still pulls toward comfort, laziness, and shortcuts. The Apostle Paul described this Civil War perfectly: the flesh desires what is contrary to the Spirit, and the Spirit what is contrary to the flesh. They are in constant conflict.</p><p>Your flesh will always want the snooze button. It wants the junk food. It wants to scroll. It wants to react in anger. But faith gives you access to borrowed strength. When the body screams for comfort, a ProActivator leans on the strength God provides. Desires get tamed not because willpower is flawless, but because you are operating on a higher frequency of obedience.</p><p>The closer you walk with God, the quieter the flesh becomes. The further you drift, the louder it screams. Proximity to God is the variable that changes everything.</p><h2>The Consistency-Intensity Graph — How to Build Faith That Lasts</h2><p>When people first realize they are losing this Civil War, they try to fix it with massive, immediate force. “I am going to pray for an hour every morning! I am going to read five chapters a day! I am going to fast for three days!” They spike their intensity to ninety percent on Day 1 — but their consistency is sitting at zero. By Thursday, they burn out and fall right back into the drift.</p><p>Here is how a ProActivator actually builds the foundation. You start low on intensity. You pick a level of five percent — something so manageable you can look in the mirror and say, “I can keep this up forever.”</p><p>Stop trying to do a two-hour prayer marathon you keep failing at. Read one verse and pray for five minutes. Every single day. Focus entirely on pushing the consistency line to the right.</p><p>At the beginning, you are moving slow and your intensity is low. But you are logging the consistency. You do it for a whole month. Then three months. Eventually, something shifts in your brain and your spirit: you own it.</p><p>Once you own that baseline, your spirit will naturally say, “I can do ten minutes. I can read a full chapter.” Now you can start inching up the intensity. You let intensity and consistency climb the graph together. This is the Universal Law of the ProActivator: <strong>once you own it, you can manage it.</strong></p><h2>From Owner to Steward — The Shift That Changes Everything</h2><p>When you build your faith consistently, something fundamentally shifts in how you view the world. You stop acting like an Owner and start acting like a Steward.</p><p>This is not my body — it is His. This is not my money — it is His. This is not my time — it is His. A ProActivator is simply the manager of these resources. And a good manager does not waste what belongs to the King.</p><p>When you realize your body is a temple entrusted to you, you stop feeding it garbage. When you realize your money is a tool for His kingdom, you stop wasting it on things that do not matter. When you realize your family is a flock you have been assigned to shepherd, you stop leading them with anger and start leading them with patience.</p><p>Faith is what makes the discipline of the other five pillars — <a href="/blog/the-six-pillars-of-a-proactivator/">Family, Fitness, Finances, Focus, and Fulfillment</a> — an act of worship rather than an act of sheer willpower. That is the difference between grinding and building.</p><h2>Your Foundation Audit — Start Today</h2><p>You do not need to overhaul your entire spiritual life tonight. You need one honest audit and one five-percent action. Here is your field note:</p><p><strong>1. Identify your anchor.</strong> If you lose your job, your money, or your status tomorrow — what remains of your identity? Write down what is currently holding the weight of your life. If the answer is anything other than faith, you have found the crack in your foundation.</p><p><strong>2. Apply the five-percent rule.</strong> Where have you been spiking your intensity to ninety percent and failing? What is the five-percent version of that habit you can start doing with total consistency tomorrow? Five minutes of prayer. One verse. A ten-minute walk with no phone. Write it down.</p><p><strong>3. Make the stewardship shift.</strong> Pick one area — your body, your money, or your time — where you have been acting like an Owner instead of a Steward. What changes when you start managing it like it belongs to God?</p><p>Every action you take is a vote for the person you are becoming. When you wake up tomorrow morning, cast a vote for the Spirit instead of the flesh. That single decision, repeated daily, is how you build a foundation that no storm can shake.</p><p><strong>Ready to go deeper?</strong> Faith is the first of the <a href="/blog/the-six-pillars-of-a-proactivator/">Six Pillars of a ProActivator</a>. Explore the complete framework and start building a life of structure, discipline, and purpose. And if you want the full blueprint, Gabriel’s book <em>Unleash the ProActivator</em> lays out the entire system from rock bottom to revolution.</p><h2>Frequently Asked Questions</h2><h3>Why is faith the first pillar in the ProActivator framework?</h3><p>Faith is the foundation because it anchors your identity in something permanent. Every other pillar — Family, Fitness, Finances, Focus, and Fulfillment — is built on top of it. Without faith, discipline becomes a grind with no deeper purpose, and every structure you build is vulnerable to collapse when life gets hard.</p><h3>Do I have to be religious to apply the ProActivator framework?</h3><p>The ProActivator framework is rooted in Christian faith because that is where Gabriel’s transformation began. However, the core principle — anchoring your life in something greater than your circumstances — is universal. The framework invites you to examine what foundation you are building on and whether it can hold the weight of the life you want.</p><h3>What is the Consistency-Intensity Graph?</h3><p>The Consistency-Intensity Graph is a ProActivator tool for building lasting habits. Instead of spiking intensity to ninety percent on Day 1 and burning out, you start at five-percent intensity and focus entirely on consistency. Once you own the baseline habit, you gradually increase intensity. This approach works for building faith, fitness, finances, and every other pillar.</p><h3>How do I start building my faith if I have never been consistent?</h3><p>Start with the five-percent rule. Pick one small action — reading a single Bible verse, praying for five minutes, or sitting in silence for ten minutes — and do it every single day without fail. Do not increase intensity until you own the consistency. The goal is to build a foundation so strong that your spirit naturally wants more.</p><h3>What does it mean to shift from Owner to Steward?</h3><p>Most people treat their body, money, and time as if they own them — so they spend them however they feel. The stewardship shift means recognizing that these resources are entrusted to you, not owned by you. When you manage your life as a steward, every decision becomes more intentional because you are accountable to a higher standard. <a href="/blog/from-procrastinator-to-proactivator/">Learn more about the ProActivator identity shift here.</a></p>
+
+  <!--
+    Write your content here using standard HTML:
+    <p>Paragraph text</p>
+    <h2>Section Heading</h2>
+    <blockquote>Pull quote</blockquote>
+    <ul><li>List item</li></ul>
+    <strong>Bold text</strong>
+    <a href="url">Link</a>
+  -->
+
+</article>
+
+<!-- AUTHOR BOX -->
+<div class="post-author">
+  <div class="post-author-avatar">GG</div>
+  <div class="post-author-info">
+    <div class="post-author-name">Gabriel Golindano</div>
+    Founder, ProActivators. Building state of the art leaders.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><img src="/logo.png" alt="ProActivators"/></div>
+    <div class="footer-tagline mono">Terminate. Activate. Lead.</div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/proactivatorsclub/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.youtube.com/@ProActivatorsClub" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      <a href="https://www.facebook.com/proactivatorsclub" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://open.spotify.com/show/2Kifn9YMS4Q48VIq0bL3xg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    </div>
+  </div>
+  <ul class="footer-nav">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#join">Newsletter</a></li>
+  </ul>
+  <div class="footer-copy mono">&#169; 2026 ProActivators<br/>We don't drift. We decide.</div>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobile-menu').classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
