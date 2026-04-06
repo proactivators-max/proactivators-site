@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Your home is your first leadership assignment. Learn the ProActivator approach to family leadership through rituals, radical transparency, and intentional culture."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://proactivatorsclub.com/blog/family-your-home-is-your-first-boardroom/"/>
+<meta property="og:title" content="Family: Your Home Is Your First Boardroom — ProActivators"/>
+<meta property="og:description" content="Your home is your first leadership assignment. Learn the ProActivator approach to family leadership through rituals, radical transparency, and intentional culture."/>
+<meta property="og:image" content="/blog/family-your-home-is-your-first-boardroom/featured.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>Family: Your Home Is Your First Boardroom — ProActivators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#050505;
+  --deep:#0b0b0b;
+  --surface:#141414;
+  --surface2:#1c1c1c;
+  --off-white:#f0ebe0;
+  --steel:#888;
+  --steel-lt:#aaa;
+  --blue:#3ab4f2;
+  --blue-dim:rgba(58,180,242,0.1);
+  --blue-border:rgba(58,180,242,0.22);
+  --border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--off-white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--blue)}
+.bebas{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+.mono{font-family:'Space Mono',monospace}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);
+}
+.nav-logo img{height:30px;display:block}
+.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links a{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--black);background:var(--blue);
+  border:none;padding:.65rem 1.7rem;cursor:pointer;transition:opacity .2s;text-decoration:none;
+}
+.nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:400}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--off-white);margin:5px 0;transition:.3s}
+
+/* MOBILE MENU */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:350;
+  background:rgba(5,5,5,.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.mobile-menu.open{display:flex;opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.08em;
+  color:var(--off-white);text-decoration:none;transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--blue)}
+
+/* ARTICLE HEADER */
+.post-header{
+  padding:140px 6vw 40px;
+  max-width:800px;margin:0 auto;
+}
+.post-back{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;transition:color .2s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.post-back:hover{color:var(--blue)}
+.post-meta{
+  display:flex;align-items:center;gap:1rem;margin-top:2rem;
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--steel);
+}
+.post-category{color:var(--blue)}
+.post-title{
+  font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);
+  letter-spacing:.04em;line-height:1.1;margin-top:1rem;
+}
+
+/* FEATURED IMAGE */
+.post-featured{
+  max-width:800px;margin:2rem auto 0;padding:0 6vw;
+}
+.post-featured img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;
+  border:1px solid var(--border);
+}
+
+/* ARTICLE BODY */
+.post-body{
+  max-width:680px;margin:3rem auto;padding:0 6vw;
+  font-size:1.05rem;line-height:1.85;color:var(--off-white);
+}
+.post-body h2{
+  font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;
+  margin:2.5rem 0 1rem;color:var(--off-white);
+}
+.post-body h3{
+  font-family:'DM Sans',sans-serif;font-size:1.2rem;font-weight:500;
+  margin:2rem 0 .8rem;
+}
+.post-body p{margin-bottom:1.5rem}
+.post-body blockquote{
+  border-left:3px solid var(--blue);
+  padding:1rem 1.5rem;margin:2rem 0;
+  font-style:italic;color:var(--steel-lt);
+  background:var(--surface);
+}
+.post-body ul,.post-body ol{
+  margin:1.5rem 0;padding-left:1.5rem;
+}
+.post-body li{margin-bottom:.5rem}
+.post-body a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue-border)}
+.post-body a:hover{border-bottom-color:var(--blue)}
+.post-body img{
+  max-width:100%;height:auto;margin:2rem 0;
+  border:1px solid var(--border);
+}
+.post-body strong{color:var(--off-white);font-weight:500}
+
+/* AUTHOR BOX */
+.post-author{
+  max-width:680px;margin:4rem auto;padding:2rem 6vw;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:1.5rem;
+}
+.post-author-avatar{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;font-size:.7rem;color:var(--blue);
+  flex-shrink:0;
+}
+.post-author-info{
+  font-size:.85rem;color:var(--steel-lt);line-height:1.6;
+}
+.post-author-name{
+  font-family:'Space Mono',monospace;font-size:.65rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--off-white);
+}
+
+/* FOOTER */
+footer{
+  padding:60px 6vw 40px;border-top:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem;
+}
+.footer-logo img{height:24px}
+.footer-tagline{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-top:.4rem;
+}
+.footer-socials{display:flex;gap:1.2rem;margin-top:.8rem}
+.footer-socials a{color:var(--steel);transition:color .2s}
+.footer-socials a:hover{color:var(--blue)}
+.footer-nav{display:flex;gap:2.5rem;list-style:none;flex-wrap:wrap}
+.footer-nav a{
+  font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);text-decoration:none;transition:color .2s;
+}
+.footer-nav a:hover{color:var(--blue)}
+.footer-copy{
+  font-family:'Space Mono',monospace;font-size:.53rem;
+  letter-spacing:.1em;color:var(--steel);text-align:right;line-height:1.8;
+}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .footer-copy{text-align:left}
+}
+@media(max-width:560px){
+  .nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .post-author{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="closeMobileMenu()">Home</a>
+  <a href="/#manifesto" onclick="closeMobileMenu()">Movement</a>
+  <a href="/#pillars" onclick="closeMobileMenu()">Pillars</a>
+  <a href="/#founder" onclick="closeMobileMenu()">About</a>
+  <a href="/#podcast" onclick="closeMobileMenu()">Podcast</a>
+  <a href="/#book" onclick="closeMobileMenu()">Book</a>
+  <a href="/blog/" onclick="closeMobileMenu()" style="color:var(--blue)">Blog</a>
+</div>
+
+<nav id="nav">
+  <a href="/"><img src="/logo.png" alt="ProActivators"/></a>
+  <ul class="nav-links">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+  </ul>
+  <a href="/#join" class="nav-cta mono">Join</a>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<header class="post-header">
+  <a href="/blog/" class="post-back">&larr; Back to Blog</a>
+  <div class="post-meta">
+    <span class="post-category">Family</span>
+    <span>Apr 6, 2026</span>
+    <span>Gabriel Golindano</span>
+  </div>
+  <h1 class="post-title bebas">Family: Your Home Is Your First Boardroom</h1>
+</header>
+
+<!-- FEATURED IMAGE (remove if no image) -->
+<div class="post-featured">
+  <img src="/blog/family-your-home-is-your-first-boardroom/featured.png" alt="Family: Your Home Is Your First Boardroom"/>
+</div>
+
+<!-- ARTICLE BODY -->
+<article class="post-body">
+
+  <p>There is a moment in every leader’s life when they face something uncomfortable but liberating: your true character is not revealed in public. It is revealed at home.</p>
+
+<p>You can impress people with your fitness. You can inspire people with your work ethic. You can even fool people with your social media highlights. But the people living under your roof? They see the real you. The version you cannot Photoshop, rehearse, or edit.</p>
+
+<p>Family leadership is not about authority. It is about standard. A ProActivator refuses to accept external success at the cost of internal collapse. We lead from the inside out, not the outside in. And real leadership always begins at home.</p>
+
+<h2>Your First Leadership Assignment Is Not Your Career</h2>
+
+<p>One of the biggest lies we believe is that our value is found in what we accomplish outside the house. We chase productivity, income, fitness, status — all of which matter — but none of them carry the same weight as how we show up for our family.</p>
+
+<p>If your kids fear you instead of trust you. If your spouse feels alone while you feel “busy.” If your household lacks peace, routine, or unity — it does not matter how put-together your public image looks.</p>
+
+<p>The world sees your highlights. Your family sees your habits.</p>
+
+<p>This is why the ProActivator Framework places family as a core pillar: your home is your first leadership assignment. Everything else is overflow. Your family is where you practice patience, develop emotional discipline, learn to apologize sincerely, forgive quickly, model consistency, and build legacy.</p>
+
+<p>When your <a href="/blog/faith-the-foundation/">faith is strong</a>, your home feels it. When your fitness is on point, your patience increases. When your finances are in order, the atmosphere calms. A ProActivator does not separate these things. A ProActivator integrates them — and the home becomes the living result.</p>
+
+<h2>Leading Your Home by Standard, Not Volume</h2>
+
+<p>Family leadership is not something you inherit. It is not something you naturally excel at. It is something you grow into — painfully, intentionally, and with a lot of internal remodeling along the way.</p>
+
+<p>You do not lead your home by volume. You lead it by standard. Your family watches how you wake up. How you handle pressure. How you pursue God. How you treat your body. Your habits create the culture of your home.</p>
+
+<p>If you tell your sons to honor their mother but you do not honor her yourself — they will remember your actions, not your advice. If you tell them to be disciplined but they see you drift — they will learn drift. Children absorb your life more than your lessons.</p>
+
+<p>That realization is a turning point for every family leader. Above everything, God leads the home. He is the foundation. When a family prays together, worships together, and evaluates decisions through the lens of Scripture, the standard is not one person’s opinion. It is something everyone answers to.</p>
+
+<h2>Build Culture Through Rituals, Not Lectures</h2>
+
+<p>Culture is not created by what you say. Culture is created by what you repeatedly do. A ProActivator home does not happen by accident. It happens by assignment.</p>
+
+<p>Structure does not start with a master plan. It begins with one simple commitment: if we do not create structure, drift will create chaos. Here are three rituals that build family culture from the inside out:</p>
+
+<h3>1. The Weekly Family Meeting</h3>
+
+<p>Every Saturday morning, while most families are sleeping in, a ProActivator home comes alive with purpose. Everyone sits together — each with an outline in hand. The meeting opens in prayer, and then the work begins: sharing victories from the week, discussing improvements where the ball was dropped, reviewing responsibilities, and talking about stewardship.</p>
+
+<p>Everything is honest. Nothing is sugar-coated. This meeting removes the emotion from discipline. You fix the system, not just the symptom. It becomes the place where unity grows and leadership is formed.</p>
+
+<h3>2. Responsibilities That Build Leaders</h3>
+
+<p>Children should not just have chores — they should have responsibilities. Doing laundry, maintaining their rooms, caring for what is theirs. As they mature, the responsibilities increase. A boy without responsibility becomes a man without discipline. A boy without expectations becomes a man without direction.</p>
+
+<h3>3. The Marriage Rhythm</h3>
+
+<p>There is one rhythm that sustains the entire house, yet it often gets pushed to the bottom of the list: dating your spouse. You cannot lead a family if the marriage is drifting. Children draw their security from the strength of the union between Mom and Dad.</p>
+
+<p>Dating is not something you do to get a spouse. It is something you do to keep a spouse. It means scheduling time, listening to their heart — not just their to-do list. A ProActivator understands that their spouse is the most important person on their team.</p>
+
+<h2>The Emotional Bank Account: Why Correction Without Connection Fails</h2>
+
+<p>No family leader has it all figured out. There will be days when you are not the thermostat — you are the thermometer, reacting to the heat instead of regulating it.</p>
+
+<p>The real test is not whether you lose your composure. The real test is what you do next.</p>
+
+<p>When correction goes wrong — when the tone is too sharp, when frustration leads instead of love — a ProActivator goes back to the table. The family meeting is not just a business meeting. It is a healing meeting. That is where repair happens.</p>
+
+<p>But you cannot make withdrawals from an account that has zero balance. If all you do is correct your family, you will bankrupt the relationship. You have to make constant deposits: encouragement, quality time, listening, play, laughter, and sincere apologies when you fall short.</p>
+
+<blockquote>Every time you encourage them, it is a deposit. Every time you listen to a story about something you do not care about, it is a deposit. Every time you apologize, it is a significant deposit.</blockquote>
+
+<p>Because you make so many deposits, you earn the right to make a withdrawal when it is time for correction. Your family accepts the hard truth because they know the love is real. If you want to correct your family without crushing them, check your balance first.</p>
+
+<h2>Radical Transparency: The Foundation of a ProActivator Marriage</h2>
+
+<p>When people hear about radical transparency in marriage, they often assume it means policing each other — checking phones and monitoring movements. It is the exact opposite.</p>
+
+<p>Radical transparency means sharing everything. Bank accounts, access codes, digital lives. Not because you are monitoring each other, but because you have nothing to hide.</p>
+
+<p>That distinction is everything. When you are living with integrity — when your private life and your public life match — you do not feel the weight of being watched. You feel freedom. Real freedom. The freedom of a person who can hand their phone to their spouse without a single second of hesitation, because everything on it reflects who they say they are.</p>
+
+<p>The peace that comes from a clean conscience in your marriage is worth every sacrifice it takes to build it. You cannot fake it. You cannot negotiate it. You either live it, or you do not.</p>
+
+<h2>Raising Leaders, Not Just Children</h2>
+
+<p>High love and high truth — that is the approach that raises leaders. Society today wants to extend boyhood into the thirties. We see grown adults avoiding responsibility, avoiding commitment, and avoiding leadership. A ProActivator refuses to let that be their lineage.</p>
+
+<p>When your children complain about a task being hard, do not comfort them in a way that makes them weak. Remind them of their identity. Speak identity over them constantly: “You are a leader. You are disciplined. You are a problem solver.”</p>
+
+<p>If you tell a child they are a leader long enough — and you treat them like one, and you apologize to them like one — eventually, they will believe you.</p>
+
+<h2>The Legacy Behind Every Decision</h2>
+
+<p>Why the early wake-ups? Why the family meetings? Why the constant fight against drift?</p>
+
+<p>Because you are building a legacy. Not just an inheritance of money — an inheritance of attitude. A spirit of continuous growth. A standard that says a ProActivator does not reach a finish line and stop. A ProActivator creates new standards until the final day.</p>
+
+<p>You cannot lead anyone where you are not willing to go. You cannot ask your children to be disciplined if you are drifting. You cannot ask your spouse to trust you if you are hiding. You have to be the example — in your private life and your public life.</p>
+
+<p>That is the ProActivator way. Non-stop growth. Relentless integrity. Unshakable faith. And it all starts at home.</p>
+
+<h2>Field Note: The Family Audit</h2>
+
+<p>Take five minutes right now and work through these three exercises:</p>
+
+<p><strong>1. The Emotional Bank Account Check.</strong> Look at your closest family members. Over the last week, have you made more deposits (encouragement, quality time, listening, apologies) or more withdrawals (criticism, losing your temper, absence)? Identify one specific deposit you can make today.</p>
+
+<p><strong>2. The Transparency Test.</strong> A ProActivator marriage is built on complete trust. Are there any areas in your life — passwords, bank accounts, struggles — where you are hiding behind “privacy” instead of leaning into unity? Write down one area where you need to open the door.</p>
+
+<p><strong>3. Implement the Family Meeting.</strong> Culture is built by what you repeatedly do. This weekend, call a 30-minute meeting with your household. Start with two simple questions: “What were our victories this week?” and “Where do we need to improve next week?”</p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What does family leadership actually look like day to day?</h3>
+<p>Family leadership is about setting the standard through your own habits and behavior. It means waking up with purpose, handling pressure with composure, modeling consistency, and creating structured rhythms like weekly family meetings and shared responsibilities. It is not about authority — it is about example.</p>
+
+<h3>How do I start a family meeting if my family has never done one?</h3>
+<p>Start simple. Pick a consistent day and time — Saturday mornings work well. Open with something positive (victories of the week), then discuss one area for improvement. Keep it to 30 minutes. The goal is honest communication, not perfection. Consistency over time builds the culture.</p>
+
+<h3>What is the Emotional Bank Account and why does it matter?</h3>
+<p>The Emotional Bank Account is the balance of trust and connection you have with each family member. Every act of encouragement, quality time, or sincere apology is a deposit. Every sharp word or absence is a withdrawal. You need a strong balance before correction can land without crushing the relationship.</p>
+
+<h3>How does radical transparency strengthen a marriage?</h3>
+<p>Radical transparency means sharing everything — finances, digital access, struggles — not to police each other, but because you have nothing to hide. When your private and public life match, you experience real freedom and peace. It removes the conditions where distrust and distance grow.</p>
+
+<h3>How do I connect the Six Pillars to my family life?</h3>
+<p>The <a href="/blog/the-six-pillars-of-a-proactivator/">Six Pillars</a> — Faith, Family, Fitness, Finances, Focus, and Fulfillment — are integrated, not isolated. When your faith is strong, your home feels it. When your fitness is on point, your patience increases. When your finances are in order, the household atmosphere calms. Family is where the other five pillars show their results.</p>
+
+<p><strong>Ready to lead your home like a ProActivator?</strong> Start with the Family Audit above, then explore the full <a href="/blog/the-six-pillars-of-a-proactivator/">Six Pillars Framework</a> to build every area of your life with structure and intentionality. Subscribe to the <a href="/#join">ProActivators Pulse newsletter</a> for weekly frameworks delivered straight to your inbox.</p>
+</article>
+
+<!-- AUTHOR BOX -->
+<div class="post-author">
+  <div class="post-author-avatar">GG</div>
+  <div class="post-author-info">
+    <div class="post-author-name">Gabriel Golindano</div>
+    Founder, ProActivators. Building state of the art leaders.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo"><img src="/logo.png" alt="ProActivators"/></div>
+    <div class="footer-tagline mono">Terminate. Activate. Lead.</div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/proactivatorsclub/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.youtube.com/@ProActivatorsClub" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      <a href="https://www.facebook.com/proactivatorsclub" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://open.spotify.com/show/2Kifn9YMS4Q48VIq0bL3xg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    </div>
+  </div>
+  <ul class="footer-nav">
+    <li><a href="/#manifesto">Movement</a></li>
+    <li><a href="/#pillars">Pillars</a></li>
+    <li><a href="/#founder">About</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/#book">Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#join">Newsletter</a></li>
+  </ul>
+  <div class="footer-copy mono">&#169; 2026 ProActivators<br/>We don't drift. We decide.</div>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.style.overflow=document.getElementById('mobile-menu').classList.contains('open')?'hidden':'';
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
+</body>
+</html>
