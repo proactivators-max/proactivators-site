@@ -141,6 +141,15 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 .footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
 .footer-copy{font-size:.75rem;color:var(--steel)}
 
+/* COUNTDOWN */
+.countdown{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+.countdown-item{background:var(--surface);border:1px solid var(--blue-border);padding:.8rem 1.2rem;text-align:center;min-width:70px}
+.countdown-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,2.8rem);color:var(--blue);line-height:1}
+.countdown-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--steel);margin-top:.3rem}
+
+/* NAV LOGO IMG */
+.nav-logo-img{height:28px;display:block}
+
 /* MOBILE */
 @media(max-width:768px){
   section{padding:4rem 1.2rem}
@@ -148,6 +157,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   .hero-image{order:-1;margin-bottom:1rem}
   .hero-image img{max-height:350px}
   .hero-buttons{justify-content:center}
+  .countdown{justify-content:center}
   .book-grid{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr;text-align:center}
   .about-photo,.about-photo-placeholder{margin:0 auto 1.5rem}
@@ -167,7 +177,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 
 <!-- NAV -->
 <nav>
-  <a href="https://proactivatorsclub.com" class="nav-logo">PRO<span>ACTIVATORS</span></a>
+  <a href="https://proactivatorsclub.com" class="nav-logo"><img src="logo.png" alt="ProActivators" class="nav-logo-img"></a>
   <a href="#rsvp" class="nav-cta">Get Your Ticket</a>
 </nav>
 
@@ -181,6 +191,12 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
         <div class="hero-subtitle">The 6-Pillar Framework to Break the Drift and Build a Life of Purpose</div>
         <div class="hero-author">By Gabriel Golindano</div>
         <div class="hero-embrace">"Embrace the Identity"</div>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Min</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Sec</div></div>
+        </div>
         <div class="hero-buttons">
           <a href="#rsvp" class="btn-blue">Get Your Ticket &mdash; $10</a>
           <a href="#book" class="btn-outline">About the Book</a>
@@ -346,7 +362,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     <div class="about-grid">
       <div class="about-photo" id="author-photo"><img src="gabriel.png" alt="Gabriel Golindano"></div>
       <div>
-        <p class="about-bio">Gabriel Golindano is the founder of ProActivators &mdash; a movement for those who refuse to drift. He is a husband, father of two sons, CrossFit athlete, and the host of the Mental Meat podcast. He built ProActivators not from a position of strength, but from the battlefield of his own failures &mdash; 20 years of war with inconsistency, drift, and the brutal gap between who he knew he could be and who he actually was. He lives in Miami.</p>
+        <p class="about-bio">Gabriel Golindano is the founder of ProActivators &mdash; a movement for those who refuse to drift. He is a husband, father of two sons, CrossFit athlete, and the host of the ProActivators Podcast. He built ProActivators not from a position of strength, but from the battlefield of his own failures &mdash; 20 years of war with inconsistency, drift, and the brutal gap between who he knew he could be and who he actually was. He lives in Miami.</p>
         <div class="about-socials">
           <a href="https://instagram.com/proactivators" target="_blank" rel="noopener">Instagram</a>
           <a href="https://youtube.com/@proactivators" target="_blank" rel="noopener">YouTube</a>
@@ -359,7 +375,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">PRO<span>ACTIVATORS</span></div>
+  <div class="footer-logo"><img src="logo.png" alt="ProActivators" style="height:24px"></div>
   <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a></div>
   <div class="footer-credo">Terminate. Activate. Lead.</div>
   <div class="footer-copy">&copy; 2025 ProActivators &mdash; We don't drift. We decide.</div>
@@ -420,6 +436,27 @@ form.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Reserve & Pay';
   }
 });
+
+// COUNTDOWN — May 3, 2026 at 4:00 PM ET
+const launchDate = new Date('2026-05-03T16:00:00-04:00').getTime();
+function updateCountdown() {
+  const now = Date.now();
+  const diff = launchDate - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML = '<div style="font-family:Space Mono,monospace;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);padding:.8rem 0">The event is live!</div>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = h;
+  document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
