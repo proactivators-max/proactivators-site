@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You're In! — Unleash The ProActivator Launch Event</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+  --green:#34d399;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.4;
+}
+.page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem}
+.container{max-width:600px;width:100%;text-align:center}
+
+/* SUCCESS CARD */
+.success-check{width:80px;height:80px;border-radius:50%;border:3px solid var(--green);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;
+  font-size:2.5rem;color:var(--green)}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,4.5rem);letter-spacing:.04em;line-height:1;margin-bottom:.5rem}
+h1 span{color:var(--blue)}
+.success-sub{font-size:1.1rem;color:var(--steel-lt);margin-bottom:2.5rem}
+
+/* EVENT DETAILS */
+.event-recap{background:var(--surface);border:1px solid var(--border);padding:2rem;margin-bottom:2.5rem;text-align:left}
+.event-recap .row{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.event-recap .row:last-child{border-bottom:none}
+.event-recap .label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}
+.event-recap .value{font-size:.95rem;text-align:right}
+.calendar-link{display:inline-block;margin-bottom:2.5rem;font-family:'Space Mono',monospace;font-size:.75rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue);text-decoration:none;
+  border:1px solid var(--blue-border);padding:.6rem 1.5rem;transition:all .2s}
+.calendar-link:hover{background:var(--blue-dim)}
+
+/* UPSELL */
+.upsell{background:var(--surface);border:1px solid var(--blue-border);padding:2.5rem;margin-bottom:2rem}
+.upsell-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
+.upsell h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);letter-spacing:.04em;line-height:1.1;margin-bottom:.8rem}
+.upsell p{color:var(--steel-lt);font-size:1rem;margin-bottom:1.5rem}
+.upsell img{max-width:250px;margin-bottom:1.5rem;filter:drop-shadow(0 10px 30px rgba(58,180,242,.15))}
+.btn-blue{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  background:var(--blue);color:var(--black);padding:.9rem 2rem;text-decoration:none;display:inline-block;
+  border:2px solid var(--blue);transition:all .2s;cursor:pointer}
+.btn-blue:hover{background:#fff;border-color:#fff}
+.btn-outline{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--steel);text-decoration:none;display:inline-block;padding:.6rem 1.5rem;transition:color .2s}
+.btn-outline:hover{color:var(--blue)}
+
+/* FOOTER */
+.footer{margin-top:3rem;text-align:center}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="container">
+
+    <!-- SUCCESS -->
+    <div class="success-check">&#10003;</div>
+    <h1>YOU'RE <span>IN</span>.</h1>
+    <p class="success-sub">Your ticket is confirmed. See you on May 3rd.</p>
+
+    <!-- EVENT RECAP -->
+    <div class="event-recap">
+      <div class="row">
+        <span class="label">Event</span>
+        <span class="value">Unleash The ProActivator &mdash; Book Launch</span>
+      </div>
+      <div class="row">
+        <span class="label">Date</span>
+        <span class="value">Sunday, May 3, 2026</span>
+      </div>
+      <div class="row">
+        <span class="label">Time</span>
+        <span class="value">4:00 PM &ndash; 6:00 PM</span>
+      </div>
+      <div class="row">
+        <span class="label">Location</span>
+        <span class="value">FIU Graham Center, GC 140</span>
+      </div>
+    </div>
+
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Unleash+The+ProActivator+Book+Launch&dates=20260503T200000Z/20260503T220000Z&location=FIU+Graham+Center+GC+140+Florida+International+University&details=Book+launch+event+with+Gabriel+Golindano.+Live+reading,+Q%26A,+and+book+signing." target="_blank" rel="noopener" class="calendar-link">+ Add to Google Calendar</a>
+
+    <!-- UPSELL -->
+    <div class="upsell">
+      <div class="upsell-label">Don't Wait for Launch Day</div>
+      <h2>GET THE BOOK</h2>
+      <img src="book-cover.png" alt="Unleash The ProActivator">
+      <p>Grab your copy now so you can come to the event ready. Get it signed by Gabriel on launch day.</p>
+      <a href="#" class="btn-blue" id="amazon-link" onclick="alert('Amazon link coming soon!');return false;">Buy on Amazon &mdash; Coming Soon</a>
+    </div>
+
+    <a href="https://proactivatorsclub.com/launch" class="btn-outline">Back to Event Page</a>
+
+    <div class="footer">
+      <div class="footer-credo">Terminate. Activate. Lead.</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
