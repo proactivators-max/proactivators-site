@@ -410,7 +410,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    const res = await fetch('/.netlify/functions/rsvp', {
+    const res = await fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/rsvp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, tickets }),
