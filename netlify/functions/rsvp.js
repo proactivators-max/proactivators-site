@@ -29,9 +29,7 @@ exports.handler = async (event) => {
       email: email.trim(),
       source: 'book launch page',
       tags: ['book-launch'],
-      customField: {
-        tickets: String(ticketCount),
-      },
+      customField: {},
     }),
   });
 
