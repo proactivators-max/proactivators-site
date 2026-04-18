@@ -12,7 +12,7 @@ exports.handler = async (event) => {
     return { statusCode: 405, headers: CORS, body: 'Method Not Allowed' };
   }
 
-  const { name, email, tickets } = JSON.parse(event.body);
+  const { name, email, phone, tickets } = JSON.parse(event.body);
 
   if (!email || !email.includes('@')) {
     return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Valid email required' }) };
@@ -35,6 +35,7 @@ exports.handler = async (event) => {
       lastName,
       name: (name || '').trim(),
       email: email.trim(),
+      phone: (phone || '').trim(),
       source: 'book launch page',
       tags: ['book-launch'],
       customField: {},
