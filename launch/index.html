@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Unleash The ProActivator — Book Launch Event | May 3, 2026</title>
-<meta name="description" content="Join Gabriel Golindano for the launch of Unleash The ProActivator. Live reading, Q&A, book signing. May 3, 2026 at FIU. Get your ticket — $10.">
+<meta name="description" content="Join Gabriel Golindano for the launch of Unleash The ProActivator. Live speech, guest speakers, book signing. May 3, 2026 at FIU. Free RSVP — limited capacity.">
 <meta property="og:title" content="Unleash The ProActivator — Book Launch Event">
-<meta property="og:description" content="Live reading, Q&A, and book signing. May 3, 2026 at FIU Graham Center. Get your $10 ticket now.">
+<meta property="og:description" content="Live speech, guest speakers, and book signing. May 3, 2026 at FIU Graham Center. Reserve your spot — free, limited capacity.">
 <meta property="og:image" content="https://proactivatorsclub.com/launch/book-cover.png">
 <meta property="og:url" content="https://proactivatorsclub.com/launch">
 <meta property="og:type" content="website">
@@ -179,7 +179,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 <!-- NAV -->
 <nav>
   <a href="https://proactivatorsclub.com" class="nav-logo"><img src="logo.png" alt="ProActivators" class="nav-logo-img"></a>
-  <a href="#rsvp" class="nav-cta">Get Your Ticket</a>
+  <a href="#rsvp" class="nav-cta">Reserve Your Spot</a>
 </nav>
 
 <!-- HERO -->
@@ -199,7 +199,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
           <div class="countdown-item"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Sec</div></div>
         </div>
         <div class="hero-buttons">
-          <a href="#rsvp" class="btn-blue">Get Your Ticket &mdash; $10</a>
+          <a href="#rsvp" class="btn-blue">Reserve Your Spot &mdash; Free</a>
           <a href="#book" class="btn-outline">About the Book</a>
         </div>
       </div>
@@ -233,8 +233,8 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       </div>
       <div class="event-card">
         <div class="label">Admission</div>
-        <div class="value" style="color:var(--blue)">$10</div>
-        <div class="sub">Limited capacity</div>
+        <div class="value" style="color:var(--blue)">Free</div>
+        <div class="sub">Limited capacity &mdash; RSVP required</div>
       </div>
     </div>
 
@@ -254,11 +254,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 <section id="rsvp">
   <div class="container">
     <div class="section-label">02 &mdash; Reserve Your Spot</div>
-    <h2>GET YOUR TICKET</h2>
+    <h2>RESERVE YOUR SPOT</h2>
 
     <div class="rsvp-box" id="rsvp-form-container">
-      <div class="price">$10</div>
-      <div class="price-label">Per Person &mdash; Limited Capacity</div>
+      <div class="price">FREE</div>
+      <div class="price-label">Limited Capacity &mdash; RSVP Required</div>
 
       <form id="rsvp-form" autocomplete="on">
         <div class="form-group">
@@ -274,23 +274,23 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
           <input type="tel" id="rsvp-phone" name="phone" placeholder="(305) 555-1234">
         </div>
         <div class="form-group">
-          <label for="rsvp-tickets">Number of Tickets</label>
+          <label for="rsvp-tickets">How many are coming?</label>
           <select id="rsvp-tickets" name="tickets">
-            <option value="1">1 Ticket &mdash; $10</option>
-            <option value="2">2 Tickets &mdash; $20</option>
-            <option value="3">3 Tickets &mdash; $30</option>
-            <option value="4">4 Tickets &mdash; $40</option>
-            <option value="5">5 Tickets &mdash; $50</option>
+            <option value="1">Just me</option>
+            <option value="2">2 of us</option>
+            <option value="3">3 of us</option>
+            <option value="4">4 of us</option>
+            <option value="5">5 of us</option>
           </select>
         </div>
-        <button type="submit" class="submit-btn" id="submit-btn">Reserve &amp; Pay</button>
-        <div class="form-note">You'll be redirected to Stripe for secure payment.</div>
+        <button type="submit" class="submit-btn" id="submit-btn">Reserve My Spot</button>
+        <div class="form-note">Free &mdash; no payment required. Spot confirmed instantly.</div>
         <div class="form-error" id="form-error"></div>
       </form>
 
       <div class="form-success" id="form-success">
-        <h3>REDIRECTING TO PAYMENT...</h3>
-        <p style="color:var(--steel)">Taking you to secure checkout now.</p>
+        <h3>YOU'RE IN.</h3>
+        <p style="color:var(--steel)">Confirming your spot...</p>
       </div>
     </div>
   </div>
@@ -395,9 +395,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 </footer>
 
 <script>
-// STRIPE PAYMENT LINK — Replace with your actual Stripe Payment Link
-const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/8x29AT8U5eT00XO8Ybgw00e';
-
 const form = document.getElementById('rsvp-form');
 const submitBtn = document.getElementById('submit-btn');
 const errorEl = document.getElementById('form-error');
@@ -418,7 +415,7 @@ form.addEventListener('submit', async (e) => {
     errorEl.textContent = 'Please enter a valid email address.';
     errorEl.style.display = 'block';
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Reserve & Pay';
+    submitBtn.textContent = 'Reserve My Spot';
     return;
   }
 
@@ -431,23 +428,19 @@ form.addEventListener('submit', async (e) => {
 
     if (!res.ok) throw new Error('Failed to save RSVP');
 
-    // Show success state
+    // Show success state, then redirect to success page
     form.style.display = 'none';
     successEl.style.display = 'block';
 
-    // Redirect to Stripe after brief delay
     setTimeout(() => {
-      const paymentUrl = STRIPE_PAYMENT_LINK
-        + '?prefilled_email=' + encodeURIComponent(email)
-        + '&client_reference_id=' + encodeURIComponent(email);
-      window.location.href = paymentUrl;
+      window.location.href = '/launch/success.html';
     }, 1200);
 
   } catch (err) {
     errorEl.textContent = 'Something went wrong. Please try again.';
     errorEl.style.display = 'block';
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Reserve & Pay';
+    submitBtn.textContent = 'Reserve My Spot';
   }
 });
 
