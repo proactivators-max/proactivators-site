@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Invited — Unleash The ProActivator Book Launch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --blue:#3ab4f2;
+  --blue-light:rgba(58,180,242,0.08);
+  --blue-border:rgba(58,180,242,0.35);
+  --ink:#1a1a1a;
+  --steel:#666;
+  --steel-lt:#888;
+  --line:#e5e5e5;
+}
+
+html,body{
+  font-family:'DM Sans',sans-serif;
+  color:var(--ink);
+  background:#f0f0f0;
+  font-size:14px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+.page{
+  width:8.5in;
+  min-height:11in;
+  margin:20px auto;
+  padding:0.65in 0.7in;
+  background:#fff;
+  box-shadow:0 4px 30px rgba(0,0,0,0.15);
+}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:.5rem}
+.brand-logo{height:32px;margin-bottom:1.2rem}
+.invite-label{
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.28em;
+  color:var(--steel);
+  text-transform:uppercase;
+  margin-bottom:.6rem;
+}
+.title-img{max-width:520px;width:100%;display:block;margin:0 auto .6rem}
+.embrace{
+  font-family:'Space Mono',monospace;
+  font-size:.75rem;
+  letter-spacing:.3em;
+  color:var(--blue);
+  text-transform:uppercase;
+}
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue-border),transparent);
+  margin:1.5rem 0;
+}
+
+/* BODY */
+.body-grid{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:1.5rem;
+  align-items:start;
+  margin-bottom:1.5rem;
+}
+.body-grid img{width:100%;border-radius:2px}
+.body-text p{margin-bottom:.75rem;font-size:.95rem;line-height:1.65;color:var(--ink)}
+.body-text .lead{font-weight:500;font-size:1rem;color:var(--ink)}
+.body-text em.blue{color:var(--blue);font-style:italic;font-weight:500}
+.body-text strong.title{color:var(--blue);font-weight:500;font-style:italic}
+
+/* PILLARS */
+.pillars{
+  display:flex;
+  justify-content:center;
+  gap:.6rem;
+  margin:1.6rem 0 1.4rem;
+  flex-wrap:wrap;
+}
+.pillar{
+  border:1.5px solid var(--blue-border);
+  padding:.55rem 1.1rem;
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--blue);
+  border-radius:2px;
+  font-weight:700;
+}
+
+/* QUOTE */
+.quote{
+  text-align:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem;
+  letter-spacing:.02em;
+  color:var(--ink);
+  line-height:1.3;
+  margin:1.4rem 0;
+  padding:0 1rem;
+}
+.quote .blue{color:var(--blue)}
+
+/* TEASER STRIP */
+.teaser{
+  border-left:3px solid var(--blue);
+  background:var(--blue-light);
+  padding:.85rem 1.1rem;
+  margin-bottom:1.4rem;
+  font-size:.93rem;
+  line-height:1.55;
+}
+.teaser strong{font-weight:700}
+.teaser em{color:var(--blue);font-style:italic}
+
+/* EVENT DETAILS */
+.event-box{
+  display:grid;
+  grid-template-columns:1fr 140px;
+  border:1.5px solid var(--ink);
+  border-radius:3px;
+  overflow:hidden;
+  margin-bottom:1.6rem;
+}
+.event-details{padding:1.1rem 1.3rem}
+.event-row{display:grid;grid-template-columns:90px 1fr;gap:.5rem;margin-bottom:.4rem;font-size:.92rem}
+.event-row:last-child{margin-bottom:0}
+.event-row .label{
+  font-family:'Space Mono',monospace;
+  font-size:.65rem;
+  letter-spacing:.2em;
+  color:var(--steel);
+  text-transform:uppercase;
+  padding-top:.18rem;
+}
+.event-row .value{color:var(--ink);font-weight:400}
+.event-row .value .blue{color:var(--blue)}
+.admission{
+  background:var(--blue);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:1rem;
+  text-align:center;
+}
+.admission .free{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3rem;
+  line-height:1;
+  letter-spacing:.04em;
+  margin-bottom:.2rem;
+}
+.admission .label{
+  font-family:'Space Mono',monospace;
+  font-size:.6rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  opacity:.95;
+}
+
+/* QR */
+.qr-section{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:1.3rem;
+  align-items:center;
+  margin-bottom:1.4rem;
+}
+.qr-section img{width:140px;height:140px;display:block;border:1px solid var(--line)}
+.qr-text .scan-label{
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.25em;
+  color:var(--blue);
+  text-transform:uppercase;
+  margin-bottom:.3rem;
+}
+.qr-text h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.7rem;
+  line-height:1.05;
+  letter-spacing:.02em;
+  color:var(--ink);
+  margin-bottom:.55rem;
+}
+.qr-text p{font-size:.9rem;color:var(--steel);line-height:1.5}
+
+/* CLOSING */
+.closing{
+  font-size:.95rem;
+  line-height:1.6;
+  margin-bottom:1.2rem;
+  color:var(--ink);
+}
+.signature .name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;
+  letter-spacing:.04em;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:.2rem;
+}
+.signature .role{
+  font-family:'Space Mono',monospace;
+  font-size:.65rem;
+  letter-spacing:.2em;
+  color:var(--steel);
+  text-transform:uppercase;
+}
+
+/* FOOTER */
+.footer{
+  border-top:1px solid var(--line);
+  margin-top:1.5rem;
+  padding-top:.85rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:'Space Mono',monospace;
+  font-size:.62rem;
+  letter-spacing:.18em;
+  color:var(--steel);
+  text-transform:uppercase;
+}
+.footer .blue{color:var(--blue)}
+.footer .credo{color:var(--blue);font-weight:700}
+
+/* PRINT */
+@page{size:letter;margin:0}
+@media print{
+  body{background:#fff}
+  .page{margin:0;box-shadow:none;width:8.5in;min-height:11in;padding:0.55in 0.7in}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" alt="ProActivators" class="brand-logo">
+    <div class="invite-label">You Are Invited To The Launch Of</div>
+    <img src="title-logo.png" alt="Unleash The ProActivator" class="title-img">
+    <div class="embrace">"Embrace The Identity"</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BODY -->
+  <div class="body-grid">
+    <img src="book-cover-square.png" alt="Unleash The ProActivator">
+    <div class="body-text">
+      <p class="lead">I wrote a book. Not because I had it all figured out &mdash; but because I finally stopped pretending I did.</p>
+      <p>It all started one morning in a Miami apartment, when I was in my early twenties. Staring at a dirty glass table covered in the debris of my worst decisions, I said two words that lit the fuse: <em class="blue">"No more."</em> What followed was a twenty-year war with inconsistency &mdash; a cycle of breakthroughs and drifts, wins and resets &mdash; until I finally cracked the code in my forties.</p>
+      <p><strong class="title">Unleash The ProActivator</strong> is the blueprint that came out of that war &mdash; a Six-Pillar Framework built on the areas that matter most.</p>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="pillars">
+    <span class="pillar">Faith</span>
+    <span class="pillar">Family</span>
+    <span class="pillar">Fitness</span>
+    <span class="pillar">Finances</span>
+    <span class="pillar">Focus</span>
+    <span class="pillar">Fulfillment</span>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote">
+    "I stopped watching everyone else's life<br>
+    and became the <span class="blue">spectator of my own.</span>"
+  </div>
+
+  <!-- TEASER -->
+  <div class="teaser">
+    Join me for a <strong>keynote speech</strong>, <strong>guest speakers</strong>, and a <strong>book signing</strong>. <em>And there are two more things I'll be announcing that night &mdash; you'll want to be in the room for those.</em>
+  </div>
+
+  <!-- EVENT BOX -->
+  <div class="event-box">
+    <div class="event-details">
+      <div class="event-row">
+        <span class="label">Date</span>
+        <span class="value">Sunday, May 3, 2026 <span class="blue">&mdash; my 44th birthday</span></span>
+      </div>
+      <div class="event-row">
+        <span class="label">Time</span>
+        <span class="value">4:00 PM &ndash; 6:00 PM</span>
+      </div>
+      <div class="event-row">
+        <span class="label">Location</span>
+        <span class="value">FIU Graham Center, Room GC 140</span>
+      </div>
+      <div class="event-row">
+        <span class="label">Parking</span>
+        <span class="value">Lot 35 &middot; Enter near The Salty Donut</span>
+      </div>
+    </div>
+    <div class="admission">
+      <div class="free">FREE</div>
+      <div class="label">Admission</div>
+    </div>
+  </div>
+
+  <!-- QR -->
+  <div class="qr-section">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fproactivatorsclub.com%2Flaunch&margin=0&color=1a1a1a" alt="Scan to RSVP">
+    <div class="qr-text">
+      <div class="scan-label">Scan To RSVP</div>
+      <h3>RESERVE YOUR SEAT</h3>
+      <p>One scan. Secure your spot for the launch &mdash; free, but limited capacity.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <p class="closing">This is more than a book launch. This is the beginning of a movement for anyone who refuses to drift. I hope to see you there.</p>
+
+  <div class="signature">
+    <div class="name">Gabriel Golindano</div>
+    <div class="role">Author &middot; Founder of ProActivators</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div><span class="blue">@proactivators</span> &middot; proactivateyourlife@gmail.com &middot; YouTube: <span class="blue">@proactivators</span></div>
+    <div class="credo">Terminate. Activate. Lead.</div>
+  </div>
+
+</div>
+
+</body>
+</html>
