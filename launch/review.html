@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Leave A Review &mdash; Unleash The ProActivator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.4;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;
+  background:rgba(5,5,5,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;}
+.nav-logo-img{height:28px;display:block}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  background:transparent;color:var(--off-white);padding:.6rem 1.4rem;text-decoration:none;font-weight:700;
+  border:1px solid var(--border);transition:all .2s}
+.nav-cta:hover{border-color:var(--blue);color:var(--blue)}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:7rem 1.5rem 4rem;min-height:90vh;display:flex;align-items:center}
+.container{max-width:900px;margin:0 auto;width:100%}
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;text-align:center}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,7vw,4.5rem);letter-spacing:.04em;line-height:1;margin-bottom:1.5rem;text-align:center}
+h1 .blue{color:var(--blue)}
+
+/* HERO LAYOUT */
+.review-grid{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:center;background:var(--surface);border:1px solid var(--blue-border);padding:2.5rem;border-radius:2px;margin-bottom:2.5rem;position:relative}
+.review-grid::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.review-cover img{width:100%;display:block;filter:drop-shadow(0 12px 40px rgba(58,180,242,.18))}
+.review-text .label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+.review-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:.04em;line-height:1.1;margin-bottom:.5rem;color:var(--off-white)}
+.review-text .author{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:1.5rem}
+.review-text p{color:var(--steel-lt);font-size:1rem;line-height:1.65;margin-bottom:1.4rem;font-weight:300}
+.review-text p strong{color:var(--off-white);font-weight:500}
+
+/* CTA */
+.cta-row{text-align:center;margin-bottom:2rem}
+.btn-blue{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  background:var(--blue);color:var(--black);padding:1.2rem 2.6rem;text-decoration:none;display:inline-block;
+  border:2px solid var(--blue);transition:all .2s;cursor:pointer}
+.btn-blue:hover{background:#fff;border-color:#fff}
+.cta-note{margin-top:1rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--steel);text-transform:uppercase}
+
+/* INSTRUCTIONS */
+.instructions{background:var(--deep);border-left:3px solid var(--blue);padding:1.5rem 1.8rem;margin-bottom:2rem;border-radius:2px}
+.instructions h3{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
+.instructions ol{list-style:none;padding:0;counter-reset:step}
+.instructions li{padding:.5rem 0;padding-left:2.2rem;position:relative;color:var(--steel-lt);font-size:.95rem;line-height:1.55;font-weight:300;counter-increment:step}
+.instructions li::before{content:counter(step);position:absolute;left:0;top:.5rem;width:1.6rem;height:1.6rem;background:var(--blue);color:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700}
+
+/* DOCTRINE */
+.doctrine{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:.04em;color:var(--blue);margin:2rem 0 0;padding-top:2rem;border-top:1px solid var(--border)}
+
+/* FOOTER */
+footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{margin-bottom:.5rem}
+.footer-logo img{height:24px}
+.footer-email{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-bottom:1rem}
+.footer-email a{color:var(--steel);text-decoration:none}
+.footer-email a:hover{color:var(--blue)}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.footer-copy{font-size:.75rem;color:var(--steel)}
+
+/* MOBILE */
+@media(max-width:768px){
+  section{padding:6rem 1.2rem 3rem}
+  .review-grid{grid-template-columns:1fr;gap:1.5rem;padding:1.8rem;text-align:center}
+  .review-cover{max-width:200px;margin:0 auto}
+  nav{padding:.8rem 1rem}
+  .nav-cta{padding:.5rem 1rem;font-size:.7rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://proactivatorsclub.com/launch" class="nav-logo"><img src="logo.png" alt="ProActivators" class="nav-logo-img"></a>
+  <a href="https://proactivatorsclub.com/launch" class="nav-cta">&larr; Event Page</a>
+</nav>
+
+<section>
+  <div class="container">
+
+    <div class="section-label">Help Push The Book To Bestseller</div>
+    <h1>LEAVE A <span class="blue">REVIEW.</span></h1>
+
+    <div class="review-grid">
+      <div class="review-cover">
+        <img src="book-cover-square.png" alt="Unleash The ProActivator">
+      </div>
+      <div class="review-text">
+        <div class="label">Unleash The ProActivator</div>
+        <h2>EMBRACE THE IDENTITY</h2>
+        <div class="author">By Gabriel Golindano</div>
+        <p>Reviews are the fuel that lifts the book higher than sales alone. <strong>Amazon's algorithm rewards books with real reviews from real readers.</strong> 30 seconds of your time = real fuel for the bestseller push.</p>
+        <p>Honest review, however brief. The book changed something for you &mdash; tell people what.</p>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="https://www.amazon.com/review/create-review?asin=B0GY1Y2RHM" target="_blank" rel="noopener" class="btn-blue">Leave A Review On Amazon &rarr;</a>
+      <div class="cta-note">Opens Amazon &middot; takes 30 seconds &middot; thank you</div>
+    </div>
+
+    <div class="instructions">
+      <h3>How To Leave A Review</h3>
+      <ol>
+        <li>Tap the button above &mdash; opens the Amazon review page</li>
+        <li>Sign in to your Amazon account if needed (you must have purchased the book)</li>
+        <li>Rate it (stars) and write what hit you most &mdash; one paragraph is plenty</li>
+        <li>Submit. Done. You just helped the movement.</li>
+      </ol>
+    </div>
+
+    <div class="doctrine">"THE FRUIT IS THE ADVERTISEMENT."</div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="logo.png" alt="ProActivators"></div>
+  <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a></div>
+  <div class="footer-credo">Terminate. Activate. Lead.</div>
+  <div class="footer-copy">&copy; 2026 ProActivators &mdash; We don't drift. We decide.</div>
+</footer>
+
+</body>
+</html>
