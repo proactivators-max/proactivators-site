@@ -241,7 +241,10 @@ async function trackClick() {
 buyBtn.addEventListener('click', () => { trackClick(); });
 
 fetchCount();
-setInterval(fetchCount, 5000);
+setInterval(fetchCount, 20000);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) fetchCount();
+});
 </script>
 
 </body>
