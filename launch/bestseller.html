@@ -171,7 +171,10 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 </footer>
 
 <script>
-const FUNCTIONS_BASE = 'https://reliable-cat-70f502.netlify.app/.netlify/functions';
+const COUNTER_NAMESPACE = 'proactivators-club-launch-2026';
+const COUNTER_KEY = 'book-clicks-may3';
+const COUNTER_GET = 'https://abacus.jasoncameron.dev/get/' + COUNTER_NAMESPACE + '/' + COUNTER_KEY;
+const COUNTER_HIT = 'https://abacus.jasoncameron.dev/hit/' + COUNTER_NAMESPACE + '/' + COUNTER_KEY;
 const GOAL = 100;
 const STORAGE_KEY = 'proactivators-launch-tracked';
 
@@ -202,10 +205,11 @@ function renderCount(count) {
 
 async function fetchCount() {
   try {
-    const res = await fetch(FUNCTIONS_BASE + '/get-count', { cache: 'no-store' });
+    const res = await fetch(COUNTER_GET, { cache: 'no-store' });
+    if (res.status === 404) { renderCount(0); return; }
     if (!res.ok) return;
     const data = await res.json();
-    if (typeof data.count === 'number') renderCount(data.count);
+    if (typeof data.value === 'number') renderCount(data.value);
   } catch (e) {}
 }
 
@@ -213,10 +217,10 @@ async function trackClick() {
   if (localStorage.getItem(STORAGE_KEY) === '1') return;
   localStorage.setItem(STORAGE_KEY, '1');
   try {
-    const res = await fetch(FUNCTIONS_BASE + '/track-click', { method: 'POST' });
+    const res = await fetch(COUNTER_HIT, { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
-      if (typeof data.count === 'number') renderCount(data.count);
+      if (typeof data.value === 'number') renderCount(data.value);
     }
   } catch (e) {}
 }
