@@ -191,10 +191,18 @@ const COUNTER_HIT = 'https://abacus.jasoncameron.dev/hit/' + COUNTER_NAMESPACE +
 const GOAL = 100;
 const STORAGE_KEY = 'proactivators-launch-tracked';
 
+// Tracker activates Saturday May 2, 2026 at 6:00 PM ET. Before this, the page
+// is dormant — no polling, no click tracking, no API calls. Append ?live=1
+// to preview the active state for testing.
+const ACTIVATION_TIME = new Date('2026-05-02T18:00:00-04:00').getTime();
+const FORCE_LIVE = new URLSearchParams(window.location.search).get('live') === '1';
+const isActive = FORCE_LIVE || Date.now() >= ACTIVATION_TIME;
+
 const counterEl = document.getElementById('counter');
 const progressFill = document.getElementById('progress-fill');
 const progressPercent = document.getElementById('progress-percent');
 const buyBtn = document.getElementById('buy-btn');
+const counterCard = document.getElementById('counter-card');
 
 let lastCount = 0;
 
@@ -238,13 +246,22 @@ async function trackClick() {
   } catch (e) {}
 }
 
-buyBtn.addEventListener('click', () => { trackClick(); });
-
-fetchCount();
-setInterval(fetchCount, 20000);
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden) fetchCount();
-});
+if (isActive) {
+  buyBtn.addEventListener('click', () => { trackClick(); });
+  fetchCount();
+  setInterval(fetchCount, 20000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) fetchCount();
+  });
+} else {
+  // Pre-launch: replace the live counter UI with an activation notice.
+  counterCard.innerHTML = `
+    <div class="counter-label">Live Tracker</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,6vw,4rem);color:var(--blue);letter-spacing:.04em;line-height:1.1;margin:1.5rem 0 1rem">GOES LIVE</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--off-white);letter-spacing:.04em;line-height:1.1;margin-bottom:.8rem">SAT MAY 2 &middot; 6 PM ET</div>
+    <div class="counter-sublabel" style="margin-top:.5rem">Counter activates the night before launch.</div>
+  `;
+}
 </script>
 
 </body>
