@@ -95,11 +95,13 @@ h1 .blue{color:var(--blue)}
 .share-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
 .share-card h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.04em;line-height:1.15;margin-bottom:.8rem;color:var(--off-white)}
 .share-card .share-text{color:var(--steel-lt);font-size:.95rem;line-height:1.6;margin-bottom:1.6rem;max-width:560px;margin-left:auto;margin-right:auto;font-weight:300}
-.share-grid{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;text-align:left;max-width:560px;margin:0 auto}
-.qr-block{text-align:center}
-.qr-block img{width:170px;height:170px;display:block;background:var(--off-white);padding:8px;border-radius:2px}
-.qr-caption{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-top:.6rem}
-.share-buttons{display:flex;flex-direction:column;gap:.7rem;align-items:stretch}
+.share-buttons{display:flex;flex-direction:column;gap:.7rem;align-items:stretch;max-width:340px;margin:0 auto}
+
+/* FLOATING QR — pinned top-right so the audience can scan it while the projector shows the hero/counter. Hidden on phones (no need to scan a page you're already on). */
+.qr-floating{position:fixed;top:78px;right:1.5rem;z-index:50;background:var(--surface);border:1px solid var(--blue-border);padding:.85rem;border-radius:2px;box-shadow:0 10px 28px rgba(0,0,0,.5);text-align:center}
+.qr-floating::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue)}
+.qr-floating img{width:clamp(150px,11vw,200px);height:clamp(150px,11vw,200px);display:block;background:var(--off-white);padding:7px;border-radius:2px}
+.qr-floating .qr-caption{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-top:.6rem;font-weight:700}
 .share-btn{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
   padding:.95rem 1.4rem;text-decoration:none;text-align:center;cursor:pointer;
   border:2px solid var(--blue);transition:all .2s;border-radius:0;background:transparent;display:inline-block}
@@ -139,8 +141,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   .counter-card{padding:2rem 1rem}
   .review-card{padding:1.5rem}
   .share-card{padding:1.8rem 1.2rem}
-  .share-grid{grid-template-columns:1fr;gap:1.2rem;max-width:340px}
-  .qr-block{display:none}
+  .qr-floating{display:none}
   nav{padding:.8rem 1rem}
   .nav-cta{padding:.5rem 1rem;font-size:.7rem}
 }
@@ -153,6 +154,12 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   <a href="https://proactivatorsclub.com/launch" class="nav-logo"><img src="logo.png" alt="ProActivators" class="nav-logo-img"></a>
   <a href="https://proactivatorsclub.com/launch" class="nav-cta">&larr; Event Page</a>
 </nav>
+
+<!-- FLOATING QR for projector audience -->
+<div class="qr-floating" aria-label="Scan to open this page on your phone">
+  <img src="qr-bestseller.png" alt="QR code linking to bestseller.html">
+  <div class="qr-caption">Scan To Join</div>
+</div>
 
 <section>
   <div class="container">
@@ -192,15 +199,9 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       <div class="share-label">Multiply The Push</div>
       <h3>HELP US GET TO 100</h3>
       <p class="share-text">Send this to one person. Their click counts. The counter goes up live. Multiplication, not addition.</p>
-      <div class="share-grid">
-        <div class="qr-block">
-          <img src="qr-bestseller.png" alt="Scan to open this page on your phone" width="170" height="170">
-          <div class="qr-caption">Scan To Open On Phone</div>
-        </div>
-        <div class="share-buttons">
-          <a class="share-btn whatsapp" id="share-whatsapp" href="https://wa.me/" target="_blank" rel="noopener">Share On WhatsApp &rarr;</a>
-          <button class="share-btn copy" id="share-copy" type="button">Copy Link</button>
-        </div>
+      <div class="share-buttons">
+        <a class="share-btn whatsapp" id="share-whatsapp" href="https://wa.me/" target="_blank" rel="noopener">Share On WhatsApp &rarr;</a>
+        <button class="share-btn copy" id="share-copy" type="button">Copy Link</button>
       </div>
     </div>
 
