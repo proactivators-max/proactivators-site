@@ -89,6 +89,26 @@ h1 .blue{color:var(--blue)}
 .btn-outline:hover{border-color:var(--blue);background:var(--blue-dim);color:var(--blue)}
 .cta-note{margin-top:1rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--steel);text-transform:uppercase}
 
+/* SHARE */
+.share-card{background:var(--surface);border:1px solid var(--blue-border);padding:2.2rem 2rem;text-align:center;margin-bottom:2rem;border-radius:2px;position:relative;overflow:hidden}
+.share-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.share-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+.share-card h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.04em;line-height:1.15;margin-bottom:.8rem;color:var(--off-white)}
+.share-card .share-text{color:var(--steel-lt);font-size:.95rem;line-height:1.6;margin-bottom:1.6rem;max-width:560px;margin-left:auto;margin-right:auto;font-weight:300}
+.share-grid{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;text-align:left;max-width:560px;margin:0 auto}
+.qr-block{text-align:center}
+.qr-block img{width:170px;height:170px;display:block;background:var(--off-white);padding:8px;border-radius:2px}
+.qr-caption{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-top:.6rem}
+.share-buttons{display:flex;flex-direction:column;gap:.7rem;align-items:stretch}
+.share-btn{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  padding:.95rem 1.4rem;text-decoration:none;text-align:center;cursor:pointer;
+  border:2px solid var(--blue);transition:all .2s;border-radius:0;background:transparent;display:inline-block}
+.share-btn.whatsapp{background:var(--blue);color:var(--black);border-color:var(--blue)}
+.share-btn.whatsapp:hover{background:#fff;border-color:#fff}
+.share-btn.copy{background:transparent;color:var(--blue);border-color:var(--blue)}
+.share-btn.copy:hover{background:var(--blue);color:var(--black)}
+.share-btn.copy.copied{background:var(--blue);color:var(--black)}
+
 /* REVIEW */
 .review-card{background:var(--surface);border-left:3px solid var(--blue);padding:2rem;text-align:center;margin-bottom:2rem;border-radius:2px}
 .review-card h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.04em;line-height:1.15;margin-bottom:.75rem;color:var(--off-white)}
@@ -118,6 +138,9 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   section{padding:5rem 1.2rem 3rem}
   .counter-card{padding:2rem 1rem}
   .review-card{padding:1.5rem}
+  .share-card{padding:1.8rem 1.2rem}
+  .share-grid{grid-template-columns:1fr;gap:1.2rem;max-width:340px}
+  .qr-block{display:none}
   nav{padding:.8rem 1rem}
   .nav-cta{padding:.5rem 1rem;font-size:.7rem}
 }
@@ -162,6 +185,23 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     <div class="cta-section">
       <a href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener" class="btn-blue" id="buy-btn">Buy On Amazon &rarr;</a>
       <div class="cta-note">Opens Amazon &middot; one click counts &middot; thank you</div>
+    </div>
+
+    <!-- SHARE -->
+    <div class="share-card">
+      <div class="share-label">Multiply The Push</div>
+      <h3>HELP US GET TO 100</h3>
+      <p class="share-text">Send this to one person. Their click counts. The counter goes up live. Multiplication, not addition.</p>
+      <div class="share-grid">
+        <div class="qr-block">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https%3A%2F%2Fproactivatorsclub.com%2Flaunch%2Fbestseller.html&margin=0" alt="Scan to open this page on your phone">
+          <div class="qr-caption">Scan To Open On Phone</div>
+        </div>
+        <div class="share-buttons">
+          <a class="share-btn whatsapp" id="share-whatsapp" href="https://wa.me/" target="_blank" rel="noopener">Share On WhatsApp &rarr;</a>
+          <button class="share-btn copy" id="share-copy" type="button">Copy Link</button>
+        </div>
+      </div>
     </div>
 
     <!-- REVIEW -->
@@ -244,6 +284,29 @@ async function trackClick() {
       if (typeof data.value === 'number') renderCount(data.value);
     }
   } catch (e) {}
+}
+
+// SHARE — wire up the WhatsApp and Copy Link buttons regardless of activation state
+const SHARE_URL = 'https://proactivatorsclub.com/launch/bestseller.html';
+const SHARE_TEXT = "Help push Unleash The ProActivator to Amazon bestseller — 100 books in 24 hours. Tap the button and the counter goes up live.";
+const SHARE_FULL = SHARE_TEXT + ' ' + SHARE_URL;
+const waBtn = document.getElementById('share-whatsapp');
+if (waBtn) waBtn.href = 'https://wa.me/?text=' + encodeURIComponent(SHARE_FULL);
+const copyBtn = document.getElementById('share-copy');
+if (copyBtn) {
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(SHARE_FULL);
+      copyBtn.textContent = '✓ Copied';
+      copyBtn.classList.add('copied');
+    } catch (err) {
+      copyBtn.textContent = 'Copy Failed';
+    }
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy Link';
+      copyBtn.classList.remove('copied');
+    }, 2200);
+  });
 }
 
 if (isActive) {
