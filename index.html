@@ -540,6 +540,25 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
   letter-spacing:.1em;color:var(--steel);margin-top:1.2rem;text-transform:uppercase;
 }
 
+/* SUMMIT PROMO */
+#summit-promo{text-align:center;position:relative;overflow:hidden}
+#summit-promo .section-h2{margin-bottom:2.4rem}
+.summit-promo{max-width:720px;margin:0 auto;position:relative}
+.summit-eyebrow{font-size:.66rem;letter-spacing:.32em;color:var(--blue);text-transform:uppercase;margin-bottom:1.2rem;font-weight:700}
+.summit-pitch{font-family:'DM Sans',sans-serif;font-size:clamp(1rem,1.7vw,1.2rem);color:var(--steel-lt);line-height:1.7;margin-bottom:2rem;font-weight:300}
+.summit-pitch em{color:var(--off-white);font-style:normal;font-weight:500}
+.summit-stack{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:2.4rem;padding:.85rem 1.2rem;border:1px solid var(--border);background:rgba(240,235,224,.025)}
+.summit-stack-item{color:var(--off-white);font-weight:700}
+.summit-stack-item .steel{color:var(--steel);font-weight:400;margin-left:.2rem}
+.summit-stack-item .blue{color:var(--blue);font-weight:700;margin-left:.2rem}
+.summit-stack-active{color:var(--blue)}
+.summit-stack-sep{color:var(--border);font-weight:400}
+.summit-cta{display:inline-block;font-size:.66rem;letter-spacing:.17em;text-transform:uppercase;color:var(--black);background:var(--blue);border:1px solid var(--blue);padding:1.1rem 2.2rem;cursor:pointer;text-decoration:none;transition:opacity .2s;margin-bottom:2.8rem}
+.summit-cta:hover{opacity:.85}
+.summit-form{display:flex;flex-direction:column;max-width:500px;margin:0 auto;gap:.75rem;position:relative;border-top:1px solid var(--border);padding-top:2rem}
+.summit-form-label{font-size:.6rem;letter-spacing:.22em;color:var(--steel);text-transform:uppercase;margin-bottom:.4rem;font-weight:700}
+.summit-form-note{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.1em;color:var(--steel);margin-top:1rem;text-transform:uppercase}
+
 /* FOOTER */
 footer{
   padding:3rem 5vw;border-top:1px solid var(--border);
@@ -703,6 +722,7 @@ footer{
   <a href="#founder" onclick="closeMobileMenu()">About</a>
   <a href="#podcast" onclick="closeMobileMenu()">Podcast</a>
   <a href="#book" onclick="closeMobileMenu()">Book</a>
+  <a href="/summit" onclick="closeMobileMenu()">Summit</a>
   <a href="/blog/" onclick="closeMobileMenu()">Blog</a>
   <button class="mobile-cta" onclick="closeMobileMenu();document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join the Movement</button>
 </div>
@@ -714,6 +734,7 @@ footer{
     <li><a href="#founder">About</a></li>
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#book">Book</a></li>
+    <li><a href="/summit">Summit</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
   <button class="nav-cta mono" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join</button>
@@ -1020,6 +1041,35 @@ footer{
   </div>
 </section>
 
+<!-- SUMMIT -->
+<section id="summit-promo" class="section-pad">
+  <div class="reveal">
+    <div class="label mono"><span class="label-num">07</span> The Loop</div>
+    <h2 class="section-h2 bebas">The ProActivators<br/><span class="blue">Summit</span></h2>
+  </div>
+  <div class="summit-promo reveal">
+    <div class="summit-eyebrow mono">&mdash; Coming Soon &mdash;</div>
+    <p class="summit-pitch">Six pillars. Elite speakers. One room. The Summit is the loop where ProActivators <em>assemble, mastermind, and multiply</em> &mdash; each pillar taught by someone who lives it at a 10.</p>
+    <div class="summit-stack mono">
+      <span class="summit-stack-item">Book &rarr; <span class="steel">The Ignition</span></span>
+      <span class="summit-stack-sep">&middot;</span>
+      <span class="summit-stack-item">App &rarr; <span class="steel">The OS</span></span>
+      <span class="summit-stack-sep">&middot;</span>
+      <span class="summit-stack-item summit-stack-active">Summit &rarr; <span class="blue">The Loop</span></span>
+    </div>
+    <a href="/summit" class="btn-blue mono summit-cta">See The Lineup &rarr;</a>
+
+    <form id="summit-form" class="summit-form" onsubmit="event.preventDefault();handleSummit()">
+      <p class="summit-form-label mono">Or get the announcement first</p>
+      <input id="summit-name-input" class="join-input" type="text" placeholder="Your Name" autocomplete="name"/>
+      <input id="summit-email-input" class="join-input" type="email" placeholder="Your Email" required autocomplete="email"/>
+      <button type="submit" class="join-submit">Notify Me When Details Drop</button>
+    </form>
+    <div id="summit-success" class="join-success">You're on the list. The movement assembles.</div>
+    <p class="summit-form-note mono">Get the date, lineup, and tickets before they go public.</p>
+  </div>
+</section>
+
 <!-- JOIN -->
 <section id="join">
   <div class="join-halo"></div>
@@ -1052,6 +1102,7 @@ footer{
     <li><a href="#founder">About</a></li>
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#book">Book</a></li>
+    <li><a href="/summit">Summit</a></li>
     <li><a href="#join">Newsletter</a></li>
   </ul>
   <div class="footer-copy mono">&#169; 2026 ProActivators<br/>We don't drift. We decide.</div>
@@ -1159,6 +1210,32 @@ function handleJoin(){
 }
 document.getElementById('email-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleJoin()});
 document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleJoin()});
+
+function handleSummit(){
+  const nameInp=document.getElementById('summit-name-input');
+  const emailInp=document.getElementById('summit-email-input');
+  if(!emailInp.value.includes('@')){
+    emailInp.style.borderColor='#991f1f';emailInp.focus();
+    setTimeout(()=>emailInp.style.borderColor='',1400);
+    return;
+  }
+  const btn=document.querySelector('#summit-form .join-submit');
+  btn.disabled=true;btn.textContent='Sending...';
+  fetch('/.netlify/functions/summit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:nameInp.value.trim(),email:emailInp.value.trim()})
+  }).then(function(r){
+    if(!r.ok)throw new Error('failed');
+    document.getElementById('summit-form').style.display='none';
+    document.getElementById('summit-success').style.display='block';
+  }).catch(function(){
+    btn.disabled=false;btn.textContent='Notify Me When Details Drop';
+    alert('Something went wrong. Please try again.');
+  });
+}
+document.getElementById('summit-email-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleSummit()});
+document.getElementById('summit-name-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleSummit()});
 </script>
 </body>
 </html>
