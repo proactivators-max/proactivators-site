@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ProActivators Summit &mdash; The Movement Meets</title>
+<meta name="description" content="The ProActivators Summit — where the movement assembles. Six pillars. Each one taught by a 10. Coming soon.">
+<meta property="og:title" content="The ProActivators Summit &mdash; The Movement Meets">
+<meta property="og:description" content="Six pillars. Elite speakers. One room. The Summit is the loop where the movement assembles, masterminds, and multiplies.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+<meta property="og:url" content="https://proactivatorsclub.com/summit/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProActivators">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The ProActivators Summit &mdash; The Movement Meets">
+<meta name="twitter:description" content="Six pillars. Elite speakers. One room. The Summit is the loop where the movement multiplies.">
+<meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.4;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;
+  background:rgba(5,5,5,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;}
+.nav-logo-img{height:28px;display:block}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  background:transparent;color:var(--off-white);padding:.6rem 1.4rem;text-decoration:none;font-weight:700;
+  border:1px solid var(--border);transition:all .2s}
+.nav-cta:hover{border-color:var(--blue);color:var(--blue)}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:6rem 1.5rem 4rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;text-align:center}
+
+/* HERO */
+.hero{padding-top:8rem;padding-bottom:5rem}
+.hero .eyebrow{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:1.4rem;font-weight:700}
+.hero .eyebrow::before,.hero .eyebrow::after{content:'';display:inline-block;width:32px;height:1px;background:var(--blue);vertical-align:middle;margin:0 1rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,9vw,7.5rem);letter-spacing:.02em;line-height:.95;margin-bottom:1.6rem;text-align:center}
+.hero h1 .blue{color:var(--blue)}
+.hero h1 .stack{display:block}
+.hero .subhead{text-align:center;font-size:clamp(1rem,1.7vw,1.2rem);color:var(--steel-lt);margin:0 auto 2.2rem;max-width:740px;line-height:1.65;font-weight:300}
+.hero .subhead em{color:var(--off-white);font-style:normal;font-weight:500}
+
+.date-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);background:var(--surface);padding:.85rem 1.6rem;border:1px solid var(--blue-border);border-left:3px solid var(--blue);margin:0 auto;font-weight:700}
+.hero-date-wrap{text-align:center;margin-bottom:2.6rem}
+
+.hero-cta{text-align:center}
+.btn-blue{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  background:var(--blue);color:var(--black);padding:1.2rem 2.6rem;text-decoration:none;display:inline-block;
+  border:2px solid var(--blue);transition:all .2s;cursor:pointer}
+.btn-blue:hover{background:#fff;border-color:#fff}
+.btn-outline{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  background:transparent;color:var(--off-white);padding:1rem 2rem;text-decoration:none;display:inline-block;
+  border:2px solid var(--border);transition:all .2s;cursor:pointer;margin-left:.6rem}
+.btn-outline:hover{border-color:var(--blue);background:var(--blue-dim);color:var(--blue)}
+
+/* SECTION HEADERS */
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);letter-spacing:.04em;line-height:1.1;margin-bottom:1rem}
+.section-header h2 .blue{color:var(--blue)}
+.section-header p{color:var(--steel-lt);font-size:1rem;max-width:620px;margin:0 auto;font-weight:300;line-height:1.65}
+
+/* ECOSYSTEM */
+.ecosystem{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ecosystem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1rem}
+.eco-card{background:var(--surface);border:1px solid var(--border);padding:2.2rem 1.8rem;border-radius:2px;position:relative;transition:all .25s}
+.eco-card:hover{border-color:var(--blue-border);transform:translateY(-3px)}
+.eco-card.active{border-color:var(--blue-border);background:linear-gradient(180deg,rgba(58,180,242,.04),var(--surface) 60%)}
+.eco-card.active::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.eco-num{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;color:var(--steel);margin-bottom:1rem}
+.eco-card.active .eco-num{color:var(--blue)}
+.eco-name{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.04em;margin-bottom:.4rem;color:var(--off-white)}
+.eco-role{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;font-weight:700}
+.eco-desc{color:var(--steel-lt);font-size:.92rem;line-height:1.6;font-weight:300}
+.eco-tag{position:absolute;top:1.2rem;right:1.2rem;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;color:var(--blue);background:var(--blue-dim);padding:.3rem .6rem;border:1px solid var(--blue-border);text-transform:uppercase;font-weight:700;display:none}
+.eco-card.active .eco-tag{display:inline-block}
+
+/* PILLARS STRIP */
+.pillars-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:1.5rem}
+.pillar-chip{display:inline-flex;align-items:center;gap:.55rem;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--off-white);background:var(--surface);padding:.7rem 1.1rem;border:1px solid var(--border);font-weight:700}
+.pillar-chip svg{width:14px;height:14px;stroke:var(--blue);stroke-width:1.8;fill:none}
+
+/* SPEAKERS */
+.speakers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.speaker-card{background:var(--surface);border:1px solid var(--border);padding:1.8rem 1.6rem 1.6rem;border-radius:2px;position:relative;transition:all .25s;display:flex;flex-direction:column}
+.speaker-card:hover{border-color:var(--blue-border);transform:translateY(-3px)}
+.speaker-card.placeholder{background:repeating-linear-gradient(45deg,var(--surface),var(--surface) 12px,var(--surface2) 12px,var(--surface2) 24px);border-style:dashed;border-color:var(--border)}
+.speaker-card.placeholder:hover{border-color:var(--blue-border)}
+
+.speaker-pillar{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1.4rem}
+.speaker-pillar svg{width:13px;height:13px;stroke:var(--blue);stroke-width:1.8;fill:none}
+.speaker-pillar.dual{flex-wrap:wrap}
+.speaker-pillar.dual .sep{color:var(--steel);margin:0 .15rem}
+
+.monogram{position:relative;width:100%;aspect-ratio:1/1;background:var(--deep);border:1px solid var(--blue-border);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;overflow:hidden}
+.monogram::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue)}
+.monogram::after{content:'';position:absolute;inset:8px;border:1px solid rgba(58,180,242,.08);pointer-events:none}
+.monogram .initials{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.6rem,7vw,5.6rem);letter-spacing:.04em;color:var(--off-white);line-height:1}
+.monogram .initials .blue{color:var(--blue)}
+.monogram.placeholder-mono{background:transparent;border-style:dashed}
+.monogram.placeholder-mono .initials{color:var(--steel);font-size:clamp(3rem,6vw,4.2rem)}
+
+.speaker-name{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.04em;line-height:1.05;margin-bottom:.4rem;color:var(--off-white)}
+.speaker-role{color:var(--steel-lt);font-size:.88rem;line-height:1.5;font-weight:300;flex:1}
+.speaker-role strong{color:var(--off-white);font-weight:500}
+.speaker-tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--border)}
+.speaker-tag .blue{color:var(--blue);font-weight:700}
+
+/* WAITLIST */
+.waitlist{background:var(--deep);border-top:1px solid var(--border);text-align:center}
+.waitlist h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.04em;line-height:1.05;margin-bottom:1rem}
+.waitlist h2 .blue{color:var(--blue)}
+.waitlist p{color:var(--steel-lt);max-width:560px;margin:0 auto 2rem;font-weight:300;line-height:1.65}
+.waitlist-form{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
+.waitlist-form input{font-family:'DM Sans',sans-serif;font-size:1rem;padding:1rem 1.2rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);border-radius:2px;transition:border-color .2s;width:100%}
+.waitlist-form input:focus{outline:none;border-color:var(--blue)}
+.waitlist-form input.error{border-color:#991f1f}
+.waitlist-form button{font-family:'Space Mono',monospace;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1.1rem;border:2px solid var(--blue);cursor:pointer;transition:all .2s}
+.waitlist-form button:hover{background:#fff;border-color:#fff}
+.waitlist-form button:disabled{opacity:.5;cursor:wait}
+.waitlist-note{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-top:1.2rem}
+.waitlist-success{display:none;color:var(--blue);font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;margin-top:1rem}
+.waitlist-success.show{display:block}
+
+/* DOCTRINE */
+.doctrine{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:.04em;color:var(--blue);padding:3.5rem 1.5rem;border-top:1px solid var(--border);position:relative;z-index:1}
+
+/* FOOTER */
+footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{margin-bottom:.5rem}
+.footer-logo img{height:24px}
+.footer-email{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-bottom:1rem}
+.footer-email a{color:var(--steel);text-decoration:none}
+.footer-email a:hover{color:var(--blue)}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.footer-copy{font-size:.75rem;color:var(--steel)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .ecosystem-grid{grid-template-columns:1fr;gap:1rem}
+  .speakers-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+}
+@media(max-width:640px){
+  section{padding:5rem 1.2rem 3rem}
+  .hero{padding-top:6.5rem}
+  .speakers-grid{grid-template-columns:1fr;gap:1rem;max-width:380px;margin:0 auto}
+  .hero .eyebrow::before,.hero .eyebrow::after{width:18px;margin:0 .6rem}
+  nav{padding:.8rem 1rem}
+  .nav-cta{padding:.5rem 1rem;font-size:.7rem}
+  .btn-outline{margin-left:0;margin-top:.7rem;display:block;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
+  <a href="#waitlist" class="nav-cta">Join The Waitlist &rarr;</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">The ProActivators Summit</div>
+    <h1>
+      <span class="stack">THE MOVEMENT</span>
+      <span class="stack"><span class="blue">ASSEMBLES.</span></span>
+    </h1>
+    <p class="subhead">Six pillars. Elite speakers. One room. The Summit is the loop where ProActivators <em>assemble, mastermind, and multiply</em> &mdash; where the movement grows in person and standards rise together.</p>
+    <div class="hero-date-wrap">
+      <span class="date-badge">Date Coming Soon</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#waitlist" class="btn-blue">Be First To Know &rarr;</a>
+      <a href="#speakers" class="btn-outline">See Speakers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM: Book / App / Summit -->
+<section class="ecosystem">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">The ProActivators Stack</div>
+      <h2>BOOK. APP. <span class="blue">SUMMIT.</span></h2>
+      <p>Three layers, one mission. The book ignites. The app operates. The Summit is where it all converges &mdash; in person, in the room, together.</p>
+    </div>
+    <div class="ecosystem-grid">
+      <div class="eco-card">
+        <div class="eco-num">01</div>
+        <div class="eco-name">THE BOOK</div>
+        <div class="eco-role">The Ignition</div>
+        <div class="eco-desc">The guide that gets it started. <em>Unleash The ProActivator</em> &mdash; the framework, the doctrine, the map out of the drift.</div>
+      </div>
+      <div class="eco-card">
+        <div class="eco-num">02</div>
+        <div class="eco-name">THE APP</div>
+        <div class="eco-role">The Operating System</div>
+        <div class="eco-desc">The daily structure. Habits, pillars, accountability &mdash; the system that runs the ProActivator life on autopilot.</div>
+      </div>
+      <div class="eco-card active">
+        <div class="eco-tag">You Are Here</div>
+        <div class="eco-num">03</div>
+        <div class="eco-name">THE SUMMIT</div>
+        <div class="eco-role">The Loop</div>
+        <div class="eco-desc">Where the movement assembles. Mastermind. Multiply. Awards. Growth. Where every ProActivator gets sharper and the movement gets bigger.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKERS -->
+<section id="speakers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">The Lineup</div>
+      <h2>EACH SPEAKER. <span class="blue">A 10 IN THEIR PILLAR.</span></h2>
+      <p>Not influencers. Not theorists. People who live their pillar at a 10 and have the fruit to prove it. Each one teaches the area they have mastered.</p>
+      <div class="pillars-strip">
+        <span class="pillar-chip"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10h14"/></svg>Faith</span>
+        <span class="pillar-chip"><svg viewBox="0 0 24 24"><path d="M12 3l9 9-9 9-9-9z"/></svg>Family</span>
+        <span class="pillar-chip"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Fitness</span>
+        <span class="pillar-chip"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>Finances</span>
+        <span class="pillar-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>Focus</span>
+        <span class="pillar-chip"><svg viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/></svg>Fulfillment</span>
+      </div>
+    </div>
+
+    <div class="speakers-grid">
+
+      <!-- Tucker Stike -->
+      <article class="speaker-card">
+        <div class="speaker-pillar"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10h14"/></svg>Faith</div>
+        <div class="monogram"><div class="initials">T<span class="blue">S</span></div></div>
+        <div class="speaker-name">TUCKER STIKE</div>
+        <div class="speaker-role"><strong>Campus Pastor</strong> &mdash; Christ Fellowship, Palmetto Bay. A life that shows the foundation in motion.</div>
+        <div class="speaker-tag">Pillar &rarr; <span class="blue">Faith</span></div>
+      </article>
+
+      <!-- Ken Schaefer -->
+      <article class="speaker-card">
+        <div class="speaker-pillar"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>Finances</div>
+        <div class="monogram"><div class="initials">K<span class="blue">S</span></div></div>
+        <div class="speaker-name">KEN SCHAEFER</div>
+        <div class="speaker-role"><strong>Former Financial Peace University Director</strong> &mdash; Christ Fellowship. Worked alongside Dave Ramsey for years. Order and freedom, taught from the front lines.</div>
+        <div class="speaker-tag">Pillar &rarr; <span class="blue">Finances</span></div>
+      </article>
+
+      <!-- Luke Ekerbrotten -->
+      <article class="speaker-card">
+        <div class="speaker-pillar"><svg viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/></svg>Fulfillment</div>
+        <div class="monogram"><div class="initials">L<span class="blue">E</span></div></div>
+        <div class="speaker-name">LUKE EKERBROTTEN</div>
+        <div class="speaker-role"><strong>ProActivators Podcast Guest</strong> &mdash; A life that shows fulfillment lived out. Living beyond yourself, in practice.</div>
+        <div class="speaker-tag">Pillar &rarr; <span class="blue">Fulfillment</span></div>
+      </article>
+
+      <!-- Gabriel Golindano -->
+      <article class="speaker-card">
+        <div class="speaker-pillar dual">
+          <span><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Fitness</span>
+          <span class="sep">&middot;</span>
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>Focus</span>
+        </div>
+        <div class="monogram"><div class="initials">G<span class="blue">G</span></div></div>
+        <div class="speaker-name">GABRIEL GOLINDANO</div>
+        <div class="speaker-role"><strong>Founder, ProActivators</strong> &mdash; 60 lbs lost. CrossFit athlete. The first arena of discipline, and the currency of the life that follows.</div>
+        <div class="speaker-tag">Pillars &rarr; <span class="blue">Fitness &middot; Focus</span></div>
+      </article>
+
+      <!-- Placeholder slots: more speakers coming -->
+      <article class="speaker-card placeholder">
+        <div class="speaker-pillar" style="color:var(--steel)">To Be Announced</div>
+        <div class="monogram placeholder-mono"><div class="initials">??</div></div>
+        <div class="speaker-name" style="color:var(--steel)">COMING SOON</div>
+        <div class="speaker-role">Another 10 stepping into the lineup. Announcement incoming.</div>
+        <div class="speaker-tag">Pillar &rarr; <span class="blue">TBA</span></div>
+      </article>
+
+      <article class="speaker-card placeholder">
+        <div class="speaker-pillar" style="color:var(--steel)">To Be Announced</div>
+        <div class="monogram placeholder-mono"><div class="initials">??</div></div>
+        <div class="speaker-name" style="color:var(--steel)">COMING SOON</div>
+        <div class="speaker-role">Lineup is still being built. The standard is high. Watch this space.</div>
+        <div class="speaker-tag">Pillar &rarr; <span class="blue">TBA</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section id="waitlist" class="waitlist">
+  <div class="container">
+    <div class="section-label">Be First To Know</div>
+    <h2>THE DATE DROPS <span class="blue">SOON.</span></h2>
+    <p>Speakers, location, dates, tickets. Join the waitlist and you'll get the announcement first &mdash; before it goes public.</p>
+    <form class="waitlist-form" id="waitlist-form" novalidate>
+      <input type="text" id="wl-name" name="name" placeholder="Your name (optional)" autocomplete="name">
+      <input type="email" id="wl-email" name="email" placeholder="Your email" required autocomplete="email">
+      <button type="submit" id="wl-submit">Notify Me &rarr;</button>
+    </form>
+    <div class="waitlist-success" id="waitlist-success">You're on the list. The movement assembles.</div>
+    <div class="waitlist-note">No spam. No fluff. Only the announcement.</div>
+  </div>
+</section>
+
+<!-- DOCTRINE -->
+<div class="doctrine">"WE DON'T DRIFT. WE DECIDE."</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="ProActivators"></div>
+  <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a></div>
+  <div class="footer-credo">Terminate. Activate. Lead.</div>
+  <div class="footer-copy">&copy; 2026 ProActivators &mdash; We don't drift. We decide.</div>
+</footer>
+
+<script>
+const form = document.getElementById('waitlist-form');
+const emailInput = document.getElementById('wl-email');
+const nameInput = document.getElementById('wl-name');
+const submitBtn = document.getElementById('wl-submit');
+const successEl = document.getElementById('waitlist-success');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = emailInput.value.trim();
+  if (!email || !email.includes('@')) {
+    emailInput.classList.add('error');
+    setTimeout(() => emailInput.classList.remove('error'), 1400);
+    return;
+  }
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+  try {
+    const res = await fetch('/.netlify/functions/summit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: nameInput.value, email })
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      successEl.classList.add('show');
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Try Again';
+    }
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Try Again';
+  }
+});
+</script>
+
+</body>
+</html>
