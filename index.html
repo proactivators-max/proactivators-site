@@ -497,7 +497,13 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
 .launch-stat-label{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-lt);font-weight:700;line-height:1.4}
 .book-launch-quote{font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--steel-lt);line-height:1.65;font-weight:300;font-style:italic}
 .book-launch-quote em{color:var(--blue);font-style:normal;font-weight:500;font-size:1.02rem}
-@media(max-width:600px){.book-launch-stats{grid-template-columns:1fr}}
+.book-launch-gallery{margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--border)}
+.book-gallery-tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1.4rem;font-weight:700;text-align:center}
+.book-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.book-gallery-item{aspect-ratio:1/1;overflow:hidden;border:1px solid var(--border);background:var(--surface);position:relative}
+.book-gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,filter .4s ease;filter:saturate(.95)}
+.book-gallery-item:hover img{transform:scale(1.05);filter:saturate(1.05)}
+@media(max-width:600px){.book-launch-stats{grid-template-columns:1fr}.book-gallery-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* JOIN */
 #join{
@@ -1066,6 +1072,18 @@ footer{
           </div>
         </div>
         <p class="book-launch-quote">The room watched the counter hit 100 in real time. The speech delivered. The Q&amp;A landed. <em>The launch was a success.</em></p>
+
+        <div class="book-launch-gallery">
+          <p class="book-gallery-tag mono">&mdash; The Room. The Family. The Readers. &mdash;</p>
+          <div class="book-gallery-grid">
+            <div class="book-gallery-item"><img src="/launch/launch-event-group.jpg" alt="ProActivators launch event speaker team at FIU" loading="lazy"></div>
+            <div class="book-gallery-item"><img src="/launch/launch-event-family.jpg" alt="Gabriel with Maydi and the boys at the launch" loading="lazy"></div>
+            <div class="book-gallery-item"><img src="/launch/launch-event-sons.jpg" alt="Gabriel with his sons at the FIU launch" loading="lazy"></div>
+            <div class="book-gallery-item"><img src="/launch/launch-event-3.jpg" alt="Gabriel with attendees at the FIU launch" loading="lazy"></div>
+            <div class="book-gallery-item"><img src="/launch/launch-fan-cap.jpg" alt="Reader with their copy of Unleash The ProActivator" loading="lazy"></div>
+            <div class="book-gallery-item"><img src="/launch/launch-fan-glasses.jpg" alt="Reader with their copy of Unleash The ProActivator" loading="lazy"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
