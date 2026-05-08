@@ -58,11 +58,16 @@ nav{
 }
 nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}
 .nav-logo img{height:30px;display:block}
-.nav-links{display:flex;gap:2.8rem;list-style:none}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{
   font-family:'Space Mono',monospace;font-size:.6rem;
   letter-spacing:.18em;text-transform:uppercase;
   color:var(--steel);text-decoration:none;transition:color .2s;
+  white-space:nowrap;
+}
+@media(max-width:1180px){
+  .nav-links{gap:1.4rem}
+  .nav-links a{font-size:.56rem;letter-spacing:.14em}
 }
 .nav-links a:hover{color:var(--blue)}
 .nav-cta{
