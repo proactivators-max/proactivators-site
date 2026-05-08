@@ -575,6 +575,24 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
 .summit-form-label{font-size:.6rem;letter-spacing:.22em;color:var(--steel);text-transform:uppercase;margin-bottom:.4rem;font-weight:700}
 .summit-form-note{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.1em;color:var(--steel);margin-top:1rem;text-transform:uppercase}
 
+/* WORK WITH GABRIEL (08) */
+#work-with-gabriel{text-align:center;position:relative;overflow:hidden}
+#work-with-gabriel .section-h2{margin-bottom:1.4rem}
+.wwg-intro{max-width:700px;margin:0 auto 3rem;color:var(--steel-lt);font-size:1.05rem;line-height:1.7;font-weight:300}
+.wwg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1100px;margin:0 auto}
+.wwg-card{background:var(--surface);border:1px solid var(--border);padding:2rem 1.6rem 1.8rem;border-radius:2px;text-align:left;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden}
+.wwg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);opacity:0;transition:opacity .25s}
+.wwg-card:hover{border-color:var(--blue-border);transform:translateY(-3px)}
+.wwg-card:hover::before{opacity:1}
+.wwg-card-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;font-weight:700}
+.wwg-card-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,2.4vw,1.9rem);letter-spacing:.04em;line-height:1.1;margin-bottom:.9rem;color:var(--off-white)}
+.wwg-card-pitch{color:var(--steel-lt);font-size:.92rem;line-height:1.65;margin-bottom:1.6rem;font-weight:300;flex:1}
+.wwg-cta{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;text-decoration:none;border-top:1px solid var(--border);padding-top:1rem;display:inline-block;transition:color .2s}
+.wwg-cta:hover{color:var(--off-white)}
+.wwg-cta::after{content:' \2192';transition:margin-left .2s}
+.wwg-card:hover .wwg-cta::after{margin-left:.3rem}
+@media(max-width:900px){.wwg-grid{grid-template-columns:1fr;max-width:520px}}
+
 /* FOOTER */
 footer{
   padding:3rem 5vw;border-top:1px solid var(--border);
@@ -739,6 +757,7 @@ footer{
   <a href="#podcast" onclick="closeMobileMenu()">Podcast</a>
   <a href="#book" onclick="closeMobileMenu()">Book</a>
   <a href="/summit" onclick="closeMobileMenu()">Summit</a>
+  <a href="#work-with-gabriel" onclick="closeMobileMenu()">Work With Me</a>
   <a href="/blog/" onclick="closeMobileMenu()">Blog</a>
   <button class="mobile-cta" onclick="closeMobileMenu();document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join the Movement</button>
 </div>
@@ -751,6 +770,7 @@ footer{
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#book">Book</a></li>
     <li><a href="/summit">Summit</a></li>
+    <li><a href="#work-with-gabriel">Work With Me</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
   <button class="nav-cta mono" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join</button>
@@ -1118,6 +1138,35 @@ footer{
   </div>
 </section>
 
+<!-- WORK WITH GABRIEL (08) -->
+<section id="work-with-gabriel" class="section-pad">
+  <div class="reveal">
+    <div class="label mono"><span class="label-num">08</span> Work With Gabriel</div>
+    <h2 class="section-h2 bebas">BRING THE DOCTRINE<br/><span class="blue">TO YOUR LIFE &mdash; OR YOUR TEAM.</span></h2>
+  </div>
+  <p class="wwg-intro reveal">Three ways to operationalize the ProActivator system. One is for a stage. One is for a team. One is for the leader who knows their next decade depends on the room they're in.</p>
+  <div class="wwg-grid reveal">
+    <a href="/speak" class="wwg-card">
+      <div class="wwg-card-label">Keynotes</div>
+      <div class="wwg-card-headline">HIRE GABRIEL TO SPEAK</div>
+      <p class="wwg-card-pitch">Sales kickoffs. Conferences. Churches. Leadership offsites. A keynote from the leader who lived the framework, wrote the book, and built the movement. The audience doesn't leave entertained. They leave decided.</p>
+      <span class="wwg-cta">See Talk Topics</span>
+    </a>
+    <a href="/workshop/executive-mindset" class="wwg-card">
+      <div class="wwg-card-label">Workshop</div>
+      <div class="wwg-card-headline">THE EXECUTIVE MINDSET WORKSHOP</div>
+      <p class="wwg-card-pitch">Four hours. Your team rebuilds its calendar, its mindset, and its keystone habits &mdash; together, in one room. Built and delivered inside a real operating company. Now available to yours.</p>
+      <span class="wwg-cta">Explore The Workshop</span>
+    </a>
+    <a href="/boardroom" class="wwg-card">
+      <div class="wwg-card-label">Mastermind</div>
+      <div class="wwg-card-headline">THE BOARDROOM</div>
+      <p class="wwg-card-pitch">A 12-month mastermind for leaders who refuse to drift. 10&ndash;12 members per cohort. Monthly accountability, an annual retreat, and the room you've been looking for. Application-based.</p>
+      <span class="wwg-cta">Apply To The Boardroom</span>
+    </a>
+  </div>
+</section>
+
 <!-- JOIN -->
 <section id="join">
   <div class="join-halo"></div>
@@ -1151,6 +1200,7 @@ footer{
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#book">Book</a></li>
     <li><a href="/summit">Summit</a></li>
+    <li><a href="#work-with-gabriel">Work With Me</a></li>
     <li><a href="#join">Newsletter</a></li>
   </ul>
   <div class="footer-copy mono">&#169; 2026 ProActivators<br/>We don't drift. We decide.</div>

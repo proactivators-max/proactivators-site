@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Boardroom &mdash; A ProActivator Mastermind | ProActivators Club</title>
+<meta name="description" content="A 12-month mastermind for leaders who refuse to drift. 10–12 members per cohort. Application-based. Founding rate $5,000/year. Includes annual ProActivators Summit ticket.">
+<meta property="og:title" content="The Boardroom &mdash; A ProActivator Mastermind">
+<meta property="og:description" content="A 12-month mastermind for leaders who refuse to drift. Your home is your first boardroom. This is your second.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:url" content="https://proactivatorsclub.com/boardroom/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProActivators">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Boardroom &mdash; A ProActivator Mastermind">
+<meta name="twitter:description" content="Application-based. 10–12 members. The drift ends in this room.">
+<meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.4}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(5,5,5,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.nav-logo-img{height:28px;display:block}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--off-white);padding:.6rem 1.4rem;text-decoration:none;font-weight:700;border:1px solid var(--border);transition:all .2s}
+.nav-cta:hover{border-color:var(--blue);color:var(--blue)}
+
+section{position:relative;z-index:1;padding:6rem 1.5rem 4rem}
+.container{max-width:1100px;margin:0 auto}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:1.4rem;font-weight:700}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:32px;height:1px;background:var(--blue);vertical-align:middle;margin:0 1rem}
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;text-align:center}
+
+.hero{padding-top:8rem;padding-bottom:5rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.4rem,9vw,7.2rem);letter-spacing:.02em;line-height:.95;margin-bottom:1.6rem;text-align:center}
+.hero h1 .blue{color:var(--blue)}
+.hero .subhead{text-align:center;font-size:clamp(1rem,1.7vw,1.2rem);color:var(--steel-lt);margin:0 auto 2.4rem;max-width:760px;line-height:1.7;font-weight:300}
+.hero .subhead em{color:var(--off-white);font-style:normal;font-weight:500}
+.hero-cta{text-align:center}
+
+.btn-blue{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1.2rem 2.6rem;text-decoration:none;display:inline-block;border:2px solid var(--blue);transition:all .2s;cursor:pointer}
+.btn-blue:hover{background:#fff;border-color:#fff}
+
+.section-header{text-align:center;margin-bottom:3.5rem}
+.section-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);letter-spacing:.04em;line-height:1.1;margin-bottom:1rem}
+.section-header h2 .blue{color:var(--blue)}
+.section-header p{color:var(--steel-lt);font-size:1rem;max-width:660px;margin:0 auto;font-weight:300;line-height:1.7}
+
+/* WHO IT'S FOR */
+.who-narrative{max-width:780px;margin:0 auto 2.5rem;text-align:center;font-size:1.05rem;line-height:1.8;color:var(--off-white);font-weight:300}
+.who-narrative p{margin-bottom:1.2rem}
+.who-narrative em{color:var(--blue);font-style:normal;font-weight:500}
+.built-for-list{max-width:780px;margin:0 auto 1.6rem;list-style:none;padding:0}
+.built-for-list li{padding:1rem 0 1rem 2.2rem;border-bottom:1px solid var(--border);color:var(--off-white);font-size:1rem;line-height:1.6;position:relative;font-weight:300}
+.built-for-list li::before{content:'';position:absolute;left:0;top:1.4rem;width:14px;height:14px;border:2px solid var(--blue);background:transparent;transform:rotate(45deg)}
+.built-for-list li:last-child{border-bottom:none}
+.who-closing{max-width:780px;margin:0 auto;text-align:center;color:var(--steel-lt);font-size:.95rem;line-height:1.7;font-weight:300;font-style:italic}
+
+/* INCLUDED */
+.included{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.included-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;max-width:880px;margin:0 auto}
+.included-item{background:var(--surface);border:1px solid var(--border);padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:.9rem;transition:border-color .2s}
+.included-item:hover{border-color:var(--blue-border)}
+.included-item::before{content:'';flex-shrink:0;width:10px;height:10px;border:2px solid var(--blue);background:transparent;transform:rotate(45deg);margin-top:.5rem}
+.included-item span{color:var(--off-white);font-size:.93rem;line-height:1.5;font-weight:300}
+
+/* MONTHLY RHYTHM */
+.rhythm-intro{text-align:center;color:var(--off-white);font-size:1.1rem;margin-bottom:2rem;font-weight:500}
+.pillar-table{max-width:800px;margin:0 auto;background:var(--surface);border:1px solid var(--blue-border);position:relative}
+.pillar-table::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.pillar-row{display:grid;grid-template-columns:160px 100px 1fr;gap:1rem;padding:1rem 1.4rem;border-bottom:1px solid var(--border);align-items:center}
+.pillar-row:last-child{border-bottom:none}
+.pillar-row.header{background:var(--surface2);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.pillar-name{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--off-white)}
+.pillar-row.header .pillar-name{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--blue)}
+.pillar-score{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--blue);text-align:center;letter-spacing:.04em}
+.pillar-row.header .pillar-score{font-family:'Space Mono',monospace;font-size:.6rem}
+.pillar-action{color:var(--steel-lt);font-size:.85rem;font-style:italic;font-weight:300}
+.rhythm-commitment{max-width:800px;margin:1.6rem auto 0;padding:1.4rem 1.5rem;background:var(--surface);border:1px solid var(--blue-border);text-align:center;color:var(--off-white);font-size:1rem;font-weight:500}
+.rhythm-commitment .blue{color:var(--blue)}
+.rhythm-closing{max-width:780px;margin:1.8rem auto 0;text-align:center;color:var(--steel-lt);font-size:.95rem;line-height:1.7;font-weight:300;font-style:italic}
+
+/* GROUND RULES */
+.code{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.code-list{max-width:820px;margin:0 auto;list-style:none;padding:0;counter-reset:rule}
+.code-list li{padding:1.2rem 0 1.2rem 4rem;border-bottom:1px solid var(--border);color:var(--off-white);font-size:1.02rem;line-height:1.6;position:relative;counter-increment:rule;font-weight:400}
+.code-list li::before{content:counter(rule, decimal-leading-zero);position:absolute;left:0;top:1.2rem;font-family:'Space Mono',monospace;font-size:.85rem;color:var(--blue);font-weight:700;letter-spacing:.1em}
+.code-list li:last-child{border-bottom:none;color:var(--blue);font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;line-height:1.2}
+
+/* RETREAT */
+.retreat{text-align:center}
+.retreat-narrative{max-width:760px;margin:0 auto;color:var(--off-white);font-size:1.05rem;line-height:1.85;font-weight:300}
+.retreat-narrative p{margin-bottom:1.2rem}
+.retreat-narrative em{color:var(--blue);font-style:normal;font-weight:500}
+
+/* INVESTMENT */
+.investment{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.founding-card{max-width:680px;margin:0 auto 2rem;background:linear-gradient(180deg,rgba(58,180,242,.08),var(--surface) 60%);border:1px solid var(--blue-border);padding:2.4rem 2rem;text-align:center;position:relative}
+.founding-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.founding-label{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.7rem}
+.founding-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:.04em;color:var(--off-white);margin-bottom:1rem;line-height:1.1}
+.founding-price{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,6vw,4rem);color:var(--blue);letter-spacing:.04em;line-height:1;margin-bottom:.4rem}
+.founding-meta{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--off-white);font-weight:700;margin-bottom:1rem}
+.founding-future{color:var(--steel);font-size:.82rem;font-style:italic}
+.payment-table{max-width:680px;margin:0 auto;border:1px solid var(--border);background:var(--surface)}
+.payment-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);align-items:center}
+.payment-row:last-child{border-bottom:none}
+.payment-row.header{background:var(--surface2);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.payment-name{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--off-white)}
+.payment-row.header .payment-name{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--blue)}
+.payment-cadence{color:var(--steel-lt);font-size:.85rem;text-align:center;font-weight:300}
+.payment-row.header .payment-cadence{font-size:.6rem}
+.payment-total{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--blue);text-align:right;letter-spacing:.04em}
+.payment-row.header .payment-total{font-family:'Space Mono',monospace;font-size:.6rem;text-align:right}
+.payment-footnote{max-width:680px;margin:1.4rem auto 1.6rem;color:var(--steel);font-size:.78rem;line-height:1.6;text-align:center;font-style:italic}
+.cohort-frame{max-width:680px;margin:0 auto;color:var(--steel-lt);font-size:.88rem;line-height:1.7;text-align:center;font-style:italic}
+
+/* WHAT THIS IS NOT */
+.not-block{max-width:760px;margin:0 auto;text-align:center}
+.not-line{font-family:'DM Sans',sans-serif;font-size:1.05rem;color:var(--off-white);line-height:1.7;margin-bottom:.4rem;font-weight:400}
+.not-line .strike{color:var(--steel);font-weight:300}
+.not-final{margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--border);font-size:1.1rem;color:var(--blue);line-height:1.7;font-weight:500}
+
+/* APPLICATION PROCESS */
+.process{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.process-list{max-width:780px;margin:0 auto;list-style:none;padding:0;counter-reset:step}
+.process-list li{padding:1.4rem 0 1.4rem 4.4rem;border-bottom:1px solid var(--border);color:var(--off-white);font-size:1rem;line-height:1.6;position:relative;counter-increment:step;font-weight:400}
+.process-list li::before{content:counter(step);position:absolute;left:0;top:1.4rem;width:36px;height:36px;border:2px solid var(--blue);color:var(--blue);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;display:flex;align-items:center;justify-content:center;letter-spacing:.04em}
+.process-list li:last-child{border-bottom:none}
+
+/* FORM */
+.form-section{background:var(--deep);border-top:1px solid var(--border)}
+.form-wrap{max-width:680px;margin:0 auto}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+.form-row.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column}
+.field label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel-lt);margin-bottom:.4rem;font-weight:700}
+.field .helper{color:var(--steel);text-transform:none;letter-spacing:normal;font-weight:400;margin-left:.4rem}
+.field input,.field select,.field textarea{font-family:'DM Sans',sans-serif;font-size:.95rem;padding:.95rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);border-radius:2px;transition:border-color .2s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.field input.error,.field select.error,.field textarea.error{border-color:#991f1f}
+.field textarea{min-height:140px;resize:vertical}
+.field-counter{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-top:.35rem;text-align:right;font-weight:700}
+.field-counter.ok{color:var(--blue)}
+.radio-group{display:flex;flex-direction:column;gap:.55rem;margin-top:.3rem}
+.radio-item{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;background:var(--surface);border:1px solid var(--border);cursor:pointer;transition:border-color .2s,background .2s}
+.radio-item:hover{border-color:var(--blue-border);background:rgba(58,180,242,.03)}
+.radio-item input{width:auto;margin:.15rem 0 0;flex-shrink:0;accent-color:var(--blue)}
+.radio-item-text{color:var(--off-white);font-size:.92rem;line-height:1.5;font-weight:300}
+.radio-item-text strong{font-weight:500;color:var(--off-white);font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:.2rem}
+.radio-item-text .blue{color:var(--blue);font-weight:500}
+.form-submit-wrap{margin-top:1.6rem;text-align:center}
+.form-submit{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1.2rem 2.4rem;border:2px solid var(--blue);cursor:pointer;transition:all .2s;width:100%;max-width:380px}
+.form-submit:hover{background:#fff;border-color:#fff}
+.form-submit:disabled{opacity:.5;cursor:wait}
+.form-success{display:none;text-align:center;max-width:680px;margin:0 auto;padding:2.4rem 1.8rem;background:var(--surface);border:1px solid var(--blue-border);position:relative}
+.form-success::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.form-success.show{display:block}
+.form-success h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--off-white);margin-bottom:1rem}
+.form-success p{color:var(--steel-lt);font-size:.95rem;line-height:1.65;margin-bottom:1.6rem;font-weight:300}
+.form-success .signoff{font-family:'Bebas Neue',sans-serif;color:var(--blue);font-size:1.4rem;letter-spacing:.04em;margin-top:1.4rem}
+
+/* DOCTRINE */
+.doctrine{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,3.4vw,2.7rem);letter-spacing:.04em;color:var(--blue);padding:5rem 1.5rem;border-top:1px solid var(--border);position:relative;z-index:1;line-height:1.15}
+.doctrine .line2{display:block;color:var(--off-white);margin-top:.4rem}
+
+footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{margin-bottom:.5rem}
+.footer-logo img{height:24px}
+.footer-email{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-bottom:1rem}
+.footer-email a{color:var(--steel);text-decoration:none}
+.footer-email a:hover{color:var(--blue)}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.footer-copy{font-size:.75rem;color:var(--steel)}
+
+@media(max-width:760px){
+  .included-grid{grid-template-columns:1fr}
+  .pillar-row{grid-template-columns:130px 70px 1fr;font-size:.85rem}
+  .payment-row{grid-template-columns:1fr}
+  .payment-cadence,.payment-total{text-align:left}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  section{padding:5rem 1.2rem 3rem}
+  .hero{padding-top:6.5rem}
+  .eyebrow::before,.eyebrow::after{width:18px;margin:0 .6rem}
+  nav{padding:.8rem 1rem}
+  .nav-cta{padding:.5rem 1rem;font-size:.7rem}
+  .pillar-row{grid-template-columns:1fr;gap:.3rem;padding:1rem}
+  .pillar-score{text-align:left}
+  .code-list li{padding-left:3rem;font-size:.95rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
+  <a href="https://proactivatorsclub.com#work-with-gabriel" class="nav-cta">&larr; Work With Gabriel</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">03 / Mastermind</div>
+    <h1>THE <span class="blue">BOARDROOM.</span></h1>
+    <p class="subhead">A 12-month mastermind for leaders, founders, executives, and operators who refuse to drift. <em>10 to 12 members per cohort. Application-based.</em> Built around the 6 Pillars and the doctrine that turns autopilot living into intentional execution. Your home is your first boardroom. This is your second.</p>
+    <div class="hero-cta">
+      <a href="#apply" class="btn-blue">Apply To Cohort 01 &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Room</div>
+      <h2>WHO IT'S <span class="blue">FOR.</span></h2>
+    </div>
+    <div class="who-narrative reveal">
+      <p>The Boardroom is for ProActivators who have <em>outgrown self-help.</em></p>
+      <p>You've read the books. You've done the workshops. You've signed the commitments. What you've never had is a room &mdash; <em>a real room</em> &mdash; where you show up monthly, in front of 10 to 12 people who are operating at your level, and tell the truth about where you're drifting.</p>
+      <p><em>This is that room.</em></p>
+    </div>
+    <ul class="built-for-list reveal">
+      <li>Founders and senior operators carrying the weight of their organization</li>
+      <li>Sales leaders, executives, and high-performers who plateau quietly</li>
+      <li>Pastors, ministry directors, and faith-leaders who lead others while drifting themselves</li>
+      <li>Recovery-walking professionals rebuilding a life of purpose</li>
+      <li>Anyone tired of operating below their capacity &mdash; and ready to be in a room with others who feel the same</li>
+    </ul>
+    <p class="who-closing reveal">This is a room for leaders. Not for any one demographic, profession, or background. The only entry requirements are honesty, commitment, and the willingness to be sharpened.</p>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="included">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Membership</div>
+      <h2>WHAT'S <span class="blue">INCLUDED.</span></h2>
+    </div>
+    <div class="included-grid reveal">
+      <div class="included-item"><span>12 monthly mastermind sessions &mdash; 90 min each, virtual (Zoom)</span></div>
+      <div class="included-item"><span>1 in-person retreat per year &mdash; tied to the annual ProActivators Summit</span></div>
+      <div class="included-item"><span>Annual ProActivators Summit ticket &mdash; <strong style="color:var(--blue)">INCLUDED</strong></span></div>
+      <div class="included-item"><span>VIP seating at the Summit</span></div>
+      <div class="included-item"><span>Pre-Summit member-only mixer</span></div>
+      <div class="included-item"><span>Private community channel &mdash; 24/7 access between meetings</span></div>
+      <div class="included-item"><span>Monthly Pillar Audit &mdash; your numbers, in front of the room</span></div>
+      <div class="included-item"><span>Direct access to Gabriel &mdash; group calls + 2 one-on-ones per year</span></div>
+      <div class="included-item"><span>Cohort accountability pairing &mdash; your "First Boardroom partner" for the year</span></div>
+      <div class="included-item"><span>The Doctrine Library &mdash; full PDF curriculum, exercises, frameworks</span></div>
+      <div class="included-item"><span>Day 7 / 14 / 30 follow-ups after every session</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTHLY RHYTHM -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Monthly Rhythm</div>
+      <h2>WHAT EVERY <span class="blue">SESSION LOOKS LIKE.</span></h2>
+    </div>
+    <p class="rhythm-intro reveal">Each session, every member shares.</p>
+    <div class="pillar-table reveal">
+      <div class="pillar-row header">
+        <div class="pillar-name">Pillar</div>
+        <div class="pillar-score">Score 1&ndash;10</div>
+        <div class="pillar-action">What You Did This Month</div>
+      </div>
+      <div class="pillar-row"><div class="pillar-name">FAITH</div><div class="pillar-score">&mdash;</div><div class="pillar-action">One sentence on what you did this month</div></div>
+      <div class="pillar-row"><div class="pillar-name">FAMILY</div><div class="pillar-score">&mdash;</div><div class="pillar-action">One sentence</div></div>
+      <div class="pillar-row"><div class="pillar-name">FITNESS</div><div class="pillar-score">&mdash;</div><div class="pillar-action">One sentence</div></div>
+      <div class="pillar-row"><div class="pillar-name">FINANCES</div><div class="pillar-score">&mdash;</div><div class="pillar-action">One sentence</div></div>
+      <div class="pillar-row"><div class="pillar-name">FOCUS</div><div class="pillar-score">&mdash;</div><div class="pillar-action">One sentence</div></div>
+      <div class="pillar-row"><div class="pillar-name">FULFILLMENT</div><div class="pillar-score">&mdash;</div><div class="pillar-action">One sentence</div></div>
+    </div>
+    <div class="rhythm-commitment reveal">Then: <span class="blue">ONE</span> non-negotiable commitment for the next 30 days.</div>
+    <p class="rhythm-closing reveal">This is your version of the boardroom's quarterly numbers report. Except the company being reported on &mdash; <em>is you.</em></p>
+  </div>
+</section>
+
+<!-- THE CODE -->
+<section class="code">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Code</div>
+      <h2>GROUND <span class="blue">RULES.</span></h2>
+    </div>
+    <ol class="code-list reveal">
+      <li>Confidentiality is absolute. What's said in The Boardroom stays here.</li>
+      <li>Maximum 2 missed sessions per quarter. 3+ in a year and you lose your seat.</li>
+      <li>Webcam on. No phones. No driving. No multitasking.</li>
+      <li>You bring your real numbers. Pillar scores aren't a brag list &mdash; they're the truth.</li>
+      <li>No fixing. No rescuing. We ask questions. We tell the truth. We don't perform.</li>
+      <li>Contribution-first. You are not in this room to extract. You are here to sharpen and be sharpened.</li>
+      <li>The drift ends here.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ANNUAL RETREAT -->
+<section class="retreat">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Once Per Year</div>
+      <h2>THE ANNUAL <span class="blue">RETREAT.</span></h2>
+    </div>
+    <div class="retreat-narrative reveal">
+      <p>Once per year, members of The Boardroom gather in person &mdash; the day before the public ProActivators Summit.</p>
+      <p>It's a private, full-day intensive: deep-work sessions, 1:1 time with Gabriel, and a final commitment ceremony to close out the year. Then the Summit doors open and you walk into the public event already aligned, already accountable, <em>already ready to lead.</em></p>
+      <p>Your Summit ticket is included with your membership. <em>So is VIP seating.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="investment">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Investment</div>
+      <h2>WHAT IT <span class="blue">COSTS.</span></h2>
+    </div>
+    <div class="founding-card reveal">
+      <div class="founding-label">Cohort 01 &mdash; Founding Members</div>
+      <div class="founding-name">FOUNDING RATE</div>
+      <div class="founding-price">$5,000 / YEAR</div>
+      <div class="founding-meta">Locked For Life As Long As You Stay</div>
+      <div class="founding-future">Future cohorts: $7,500 / year</div>
+    </div>
+    <div class="payment-table reveal">
+      <div class="payment-row header">
+        <div class="payment-name">Plan</div>
+        <div class="payment-cadence">Cadence</div>
+        <div class="payment-total">Total</div>
+      </div>
+      <div class="payment-row"><div class="payment-name">PAY IN FULL</div><div class="payment-cadence">Annual</div><div class="payment-total">$5,000</div></div>
+      <div class="payment-row"><div class="payment-name">QUARTERLY</div><div class="payment-cadence">$1,375 &times; 4</div><div class="payment-total">$5,500</div></div>
+      <div class="payment-row"><div class="payment-name">MONTHLY</div><div class="payment-cadence">$499 &times; 12</div><div class="payment-total">$5,988</div></div>
+    </div>
+    <p class="payment-footnote reveal">12-month membership commitment regardless of payment plan. Card on file required. All payments process via Stripe.</p>
+    <p class="cohort-frame reveal">The room begins the day the 5th member is approved.<br>Late applicants accepted through Month 3.<br>After Month 3: doors close until Cohort 02.</p>
+  </div>
+</section>
+
+<!-- WHAT THIS IS NOT -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">For Clarity</div>
+      <h2>WHAT THIS <span class="blue">IS NOT.</span></h2>
+    </div>
+    <div class="not-block reveal">
+      <p class="not-line">This is <em>not</em> a coaching program. <span class="strike">Coaches give answers.</span></p>
+      <p class="not-line">This is <em>not</em> a course. <span class="strike">Courses ask for completion.</span></p>
+      <p class="not-line">This is <em>not</em> a Facebook group. <span class="strike">Groups have no bar.</span></p>
+      <p class="not-final">This is a room of operators who hold each other to a higher standard than any of us would hold ourselves alone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">How To Apply</div>
+      <h2>THE <span class="blue">PROCESS.</span></h2>
+    </div>
+    <ol class="process-list reveal">
+      <li>Submit the written application below</li>
+      <li>If your answers reflect alignment, I'll send you a 30-min call invite</li>
+      <li>We meet. I assess. You assess.</li>
+      <li>If we both say yes &mdash; you're in for the next 12 months</li>
+      <li>The cohort caps at 12. When it's full, applications close until next cycle</li>
+    </ol>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section id="apply" class="form-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Apply To The Boardroom</div>
+      <h2>TELL ME WHO <span class="blue">YOU ARE.</span></h2>
+    </div>
+    <div class="form-wrap reveal">
+      <form id="boardroom-form" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="br-name">Full Name *</label><input type="text" id="br-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="br-email">Email *</label><input type="email" id="br-email" name="email" required autocomplete="email"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="br-phone">Phone *</label><input type="tel" id="br-phone" name="phone" required autocomplete="tel"></div>
+          <div class="field"><label for="br-role">Role / Title *</label><input type="text" id="br-role" name="role" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="br-org">Organization *</label><input type="text" id="br-org" name="organization" required autocomplete="organization"></div>
+          <div class="field"><label for="br-city">City / State *</label><input type="text" id="br-city" name="cityState" required></div>
+        </div>
+
+        <div class="form-row single">
+          <div class="field"><label for="br-why">Why The Boardroom? * <span class="helper">(500 char min)</span></label><textarea id="br-why" name="whyBoardroom" required></textarea><div class="field-counter" id="br-why-counter">0 / 500</div></div>
+        </div>
+
+        <div class="form-row single">
+          <div class="field"><label for="br-drift">Where In Your Life Is The Drift Winning Right Now? Be Specific. *</label><textarea id="br-drift" name="driftAreas" required></textarea></div>
+        </div>
+
+        <div class="form-row single">
+          <div class="field"><label for="br-sharpen">What's The ONE Area You'd Most Want This Room To Sharpen? *</label><textarea id="br-sharpen" name="sharpenArea" required></textarea></div>
+        </div>
+
+        <div class="form-row single">
+          <div class="field">
+            <label>Have You Read "Unleash The ProActivator"? *</label>
+            <div class="radio-group">
+              <label class="radio-item"><input type="radio" name="bookRead" value="completed" required><span class="radio-item-text"><strong>YES &mdash; COMPLETED</strong></span></label>
+              <label class="radio-item"><input type="radio" name="bookRead" value="in-progress"><span class="radio-item-text"><strong>YES &mdash; IN PROGRESS</strong></span></label>
+              <label class="radio-item"><input type="radio" name="bookRead" value="will-read"><span class="radio-item-text"><strong>NO &mdash; BUT I WILL BEFORE THE CALL</strong></span></label>
+              <label class="radio-item"><input type="radio" name="bookRead" value="no"><span class="radio-item-text"><strong>NO</strong></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="field">
+            <label>Preferred Payment Plan *</label>
+            <div class="radio-group">
+              <label class="radio-item"><input type="radio" name="paymentPlan" value="annual" required><span class="radio-item-text"><strong>PAY IN FULL <span class="blue">($5,000 &mdash; BEST VALUE)</span></strong>Annual lump sum.</span></label>
+              <label class="radio-item"><input type="radio" name="paymentPlan" value="quarterly"><span class="radio-item-text"><strong>QUARTERLY ($1,375 &times; 4 = $5,500)</strong>Four payments across the year.</span></label>
+              <label class="radio-item"><input type="radio" name="paymentPlan" value="monthly"><span class="radio-item-text"><strong>MONTHLY ($499 &times; 12 = $5,988)</strong>Twelve monthly payments.</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="field">
+            <label>Are You Prepared To Commit To 12 Months, Monthly Attendance, An In-Person Retreat, And The Financial Investment? *</label>
+            <div class="radio-group">
+              <label class="radio-item"><input type="radio" name="commitment" value="yes" required><span class="radio-item-text"><strong>YES</strong></span></label>
+              <label class="radio-item"><input type="radio" name="commitment" value="questions"><span class="radio-item-text"><strong>I HAVE QUESTIONS</strong></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-submit-wrap">
+          <button type="submit" class="form-submit" id="br-submit">Submit Your Application &rarr;</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-success reveal" id="boardroom-success">
+      <h3>YOUR APPLICATION IS IN.</h3>
+      <p>I review every Boardroom application personally. If your answers reflect alignment, I'll email you within 5 business days with a 30-minute call invitation. The room only works when the right people are in it &mdash; that's why we don't shortcut this step.</p>
+      <p>In the meantime: read the book if you haven't. It's the foundation everything in The Boardroom rests on.</p>
+      <a href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener" class="btn-blue">Get The Book &rarr;</a>
+      <div class="signoff">WE DON'T DRIFT. WE DECIDE.<br>&mdash; Gabriel</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTRINE -->
+<div class="doctrine">
+  LEADERS DO NOT BUILD ALONE.
+  <span class="line2">THE DRIFT ENDS IN THIS ROOM.</span>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="ProActivators"></div>
+  <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a></div>
+  <div class="footer-credo">Terminate. Activate. Lead.</div>
+  <div class="footer-copy">&copy; 2026 ProActivators &mdash; We don't drift. We decide.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// CHAR COUNTER on Why Boardroom
+const whyEl = document.getElementById('br-why');
+const whyCounter = document.getElementById('br-why-counter');
+const MIN_WHY = 500;
+whyEl.addEventListener('input', () => {
+  const len = whyEl.value.trim().length;
+  whyCounter.textContent = len + ' / ' + MIN_WHY;
+  whyCounter.classList.toggle('ok', len >= MIN_WHY);
+});
+
+// FORM SUBMIT
+const form = document.getElementById('boardroom-form');
+const submitBtn = document.getElementById('br-submit');
+const successEl = document.getElementById('boardroom-success');
+
+function flagError(el) {
+  el.classList.add('error');
+  el.focus();
+  setTimeout(() => el.classList.remove('error'), 1400);
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const requiredText = ['br-name','br-email','br-phone','br-role','br-org','br-city','br-why','br-drift','br-sharpen'];
+  for (const id of requiredText) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { flagError(el); return; }
+  }
+  const email = document.getElementById('br-email');
+  if (!email.value.includes('@')) { flagError(email); return; }
+  if (whyEl.value.trim().length < MIN_WHY) { flagError(whyEl); return; }
+
+  const radioGroups = ['bookRead', 'paymentPlan', 'commitment'];
+  for (const group of radioGroups) {
+    const checked = form.querySelector(`input[name="${group}"]:checked`);
+    if (!checked) {
+      const firstRadio = form.querySelector(`input[name="${group}"]`);
+      if (firstRadio) {
+        firstRadio.parentElement.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstRadio.focus();
+      }
+      return;
+    }
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  const payload = {
+    type: 'boardroom',
+    name: document.getElementById('br-name').value,
+    email: email.value,
+    phone: document.getElementById('br-phone').value,
+    organization: document.getElementById('br-org').value,
+    role: document.getElementById('br-role').value,
+    fields: {
+      cityState: document.getElementById('br-city').value,
+      whyBoardroom: whyEl.value,
+      driftAreas: document.getElementById('br-drift').value,
+      sharpenArea: document.getElementById('br-sharpen').value,
+      bookRead: form.querySelector('input[name="bookRead"]:checked').value,
+      paymentPlan: form.querySelector('input[name="paymentPlan"]:checked').value,
+      commitment: form.querySelector('input[name="commitment"]:checked').value,
+    },
+  };
+
+  try {
+    const res = await fetch('/.netlify/functions/inquire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      successEl.classList.add('show', 'visible');
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Try Again';
+    }
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Try Again';
+  }
+});
+</script>
+</body>
+</html>
