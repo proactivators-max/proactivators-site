@@ -144,20 +144,32 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
   max-width:520px;
 }
 .hero-q-text span{color:rgba(240,235,224,0.7)}
-.hero-drift-wrap{display:inline-block;position:relative;line-height:.95}
+/* Word floats like a rigid object on slow ocean — three nested transforms
+   with desynced periods (6s heave + 7.5s sway + 9s roll) so the combined
+   motion never lines up the same way twice. No per-letter distortion. */
+.hero-drift-wrap{display:inline-block;position:relative;line-height:.95;animation:oceanHeave 6s ease-in-out infinite;will-change:transform}
+.hero-drift-sway{display:inline-block;animation:oceanSway 7.5s ease-in-out infinite;will-change:transform}
 .hero-drift{
   color:rgba(240,235,224,0.22);
   display:inline-block;
-  filter:url(#water-drift);
-  animation:oceanBob 7.5s ease-in-out infinite;
-  will-change:transform,filter;
+  animation:oceanRoll 9s ease-in-out infinite;
+  transform-origin:center center;
+  will-change:transform;
 }
-@keyframes oceanBob{
+@keyframes oceanHeave{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
+  50%{transform:translateY(-7px)}
+}
+@keyframes oceanSway{
+  0%,100%{transform:translateX(-2px)}
+  50%{transform:translateX(3px)}
+}
+@keyframes oceanRoll{
+  0%,100%{transform:rotate(-1deg)}
+  50%{transform:rotate(1.2deg)}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-drift{filter:none;animation:none}
+  .hero-drift-wrap,.hero-drift-sway,.hero-drift{animation:none}
 }
 .hero-thriving{color:var(--blue);display:inline-block;animation:glowBreathe 4s ease-in-out infinite}
 @keyframes glowBreathe{0%,100%{text-shadow:0 0 8px rgba(58,180,242,0.15)}50%{text-shadow:0 0 28px rgba(58,180,242,0.55),0 0 60px rgba(58,180,242,0.15)}}
@@ -761,18 +773,6 @@ footer{
 </head>
 <body>
 
-<!-- OCEAN DRIFT FILTER — slow turbulence + animated baseFrequency creates a deep-water wobble on the hero word -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <filter id="water-drift" x="-20%" y="-20%" width="140%" height="140%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.018" numOctaves="2" seed="3" result="noise">
-        <animate attributeName="baseFrequency" dur="9s" values="0.012 0.016; 0.018 0.022; 0.012 0.016" repeatCount="indefinite"/>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
-
 <!-- NAV -->
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
@@ -811,7 +811,7 @@ footer{
 
   <div class="hero-content">
     <h1 class="hero-h1 bebas">
-      ARE YOU<br/><span class="hero-drift-wrap"><span class="hero-drift">DRIFTING</span></span><br/>OR<br/><span class="hero-thriving">THRIVING?</span>
+      ARE YOU<br/><span class="hero-drift-wrap"><span class="hero-drift-sway"><span class="hero-drift">DRIFTING</span></span></span><br/>OR<br/><span class="hero-thriving">THRIVING?</span>
     </h1>
     <div class="hero-mission" style="display:flex;align-items:center;gap:1.4rem;margin:2rem 0 2.2rem;opacity:0;animation:fadeUp .8s .45s forwards">
       <span class="bebas" style="font-size:clamp(13px,1.8vw,22px);letter-spacing:.14em;color:var(--blue);white-space:nowrap;text-transform:uppercase">BUILDING STATE OF THE ART LEADERS</span>
