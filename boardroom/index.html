@@ -542,41 +542,68 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  const payload = {
-    type: 'boardroom',
-    name: document.getElementById('br-name').value,
-    email: email.value,
-    phone: document.getElementById('br-phone').value,
-    organization: document.getElementById('br-org').value,
-    role: document.getElementById('br-role').value,
-    fields: {
-      cityState: document.getElementById('br-city').value,
-      whyBoardroom: whyEl.value,
-      driftAreas: document.getElementById('br-drift').value,
-      sharpenArea: document.getElementById('br-sharpen').value,
-      bookRead: form.querySelector('input[name="bookRead"]:checked').value,
-      paymentPlan: form.querySelector('input[name="paymentPlan"]:checked').value,
-      commitment: form.querySelector('input[name="commitment"]:checked').value,
-    },
-  };
+  const GHL_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6InpTQjl4cXVIYTRaRjBJelVmdXNxIiwidmVyc2lvbiI6MSwiaWF0IjoxNzczODQ3NTE4MDM4LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.DVBF1PKxAIOedY15FFkfsX1LyFogQaaSTZQSf45Ykt8';
+  const nm = document.getElementById('br-name').value.trim();
+  const em = email.value.trim();
+  const ph = document.getElementById('br-phone').value.trim();
+  const org = document.getElementById('br-org').value.trim();
+  const role = document.getElementById('br-role').value.trim();
+  const city = document.getElementById('br-city').value.trim();
+  const why = whyEl.value.trim();
+  const drift = document.getElementById('br-drift').value.trim();
+  const sharpen = document.getElementById('br-sharpen').value.trim();
+  const bookRead = form.querySelector('input[name="bookRead"]:checked').value;
+  const paymentPlan = form.querySelector('input[name="paymentPlan"]:checked').value;
+  const commitment = form.querySelector('input[name="commitment"]:checked').value;
 
-  try {
-    const res = await fetch('/.netlify/functions/inquire', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      successEl.classList.add('show', 'visible');
-    } else {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Try Again';
+  const parts = nm.split(' ');
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+
+  fetch('https://rest.gohighlevel.com/v1/contacts/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+    body: JSON.stringify({
+      firstName, lastName, name: nm, email: em,
+      source: 'website form',
+      tags: ['website', 'boardroom_application'],
+    }),
+  }).then(r => r.json()).then(data => {
+    if (data.contact && data.contact.id) {
+      const note = [
+        'BOARDROOM APPLICATION',
+        'Name: ' + nm,
+        'Email: ' + em,
+        'Phone: ' + ph,
+        'Role: ' + role,
+        'Organization: ' + org,
+        'City/State: ' + city,
+        '',
+        'Book Status: ' + bookRead,
+        'Payment Plan: ' + paymentPlan,
+        'Commitment: ' + commitment,
+        '',
+        'Why The Boardroom?',
+        why,
+        '',
+        'Where Is The Drift Winning?',
+        drift,
+        '',
+        'What Should The Room Sharpen?',
+        sharpen,
+      ].join('\n');
+      fetch('https://rest.gohighlevel.com/v1/contacts/' + data.contact.id + '/notes/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+        body: JSON.stringify({ body: note }),
+      }).catch(() => {});
     }
-  } catch (err) {
+    form.style.display = 'none';
+    successEl.classList.add('show', 'visible');
+  }).catch(() => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Try Again';
-  }
+  });
 });
 </script>
 </body>

@@ -539,40 +539,62 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  const payload = {
-    type: 'workshop',
-    name: document.getElementById('ws-name').value,
-    email: email.value,
-    phone: document.getElementById('ws-phone').value,
-    organization: document.getElementById('ws-org').value,
-    role: document.getElementById('ws-role').value,
-    fields: {
-      teamSize: document.getElementById('ws-team').value,
-      formatPreference: document.getElementById('ws-format').value,
-      targetDate: tbdEl.checked ? 'TBD' : dateEl.value,
-      industry: document.getElementById('ws-industry').value,
-      budgetRange: document.getElementById('ws-budget').value,
-      desiredOutcome: document.getElementById('ws-outcome').value,
-    },
-  };
+  const GHL_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6InpTQjl4cXVIYTRaRjBJelVmdXNxIiwidmVyc2lvbiI6MSwiaWF0IjoxNzczODQ3NTE4MDM4LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.DVBF1PKxAIOedY15FFkfsX1LyFogQaaSTZQSf45Ykt8';
+  const nm = document.getElementById('ws-name').value.trim();
+  const em = email.value.trim();
+  const ph = document.getElementById('ws-phone').value.trim();
+  const org = document.getElementById('ws-org').value.trim();
+  const role = document.getElementById('ws-role').value.trim();
+  const team = document.getElementById('ws-team').value;
+  const format = document.getElementById('ws-format').value;
+  const targetDate = tbdEl.checked ? 'TBD' : dateEl.value;
+  const industry = document.getElementById('ws-industry').value.trim();
+  const budget = document.getElementById('ws-budget').value;
+  const outcome = document.getElementById('ws-outcome').value.trim();
 
-  try {
-    const res = await fetch('/.netlify/functions/inquire', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      successEl.classList.add('show', 'visible');
-    } else {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Try Again';
+  const parts = nm.split(' ');
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+
+  fetch('https://rest.gohighlevel.com/v1/contacts/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+    body: JSON.stringify({
+      firstName, lastName, name: nm, email: em,
+      source: 'website form',
+      tags: ['website', 'workshop_inquiry'],
+    }),
+  }).then(r => r.json()).then(data => {
+    if (data.contact && data.contact.id) {
+      const note = [
+        'B2B INQUIRY — WORKSHOP',
+        'Name: ' + nm,
+        'Email: ' + em,
+        ph ? 'Phone: ' + ph : '',
+        'Organization: ' + org,
+        'Role: ' + role,
+        '',
+        'Team Size: ' + team,
+        'Format Preference: ' + format,
+        'Target Date: ' + targetDate,
+        'Industry: ' + industry,
+        'Budget Range: ' + budget,
+        '',
+        'Desired Outcome:',
+        outcome,
+      ].filter(Boolean).join('\n');
+      fetch('https://rest.gohighlevel.com/v1/contacts/' + data.contact.id + '/notes/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+        body: JSON.stringify({ body: note }),
+      }).catch(() => {});
     }
-  } catch (err) {
+    form.style.display = 'none';
+    successEl.classList.add('show', 'visible');
+  }).catch(() => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Try Again';
-  }
+  });
 });
 </script>
 </body>

@@ -495,39 +495,63 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  const payload = {
-    type: 'speaker',
-    name: document.getElementById('sp-name').value,
-    email: email.value,
-    phone: document.getElementById('sp-phone').value,
-    organization: document.getElementById('sp-org').value,
-    role: document.getElementById('sp-role').value,
-    fields: {
-      audienceSize: document.getElementById('sp-audience').value,
-      eventDate: tbdEl.checked ? 'TBD' : dateEl.value,
-      engagementType: document.getElementById('sp-type').value,
-      budgetRange: document.getElementById('sp-budget').value,
-      message: msgEl.value,
-    },
-  };
+  // Posts directly to GHL using the same proven pattern as the homepage
+  // newsletter form. Bypasses the netlify function entirely.
+  const GHL_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6InpTQjl4cXVIYTRaRjBJelVmdXNxIiwidmVyc2lvbiI6MSwiaWF0IjoxNzczODQ3NTE4MDM4LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.DVBF1PKxAIOedY15FFkfsX1LyFogQaaSTZQSf45Ykt8';
+  const nm = document.getElementById('sp-name').value.trim();
+  const em = email.value.trim();
+  const ph = document.getElementById('sp-phone').value.trim();
+  const org = document.getElementById('sp-org').value.trim();
+  const role = document.getElementById('sp-role').value.trim();
+  const audience = document.getElementById('sp-audience').value;
+  const eventDate = tbdEl.checked ? 'TBD' : dateEl.value;
+  const engagementType = document.getElementById('sp-type').value;
+  const budget = document.getElementById('sp-budget').value;
+  const msg = msgEl.value.trim();
 
-  try {
-    const res = await fetch('/.netlify/functions/inquire', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      successEl.classList.add('show', 'visible');
-    } else {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Try Again';
+  const parts = nm.split(' ');
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+
+  fetch('https://rest.gohighlevel.com/v1/contacts/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+    body: JSON.stringify({
+      firstName, lastName, name: nm, email: em,
+      source: 'website form',
+      tags: ['website', 'speaker_inquiry'],
+    }),
+  }).then(r => r.json()).then(data => {
+    if (data.contact && data.contact.id) {
+      // Best-effort note with full submission details
+      const note = [
+        'B2B INQUIRY — SPEAKER',
+        'Name: ' + nm,
+        'Email: ' + em,
+        ph ? 'Phone: ' + ph : '',
+        'Organization: ' + org,
+        'Role: ' + role,
+        '',
+        'Audience Size: ' + audience,
+        'Event Date: ' + eventDate,
+        'Engagement Type: ' + engagementType,
+        'Budget Range: ' + budget,
+        '',
+        'Message:',
+        msg,
+      ].filter(Boolean).join('\n');
+      fetch('https://rest.gohighlevel.com/v1/contacts/' + data.contact.id + '/notes/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+        body: JSON.stringify({ body: note }),
+      }).catch(() => {});
     }
-  } catch (err) {
+    form.style.display = 'none';
+    successEl.classList.add('show', 'visible');
+  }).catch(() => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Try Again';
-  }
+  });
 });
 </script>
 </body>
