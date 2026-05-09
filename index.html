@@ -1342,12 +1342,16 @@ function handleSummit(){
   }
   const btn=document.querySelector('#summit-form .join-submit');
   btn.disabled=true;btn.textContent='Sending...';
-  fetch('/.netlify/functions/summit',{
+  var nm=nameInp.value.trim();
+  var em=emailInp.value.trim();
+  var parts=nm.split(' ');
+  var firstName=parts[0]||'';
+  var lastName=parts.slice(1).join(' ')||'';
+  fetch('https://rest.gohighlevel.com/v1/contacts/',{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:nameInp.value.trim(),email:emailInp.value.trim()})
-  }).then(function(r){
-    if(!r.ok)throw new Error('failed');
+    headers:{'Content-Type':'application/json','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IldhR1pWVkQwUUZmOFR2OGVBSU5tIiwidmVyc2lvbiI6MSwiaWF0IjoxNzc2MzU5MDAxMzE1LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.FiRAg9AeGFdNOGbq6OXeHGXrp8NsKOkCpGFNcz9QQBU'},
+    body:JSON.stringify({firstName:firstName,lastName:lastName,name:nm,email:em,source:'website form',tags:['website','summit-waitlist']})
+  }).then(function(r){return r.json()}).then(function(){
     document.getElementById('summit-form').style.display='none';
     document.getElementById('summit-success').style.display='block';
   }).catch(function(){

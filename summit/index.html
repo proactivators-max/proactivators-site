@@ -347,7 +347,11 @@ const nameInput = document.getElementById('wl-name');
 const submitBtn = document.getElementById('wl-submit');
 const successEl = document.getElementById('waitlist-success');
 
-form.addEventListener('submit', async (e) => {
+// Posts directly to GHL using the same proven pattern as the homepage
+// newsletter form. Bypasses the netlify function entirely.
+const GHL_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IldhR1pWVkQwUUZmOFR2OGVBSU5tIiwidmVyc2lvbiI6MSwiaWF0IjoxNzc2MzU5MDAxMzE1LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.FiRAg9AeGFdNOGbq6OXeHGXrp8NsKOkCpGFNcz9QQBU';
+
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const email = emailInput.value.trim();
   if (!email || !email.includes('@')) {
@@ -357,23 +361,27 @@ form.addEventListener('submit', async (e) => {
   }
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
-  try {
-    const res = await fetch('/.netlify/functions/summit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: nameInput.value, email })
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      successEl.classList.add('show');
-    } else {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Try Again';
-    }
-  } catch (err) {
+
+  const nm = (nameInput.value || '').trim();
+  const parts = nm.split(' ');
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+
+  fetch('https://rest.gohighlevel.com/v1/contacts/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+    body: JSON.stringify({
+      firstName, lastName, name: nm, email,
+      source: 'website form',
+      tags: ['website', 'summit-waitlist'],
+    }),
+  }).then(r => r.json()).then(() => {
+    form.style.display = 'none';
+    successEl.classList.add('show');
+  }).catch(() => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Try Again';
-  }
+  });
 });
 </script>
 
