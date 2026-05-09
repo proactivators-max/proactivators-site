@@ -1,17 +1,13 @@
+// Mirror the homepage newsletter form (handleJoin) payload shape exactly,
+// because that's the one shape we know GHL v1 accepts. Anything beyond
+// firstName/lastName/name/email/source/tags goes into a contact note,
+// best-effort — never fail the user's form for note-attach problems.
+
 const TYPE_TAGS = {
   speaker: 'speaker_inquiry',
   workshop: 'workshop_inquiry',
   boardroom: 'boardroom_application',
 };
-
-// Slugify a value into a hyphen-safe tag suffix.
-function slug(value) {
-  if (!value) return '';
-  return String(value)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -34,62 +30,64 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Valid email required' }) };
   }
 
-  const nameParts = (name || '').trim().split(/\s+/);
-  const firstName = nameParts[0] || '';
-  const lastName = nameParts.slice(1).join(' ') || '';
   const apiKey = process.env.GHL_API_KEY;
-
-  const tag = TYPE_TAGS[type];
-  const tags = ['website', 'website_b2b', tag];
-
-  // Encode page-specific dropdown answers as searchable tags so Gabriel can
-  // segment in GHL without needing custom-field IDs configured.
-  if (fields && typeof fields === 'object') {
-    const taggable = ['audienceSize', 'engagementType', 'budgetRange', 'teamSize', 'formatPreference', 'paymentPlan', 'commitment', 'bookRead'];
-    for (const key of taggable) {
-      const s = slug(fields[key]);
-      if (s) tags.push(`${key.toLowerCase()}-${s}`);
-    }
+  if (!apiKey) {
+    console.error('inquire: GHL_API_KEY env var is missing');
+    return { statusCode: 500, body: JSON.stringify({ error: 'Server misconfigured: GHL_API_KEY not set' }) };
   }
 
-  // Mirror the working /join.js shape: only fields known to be accepted by
-  // GHL v1 contacts API. No customField / companyName — those caused the
-  // earlier 500s.
-  const payload = {
+  const parts = (name || '').trim().split(/\s+/);
+  const firstName = parts[0] || '';
+  const lastName = parts.slice(1).join(' ') || '';
+
+  // EXACT shape of what handleJoin posts on the homepage newsletter form.
+  // No customField, no companyName, no phone, no extra tags — those caused
+  // the previous 500s.
+  const ghlBody = {
     firstName,
     lastName,
     name: (name || '').trim(),
     email: email.trim(),
-    source: 'website_b2b',
-    tags,
+    source: 'website form',
+    tags: ['website', TYPE_TAGS[type]],
   };
-  if (phone) payload.phone = String(phone).trim();
 
-  const res = await fetch('https://rest.gohighlevel.com/v1/contacts/', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
+  console.log('inquire: posting contact to GHL', { tag: TYPE_TAGS[type], email: ghlBody.email });
 
-  if (!res.ok) {
-    const errText = await res.text().catch(() => '');
-    console.error('GHL contact create failed', res.status, errText);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to create contact' }) };
+  let res;
+  try {
+    res = await fetch('https://rest.gohighlevel.com/v1/contacts/', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(ghlBody),
+    });
+  } catch (e) {
+    console.error('inquire: fetch threw', e.message);
+    return { statusCode: 500, body: JSON.stringify({ error: 'Network error', details: e.message }) };
   }
 
-  // Best-effort: attach a note with the full submission so the long-form
-  // textareas (message, drift areas, why-the-boardroom essay) are visible
-  // on the contact record. If this call fails, the contact is already
-  // created — we don't fail the user's form.
+  const responseText = await res.text();
+  console.log('inquire: GHL responded', res.status, responseText.slice(0, 500));
+
+  if (!res.ok) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'GHL ' + res.status, details: responseText.slice(0, 800) }),
+    };
+  }
+
+  // Contact created. Best-effort: attach a note with everything else
+  // (phone, organization, role, all the page-specific fields). If this
+  // fails, the user's form still succeeds — we already have the lead.
   try {
-    const data = await res.json();
+    const data = JSON.parse(responseText);
     const contactId = data.contact?.id || data.id;
     if (contactId) {
       const noteLines = [
-        `B2B INQUIRY — ${tag.toUpperCase()}`,
+        `B2B INQUIRY — ${TYPE_TAGS[type].toUpperCase()}`,
         `Name: ${(name || '').trim()}`,
         `Email: ${email.trim()}`,
       ];
@@ -104,17 +102,18 @@ exports.handler = async (event) => {
           }
         }
       }
-      await fetch(`https://rest.gohighlevel.com/v1/contacts/${contactId}/notes/`, {
+      const noteRes = await fetch(`https://rest.gohighlevel.com/v1/contacts/${contactId}/notes/`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
+          'Authorization': 'Bearer ' + apiKey,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ body: noteLines.join('\n') }),
-      }).catch((e) => console.error('Note attach error:', e));
+      });
+      console.log('inquire: note attach status', noteRes.status);
     }
   } catch (e) {
-    console.error('Note attach setup failed:', e);
+    console.error('inquire: note attach failed', e.message);
   }
 
   return {
