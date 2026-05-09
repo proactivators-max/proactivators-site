@@ -566,7 +566,7 @@ form.addEventListener('submit', async (e) => {
     body: JSON.stringify({
       firstName, lastName, name: nm, email: em,
       source: 'website form',
-      tags: ['website', 'boardroom_application'],
+      tags: ['website', 'BoardroomApp'],
     }),
   }).then(r => r.json()).then(data => {
     if (data.contact && data.contact.id) {

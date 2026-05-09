@@ -6,7 +6,7 @@
 const TYPE_TAGS = {
   speaker: 'speaker_inquiry',
   workshop: 'workshop_inquiry',
-  boardroom: 'boardroom_application',
+  boardroom: 'BoardroomApp',
 };
 
 exports.handler = async (event) => {
