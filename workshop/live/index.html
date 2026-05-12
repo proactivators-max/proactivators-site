@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Executive Mindset Workshop &mdash; Reserve Your Seat | ProActivators</title>
+<meta name="description" content="A 4-hour live workshop on time mastery, mindset shift, and habit formation. Limited to 30 seats. Early bird $147. Reserve your seat now.">
+<meta property="og:title" content="The Executive Mindset Workshop &mdash; Reserve Your Seat">
+<meta property="og:description" content="4 hours. One reset. Limited to 30 seats. Early bird $147.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:url" content="https://proactivatorsclub.com/workshop/live/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProActivators">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Executive Mindset Workshop &mdash; Reserve Your Seat">
+<meta name="twitter:description" content="4 hours. One reset. Limited to 30 seats. Early bird $147.">
+<meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.4}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(5,5,5,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.nav-logo-img{height:28px;display:block}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--off-white);padding:.6rem 1.4rem;text-decoration:none;font-weight:700;border:1px solid var(--border);transition:all .2s}
+.nav-cta:hover{border-color:var(--blue);color:var(--blue)}
+.nav-cta.primary{background:var(--blue);color:var(--black);border-color:var(--blue)}
+.nav-cta.primary:hover{background:#fff;border-color:#fff;color:var(--black)}
+
+section{position:relative;z-index:1;padding:6rem 1.5rem 4rem}
+.container{max-width:1100px;margin:0 auto}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:1.4rem;font-weight:700}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:32px;height:1px;background:var(--blue);vertical-align:middle;margin:0 1rem}
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;text-align:center}
+
+/* HERO */
+.hero{padding-top:8rem;padding-bottom:4rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,6.8rem);letter-spacing:.02em;line-height:.95;margin-bottom:1.4rem;text-align:center}
+.hero h1 .blue{color:var(--blue)}
+.hero h1 .stack{display:block}
+.hero .tagline{text-align:center;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1.6rem;font-weight:700}
+.hero .subhead{text-align:center;font-size:clamp(1rem,1.7vw,1.2rem);color:var(--steel-lt);margin:0 auto 2rem;max-width:720px;line-height:1.7;font-weight:300}
+.hero .subhead em{color:var(--off-white);font-style:normal;font-weight:500}
+
+.event-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-bottom:2.4rem}
+.event-meta-pill{display:inline-flex;align-items:center;gap:.55rem;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--off-white);background:var(--surface);padding:.8rem 1.2rem;border:1px solid var(--blue-border);font-weight:700}
+.event-meta-pill .label{color:var(--blue);margin-right:.3rem}
+
+.hero-cta{text-align:center}
+
+.btn-blue{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1.2rem 2.6rem;text-decoration:none;display:inline-block;border:2px solid var(--blue);transition:all .2s;cursor:pointer}
+.btn-blue:hover{background:#fff;border-color:#fff}
+.btn-blue.large{padding:1.4rem 3rem;font-size:1rem}
+
+.btn-outline{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;background:transparent;color:var(--off-white);padding:1rem 2rem;text-decoration:none;display:inline-block;border:2px solid var(--border);transition:all .2s;cursor:pointer;margin-left:.6rem}
+.btn-outline:hover{border-color:var(--blue);background:var(--blue-dim);color:var(--blue)}
+
+/* PRICING BLOCK */
+.pricing{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:780px;margin:0 auto}
+.price-card{background:var(--surface);border:1px solid var(--border);padding:2.4rem 2rem;text-align:center;position:relative;transition:border-color .25s}
+.price-card.featured{border-color:var(--blue-border);background:linear-gradient(180deg,rgba(58,180,242,.06),var(--surface) 60%)}
+.price-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+.price-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);background:var(--blue-dim);border:1px solid var(--blue-border);padding:.35rem .7rem;margin-bottom:1rem;font-weight:700}
+.price-tier{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;color:var(--off-white);margin-bottom:.4rem}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,4.4rem);letter-spacing:.02em;line-height:1;margin-bottom:.4rem}
+.price-amount .dollar{font-size:.6em;vertical-align:top;margin-right:.1em;color:var(--steel)}
+.price-card.featured .price-amount{color:var(--blue)}
+.price-card:not(.featured) .price-amount{color:var(--off-white)}
+.price-note{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-lt);font-weight:700;margin-bottom:1.6rem}
+.price-cta{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:1rem 1.6rem;text-decoration:none;display:inline-block;border:2px solid var(--blue);transition:all .2s}
+.price-card.featured .price-cta{background:var(--blue);color:var(--black)}
+.price-card.featured .price-cta:hover{background:#fff;border-color:#fff}
+.price-card:not(.featured) .price-cta{color:var(--blue);background:transparent}
+.price-card:not(.featured) .price-cta:hover{background:var(--blue);color:var(--black)}
+.price-footnote{text-align:center;color:var(--steel);font-size:.85rem;font-style:italic;margin-top:1.8rem;line-height:1.6}
+
+/* INCLUDED */
+.included-list{max-width:780px;margin:0 auto;list-style:none;padding:0}
+.included-list li{padding:1rem 0 1rem 2.2rem;border-bottom:1px solid var(--border);color:var(--off-white);font-size:1rem;line-height:1.6;position:relative;font-weight:300}
+.included-list li::before{content:'';position:absolute;left:0;top:1.4rem;width:14px;height:14px;border:2px solid var(--blue);background:transparent;transform:rotate(45deg)}
+.included-list li:last-child{border-bottom:none}
+.included-list li strong{font-weight:500;color:var(--off-white)}
+
+/* AGENDA */
+.agenda{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.hour-card{background:var(--surface);border:1px solid var(--border);padding:2.2rem 1.8rem;margin-bottom:1.2rem;border-radius:2px;position:relative;transition:border-color .25s}
+.hour-card:hover{border-color:var(--blue-border)}
+.hour-num{position:absolute;top:1.4rem;right:1.8rem;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.hour-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,2.8vw,2rem);letter-spacing:.04em;line-height:1.1;margin-bottom:.8rem;color:var(--off-white)}
+.hour-desc{color:var(--steel-lt);font-size:.95rem;line-height:1.7;font-weight:300}
+.hour-desc em{color:var(--blue);font-style:normal;font-weight:500}
+
+/* SECTION HEADERS */
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);letter-spacing:.04em;line-height:1.1;margin-bottom:1rem}
+.section-header h2 .blue{color:var(--blue)}
+.section-header p{color:var(--steel-lt);font-size:1rem;max-width:660px;margin:0 auto;font-weight:300;line-height:1.7}
+
+/* PERSONAS */
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.persona-card{background:var(--surface);border:1px solid var(--border);padding:1.8rem 1.5rem;border-radius:2px;transition:all .25s;position:relative}
+.persona-card:hover{border-color:var(--blue-border);transform:translateY(-3px)}
+.persona-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--off-white);margin-bottom:.8rem}
+.persona-desc{color:var(--steel-lt);font-size:.9rem;line-height:1.6;font-weight:300}
+
+/* OUTCOMES */
+.outcome-list{max-width:780px;margin:0 auto;list-style:none;padding:0}
+.outcome-list li{padding:1.1rem 0 1.1rem 2.2rem;border-bottom:1px solid var(--border);color:var(--off-white);font-size:1rem;line-height:1.6;position:relative;font-weight:300}
+.outcome-list li::before{content:'';position:absolute;left:0;top:1.5rem;width:14px;height:14px;border:2px solid var(--blue);background:transparent;transform:rotate(45deg)}
+.outcome-list li:last-child{border-bottom:none}
+
+/* ABOUT GABRIEL */
+.about{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.about-narrative{max-width:740px;margin:0 auto;color:var(--off-white);font-size:1.04rem;line-height:1.85;font-weight:300}
+.about-narrative p{margin-bottom:1.1rem}
+.about-narrative em{color:var(--blue);font-style:normal;font-weight:500}
+
+/* FAQ */
+.faq-wrap{max-width:780px;margin:0 auto}
+.faq-item{background:var(--surface);border:1px solid var(--border);margin-bottom:.7rem;border-radius:2px;transition:border-color .25s}
+.faq-item:hover{border-color:var(--blue-border)}
+.faq-q{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.04em;color:var(--off-white);padding:1.2rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;line-height:1.3}
+.faq-q::after{content:'+';color:var(--blue);font-size:1.4rem;font-weight:300;transition:transform .2s;flex-shrink:0;margin-left:1rem}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 1.5rem;max-height:0;overflow:hidden;color:var(--steel-lt);font-size:.92rem;line-height:1.7;font-weight:300;transition:max-height .3s ease,padding .3s ease}
+.faq-item.open .faq-a{max-height:500px;padding:0 1.5rem 1.4rem}
+
+/* FINAL CTA */
+.final-cta{background:var(--deep);border-top:1px solid var(--border);text-align:center}
+.final-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:.04em;line-height:1.05;margin-bottom:1.4rem}
+.final-cta h2 .blue{color:var(--blue)}
+.final-cta p{color:var(--steel-lt);font-size:1.05rem;max-width:580px;margin:0 auto 2.2rem;line-height:1.7;font-weight:300}
+.final-cta .btn-blue{margin-bottom:1.2rem}
+.final-cta-note{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+
+/* DOCTRINE */
+.doctrine{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,3.4vw,2.7rem);letter-spacing:.04em;color:var(--blue);padding:5rem 1.5rem;border-top:1px solid var(--border);position:relative;z-index:1;line-height:1.15}
+.doctrine .line2{display:block;color:var(--off-white);margin-top:.4rem}
+
+footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{margin-bottom:.5rem}
+.footer-logo img{height:24px}
+.footer-email{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-bottom:1rem}
+.footer-email a{color:var(--steel);text-decoration:none}
+.footer-email a:hover{color:var(--blue)}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.footer-copy{font-size:.75rem;color:var(--steel)}
+
+@media(max-width:900px){
+  .persona-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:380px}
+}
+@media(max-width:640px){
+  section{padding:5rem 1.2rem 3rem}
+  .hero{padding-top:6.5rem}
+  .eyebrow::before,.eyebrow::after{width:18px;margin:0 .6rem}
+  nav{padding:.8rem 1rem}
+  .nav-cta{padding:.5rem 1rem;font-size:.7rem}
+  .hour-num{position:static;display:inline-block;margin-bottom:.8rem}
+  .btn-outline{margin-left:0;margin-top:.7rem;display:block}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
+  <a href="#reserve" class="nav-cta primary">Reserve Your Seat &rarr;</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Live Workshop</div>
+    <h1>
+      <span class="stack">4 HOURS.</span>
+      <span class="stack"><span class="blue">ONE RESET.</span></span>
+    </h1>
+    <p class="tagline">The Executive Mindset Workshop</p>
+
+    <!-- Event meta — Gabriel: update these per event -->
+    <div class="event-meta">
+      <span class="event-meta-pill"><span class="label">Date</span>[DATE TBD]</span>
+      <span class="event-meta-pill"><span class="label">Venue</span>[VENUE TBD]</span>
+      <span class="event-meta-pill"><span class="label">City</span>[CITY TBD]</span>
+      <span class="event-meta-pill"><span class="label">Seats</span>Limited</span>
+    </div>
+
+    <p class="subhead">Four hours. You walk in operating on autopilot. You walk out with the framework, the workbook, and an accountability partner who'll hold you to the 30-day commitment you make in the room. <em>Lunch, dessert, and snacks included.</em></p>
+
+    <div class="hero-cta">
+      <a href="#reserve" class="btn-blue large">Reserve Your Seat &mdash; $147 &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING BLOCK -->
+<section id="reserve" class="pricing">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Investment</div>
+      <h2>RESERVE YOUR <span class="blue">SEAT.</span></h2>
+      <p>Seats are limited. The first 30 reservations lock in the early-bird rate. After that, the price moves to regular.</p>
+    </div>
+
+    <div class="pricing-grid reveal">
+
+      <!-- EARLY BIRD CARD -->
+      <div class="price-card featured">
+        <div class="price-badge">First 30 Seats</div>
+        <div class="price-tier">EARLY BIRD</div>
+        <div class="price-amount"><span class="dollar">$</span>147</div>
+        <div class="price-note">Workshop &middot; Workbook &middot; Lunch</div>
+        <!-- Gabriel: replace href with the Stripe Payment Link URL for $147 -->
+        <a href="https://buy.stripe.com/PLACEHOLDER_EARLY_BIRD_147" class="price-cta">Reserve At $147 &rarr;</a>
+      </div>
+
+      <!-- REGULAR CARD -->
+      <div class="price-card">
+        <div class="price-badge" style="color:var(--steel);background:transparent;border-color:var(--border)">After Early Bird</div>
+        <div class="price-tier">REGULAR</div>
+        <div class="price-amount"><span class="dollar">$</span>197</div>
+        <div class="price-note">Same Workshop &middot; Same Inclusions</div>
+        <!-- Gabriel: replace href with the Stripe Payment Link URL for $197 -->
+        <a href="https://buy.stripe.com/PLACEHOLDER_REGULAR_197" class="price-cta">Reserve At $197 &rarr;</a>
+      </div>
+
+    </div>
+
+    <p class="price-footnote reveal">Add the book at checkout for $20 &mdash; <em>Unleash The ProActivator</em>, the doctrine the workshop is built on.</p>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What's Included</div>
+      <h2>EVERY SEAT <span class="blue">COMES WITH.</span></h2>
+    </div>
+    <ul class="included-list reveal">
+      <li><strong>The 4-hour workshop</strong> &mdash; live, in-person, all four hours of framework and exercises</li>
+      <li><strong>The Executive Mindset Workbook</strong> &mdash; printed, yours to keep, used in-room and after</li>
+      <li><strong>Lunch, dessert, and snacks</strong> &mdash; provided throughout the workshop</li>
+      <li><strong>The 7-Mindset Doctrine Card</strong> &mdash; a single-page reference you carry afterward</li>
+      <li><strong>An accountability partner</strong> &mdash; paired in-room for the next 30 days</li>
+      <li><strong>30-day follow-up cadence</strong> &mdash; check-in emails at Day 7, 14, and 30</li>
+      <li><strong>Optional $20 book add-on</strong> at Stripe checkout &mdash; <em>Unleash The ProActivator</em>, the doctrine the workshop is built on</li>
+    </ul>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="agenda">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Agenda</div>
+      <h2>FOUR HOURS. <span class="blue">ONE RESET.</span></h2>
+    </div>
+
+    <article class="hour-card reveal">
+      <div class="hour-num">Hour 01</div>
+      <h3 class="hour-title">MASTERING YOUR TIME</h3>
+      <p class="hour-desc">We open with the Quadrant of Time Management &mdash; but not the one on a corporate poster. You audit your actual week. You see, in numbers, where your hours are going. <em>The illusion of busy gets dismantled in real time.</em></p>
+    </article>
+
+    <article class="hour-card reveal">
+      <div class="hour-num">Hour 02</div>
+      <h3 class="hour-title">THE PARADIGM SHIFT</h3>
+      <p class="hour-desc">I show you something you think you're seeing &mdash; and prove you're seeing it wrong. The "Old Lady or Young Woman?" illusion becomes the doorway into a deeper truth: most performance problems aren't skill problems. <em>They're paradigm problems.</em></p>
+    </article>
+
+    <article class="hour-card reveal">
+      <div class="hour-num">Hour 03</div>
+      <h3 class="hour-title">THE HABIT LOOP</h3>
+      <p class="hour-desc">We expose the architecture of every habit you have &mdash; Cue, Craving, Routine, Reward. Then we identify your keystone habits: the foundational behaviors that change everything else. You leave with a 30-day installation plan for one specific habit.</p>
+    </article>
+
+    <article class="hour-card reveal">
+      <div class="hour-num">Hour 04</div>
+      <h3 class="hour-title">THE MASTERMIND ROUND</h3>
+      <p class="hour-desc">Mindset becomes accountability. The room breaks into mastermind tables of 5. Each person surfaces the area of their life that's drifting hardest right now. No fixing. No rescuing. <em>Just the truth, told to you by four people who don't owe you anything except honesty.</em> The hour closes with a signed 30-day commitment and an accountability partner.</p>
+    </article>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Who It's For</div>
+      <h2>THREE PEOPLE. <span class="blue">EVERY ROOM.</span></h2>
+    </div>
+    <div class="persona-grid reveal">
+      <div class="persona-card">
+        <div class="persona-name">THE LEADER</div>
+        <div class="persona-desc">You're carrying a team, an organization, or a calling. The respectable drift is winning quietly. You came here because you know what it costs to keep operating below your capacity.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-name">THE SALES PRO</div>
+        <div class="persona-desc">Your calendar is full and your pipeline still isn't moving. You're busy, not productive. You need the clarity to know which 2 hours of your day actually generate revenue &mdash; and the discipline to protect them.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-name">THE OPERATOR</div>
+        <div class="persona-desc">You hit a plateau and you can feel it. Respectable. Well-compensated. Hollow. You came to confront the keystone habits that are quietly costing you the next decade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Outcomes</div>
+      <h2>WHAT YOU <span class="blue">WALK AWAY WITH.</span></h2>
+    </div>
+    <ul class="outcome-list reveal">
+      <li>A personal Quadrant Audit showing where your hours are actually going &mdash; and what to cut</li>
+      <li>A 7-Mindset Doctrine Card you reference for the rest of the year</li>
+      <li>A redesigned habit loop for the keystone habit costing you most</li>
+      <li>A signed 30-Day ProActivator Commitment with an in-room accountability partner</li>
+      <li>A follow-up cadence at Day 7, 14, and 30 to install what you built</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABOUT GABRIEL -->
+<section class="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Who's Running It</div>
+      <h2>BUILT BY <span class="blue">SOMEONE WHO LIVED IT.</span></h2>
+    </div>
+    <div class="about-narrative reveal">
+      <p>I'm Gabriel Golindano. Author of <em>Unleash The ProActivator</em>. Founder of the ProActivators movement.</p>
+      <p>I built this workshop inside the company I lead sales and marketing for &mdash; <em>ChargePros</em>, an EV charger installation business. We rolled it out to our installers, sales reps, and project managers. The technicians who came in skeptical left with their first habit architecture. The sales reps stopped confusing busy with productive.</p>
+      <p>That same workshop is now open to you &mdash; not as a corporate training, but as a public workshop you can walk into on your own. <em>It works because it had to.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Before You Reserve</div>
+      <h2>QUESTIONS <span class="blue">WE GET.</span></h2>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item">
+        <div class="faq-q">What's the refund policy?</div>
+        <div class="faq-a">Full refund up to 7 days before the workshop. Inside 7 days, your seat is non-refundable &mdash; but you can transfer it to someone else. Email proactivateyourlife@gmail.com if you need to transfer.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What time should I arrive?</div>
+        <div class="faq-a">Doors open 30 minutes before the workshop. Get there at least 15 minutes early &mdash; grab a coffee, settle in, meet a couple of people. We start on time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the dress code?</div>
+        <div class="faq-a">Business casual or whatever you wear to work. You'll be sitting, standing, and doing partner exercises &mdash; comfortable matters more than formal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What about parking?</div>
+        <div class="faq-a">Parking details vary by venue. Once your seat is confirmed, you'll get an email with venue-specific instructions including parking, entrance, and check-in.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I have a food allergy?</div>
+        <div class="faq-a">Reply to your confirmation email with any allergies or dietary restrictions and we'll accommodate. Lunch is always a mix &mdash; usually with vegetarian and gluten-free options by default.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I bring a colleague?</div>
+        <div class="faq-a">Yes &mdash; each person needs their own seat reservation. The workbooks and accountability pairings depend on knowing exactly who's in the room.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if the workshop is sold out?</div>
+        <div class="faq-a">Join the waitlist for the next one &mdash; we're running these regularly. Email proactivateyourlife@gmail.com and we'll put you at the front of the next workshop's reservation queue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Last Call</div>
+      <h2>RESERVE YOUR <span class="blue">SEAT.</span></h2>
+      <p>The first 30 lock in $147. After that, $197. Same workshop, same inclusions &mdash; just one of them is the early-bird window. Reserve while it's open.</p>
+      <!-- Gabriel: same Stripe URL as the pricing card above -->
+      <a href="https://buy.stripe.com/PLACEHOLDER_EARLY_BIRD_147" class="btn-blue large">Reserve At $147 &rarr;</a>
+      <div class="final-cta-note">Secure checkout via Stripe</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTRINE -->
+<div class="doctrine">
+  FOUR HOURS WILL DO MORE
+  <span class="line2">THAN FOUR YEARS OF DRIFT.</span>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="ProActivators"></div>
+  <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a></div>
+  <div class="footer-credo">Terminate. Activate. Lead.</div>
+  <div class="footer-copy">&copy; 2026 ProActivators &mdash; We don't drift. We decide.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+</script>
+</body>
+</html>
