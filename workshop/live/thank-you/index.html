@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>You're In &mdash; The Executive Mindset Workshop | ProActivators</title>
+<meta name="description" content="Your seat is reserved for The Executive Mindset Workshop. Here's what happens next.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.4}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(5,5,5,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.nav-logo-img{height:28px;display:block}
+.nav-cta{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--off-white);padding:.6rem 1.4rem;text-decoration:none;font-weight:700;border:1px solid var(--border);transition:all .2s}
+.nav-cta:hover{border-color:var(--blue);color:var(--blue)}
+
+section{position:relative;z-index:1;padding:6rem 1.5rem 4rem}
+.container{max-width:1100px;margin:0 auto}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:1.4rem;font-weight:700}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:32px;height:1px;background:var(--blue);vertical-align:middle;margin:0 1rem}
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;text-align:center}
+
+/* CONFIRMATION CHECK */
+.confirm-mark{width:74px;height:74px;margin:0 auto 2rem;border:2px solid var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue-dim)}
+.confirm-mark svg{color:var(--blue)}
+
+/* HERO */
+.hero{padding-top:9rem;padding-bottom:3.5rem;text-align:center}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,6.8rem);letter-spacing:.02em;line-height:.95;margin-bottom:1.4rem}
+.hero h1 .blue{color:var(--blue)}
+.hero h1 .stack{display:block}
+.hero .subhead{font-size:clamp(1rem,1.7vw,1.2rem);color:var(--steel-lt);margin:0 auto 1rem;max-width:680px;line-height:1.7;font-weight:300}
+.hero .subhead em{color:var(--off-white);font-style:normal;font-weight:500}
+
+.btn-blue{font-family:'Space Mono',monospace;font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1.2rem 2.6rem;text-decoration:none;display:inline-block;border:2px solid var(--blue);transition:all .2s;cursor:pointer}
+.btn-blue:hover{background:#fff;border-color:#fff}
+.btn-outline{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;background:transparent;color:var(--off-white);padding:1rem 2rem;text-decoration:none;display:inline-block;border:2px solid var(--border);transition:all .2s;cursor:pointer}
+.btn-outline:hover{border-color:var(--blue);background:var(--blue-dim);color:var(--blue)}
+
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.4rem);letter-spacing:.04em;line-height:1.1;margin-bottom:1rem}
+.section-header h2 .blue{color:var(--blue)}
+.section-header p{color:var(--steel-lt);font-size:1rem;max-width:660px;margin:0 auto;font-weight:300;line-height:1.7}
+
+/* STEPS */
+.steps{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:960px;margin:0 auto}
+.step-card{background:var(--surface);border:1px solid var(--border);padding:2rem 1.6rem;position:relative;transition:border-color .25s}
+.step-card:hover{border-color:var(--blue-border)}
+.step-num{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1rem}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--off-white);margin-bottom:.7rem;line-height:1.05}
+.step-desc{color:var(--steel-lt);font-size:.92rem;line-height:1.65;font-weight:300}
+.step-desc strong{color:var(--off-white);font-weight:500}
+
+/* WHILE YOU WAIT */
+.wait{text-align:center}
+.wait .book-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2rem;max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--blue-border);padding:2.4rem 2rem}
+.wait .book-cover{width:120px;height:auto;flex-shrink:0;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.wait .book-copy{text-align:left;flex:1;min-width:240px}
+.wait .book-copy h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;margin-bottom:.6rem;line-height:1.05}
+.wait .book-copy h3 .blue{color:var(--blue)}
+.wait .book-copy p{color:var(--steel-lt);font-size:.95rem;line-height:1.6;font-weight:300;margin-bottom:1.2rem}
+@media(max-width:560px){.wait .book-copy{text-align:center}}
+
+/* DOCTRINE */
+.doctrine{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,3.4vw,2.7rem);letter-spacing:.04em;color:var(--blue);padding:5rem 1.5rem;border-top:1px solid var(--border);position:relative;z-index:1;line-height:1.15}
+.doctrine .line2{display:block;color:var(--off-white);margin-top:.4rem}
+
+footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{margin-bottom:.5rem}
+.footer-logo img{height:24px}
+.footer-email{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-bottom:1rem}
+.footer-email a{color:var(--steel);text-decoration:none}
+.footer-email a:hover{color:var(--blue)}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.footer-copy{font-size:.75rem;color:var(--steel)}
+
+@media(max-width:900px){.steps-grid{grid-template-columns:1fr;max-width:420px}}
+@media(max-width:640px){
+  section{padding:5rem 1.2rem 3rem}
+  .hero{padding-top:7rem}
+  .eyebrow::before,.eyebrow::after{width:18px;margin:0 .6rem}
+  nav{padding:.8rem 1rem}
+  .nav-cta{padding:.5rem 1rem;font-size:.7rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
+  <a href="https://proactivatorsclub.com" class="nav-cta">&larr; Back To Site</a>
+</nav>
+
+<!-- HERO / CONFIRMATION -->
+<section class="hero">
+  <div class="container">
+    <div class="confirm-mark reveal">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="eyebrow reveal">Reservation Confirmed</div>
+    <h1 class="reveal">
+      <span class="stack">YOU'RE IN.</span>
+      <span class="stack"><span class="blue">YOUR SEAT IS RESERVED.</span></span>
+    </h1>
+    <p class="subhead reveal">Your spot at <em>The Executive Mindset Workshop</em> is locked in. Your payment receipt is on its way to your inbox from Stripe. What you just did is the first rep &mdash; you chose to stop drifting and put it on the calendar.</p>
+  </div>
+</section>
+
+<!-- WHAT HAPPENS NEXT -->
+<section class="steps">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What Happens Next</div>
+      <h2>THREE THINGS. <span class="blue">THEN WE BUILD.</span></h2>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <div class="step-title">CHECK YOUR INBOX</div>
+        <div class="step-desc">Your <strong>receipt and confirmation</strong> are arriving from Stripe right now. Keep it &mdash; it's your proof of reservation.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <div class="step-title">WATCH FOR THE DETAILS</div>
+        <div class="step-desc">We'll email the <strong>final date, venue, and arrival time</strong>. Add <strong>proactivateyourlife@gmail.com</strong> to your contacts so it doesn't land in spam.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <div class="step-title">COME READY</div>
+        <div class="step-desc">Bring something to write with, an open mind, and the <strong>one area of your life that's drifting hardest</strong>. We start on time. Lunch is on us.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHILE YOU WAIT -->
+<section class="wait">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">While You Wait</div>
+      <h2>START THE <span class="blue">RESET EARLY.</span></h2>
+    </div>
+    <div class="book-row reveal">
+      <img class="book-cover" src="/images/book-cover-final.png" alt="Unleash The ProActivator">
+      <div class="book-copy">
+        <h3>READ <span class="blue">UNLEASH THE PROACTIVATOR.</span></h3>
+        <p>The workshop is built on the doctrine in this book. Read Chapters 1, 4, and 11 before you walk in and you'll get noticeably more out of the room. It's the map &mdash; you already booked the territory.</p>
+        <a href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener" class="btn-blue">Get The Book On Amazon &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTRINE -->
+<div class="doctrine">
+  FOUR HOURS WILL DO MORE
+  <span class="line2">THAN FOUR YEARS OF DRIFT.</span>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="ProActivators"></div>
+  <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a></div>
+  <div class="footer-credo">Terminate. Activate. Lead.</div>
+  <div class="footer-copy">&copy; 2026 ProActivators &mdash; We don't drift. We decide.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
