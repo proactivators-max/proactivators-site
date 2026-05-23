@@ -13,6 +13,10 @@ exports.handler = async (event) => {
   const firstName = nameParts[0] || '';
   const lastName = nameParts.slice(1).join(' ') || '';
   const apiKey = process.env.GHL_API_KEY;
+  if (!apiKey) {
+    console.error('join: GHL_API_KEY env var is missing');
+    return { statusCode: 500, body: JSON.stringify({ error: 'Server misconfigured: GHL_API_KEY not set' }) };
+  }
 
   // Create or update contact with tag
   const res = await fetch('https://rest.gohighlevel.com/v1/contacts/', {
@@ -27,7 +31,7 @@ exports.handler = async (event) => {
       name: (name || '').trim(),
       email: email.trim(),
       source: 'website form',
-      tags: ['website'],
+      tags: ['website', 'newsletter'],
     }),
   });
 
@@ -38,9 +42,11 @@ exports.handler = async (event) => {
   const contact = await res.json();
   const contactId = contact.contact?.id;
 
-  // Add contact to Newsletter workflow
-  if (contactId) {
-    await fetch(`https://rest.gohighlevel.com/v1/contacts/${contactId}/workflow/f32c3ef5-ca07-4961-b874-0daec0b5c760`, {
+  // Add contact to Newsletter workflow. Defaults to the current ProActivate
+  // Enterprise newsletter workflow; can be overridden via Netlify env var.
+  const workflowId = process.env.GHL_NEWSLETTER_WORKFLOW_ID || 'f32c3ef5-ca07-4961-b874-0daec0b5c760';
+  if (contactId && workflowId) {
+    await fetch(`https://rest.gohighlevel.com/v1/contacts/${contactId}/workflow/${workflowId}`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,

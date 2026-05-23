@@ -539,7 +539,6 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  const GHL_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IldhR1pWVkQwUUZmOFR2OGVBSU5tIiwidmVyc2lvbiI6MSwiaWF0IjoxNzc2MzU5MDAxMzE1LCJzdWIiOiJlVWJSSkJUSEdDQmpuaTU1bUFVTiJ9.FiRAg9AeGFdNOGbq6OXeHGXrp8NsKOkCpGFNcz9QQBU';
   const nm = document.getElementById('ws-name').value.trim();
   const em = email.value.trim();
   const ph = document.getElementById('ws-phone').value.trim();
@@ -552,43 +551,23 @@ form.addEventListener('submit', async (e) => {
   const budget = document.getElementById('ws-budget').value;
   const outcome = document.getElementById('ws-outcome').value.trim();
 
-  const parts = nm.split(' ');
-  const firstName = parts[0] || '';
-  const lastName = parts.slice(1).join(' ') || '';
-
-  fetch('https://rest.gohighlevel.com/v1/contacts/', {
+  fetch('/.netlify/functions/inquire', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      firstName, lastName, name: nm, email: em,
-      source: 'website form',
-      tags: ['website', 'workshop_inquiry'],
+      type: 'workshop',
+      name: nm, email: em, phone: ph, organization: org, role: role,
+      fields: {
+        'Team Size': team,
+        'Format Preference': format,
+        'Target Date': targetDate,
+        'Industry': industry,
+        'Budget Range': budget,
+        'Desired Outcome': outcome,
+      },
     }),
-  }).then(r => r.json()).then(data => {
-    if (data.contact && data.contact.id) {
-      const note = [
-        'B2B INQUIRY — WORKSHOP',
-        'Name: ' + nm,
-        'Email: ' + em,
-        ph ? 'Phone: ' + ph : '',
-        'Organization: ' + org,
-        'Role: ' + role,
-        '',
-        'Team Size: ' + team,
-        'Format Preference: ' + format,
-        'Target Date: ' + targetDate,
-        'Industry: ' + industry,
-        'Budget Range: ' + budget,
-        '',
-        'Desired Outcome:',
-        outcome,
-      ].filter(Boolean).join('\n');
-      fetch('https://rest.gohighlevel.com/v1/contacts/' + data.contact.id + '/notes/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + GHL_TOKEN },
-        body: JSON.stringify({ body: note }),
-      }).catch(() => {});
-    }
+  }).then(r => {
+    if (!r.ok) throw new Error('inquire failed');
     form.style.display = 'none';
     successEl.classList.add('show', 'visible');
   }).catch(() => {
