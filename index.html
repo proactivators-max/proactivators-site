@@ -1308,7 +1308,7 @@ function handleJoin(){
   btn.disabled=true;btn.textContent='Sending...';
   var nm=nameInp.value.trim();
   var em=emailInp.value.trim();
-  fetch('/.netlify/functions/join',{
+  fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/join',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({name:nm,email:em})
@@ -1336,7 +1336,7 @@ function handleSummit(){
   btn.disabled=true;btn.textContent='Sending...';
   var nm=nameInp.value.trim();
   var em=emailInp.value.trim();
-  fetch('/.netlify/functions/summit',{
+  fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/summit',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({name:nm,email:em})

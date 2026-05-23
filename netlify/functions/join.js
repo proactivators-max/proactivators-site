@@ -1,12 +1,21 @@
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 exports.handler = async (event) => {
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 204, headers: CORS, body: '' };
+  }
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return { statusCode: 405, headers: CORS, body: 'Method Not Allowed' };
   }
 
   const { name, email } = JSON.parse(event.body);
 
   if (!email || !email.includes('@')) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Valid email required' }) };
+    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Valid email required' }) };
   }
 
   const nameParts = (name || '').trim().split(/\s+/);
@@ -15,7 +24,7 @@ exports.handler = async (event) => {
   const apiKey = process.env.GHL_API_KEY;
   if (!apiKey) {
     console.error('join: GHL_API_KEY env var is missing');
-    return { statusCode: 500, body: JSON.stringify({ error: 'Server misconfigured: GHL_API_KEY not set' }) };
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'Server misconfigured: GHL_API_KEY not set' }) };
   }
 
   // Create or update contact with tag
@@ -36,7 +45,7 @@ exports.handler = async (event) => {
   });
 
   if (!res.ok) {
-    return { statusCode: 500, body: JSON.stringify({ error: 'Failed to create contact' }) };
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'Failed to create contact' }) };
   }
 
   const contact = await res.json();
@@ -58,7 +67,7 @@ exports.handler = async (event) => {
 
   return {
     statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...CORS, 'Content-Type': 'application/json' },
     body: JSON.stringify({ success: true }),
   };
 };

@@ -506,7 +506,7 @@ form.addEventListener('submit', async (e) => {
   const budget = document.getElementById('sp-budget').value;
   const msg = msgEl.value.trim();
 
-  fetch('/.netlify/functions/inquire', {
+  fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

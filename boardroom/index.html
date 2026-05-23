@@ -555,7 +555,7 @@ form.addEventListener('submit', async (e) => {
   const paymentPlan = form.querySelector('input[name="paymentPlan"]:checked').value;
   const commitment = form.querySelector('input[name="commitment"]:checked').value;
 
-  fetch('/.netlify/functions/inquire', {
+  fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

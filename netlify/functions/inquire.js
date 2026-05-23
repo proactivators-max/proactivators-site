@@ -3,6 +3,12 @@
 // firstName/lastName/name/email/source/tags goes into a contact note,
 // best-effort — never fail the user's form for note-attach problems.
 
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 const TYPE_TAGS = {
   speaker: 'speaker_inquiry',
   workshop: 'workshop_inquiry',
@@ -10,30 +16,33 @@ const TYPE_TAGS = {
 };
 
 exports.handler = async (event) => {
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 204, headers: CORS, body: '' };
+  }
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return { statusCode: 405, headers: CORS, body: 'Method Not Allowed' };
   }
 
   let body;
   try {
     body = JSON.parse(event.body);
   } catch (e) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) };
+    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
 
   const { type, name, email, phone, organization, role, fields } = body;
 
   if (!TYPE_TAGS[type]) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid type' }) };
+    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid type' }) };
   }
   if (!email || !email.includes('@')) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Valid email required' }) };
+    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Valid email required' }) };
   }
 
   const apiKey = process.env.GHL_API_KEY;
   if (!apiKey) {
     console.error('inquire: GHL_API_KEY env var is missing');
-    return { statusCode: 500, body: JSON.stringify({ error: 'Server misconfigured: GHL_API_KEY not set' }) };
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'Server misconfigured: GHL_API_KEY not set' }) };
   }
 
   const parts = (name || '').trim().split(/\s+/);
@@ -66,7 +75,7 @@ exports.handler = async (event) => {
     });
   } catch (e) {
     console.error('inquire: fetch threw', e.message);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Network error', details: e.message }) };
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: 'Network error', details: e.message }) };
   }
 
   const responseText = await res.text();
@@ -75,6 +84,7 @@ exports.handler = async (event) => {
   if (!res.ok) {
     return {
       statusCode: 500,
+      headers: CORS,
       body: JSON.stringify({ error: 'GHL ' + res.status, details: responseText.slice(0, 800) }),
     };
   }
@@ -118,7 +128,7 @@ exports.handler = async (event) => {
 
   return {
     statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { ...CORS, 'Content-Type': 'application/json' },
     body: JSON.stringify({ success: true }),
   };
 };

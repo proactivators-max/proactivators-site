@@ -360,7 +360,7 @@ form.addEventListener('submit', (e) => {
 
   const nm = (nameInput.value || '').trim();
 
-  fetch('/.netlify/functions/summit', {
+  fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/summit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name: nm, email }),
