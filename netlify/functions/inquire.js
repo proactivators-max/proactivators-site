@@ -30,7 +30,12 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
 
-  const { type, name, email, phone, organization, role, fields } = body;
+  const { type, name, email, phone, organization, role, fields, hp } = body;
+
+  // Honeypot: hidden field only bots fill. Pretend success, create nothing.
+  if (hp) {
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
+  }
 
   if (!TYPE_TAGS[type]) {
     return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Invalid type' }) };

@@ -12,7 +12,12 @@ exports.handler = async (event) => {
     return { statusCode: 405, headers: CORS, body: 'Method Not Allowed' };
   }
 
-  const { name, email } = JSON.parse(event.body);
+  const { name, email, hp } = JSON.parse(event.body);
+
+  // Honeypot: hidden field only bots fill. Pretend success, create nothing.
+  if (hp) {
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
+  }
 
   if (!email || !email.includes('@')) {
     return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Valid email required' }) };
