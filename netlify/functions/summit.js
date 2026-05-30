@@ -12,6 +12,14 @@ exports.handler = async (event) => {
     return { statusCode: 405, headers: CORS, body: 'Method Not Allowed' };
   }
 
+  // ORIGIN ALLOWLIST — block direct-endpoint spam bots. Real browser
+  // submissions from the site always send Origin: https://proactivatorsclub.com.
+  // Silent fake-success so bots can't detect they were blocked.
+  const origin = (event.headers && (event.headers.origin || event.headers.Origin)) || '';
+  if (!origin.includes('proactivatorsclub.com')) {
+    return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
+  }
+
   const { name, email, hp } = JSON.parse(event.body);
 
   // Honeypot: hidden field only bots fill. Pretend success, create nothing.
