@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+// Printed-flyer redirect: the speaker one-sheet QR points to /speak/#inquiry.
+// Bounce those scans to the warmer /lets-talk landing page. Internal anchors
+// on /speak now use #form so they don't trigger this redirect.
+if (typeof window !== 'undefined' && window.location.hash === '#inquiry') {
+  window.location.replace('/lets-talk/');
+}
+</script>
 <title>Hire Gabriel Golindano To Speak | Author of Unleash The ProActivator</title>
 <meta name="description" content="Hire Gabriel Golindano for keynote speeches on identity, discipline, and the 6-Pillar Framework. Author of Unleash The ProActivator. Available for conferences, churches, sales orgs, and leadership offsites.">
 <meta property="og:title" content="Hire Gabriel Golindano To Speak">
@@ -177,7 +185,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     </h1>
     <p class="subhead">Most keynote speakers tell you to dream bigger. I tell your team to look in the mirror and decide. Twenty-two years ago I said two words that changed my life &mdash; <em>"no more."</em> Today I help organizations help their people do the same. The drift ends in your audience the moment I open my mouth.</p>
     <div class="hero-cta">
-      <a href="#inquiry" class="btn-blue">Inquire About Booking &rarr;</a>
+      <a href="#form" class="btn-blue">Inquire About Booking &rarr;</a>
     </div>
   </div>
 </section>
@@ -352,7 +360,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 </section>
 
 <!-- INQUIRY FORM -->
-<section id="inquiry" class="form-section">
+<section id="form" class="form-section">
   <div class="container">
     <div class="section-header reveal">
       <div class="section-label">Get In Touch</div>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Talk &mdash; Bring Gabriel Golindano To Your Team | ProActivators</title>
+<meta name="description" content="A free 30-minute keynote for your team. The drift ends in your audience the moment Gabriel Golindano opens his mouth. Call (305) 200-9100 or drop your number.">
+<meta property="og:title" content="Let's Talk &mdash; Bring Gabriel To Your Team">
+<meta property="og:description" content="30 minutes of doctrine. For your team. On me. Call (305) 200-9100 and let's see what the room can do.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:url" content="https://proactivatorsclub.com/lets-talk/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProActivators">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Let's Talk &mdash; Bring Gabriel To Your Team">
+<meta name="twitter:description" content="30 minutes of doctrine. For your team. On me.">
+<meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;
+  --off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.4}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(5,5,5,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.nav-logo-img{height:28px;display:block}
+.nav-call{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;background:var(--blue);color:var(--black);padding:.6rem 1.2rem;text-decoration:none;font-weight:700;border:2px solid var(--blue);transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.nav-call:hover{background:#fff;border-color:#fff}
+.nav-call svg{flex-shrink:0}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:5rem 1.5rem 4rem}
+.container{max-width:1080px;margin:0 auto}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:1.4rem;font-weight:700}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:32px;height:1px;background:var(--blue);vertical-align:middle;margin:0 1rem}
+
+/* HERO */
+.hero{padding-top:8rem;padding-bottom:4rem;text-align:center}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,7.5vw,5.6rem);letter-spacing:.02em;line-height:.98;margin-bottom:1.6rem}
+.hero h1 .blue{color:var(--blue)}
+.hero h1 .stack{display:block}
+.hero .sub{font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--off-white);margin:0 auto 2.6rem;max-width:680px;line-height:1.6;font-weight:400}
+.hero .sub em{color:var(--blue);font-style:normal;font-weight:500}
+
+/* PHONE CTA — the dominant action */
+.phone-cta{display:inline-flex;align-items:center;gap:.9rem;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:.04em;background:var(--blue);color:var(--black);padding:1.2rem 2.4rem;text-decoration:none;border:3px solid var(--blue);transition:all .2s;line-height:1}
+.phone-cta:hover{background:#fff;border-color:#fff}
+.phone-cta svg{flex-shrink:0;width:1.1em;height:1.1em}
+.phone-cta .label{font-family:'Space Mono',monospace;font-size:.36em;letter-spacing:.24em;display:block;color:var(--black);font-weight:700;margin-bottom:.2em;opacity:.7}
+.phone-cta .number{display:block}
+.phone-callout{display:flex;flex-direction:column;align-items:flex-start}
+.hero-secondary{margin-top:1.6rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-lt);font-weight:700}
+.hero-secondary a{color:var(--off-white);text-decoration:none;border-bottom:1px solid var(--blue-border);padding-bottom:1px;transition:color .2s}
+.hero-secondary a:hover{color:var(--blue)}
+
+/* OFFER SECTION */
+.offer{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+.offer-card{background:var(--surface);border:1px solid var(--border);padding:1.8rem 1.5rem;transition:border-color .25s}
+.offer-card:hover{border-color:var(--blue-border)}
+.offer-num{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.6rem}
+.offer-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--off-white);margin-bottom:.6rem}
+.offer-card p{color:var(--steel-lt);font-size:.92rem;line-height:1.6;font-weight:300}
+
+/* SECTION HEADERS */
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;text-align:center;font-weight:700}
+.section-header{text-align:center;margin-bottom:2.6rem}
+.section-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:.04em;line-height:1.05;margin-bottom:1rem}
+.section-header h2 .blue{color:var(--blue)}
+.section-header p{color:var(--steel-lt);font-size:1rem;max-width:660px;margin:0 auto;font-weight:300;line-height:1.7}
+
+/* WHO IS GABRIEL */
+.who-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:2.4rem;align-items:center;max-width:920px;margin:0 auto}
+.who-photo{width:100%;aspect-ratio:1/1;background-image:url('/launch/gabriel.png');background-size:cover;background-position:center top;background-color:var(--surface);border:1px solid var(--border)}
+.who-text{color:var(--off-white);font-size:1.02rem;line-height:1.8;font-weight:300}
+.who-text p{margin-bottom:1rem}
+.who-text em{color:var(--blue);font-style:normal;font-weight:500}
+.who-text strong{color:var(--off-white);font-weight:500}
+.who-credo{display:inline-block;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-top:.6rem;padding:.5rem .9rem;border:1px solid var(--blue-border);background:var(--blue-dim)}
+
+/* THE BOOK */
+.book-section{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.book-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:2.6rem;align-items:center;max-width:920px;margin:0 auto}
+.book-cover-wrap{display:flex;justify-content:center}
+.book-cover-wrap img{max-width:280px;width:100%;height:auto;display:block;box-shadow:0 18px 50px rgba(0,0,0,.55), 0 0 0 1px var(--border)}
+.book-text h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:.04em;color:var(--off-white);line-height:1.1;margin-bottom:1rem}
+.book-text h3 .blue{color:var(--blue)}
+.book-text p{color:var(--steel-lt);font-size:1rem;line-height:1.7;font-weight:300;margin-bottom:1.2rem}
+.book-text p em{color:var(--off-white);font-style:normal;font-weight:500}
+.book-price{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-lt);font-weight:700;margin-bottom:1.2rem;display:block}
+.book-price .amount{color:var(--blue)}
+.book-cta{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1rem 1.8rem;text-decoration:none;display:inline-block;border:2px solid var(--blue);transition:all .2s}
+.book-cta:hover{background:#fff;border-color:#fff}
+
+/* CALL-ME-BACK FORM */
+.form-section{background:var(--surface)}
+.form-wrap{max-width:620px;margin:0 auto;background:var(--surface2);border:1px solid var(--border);padding:2.4rem 2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-row.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column}
+.field label{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel-lt);font-weight:700;margin-bottom:.5rem}
+.field input{font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--off-white);background:var(--surface);border:1px solid var(--border);padding:.85rem 1rem;transition:border-color .2s}
+.field input:focus{outline:none;border-color:var(--blue)}
+.field input.error{border-color:#991f1f}
+.form-submit-wrap{text-align:center;margin-top:1.4rem}
+.form-submit{font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--blue);color:var(--black);padding:1.1rem 2.4rem;border:2px solid var(--blue);cursor:pointer;transition:all .2s;display:inline-block;text-decoration:none}
+.form-submit:hover:not(:disabled){background:#fff;border-color:#fff}
+.form-submit:disabled{opacity:.5;cursor:not-allowed}
+
+.form-success{display:none;text-align:center;background:var(--surface2);border:1px solid var(--blue-border);padding:2.4rem 2rem;max-width:620px;margin:0 auto}
+.form-success.show{display:block}
+.form-success h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--blue);margin-bottom:1rem;line-height:1.1}
+.form-success p{color:var(--off-white);font-size:1rem;line-height:1.7;margin-bottom:1.4rem;font-weight:300}
+.form-success .signoff{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-lt);margin-top:1.6rem;font-weight:700}
+
+/* DOCTRINE CLOSER */
+.doctrine{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,3.4vw,2.7rem);letter-spacing:.04em;color:var(--blue);padding:5rem 1.5rem;border-top:1px solid var(--border);position:relative;z-index:1;line-height:1.15}
+.doctrine .line2{display:block;color:var(--off-white);margin-top:.4rem}
+
+footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;position:relative;z-index:1}
+.footer-logo{margin-bottom:.5rem}
+.footer-logo img{height:24px}
+.footer-email{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-bottom:1rem}
+.footer-email a{color:var(--steel);text-decoration:none}
+.footer-email a:hover{color:var(--blue)}
+.footer-credo{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.footer-copy{font-size:.75rem;color:var(--steel)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .offer-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr;gap:1.8rem;text-align:center}
+  .who-photo{max-width:300px;margin:0 auto}
+  .book-grid{grid-template-columns:1fr;gap:1.8rem;text-align:center}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  section{padding:4.5rem 1.2rem 3rem}
+  .hero{padding-top:6rem}
+  .eyebrow::before,.eyebrow::after{width:18px;margin:0 .6rem}
+  nav{padding:.8rem 1rem}
+  .nav-call{padding:.5rem 1rem;font-size:.7rem}
+  .nav-call .nav-call-label{display:none}
+  .phone-cta{padding:1rem 1.6rem}
+  .form-wrap{padding:1.8rem 1.3rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
+  <a href="tel:+13052009100" class="nav-call">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="nav-call-label">Call Now</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Want Gabriel For Your Team?</div>
+    <h1>
+      <span class="stack">THE DRIFT ENDS</span>
+      <span class="stack">IN YOUR AUDIENCE</span>
+      <span class="stack"><span class="blue">THE MOMENT I OPEN MY MOUTH.</span></span>
+    </h1>
+    <p class="sub">A <em>30-minute keynote</em> for your team. On me. No invoice, no commitment &mdash; just 30 minutes to see what the room can do when somebody finally tells the truth.</p>
+
+    <a href="tel:+13052009100" class="phone-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="phone-callout">
+        <span class="label">Call Me Direct</span>
+        <span class="number">(305) 200-9100</span>
+      </span>
+    </a>
+
+    <div class="hero-secondary">Or <a href="#callback">drop your number</a> &mdash; I'll call you back within 24 hours.</div>
+  </div>
+</section>
+
+<!-- THE OFFER -->
+<section class="offer">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What You Get</div>
+      <h2>30 MINUTES. <span class="blue">YOUR TEAM. ZERO COST.</span></h2>
+      <p>One short keynote. Built for your people, around what they're actually walking through. The kind of talk that doesn't end when I sit down &mdash; it ends when they decide it ends.</p>
+    </div>
+
+    <div class="offer-grid reveal">
+      <div class="offer-card">
+        <div class="offer-num">01 &mdash; The Mirror</div>
+        <h3>WE NAME THE DRIFT.</h3>
+        <p>Most teams aren't failing &mdash; they're drifting. Respectable on the outside, hollow on the inside. We put it on the table where everyone can see it.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">02 &mdash; The Decision</div>
+        <h3>THEY SAY <em style="color:var(--blue);font-style:normal">NO MORE</em>.</h3>
+        <p>Twenty-two years ago I said two words in a Miami apartment that changed my life. Your team hears the story, and they get the same chance.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">03 &mdash; The Move</div>
+        <h3>THEY WALK OUT DIFFERENT.</h3>
+        <p>One keystone habit. One commitment. One shift in the room. The kind of meeting your people are still quoting two weeks later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS GABRIEL -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Who's Coming To Speak</div>
+      <h2>BUILT BY <span class="blue">SOMEONE WHO LIVED IT.</span></h2>
+    </div>
+
+    <div class="who-grid reveal">
+      <div class="who-photo" role="img" aria-label="Gabriel Golindano"></div>
+      <div class="who-text">
+        <p>I'm <strong>Gabriel Golindano</strong> &mdash; author of <em>Unleash The ProActivator</em> and founder of the ProActivators movement.</p>
+        <p>Twenty-two years ago I hit my own version of rock bottom in a Miami apartment, sat down at a dirty glass table, and said two words: <em>no more.</em> The two decades since have been the slow work of building a life around that decision &mdash; and helping other people build theirs.</p>
+        <p>Most keynote speakers tell your team to dream bigger. I tell them to <em>look in the mirror and decide</em>. That's the difference. The drift ends in your audience the moment I open my mouth.</p>
+        <span class="who-credo">We Don't Drift. We Decide.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BOOK -->
+<section class="book-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">The Doctrine</div>
+      <h2>READ IT <span class="blue">BEFORE I COME.</span></h2>
+      <p>The talk is built on the book. Your team will get more out of the 30 minutes if they've already cracked the cover.</p>
+    </div>
+
+    <div class="book-grid reveal">
+      <div class="book-cover-wrap">
+        <img src="/launch/book-cover.png" alt="Unleash The ProActivator book cover">
+      </div>
+      <div class="book-text">
+        <h3><em style="font-style:italic;color:var(--off-white)">Unleash The ProActivator</em> &mdash; <span class="blue">The Doctrine.</span></h3>
+        <p>Six pillars. One framework. The architecture of a life lived on purpose. <em>This is not self-help. It is doctrine.</em> A declaration that the drift ends here.</p>
+        <span class="book-price">On Amazon &mdash; <span class="amount">$14.99</span></span>
+        <a href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener" class="book-cta">Get The Book &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL ME BACK FORM -->
+<section id="callback" class="form-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Prefer I Call You?</div>
+      <h2>DROP YOUR <span class="blue">NUMBER.</span></h2>
+      <p>I'll be in touch within 24 hours. No back-and-forth, no email chain &mdash; just a short conversation to see if I'm the right fit for your team.</p>
+    </div>
+
+    <div class="form-wrap reveal">
+      <form id="lt-form" novalidate>
+        <input type="text" id="lt-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+        <div class="form-row">
+          <div class="field"><label for="lt-name">Your Name *</label><input type="text" id="lt-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="lt-phone">Phone *</label><input type="tel" id="lt-phone" name="phone" required autocomplete="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="lt-email">Email *</label><input type="email" id="lt-email" name="email" required autocomplete="email"></div>
+          <div class="field"><label for="lt-org">Organization <span style="color:var(--steel);text-transform:none;letter-spacing:normal;font-weight:400">(optional)</span></label><input type="text" id="lt-org" name="organization" autocomplete="organization"></div>
+        </div>
+        <div class="form-submit-wrap">
+          <button type="submit" class="form-submit" id="lt-submit">Call Me Back &rarr;</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-success reveal" id="lt-success">
+      <h3>GOT IT. I'LL CALL YOU.</h3>
+      <p>You'll hear from me within 24 hours. In the meantime &mdash; if your team hasn't seen <em>Unleash The ProActivator</em> yet, the book is the fastest way to get a feel for what I bring to a room:</p>
+      <a href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener" class="book-cta">Get The Book On Amazon &rarr;</a>
+      <div class="signoff">We don't drift. We decide.<br>&mdash; Gabriel</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTRINE CLOSER -->
+<div class="doctrine">
+  WE DON'T DRIFT.
+  <span class="line2">WE DECIDE.</span>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="ProActivators"></div>
+  <div class="footer-email"><a href="mailto:proactivateyourlife@gmail.com">proactivateyourlife@gmail.com</a> &middot; <a href="tel:+13052009100">(305) 200-9100</a></div>
+  <div class="footer-credo">Terminate. Activate. Lead.</div>
+  <div class="footer-copy">&copy; 2026 ProActivators &mdash; We don't drift. We decide.</div>
+</footer>
+
+<!--
+  FUTURE: Bonjoro / personal hello video.
+  When Gabriel provides the video URL, add a section above the form like:
+  <section class="hello-video"><iframe src="..."></iframe></section>
+  Or replace the hero-secondary line with a "Watch a quick hello" link.
+-->
+
+<script>
+// Reveal-on-scroll — matches site pattern
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// FORM SUBMIT
+const form = document.getElementById('lt-form');
+const submitBtn = document.getElementById('lt-submit');
+const successEl = document.getElementById('lt-success');
+
+function flagError(el) {
+  el.classList.add('error');
+  el.focus();
+  setTimeout(() => el.classList.remove('error'), 1400);
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const required = ['lt-name','lt-phone','lt-email'];
+  for (const id of required) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { flagError(el); return; }
+  }
+  const email = document.getElementById('lt-email');
+  if (!email.value.includes('@')) { flagError(email); return; }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  const nm = document.getElementById('lt-name').value.trim();
+  const em = email.value.trim();
+  const ph = document.getElementById('lt-phone').value.trim();
+  const org = document.getElementById('lt-org').value.trim();
+
+  fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: 'lets-talk',
+      hp: (document.getElementById('lt-hp') || {}).value || '',
+      name: nm, email: em, phone: ph, organization: org,
+      fields: {},
+    }),
+  }).then(r => {
+    if (!r.ok) throw new Error('inquire failed');
+    form.style.display = 'none';
+    successEl.classList.add('show', 'visible');
+  }).catch(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Try Again';
+  });
+});
+</script>
+</body>
+</html>

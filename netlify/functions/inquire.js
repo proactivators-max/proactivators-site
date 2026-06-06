@@ -13,6 +13,7 @@ const TYPE_TAGS = {
   speaker: 'speaker_inquiry',
   workshop: 'workshop_inquiry',
   boardroom: 'BoardroomApp',
+  'lets-talk': 'lets_talk_inquiry',
 };
 
 exports.handler = async (event) => {
