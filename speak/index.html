@@ -355,70 +355,30 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 <section id="inquiry" class="form-section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label">Tell Me About Your Event</div>
-      <h2>LET'S BUILD <span class="blue">THE TALK.</span></h2>
+      <div class="section-label">Get In Touch</div>
+      <h2>LET'S <span class="blue">TALK.</span></h2>
     </div>
-    <p class="form-intro reveal">I'll respond within 48 hours with availability, format options, and next steps. If we're a fit, we book a 30-minute discovery call before any contracts move. The goal isn't just to fill a stage &mdash; it's to make sure your audience leaves changed.</p>
+    <p class="form-intro reveal">Three quick details and I'll be in touch within 48 hours. We'll talk through what you're building and whether bringing the doctrine to your team is the right move.</p>
 
     <div class="form-wrap reveal">
       <form id="speak-form" novalidate>
         <input type="text" id="sp-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
         <div class="form-row">
-          <div class="field"><label for="sp-name">Full Name *</label><input type="text" id="sp-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="sp-name">Your Name *</label><input type="text" id="sp-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="sp-phone">Phone *</label><input type="tel" id="sp-phone" name="phone" required autocomplete="tel"></div>
+        </div>
+        <div class="form-row">
           <div class="field"><label for="sp-email">Email *</label><input type="email" id="sp-email" name="email" required autocomplete="email"></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label for="sp-phone">Phone (optional)</label><input type="tel" id="sp-phone" name="phone" autocomplete="tel"></div>
-          <div class="field"><label for="sp-org">Organization *</label><input type="text" id="sp-org" name="organization" required autocomplete="organization"></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label for="sp-role">Your Role *</label><input type="text" id="sp-role" name="role" required></div>
-          <div class="field"><label for="sp-audience">Audience Size *</label>
-            <select id="sp-audience" name="audienceSize" required>
-              <option value="">Select&hellip;</option>
-              <option>Under 50</option>
-              <option>50&ndash;200</option>
-              <option>200&ndash;500</option>
-              <option>500&ndash;1,000</option>
-              <option>1,000+</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label for="sp-date">Event Date *</label><input type="date" id="sp-date" name="eventDate"><div class="tbd-row"><input type="checkbox" id="sp-tbd"><label for="sp-tbd" style="margin:0">Date TBD</label></div></div>
-          <div class="field"><label for="sp-type">Engagement Type *</label>
-            <select id="sp-type" name="engagementType" required>
-              <option value="">Select&hellip;</option>
-              <option>Keynote (45&ndash;60 min)</option>
-              <option>Half-Day Workshop</option>
-              <option>Full-Day Workshop</option>
-              <option>Fireside / Q&amp;A</option>
-              <option>Virtual</option>
-              <option>Discuss</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row single">
-          <div class="field"><label for="sp-budget">Budget Range *</label>
-            <select id="sp-budget" name="budgetRange" required>
-              <option value="">Select&hellip;</option>
-              <option>Under $5k</option>
-              <option>$5k&ndash;$15k</option>
-              <option>$15k&ndash;$30k</option>
-              <option>$30k+</option>
-              <option>Discuss</option>
-            </select>
-          </div>
+          <div class="field"><label for="sp-org">Organization <span style="color:var(--steel);text-transform:none;letter-spacing:normal;font-weight:400">(optional)</span></label><input type="text" id="sp-org" name="organization" autocomplete="organization"></div>
         </div>
         <div class="form-row single">
           <div class="field">
-            <label for="sp-message">Tell Me About Your Audience And Event * <span style="color:var(--steel);text-transform:none;letter-spacing:normal;font-weight:400">(200 char min)</span></label>
-            <textarea id="sp-message" name="message" required></textarea>
-            <div class="field-counter" id="sp-message-counter">0 / 200</div>
+            <label for="sp-message">Anything I Should Know? <span style="color:var(--steel);text-transform:none;letter-spacing:normal;font-weight:400">(optional)</span></label>
+            <textarea id="sp-message" name="message" rows="3" placeholder="Audience, event, timing &mdash; whatever's helpful. Or leave it blank and we'll cover it on the call."></textarea>
           </div>
         </div>
         <div class="form-submit-wrap">
-          <button type="submit" class="form-submit" id="sp-submit">Send The Request &rarr;</button>
+          <button type="submit" class="form-submit" id="sp-submit">Get In Touch &rarr;</button>
         </div>
       </form>
     </div>
@@ -452,24 +412,6 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// CHAR COUNTER
-const msgEl = document.getElementById('sp-message');
-const counterEl = document.getElementById('sp-message-counter');
-const MIN_MSG = 200;
-msgEl.addEventListener('input', () => {
-  const len = msgEl.value.trim().length;
-  counterEl.textContent = len + ' / ' + MIN_MSG;
-  counterEl.classList.toggle('ok', len >= MIN_MSG);
-});
-
-// TBD checkbox toggles date input
-const dateEl = document.getElementById('sp-date');
-const tbdEl = document.getElementById('sp-tbd');
-tbdEl.addEventListener('change', () => {
-  dateEl.disabled = tbdEl.checked;
-  if (tbdEl.checked) dateEl.value = '';
-});
-
 // FORM SUBMIT
 const form = document.getElementById('speak-form');
 const submitBtn = document.getElementById('sp-submit');
@@ -483,15 +425,13 @@ function flagError(el) {
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const required = ['sp-name','sp-email','sp-org','sp-role','sp-audience','sp-type','sp-budget','sp-message'];
+  const required = ['sp-name','sp-phone','sp-email'];
   for (const id of required) {
     const el = document.getElementById(id);
     if (!el.value.trim()) { flagError(el); return; }
   }
   const email = document.getElementById('sp-email');
   if (!email.value.includes('@')) { flagError(email); return; }
-  if (msgEl.value.trim().length < MIN_MSG) { flagError(msgEl); return; }
-  if (!tbdEl.checked && !dateEl.value) { flagError(dateEl); return; }
 
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
@@ -500,12 +440,7 @@ form.addEventListener('submit', async (e) => {
   const em = email.value.trim();
   const ph = document.getElementById('sp-phone').value.trim();
   const org = document.getElementById('sp-org').value.trim();
-  const role = document.getElementById('sp-role').value.trim();
-  const audience = document.getElementById('sp-audience').value;
-  const eventDate = tbdEl.checked ? 'TBD' : dateEl.value;
-  const engagementType = document.getElementById('sp-type').value;
-  const budget = document.getElementById('sp-budget').value;
-  const msg = msgEl.value.trim();
+  const msg = document.getElementById('sp-message').value.trim();
 
   fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire', {
     method: 'POST',
@@ -513,14 +448,8 @@ form.addEventListener('submit', async (e) => {
     body: JSON.stringify({
       type: 'speaker',
       hp: (document.getElementById('sp-hp') || {}).value || '',
-      name: nm, email: em, phone: ph, organization: org, role: role,
-      fields: {
-        'Audience Size': audience,
-        'Event Date': eventDate,
-        'Engagement Type': engagementType,
-        'Budget Range': budget,
-        'Message': msg,
-      },
+      name: nm, email: em, phone: ph, organization: org,
+      fields: msg ? { 'Message': msg } : {},
     }),
   }).then(r => {
     if (!r.ok) throw new Error('inquire failed');
