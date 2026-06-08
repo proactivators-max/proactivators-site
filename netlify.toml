@@ -5,20 +5,11 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Don't let browsers cache /speak — it holds a hash-based redirect script
-# that bounces printed-flyer scans (`/speak/#inquiry`) to /lets-talk.
-# If a browser caches the OLD /speak HTML (from before the redirect
-# was added), the scan won't bounce. No-cache here means every visit
-# re-validates with the server, so the redirect always loads fresh.
-[[headers]]
-  for = "/speak/*"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
-
-# Same logic for /lets-talk — it's the destination of that redirect
-# and a new page; we want any updates to land instantly while
-# the launch is still warm.
-[[headers]]
-  for = "/lets-talk/*"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
+# NOTE — this netlify.toml governs the FORM-BACKEND Netlify project
+# (reliable-cat-70f502.netlify.app, which hosts the /inquire, /join,
+# /summit functions). The public site itself (proactivatorsclub.com)
+# is on GitHub Pages, so [[headers]] / [[redirects]] blocks here have
+# no effect on /speak, /lets-talk, /workshop, etc. — they would only
+# affect pages served by the function-host Netlify deploy, which
+# serves no pages. Add page-level cache or redirect rules at the
+# GitHub Pages / domain layer, not here.
