@@ -63,9 +63,18 @@ exports.handler = async (event) => {
   const firstName = parts[0] || '';
   const lastName = parts.slice(1).join(' ') || '';
 
-  // EXACT shape of what handleJoin posts on the homepage newsletter form.
-  // No customField, no companyName, no phone, no extra tags — those caused
-  // the previous 500s.
+  // Normalize phone to E.164 — GHL rejected raw "(786) 589-4076" with a 500
+  // previously, but accepts "+17865894076". Conservatively only attach the
+  // field when we get a clean US-shaped value.
+  function normalizePhone(p) {
+    if (!p) return undefined;
+    const digits = String(p).replace(/\D/g, '');
+    if (!digits) return undefined;
+    if (digits.length === 10) return '+1' + digits;
+    if (digits.length === 11 && digits[0] === '1') return '+' + digits;
+    return undefined; // unknown shape — skip rather than 500 the request
+  }
+
   const ghlBody = {
     firstName,
     lastName,
@@ -74,6 +83,9 @@ exports.handler = async (event) => {
     source: 'website form',
     tags: ['website', TYPE_TAGS[type]],
   };
+  const phoneNorm = normalizePhone(phone);
+  if (phoneNorm) ghlBody.phone = phoneNorm;
+  if (organization && organization.trim()) ghlBody.companyName = organization.trim();
 
   console.log('inquire: posting contact to GHL', { tag: TYPE_TAGS[type], email: ghlBody.email });
 
