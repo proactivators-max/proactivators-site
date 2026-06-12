@@ -17,6 +17,7 @@ exports.handler = async (event) => {
   // Silent fake-success so bots can't detect they were blocked.
   const origin = (event.headers && (event.headers.origin || event.headers.Origin)) || '';
   if (!origin.includes('proactivatorsclub.com')) {
+    console.log('join: origin allowlist blocked', { origin });
     return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
   }
 
@@ -24,6 +25,7 @@ exports.handler = async (event) => {
 
   // Honeypot: hidden field only bots fill. Pretend success, create nothing.
   if (hp) {
+    console.log('join: honeypot triggered, silent skip', { hp_value: String(hp).slice(0, 50) });
     return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
   }
 
