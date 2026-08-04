@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ⚙️ UPDATE THE ANDROID APK URL EACH NATIVE BUILD (EX pings it). TestFlight link is stable. Mirror /android. -->
+<title>ProActivators — Join the Beta</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Join the ProActivators Beta">
+<meta property="og:description" content="Install the ProActivators app — the six-pillar operating system for a life on purpose.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--surface:#141414;--off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);--border:rgba(255,255,255,.08)}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.4}
+.card{position:relative;z-index:1;max-width:460px;width:100%;text-align:center}
+.logo{height:32px;margin-bottom:2.2rem}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1rem}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,9vw,3.4rem);letter-spacing:.03em;line-height:.98;margin-bottom:1rem}
+h1 .blue{color:var(--blue)}
+.sub{color:var(--steel-lt);font-size:1rem;margin-bottom:2.4rem;font-weight:300}
+.btns{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.4rem}
+.btn{font-family:'Space Mono',monospace;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:1.3rem 2rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:.7rem;border:2px solid var(--blue);transition:all .2s}
+.btn.primary{background:var(--blue);color:var(--black)}
+.btn.primary:hover{background:#fff;border-color:#fff}
+.btn.outline{background:transparent;color:var(--blue)}
+.btn.outline:hover{background:var(--blue-dim)}
+.btn svg{width:20px;height:20px}
+.note{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);line-height:1.8}
+.doctrine{margin-top:2.4rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:var(--blue)}
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="/logo.png" alt="ProActivators" class="logo">
+  <div class="eyebrow">Private Beta</div>
+  <h1>GET THE <span class="blue">APP.</span></h1>
+  <p class="sub">The six-pillar operating system for a life built on purpose. Pick your phone:</p>
+  <div class="btns">
+    <a href="/android" class="btn primary">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18a.4.4 0 0 0-.7-.4l-1.87 3.23a11.4 11.4 0 0 0-9.74 0L5.26 5.9a.4.4 0 0 0-.7.4L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+      Android
+    </a>
+    <a href="/iphone" class="btn outline">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.36 12.9c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.13 2.76-2.24.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.13 6.1c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.68-1.09 1.76-.95 2.8 1.02.08 2.05-.51 2.68-1.27z"/></svg>
+      iPhone / iPad
+    </a>
+  </div>
+  <div class="note">Free &middot; 30-second install &middot; No app store search needed</div>
+  <div class="doctrine">We don't drift. We decide.</div>
+</div>
+</body>
+</html>
