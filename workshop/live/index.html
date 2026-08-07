@@ -27,7 +27,7 @@
   "description": "A 4-hour live workshop on time mastery, mindset shift, and habit formation. Workbook, lunch, and accountability partner included.",
   "startDate": "2026-07-18T10:00:00-04:00",
   "endDate": "2026-07-18T14:30:00-04:00",
-  "eventStatus": "https://schema.org/EventScheduled",
+  "eventStatus": "https://schema.org/EventPostponed",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "Place",
@@ -255,9 +255,16 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 </head>
 <body>
 
+<!-- ⏸ WORKSHOP PAUSED (Aug 2026): the FIU / Jul-18 / $147 public version is on hold pending
+     the church-pivot first workshop + a new date. TO RESTORE the public launch: remove this
+     style block, revert the nav + hero CTAs from the mailto back to #reserve, restore the
+     event-meta pills + real date, and set the Schema eventStatus back to EventScheduled.
+     Pricing/Stripe flow is only HIDDEN here (not deleted) so the public version returns cleanly. -->
+<style>#reserve{display:none!important}.mobile-reserve-bar{display:none!important}</style>
+
 <nav>
   <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
-  <a href="#reserve" class="nav-cta primary">Reserve Your Seat &rarr;</a>
+  <a href="mailto:proactivateyourlife@gmail.com?subject=Executive%20Mindset%20Workshop%20%E2%80%94%20notify%20me%20of%20next%20dates" class="nav-cta primary">Get Notified &rarr;</a>
 </nav>
 
 <!-- HERO -->
@@ -270,19 +277,15 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     </h1>
     <p class="tagline">The Executive Mindset Workshop</p>
 
-    <!-- Event meta — Gabriel: update these per event -->
+    <!-- Event meta — PAUSED: next public dates TBD (church-pivot, Aug 2026). Original pills in git history. -->
     <div class="event-meta">
-      <span class="event-meta-pill"><span class="label">Date</span>Sat, Jul 18, 2026</span>
-      <span class="event-meta-pill"><span class="label">Time</span>10 AM &ndash; 2:30 PM</span>
-      <span class="event-meta-pill"><span class="label">Venue</span>FIU Graham Center</span>
-      <span class="event-meta-pill"><span class="label">City</span>Miami, FL</span>
-      <span class="event-meta-pill"><span class="label">Early Bird</span>First 30</span>
+      <span class="event-meta-pill"><span class="label">Status</span>New Dates Coming Soon</span>
     </div>
 
-    <p class="subhead">Four hours. You walk in operating on autopilot. You walk out with the framework, the workbook, and an accountability partner who'll hold you to the 30-day commitment you make in the room. <em>Lunch, dessert, and snacks included.</em></p>
+    <p class="subhead"><em style="color:var(--off-white);font-style:normal;font-weight:500">The next Executive Mindset Workshop dates are being finalized.</em> Four hours. You walk in operating on autopilot. You walk out with the framework, the workbook, and an accountability partner. <em>Get on the list and you'll be first to know the moment the next date is set.</em></p>
 
     <div class="hero-cta">
-      <a href="#reserve" class="btn-blue large">Reserve Your Seat &mdash; $147 &rarr;</a>
+      <a href="mailto:proactivateyourlife@gmail.com?subject=Executive%20Mindset%20Workshop%20%E2%80%94%20notify%20me%20of%20next%20dates" class="btn-blue large">Get Notified When Dates Are Set &rarr;</a>
     </div>
   </div>
 </section>
