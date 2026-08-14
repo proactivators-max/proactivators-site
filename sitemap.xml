@@ -2,39 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://proactivatorsclub.com/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://proactivatorsclub.com/speak/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://proactivatorsclub.com/lets-talk/</loc>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://proactivatorsclub.com/workshop/executive-mindset/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://proactivatorsclub.com/boardroom/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://proactivatorsclub.com/summit/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://proactivatorsclub.com/blog/</loc>
-    <lastmod>2026-03-24</lastmod>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://proactivatorsclub.com/blog/what-is-a-proactivator/</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://proactivatorsclub.com/blog/the-six-pillars-of-a-proactivator/</loc>
@@ -43,8 +55,32 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://proactivatorsclub.com/blog/what-is-a-proactivator/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <loc>https://proactivatorsclub.com/blog/the-respectable-drift/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://proactivatorsclub.com/blog/from-procrastinator-to-proactivator/</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://proactivatorsclub.com/blog/faith-the-foundation/</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://proactivatorsclub.com/blog/family-your-home-is-your-first-boardroom/</loc>
+    <lastmod>2026-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://proactivatorsclub.com/blog/focus-the-currency-of-your-life/</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

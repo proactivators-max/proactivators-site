@@ -1,0 +1,12 @@
+# ProActivators — proactivatorsclub.com
+User-agent: *
+Allow: /
+
+# Utility / redirect pages — not for indexing
+Disallow: /android/
+Disallow: /ios/
+Disallow: /iphone/
+Disallow: /beta/
+Disallow: /workshop/live/thank-you/
+
+Sitemap: https://proactivatorsclub.com/sitemap.xml
