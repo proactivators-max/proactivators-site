@@ -3,19 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ⚙️ UPDATE THIS URL EACH NATIVE ANDROID BUILD (EX pings the new expo artifact URL). Also update /beta. -->
+<!-- ⚙️ UPDATE THIS URL EACH NATIVE ANDROID BUILD (EX pings the new build link). Also update /beta.
+     BUILD 6 (Aug 15 2026) — Sentry crash capture + Android push. EX gave a build PAGE link (not a
+     direct .apk artifact), so the auto-download is off and the button opens Expo's install page.
+     If EX supplies a direct https://expo.dev/artifacts/eas/....apk URL again, restore auto-download. -->
 <title>ProActivators — Android Beta</title>
 <meta name="robots" content="noindex">
-<script>
-  var APK = "https://expo.dev/artifacts/eas/FIqxah0Yk65LQdHt-rTbvt5LwoFdtnKO1wtc0rIC46g.apk";
-  // Kick the download as soon as the page loads (APK download doesn't navigate away — the
-  // branded page stays visible for trust + instructions).
-  window.addEventListener('DOMContentLoaded', function () {
-    var a = document.createElement('a');
-    a.href = APK; a.setAttribute('download', '');
-    document.body.appendChild(a); a.click();
-  });
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -44,14 +37,15 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
 <body>
 <div class="card">
   <img src="/logo.png" alt="ProActivators" class="logo">
-  <div class="eyebrow">Android Beta</div>
-  <h1>YOUR DOWNLOAD <span class="blue">IS STARTING.</span></h1>
-  <p>If it doesn't begin automatically, tap the button below.</p>
-  <a href="https://expo.dev/artifacts/eas/FIqxah0Yk65LQdHt-rTbvt5LwoFdtnKO1wtc0rIC46g.apk" class="btn" download>Download for Android &darr;</a>
+  <div class="eyebrow">Android Beta &middot; Build 6</div>
+  <h1>GET THE <span class="blue">LATEST BUILD.</span></h1>
+  <p>The newest version — tap below to install.</p>
+  <a href="https://expo.dev/accounts/admin.2026/projects/proactivators/builds/06f45e7e-769b-4001-b046-54e719b13b04" class="btn">Download for Android &darr;</a>
   <div class="steps">
     <div class="k">Install (30 seconds)</div>
     <ol>
-      <li>Open the downloaded <strong>.apk</strong> file.</li>
+      <li>Tap the button — it opens the install page.</li>
+      <li>Tap <strong>Install</strong> there to download the <strong>.apk</strong>, then open it.</li>
       <li>If Android asks, allow installs from your browser, then tap <strong>Install</strong>.</li>
       <li>Open ProActivators and sign in. That's it.</li>
     </ol>
