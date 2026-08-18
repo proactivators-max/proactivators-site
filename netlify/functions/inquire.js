@@ -14,6 +14,7 @@ const TYPE_TAGS = {
   workshop: 'workshop_inquiry',
   boardroom: 'BoardroomApp',
   'lets-talk': 'lets_talk_inquiry',
+  'workshop-rsvp': 'workshop_rsvp',
 };
 
 exports.handler = async (event) => {

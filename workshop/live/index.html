@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Executive Mindset Workshop &mdash; Reserve Your Seat | ProActivators</title>
-<meta name="description" content="A 4-hour live workshop on time mastery, mindset shift, and habit formation. The first 30 to register lock in early-bird pricing at $147. Reserve your seat now.">
-<meta property="og:title" content="The Executive Mindset Workshop &mdash; Reserve Your Seat">
-<meta property="og:description" content="4 hours. One reset. The first 30 to register lock in the early-bird rate of $147.">
+<meta name="description" content="Free 5-hour workshop, Saturday August 29, 10 AM-3 PM at True North Classical Academy at Gateway, Miami. Lunch included. Small room by design. Save your seat.">
+<meta property="og:title" content="The Executive Mindset Workshop - Free, Sat Aug 29, Miami">
+<meta property="og:description" content="Sat, Aug 29 - 10 AM to 3 PM - True North Classical Academy at Gateway, Miami. Free, lunch included. Five hours that end the drift.">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
 <meta property="og:url" content="https://proactivatorsclub.com/workshop/live/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ProActivators">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Executive Mindset Workshop &mdash; Reserve Your Seat">
-<meta name="twitter:description" content="4 hours. One reset. The first 30 to register lock in the early-bird rate of $147.">
+<meta name="twitter:title" content="The Executive Mindset Workshop - Free, Sat Aug 29, Miami">
+<meta name="twitter:description" content="Sat, Aug 29 - 10 AM to 3 PM - True North Classical Academy at Gateway, Miami. Free, lunch included. Five hours that end the drift.">
 <meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
 
 <!-- Schema.org Event structured data. Helps Google surface the workshop
@@ -24,20 +24,20 @@
   "@context": "https://schema.org",
   "@type": "Event",
   "name": "The Executive Mindset Workshop",
-  "description": "A 4-hour live workshop on time mastery, mindset shift, and habit formation. Workbook, lunch, and accountability partner included.",
-  "startDate": "2026-07-18T10:00:00-04:00",
-  "endDate": "2026-07-18T14:30:00-04:00",
-  "eventStatus": "https://schema.org/EventPostponed",
+  "description": "A free 5-hour live workshop on time mastery, mindset shift, and habit formation. Lunch provided. Small room by design. First of a monthly series, last Saturday of every month.",
+  "startDate": "2026-08-29T10:00:00-04:00",
+  "endDate": "2026-08-29T15:00:00-04:00",
+  "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "Place",
-    "name": "FIU Graham Center",
+    "name": "True North Classical Academy at Gateway — Cafeteria",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "10955 SW 15th Terrace",
+      "streetAddress": "6500 SW 97th Ave",
       "addressLocality": "Miami",
       "addressRegion": "FL",
-      "postalCode": "33199",
+      "postalCode": "33173",
       "addressCountry": "US"
     }
   },
@@ -54,20 +54,12 @@
   "offers": [
     {
       "@type": "Offer",
-      "name": "Early Bird",
-      "price": "147",
+      "name": "Free Admission",
+      "price": "0",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
-      "url": "https://proactivatorsclub.com/workshop/live/",
-      "validFrom": "2026-06-06"
-    },
-    {
-      "@type": "Offer",
-      "name": "Regular",
-      "price": "197",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://proactivatorsclub.com/workshop/live/"
+      "url": "https://proactivatorsclub.com/workshop/live/#rsvp",
+      "validFrom": "2026-08-18"
     }
   ]
 }
@@ -251,20 +243,26 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   .hour-num{position:static;display:inline-block;margin-bottom:.8rem}
   .btn-outline{margin-left:0;margin-top:.7rem;display:block}
 }
+/* pill wrap guard — long venue names must not blow out mobile width */
+.event-meta{flex-wrap:wrap;justify-content:center}
+.event-meta-pill{max-width:100%}
+@media(max-width:520px){
+  .event-meta-pill{font-size:.68rem}
+  .hero .subhead{overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>
 
-<!-- ⏸ WORKSHOP PAUSED (Aug 2026): the FIU / Jul-18 / $147 public version is on hold pending
-     the church-pivot first workshop + a new date. TO RESTORE the public launch: remove this
-     style block, revert the nav + hero CTAs from the mailto back to #reserve, restore the
-     event-meta pills + real date, and set the Schema eventStatus back to EventScheduled.
-     Pricing/Stripe flow is only HIDDEN here (not deleted) so the public version returns cleanly. -->
+<!-- ✅ LIVE (Aug 2026): Sat Aug 29, True North Classical Academy at Gateway — cafeteria.
+     FREE + lunch, first of a monthly series (last Saturday each month). The legacy PAID
+     pricing/Stripe block (#reserve) stays hidden because this event is free — it is only
+     hidden, not deleted, so a future paid public run can be restored from git history. -->
 <style>#reserve{display:none!important}.mobile-reserve-bar{display:none!important}</style>
 
 <nav>
   <a href="https://proactivatorsclub.com" class="nav-logo"><img src="/logo.png" alt="ProActivators" class="nav-logo-img"></a>
-  <a href="mailto:proactivateyourlife@gmail.com?subject=Executive%20Mindset%20Workshop%20%E2%80%94%20notify%20me%20of%20next%20dates" class="nav-cta primary">Get Notified &rarr;</a>
+  <a href="#rsvp" class="nav-cta primary">Save My Seat &rarr;</a>
 </nav>
 
 <!-- HERO -->
@@ -272,23 +270,75 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   <div class="container">
     <div class="eyebrow">Live Workshop</div>
     <h1>
-      <span class="stack">4 HOURS.</span>
+      <span class="stack">5 HOURS.</span>
       <span class="stack"><span class="blue">ONE RESET.</span></span>
     </h1>
     <p class="tagline">The Executive Mindset Workshop</p>
 
-    <!-- Event meta — PAUSED: next public dates TBD (church-pivot, Aug 2026). Original pills in git history. -->
+    <!-- Event meta — LIVE: Sat Aug 29 2026, True North Classical Academy at Gateway. -->
     <div class="event-meta">
-      <span class="event-meta-pill"><span class="label">Status</span>New Dates Coming Soon</span>
+      <span class="event-meta-pill"><span class="label">Date</span>Sat, August 29</span>
+      <span class="event-meta-pill"><span class="label">Time</span>10:00 AM &ndash; 3:00 PM</span>
+      <span class="event-meta-pill"><span class="label">Where</span>Gateway &middot; Miami</span>
+      <span class="event-meta-pill"><span class="label">Cost</span>Free &middot; Lunch Included</span>
     </div>
 
-    <p class="subhead"><em style="color:var(--off-white);font-style:normal;font-weight:500">The next Executive Mindset Workshop dates are being finalized.</em> Four hours. You walk in operating on autopilot. You walk out with the framework, the workbook, and an accountability partner. <em>Get on the list and you'll be first to know the moment the next date is set.</em></p>
+    <p class="subhead"><em style="color:var(--off-white);font-style:normal;font-weight:500">Saturday, August 29 &middot; 10 AM&ndash;3 PM &middot; the cafeteria at True North Classical Academy at Gateway, 6500 SW 97th Ave, Miami.</em> Five hours. You walk in operating on autopilot. You walk out with the framework, a signed commitment, and an accountability partner. <em>Completely free — lunch is on me. The room is small on purpose.</em></p>
 
     <div class="hero-cta">
-      <a href="mailto:proactivateyourlife@gmail.com?subject=Executive%20Mindset%20Workshop%20%E2%80%94%20notify%20me%20of%20next%20dates" class="btn-blue large">Get Notified When Dates Are Set &rarr;</a>
+      <a href="#rsvp" class="btn-blue large">Save My Seat &rarr;</a>
     </div>
   </div>
 </section>
+
+<!-- RSVP — free event, captures to GHL with the workshop_rsvp tag -->
+<section id="rsvp" class="pricing" style="display:block">
+  <div class="container" style="max-width:640px">
+    <div class="section-header reveal">
+      <div class="section-label">Save Your Seat</div>
+      <h2>THE ROOM IS <span class="blue">SMALL.</span></h2>
+      <p>Saturday, August 29 &middot; 10 AM&ndash;3 PM &middot; True North Classical Academy at Gateway, 6500 SW 97th Ave, Miami. Free, and lunch is provided. Tell me you’re coming so I can save you a seat and count you for food.</p>
+    </div>
+    <form id="rsvp-form" class="reveal" style="display:grid;gap:.9rem;margin-top:2rem">
+      <input type="text" name="proactivators_hp_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+      <input type="text" id="rsvp-name" name="name" placeholder="Your name" required style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem">
+      <input type="email" id="rsvp-email" name="email" placeholder="Email" required style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem">
+      <input type="tel" id="rsvp-phone" name="phone" placeholder="Mobile (so I can text you the details)" style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem">
+      <button type="submit" class="btn-blue large" style="width:100%;border:none;cursor:pointer">Save My Seat &rarr;</button>
+      <p id="rsvp-msg" style="font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.05em;color:var(--steel-lt);text-align:center;margin-top:.4rem">Free &middot; lunch included &middot; no spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+(function(){
+  var f=document.getElementById("rsvp-form"); if(!f) return;
+  var msg=document.getElementById("rsvp-msg");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var btn=f.querySelector("button[type=submit]");
+    btn.disabled=true; btn.textContent="Saving…";
+    fetch("/.netlify/functions/inquire",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        type:"workshop-rsvp",
+        name:document.getElementById("rsvp-name").value,
+        email:document.getElementById("rsvp-email").value,
+        phone:document.getElementById("rsvp-phone").value,
+        hp:f.proactivators_hp_check.value,
+        fields:{event:"Executive Mindset Workshop — Sat Aug 29 2026",venue:"True North Classical Academy at Gateway"}
+      })
+    }).then(function(r){
+      if(!r.ok) throw new Error("bad");
+      f.innerHTML="<p style=\"font-family:'Space Mono',monospace;letter-spacing:.06em;color:var(--blue);text-align:center;padding:1.4rem 0;font-weight:700\">YOUR SEAT IS SAVED.<br><span style=\"color:var(--steel-lt);font-weight:400;font-size:.85rem\">See you Saturday, August 29 at 10 AM. I’ll text you the details.</span></p>";
+    }).catch(function(){
+      btn.disabled=false; btn.textContent="Save My Seat →";
+      msg.textContent="Something went wrong — text Gabriel at (786) 589-4076 and he’ll add you.";
+      msg.style.color="#e0a566";
+    });
+  });
+})();
+</script>
 
 <!-- PRICING BLOCK -->
 <section id="reserve" class="pricing">
