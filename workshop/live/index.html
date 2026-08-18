@@ -304,7 +304,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       <input type="text" id="rsvp-name" name="name" placeholder="Your name" required style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem">
       <input type="email" id="rsvp-email" name="email" placeholder="Email" required style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem">
       <input type="tel" id="rsvp-phone" name="phone" placeholder="Mobile (so I can text you the details)" style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem">
-      <select id="rsvp-guests" name="guests" style="width:100%;padding:1rem 1.1rem;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem"><option value="Just me">Just me</option><option value="+1 guest">Bringing 1 guest</option><option value="+2 guests">Bringing 2 guests</option><option value="+3 or more">Bringing 3 or more</option></select>
       <button type="submit" class="btn-blue large" style="width:100%;border:none;cursor:pointer">Save My Seat &rarr;</button>
       <p id="rsvp-msg" style="font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.05em;color:var(--steel-lt);text-align:center;margin-top:.4rem">Free &middot; lunch included &middot; no spam, ever.</p>
     </form>
@@ -327,7 +326,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
         email:document.getElementById("rsvp-email").value,
         phone:document.getElementById("rsvp-phone").value,
         hp:f.proactivators_hp_check.value,
-        fields:{event:"Executive Mindset Workshop — Sat Aug 29 2026",venue:"True North Classical Academy at Gateway",guests:document.getElementById("rsvp-guests").value}
+        fields:{event:"Executive Mindset Workshop — Sat Aug 29 2026",venue:"True North Classical Academy at Gateway"}
       })
     }).then(function(r){
       if(!r.ok) throw new Error("bad");
