@@ -159,9 +159,21 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
       </div>
     </div>
 
-    <!-- who -->
+    <!-- 9 -->
     <div class="q">
       <div class="q-n">09</div>
+      <div class="q-t">Would you say that on camera?</div>
+      <div class="q-h">60&ndash;90 seconds, filmed right here before you leave. It&rsquo;s how the next person decides to come.</div>
+      <div class="chips third" data-group="q9">
+        <div class="chip" data-v="Yes - grab me before I leave">Yes &mdash; grab me</div>
+        <div class="chip" data-v="Yes but not today">Yes, not today</div>
+        <div class="chip" data-v="Not for me">Not for me</div>
+      </div>
+    </div>
+
+    <!-- who -->
+    <div class="q">
+      <div class="q-n">10</div>
       <div class="q-t">Who's this from?</div>
       <div class="q-h">So I can match it to you and follow up.</div>
       <input type="text" id="nm" placeholder="Name" autocomplete="name" style="margin-bottom:.6rem">
@@ -226,6 +238,7 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
           'App installed': picked.q6 || '',
           'Monthly session': picked.q7 || '',
           'Testimonial permission': picked.q8 || '',
+          'VIDEO testimonial': picked.q9 || '',
           'Workshop': 'Aug 29 2026 — True North Gateway'
         }
       })
