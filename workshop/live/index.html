@@ -331,7 +331,12 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       })
     }).then(function(r){
       if(!r.ok) throw new Error("bad");
-      f.innerHTML="<p style=\"font-family:'Space Mono',monospace;letter-spacing:.06em;color:var(--blue);text-align:center;padding:1.4rem 0;font-weight:700\">YOUR SEAT IS SAVED.<br><span style=\"color:var(--steel-lt);font-weight:400;font-size:.85rem\">See you Saturday, August 29 at 10 AM. I’ll text you the details.</span></p>";
+      var _n=encodeURIComponent(document.getElementById("rsvp-name").value||"");var _e=encodeURIComponent(document.getElementById("rsvp-email").value||"");f.innerHTML="<div style=\"text-align:center;padding:1.2rem 0\">" +
+        "<p style=\"font-family:'Space Mono',monospace;letter-spacing:.06em;color:var(--blue);font-weight:700;margin-bottom:.5rem\">YOUR SEAT IS SAVED.</p>" +
+        "<p style=\"color:var(--steel-lt);font-size:.85rem;margin-bottom:1.3rem\">See you Saturday, August 29 at 10 AM. I&rsquo;ll text you the details.</p>" +
+        "<a href=\"/workshop/prepare/?n="+_n+"&e="+_e+"\" style=\"display:inline-block;background:var(--blue);color:#050505;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.95rem 1.6rem;text-decoration:none\">One more thing &rarr; help me prepare</a>" +
+        "<p style=\"color:var(--steel);font-size:.72rem;margin-top:.8rem\">6 questions &middot; 2 minutes &middot; optional</p>" +
+      "</div>";
     }).catch(function(){
       btn.disabled=false; btn.textContent="Save My Seat →";
       msg.textContent="Something went wrong — text Gabriel at (786) 589-4076 and he’ll add you.";

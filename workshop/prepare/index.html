@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Help Me Prepare For You — ProActivators Workshop</title>
+<meta name="description" content="Six questions so Saturday is built around the people actually in the room.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--surface:#141414;--off-white:#f0ebe0;--steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--border:rgba(255,255,255,.08)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;padding:0 0 3rem}
+.wrap{max-width:560px;margin:0 auto;padding:0 1.25rem}
+
+.top{padding:2.2rem 0 1.6rem;text-align:center;border-bottom:1px solid var(--border)}
+.logo{height:26px;margin-bottom:1.4rem}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.7rem}
+h1{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;line-height:1;letter-spacing:.02em;margin-bottom:.7rem}
+.top p{color:var(--steel-lt);font-size:.95rem;font-weight:300;max-width:430px;margin:0 auto}
+.top .seat{display:inline-block;margin-bottom:1.1rem;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);border:1px solid var(--blue);padding:.4rem .8rem}
+
+.q{padding:1.7rem 0;border-bottom:1px solid var(--border)}
+.q.main{background:linear-gradient(180deg,rgba(58,180,242,.05),transparent);margin:0 -1.25rem;padding:1.9rem 1.25rem;border-left:3px solid var(--blue)}
+.q-n{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;color:var(--blue);font-weight:700;margin-bottom:.55rem}
+.q-t{font-size:1.06rem;font-weight:500;line-height:1.4;margin-bottom:.35rem}
+.q.main .q-t{font-size:1.24rem;font-weight:700;line-height:1.32}
+.q-h{font-size:.85rem;color:var(--steel);font-weight:300;margin-bottom:.9rem;line-height:1.55}
+.q.main .q-h{color:var(--steel-lt);font-size:.88rem}
+.opt{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.16em;color:var(--steel);text-transform:uppercase;margin-left:.4rem}
+
+textarea,input[type=text],input[type=email]{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--off-white);font-family:'DM Sans',sans-serif;font-size:1rem;padding:.95rem 1rem;resize:vertical;transition:border-color .2s}
+textarea{min-height:100px}
+.q.main textarea{min-height:130px;border-color:rgba(58,180,242,.28)}
+textarea:focus,input:focus{outline:none;border-color:var(--blue)}
+textarea::placeholder,input::placeholder{color:#5a5a5a}
+
+.chips{display:flex;flex-wrap:wrap;gap:.55rem}
+.chip{flex:1 1 auto;min-width:calc(50% - .3rem);background:var(--surface);border:1px solid var(--border);color:var(--steel-lt);font-family:'DM Sans',sans-serif;font-size:.9rem;padding:.85rem .8rem;text-align:center;cursor:pointer;transition:all .15s;user-select:none;-webkit-tap-highlight-color:transparent}
+.chip:active{transform:scale(.98)}
+.chip.on{background:var(--blue-dim);border-color:var(--blue);color:var(--blue);font-weight:500}
+.chips.third .chip{min-width:calc(33.333% - .37rem)}
+.chips.stack .chip{min-width:100%;text-align:left;line-height:1.4}
+
+.send{width:100%;margin-top:1.8rem;background:var(--blue);color:var(--black);border:2px solid var(--blue);font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:1.15rem;cursor:pointer;transition:all .2s}
+.send:hover{background:#fff;border-color:#fff}
+.send:disabled{opacity:.55;cursor:default}
+.msg{margin-top:1rem;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center;min-height:1.2rem}
+.msg.err{color:#ff8a8a}
+.foot{text-align:center;margin-top:2rem;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--steel)}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+
+#done{display:none;text-align:center;padding:4rem 0}
+#done .big{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--blue);margin-bottom:1rem}
+#done p{color:var(--steel-lt);font-weight:300;max-width:400px;margin:0 auto 1.6rem}
+#done .credo{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:var(--off-white);font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="top">
+    <img src="/logo.png" alt="ProActivators" class="logo">
+    <div class="seat">Your seat is saved</div>
+    <div class="eyebrow">One More Thing</div>
+    <h1>HELP ME PREPARE<br>FOR YOU.</h1>
+    <p>Six questions. Two minutes. I build Saturday around the people actually in the room — not a generic crowd. Nobody sees these but me.</p>
+  </div>
+
+  <form id="pf">
+    <input type="text" name="proactivators_hp_check" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <!-- 1 -->
+    <div class="q">
+      <div class="q-n">01</div>
+      <div class="q-t">Right now, which pillar is drifting the most?</div>
+      <div class="q-h">Tap one. Be honest &mdash; this is the one I'll aim at.</div>
+      <div class="chips third" data-group="q1">
+        <div class="chip" data-v="Faith">Faith</div>
+        <div class="chip" data-v="Family">Family</div>
+        <div class="chip" data-v="Fitness">Fitness</div>
+        <div class="chip" data-v="Finances">Finances</div>
+        <div class="chip" data-v="Focus">Focus</div>
+        <div class="chip" data-v="Fulfillment">Fulfillment</div>
+      </div>
+    </div>
+
+    <!-- 2 — THE MAIN ONE -->
+    <div class="q main">
+      <div class="q-n">02</div>
+      <div class="q-t">What's the one thing you already know is keeping you stuck?</div>
+      <div class="q-h">You might have a list. You might be right. But there's one you can't seem to shake &mdash; and you already know what it is. If you fixed that one, it would lift two or three others with it. Name it.</div>
+      <textarea id="q2" placeholder="The one thing is..."></textarea>
+    </div>
+
+    <!-- 3 -->
+    <div class="q">
+      <div class="q-n">03</div>
+      <div class="q-t">Which sounds most like you right now?</div>
+      <div class="chips stack" data-group="q3">
+        <div class="chip" data-v="A - talks about change more than does it">I talk about change more than I actually do it</div>
+        <div class="chip" data-v="B - grinding without a clear plan">I work hard but feel like I'm grinding without a clear plan</div>
+        <div class="chip" data-v="C - intentional and building, wants more">I'm intentional and building, but I want to go further</div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="q">
+      <div class="q-n">04</div>
+      <div class="q-t">Have you read the book or listened to the podcast?</div>
+      <div class="chips" data-group="q4">
+        <div class="chip" data-v="Read the book">Read the book</div>
+        <div class="chip" data-v="Listen to the podcast">The podcast</div>
+        <div class="chip" data-v="Both">Both</div>
+        <div class="chip" data-v="Neither - new to this">Neither &mdash; new to this</div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="q">
+      <div class="q-n">05</div>
+      <div class="q-t">Any food allergies or things we should know for lunch?</div>
+      <div class="q-h">We're feeding you. Tell me now so nobody's stuck eating around it.</div>
+      <textarea id="q5" placeholder="None, or..." style="min-height:70px"></textarea>
+    </div>
+
+    <!-- 6 -->
+    <div class="q">
+      <div class="q-n">06</div>
+      <div class="q-t">Anything you want me to know before Saturday?<span class="opt">Optional</span></div>
+      <textarea id="q6" placeholder="Anything at all..."></textarea>
+    </div>
+
+    <!-- who -->
+    <div class="q">
+      <div class="q-n">07</div>
+      <div class="q-t">Remind me who this is?</div>
+      <div class="q-h">So I can match it to your seat.</div>
+      <input type="text" id="nm" placeholder="Name" autocomplete="name" style="margin-bottom:.6rem">
+      <input type="email" id="em" placeholder="Email" autocomplete="email" required>
+    </div>
+
+    <button type="submit" class="send" id="go">Send It To Gabriel</button>
+    <div class="msg" id="msg"></div>
+    <div class="foot">We don't drift. We decide.</div>
+  </form>
+
+  <div id="done">
+    <div class="big">GOT IT.</div>
+    <p>I'll read every one of these before Saturday. Come ready to work — and bring the thing you just named.</p>
+    <div class="credo">We don't drift. We decide.</div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var picked = {};
+  document.querySelectorAll('[data-group]').forEach(function(group){
+    var key = group.getAttribute('data-group');
+    group.querySelectorAll('.chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        group.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+        chip.classList.add('on');
+        picked[key] = chip.getAttribute('data-v');
+      });
+    });
+  });
+
+  // prefill from ?e= / ?n= if we came straight from the RSVP
+  var qs = new URLSearchParams(location.search);
+  if(qs.get('e')) document.getElementById('em').value = qs.get('e');
+  if(qs.get('n')) document.getElementById('nm').value = qs.get('n');
+
+  var form = document.getElementById('pf');
+  var btn  = document.getElementById('go');
+  var msg  = document.getElementById('msg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('em').value.trim();
+    if(!email){ msg.className='msg err'; msg.textContent='Email needed so I can match it to your seat.'; return; }
+
+    btn.disabled = true; btn.textContent = 'Sending...';
+    msg.className='msg'; msg.textContent='';
+
+    fetch('/.netlify/functions/inquire', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        type:'workshop-intake',
+        name: document.getElementById('nm').value,
+        email: email,
+        hp: form.proactivators_hp_check.value,
+        fields:{
+          'Pillar drifting most': picked.q1 || '',
+          'THE ONE THING keeping them stuck': document.getElementById('q2').value,
+          'Sounds most like me (P-read)': picked.q3 || '',
+          'Book / podcast': picked.q4 || '',
+          'Food allergies': document.getElementById('q5').value,
+          'Anything else': document.getElementById('q6').value,
+          'Workshop': 'Aug 29 2026 — True North Gateway'
+        }
+      })
+    }).then(function(r){
+      if(!r.ok) throw new Error('bad response');
+      form.style.display='none';
+      document.getElementById('done').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(){
+      btn.disabled=false; btn.textContent='Send It To Gabriel';
+      msg.className='msg err';
+      msg.textContent='Did not go through — tap again.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
