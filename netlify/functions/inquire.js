@@ -15,6 +15,7 @@ const TYPE_TAGS = {
   boardroom: 'BoardroomApp',
   'lets-talk': 'lets_talk_inquiry',
   'workshop-rsvp': 'workshop_rsvp',
+  'workshop-exit': 'workshop_exit_survey',
 };
 
 exports.handler = async (event) => {
@@ -126,7 +127,7 @@ exports.handler = async (event) => {
     const contactId = data.contact?.id || data.id;
     if (contactId) {
       const noteLines = [
-        `B2B INQUIRY — ${TYPE_TAGS[type].toUpperCase()}`,
+        `${type === 'workshop-exit' ? 'WORKSHOP EXIT SURVEY' : type === 'workshop-rsvp' ? 'WORKSHOP RSVP' : 'B2B INQUIRY'} — ${TYPE_TAGS[type].toUpperCase()}`,
         `Name: ${(name || '').trim()}`,
         `Email: ${email.trim()}`,
       ];
