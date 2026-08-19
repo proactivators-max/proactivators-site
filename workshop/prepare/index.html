@@ -188,7 +188,7 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
     btn.disabled = true; btn.textContent = 'Sending...';
     msg.className='msg'; msg.textContent='';
 
-    fetch('/.netlify/functions/inquire', {
+    fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({

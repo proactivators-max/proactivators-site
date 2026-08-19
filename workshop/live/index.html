@@ -319,7 +319,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     e.preventDefault();
     var btn=f.querySelector("button[type=submit]");
     btn.disabled=true; btn.textContent="Saving…";
-    fetch("/.netlify/functions/inquire",{
+    fetch("https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire",{
       method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
         type:"workshop-rsvp",
