@@ -4,12 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- ⚙️ UPDATE THIS URL EACH NATIVE ANDROID BUILD (EX pings the new build link). Also update /beta.
-     BUILD 9 (Aug 27 2026) — THE SATURDAY BINARY. Supersedes build 8 entirely (build 8 was never
-     published here). Launcher-icon sizing: the glyph now fills ~72% of the tile, because Android
-     crops into the adaptive foreground and a navy tile on a black wallpaper has invisible edges —
-     the ring has to OVERSHOOT parity with neighbouring apps, not meet it. Android only; iOS stays
-     on build 7 via TestFlight, so /iphone and /ios are untouched. Direct .apk artifact, so the
-     button one-tap downloads the file rather than bouncing through an Expo page. -->
+     BUILD 8 (Aug 27 2026) — THE CORRECT ANDROID BINARY. We briefly shipped build 9;
+     EX reverted it because build 9's ring filled ~71% of the tile and Android's adaptive
+     mask CLIPS anything past ~61%, so the glyph rendered bloated and cut. Build 8 sits at
+     the spec maximum and is correct. DO NOT "fix" the icon by making it bigger again —
+     no Android glyph can exceed ~61% of its tile. Apps that look bigger have BRIGHTER
+     tiles, not larger glyphs; the lever is tile colour, not scale.
+     iOS is unaffected and stays on build 7 via TestFlight, so /iphone and /ios are untouched.
+     Direct .apk artifact, so the button one-tap downloads rather than bouncing via Expo. -->
 <title>ProActivators — Android Beta</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,10 +42,10 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
 <body>
 <div class="card">
   <img src="/logo.png" alt="ProActivators" class="logo">
-  <div class="eyebrow">Android Beta &middot; Build 9</div>
+  <div class="eyebrow">Android Beta &middot; Build 8</div>
   <h1>GET THE <span class="blue">LATEST BUILD.</span></h1>
   <p>The newest version — tap below to install.</p>
-  <a href="https://expo.dev/artifacts/eas/-nTG46s2GuXiMA76vc6oh6IuJyIYoMLXQVlYZUm9nYk.apk" class="btn" download>Download for Android &darr;</a>
+  <a href="https://expo.dev/artifacts/eas/LaAdjOSgFx0S81F2HO9fPtpJH6FWljXhox8KYRQPHAU.apk" class="btn" download>Download for Android &darr;</a>
   <div class="steps">
     <div class="k">Install (30 seconds)</div>
     <ol>
