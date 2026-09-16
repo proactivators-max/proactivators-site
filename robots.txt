@@ -9,4 +9,8 @@ Disallow: /iphone/
 Disallow: /beta/
 Disallow: /workshop/live/thank-you/
 
+# Invitation-only (Gabriel sends the link by hand)
+Disallow: /podcast-guest/
+Disallow: /guest/
+
 Sitemap: https://proactivatorsclub.com/sitemap.xml
