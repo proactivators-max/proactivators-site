@@ -3,7 +3,7 @@
   RX YOUR LIFE — the CrossFit-wall poster for the Executive Mindset Workshop, plus the phone page its QR lands on.
   Movie-poster logic: studio mark → key art → title → tagline → release date → billing block. One swappable
   corner per gym (name + their own QR) so every scan is attributed to the wall it came from.
-  Mock only: the QR points at proactivatorsclub.com/rx (page not built yet); gym slot is a placeholder.
+  Evergreen: no date on the wall — the QR page carries the next session and the live seat count. Gym slot is a placeholder.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
@@ -77,6 +77,11 @@ body{min-height:100vh;background:var(--page)}
 .scr .k.gym b{color:var(--off)}
 .scr h2{font-family:var(--disp);font-size:52px;line-height:.9;letter-spacing:.02em;margin-top:8px}
 .scr h2 b{color:var(--blue);font-weight:400}
+.next{margin-top:12px;border:1px solid var(--line);border-left:3px solid var(--blue);padding:10px 14px;display:grid;gap:3px}
+.next span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-lt)}
+.next b{font-family:var(--disp);font-size:26px;letter-spacing:.03em;line-height:1;color:var(--off)}
+.next em{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-lt);margin-top:4px}
+.next em i{font-style:normal;color:var(--blue);font-weight:700}
 .scr .sub{font-size:14px;color:var(--steel-lt);line-height:1.5;margin-top:8px}
 .vid{margin-top:14px;aspect-ratio:9/12;border-radius:16px;background:url(ART_URI) center 20%/cover no-repeat;position:relative;overflow:hidden;border:1px solid var(--line)}
 .vid:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.75))}
@@ -119,8 +124,8 @@ body{min-height:100vh;background:var(--page)}
       <div class="rule"></div>
       <div class="date">
         <div class="k">The Executive Mindset Workshop &middot; Five hours &middot; Six pillars</div>
-        <div class="d">SATURDAY &middot; OCTOBER <span>24</span></div>
-        <div class="w">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</div>
+        <div class="d">ONE SATURDAY <span>A MONTH.</span></div>
+        <div class="w">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM &middot; 40 seats</div>
         <div class="p"><em>$197</em> &nbsp;&middot;&nbsp; LUNCH, SNACKS &amp; WORKBOOK INCLUDED</div>
       </div>
       <div class="billing">
@@ -131,7 +136,7 @@ body{min-height:100vh;background:var(--page)}
       <div class="foot">
         <div class="gym"><div class="slot">gym<br>logo</div><div class="t">Athletes of<b>[GYM NAME]</b></div></div>
         <div class="rated"><b>RX+</b>For those who do more<br>than prescribed.</div>
-        <div class="qr"><div class="t">Scan.<b>Reserve your seat.</b></div><div class="code" id="qr"></div></div>
+        <div class="qr"><div class="t">Scan for the next date.<b>Reserve your seat.</b></div><div class="code" id="qr"></div></div>
       </div>
     </div>
 
@@ -142,24 +147,26 @@ body{min-height:100vh;background:var(--page)}
           <div class="k">The Executive Mindset Workshop</div>
           <h2>RX YOUR <b>LIFE.</b></h2>
           <div class="k gym">You scanned the wall at <b>[Gym Name]</b></div>
+          <div class="next"><span>Next session</span><b>Saturday, October 24</b><span>FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</span><em>40 seats &middot; <i>27 left</i></em></div>
           <p class="sub">You already track every rep. This is the same discipline, pointed at the other five pillars. Five hours, one Saturday, and you leave with a scoreboard for your whole life.</p>
           <div class="vid"><div class="play"><i></i></div><div class="cap">Gabriel &middot; 45 seconds &middot; who this is for</div></div>
           <div class="agenda">
-            <div><span>10:00</span><div><b>The Drift</b><small>Why respectable people lose ground without noticing.</small></div></div>
-            <div><span>10:45</span><div><b>Your scoreboard</b><small>Score all six pillars. Find the one dragging the rest.</small></div></div>
+            <div><span>Hour 1</span><div><b>The Shift</b><small>The mindset shift. Three human superpowers you already have.</small></div></div>
+            <div><span>Hour 2</span><div><b>The Path</b><small>How every habit actually runs, and the four moves that change one.</small></div></div>
             <div><span>12:00</span><div><b>Lunch &amp; reset</b><small>Included. Real food, real conversation.</small></div></div>
-            <div><span>12:45</span><div><b>Rx each pillar</b><small>The law you set for each one. Written, not felt.</small></div></div>
-            <div><span>2:15</span><div><b>Your first block</b><small>Leave with the plan and the partner who checks it.</small></div></div>
+            <div><span>Hour 3</span><div><b>The Identity</b><small>The three P&rsquo;s. Who you decide to be before you decide what to do.</small></div></div>
+            <div><span>Hour 4</span><div><b>The Decision</b><small>Around the table, nobody skipped. What happens next.</small></div></div>
           </div>
-          <div class="inc"><span>Sat &middot; Oct 24</span><span>FIU &middot; Miami</span><span>Lunch + snacks</span><span>Workbook</span><span>Small room</span></div>
-          <div class="buy"><span>Reserve my seat</span><small>$197 &rarr;</small></div>
+          <div class="inc"><span>Lunch + snacks</span><span>Workbook</span><span>40 seats</span><span>Closes when full</span></div>
+          <div class="buy"><span>Reserve my seat</span><small>$197 &middot; 27 left &rarr;</small></div>
           <div class="fine">Secure checkout &middot; Seats limited &middot; Questions? proactivateyourlife@gmail.com</div>
         </div>
       </div>
       <div class="notes">
         <div class="note"><div class="k">Why it reads as a movie poster</div>The order is the genre&rsquo;s: studio mark &rarr; key art &rarr; title &rarr; tagline &rarr; release date &rarr; the billing block in condensed caps at the bottom, with the six pillars where the cast goes. The rating box is the wink: <b>Rated RX &mdash; for discipline. Not for drifters.</b></div>
         <div class="note"><div class="k">What changes per gym</div>Only the bottom-left corner and the QR. The link behind each QR is <b>proactivatorsclub.com/rx/&lt;gym&gt;</b>; the phone page greets them by gym, and every seat sold carries the gym&rsquo;s name into the CRM for the owner&rsquo;s cut.</div>
-        <div class="note"><div class="k">Still placeholders</div>The gym name and logo &middot; the FIU room &middot; the video (the frame is where it goes) &middot; whether a gym-only price shows on the phone page.</div>
+        <div class="note"><div class="k">Evergreen</div>No date on the wall. The page reads the next session and the seat count from one file and the CRM orders, so every poster on every wall is right on the day, and flips to the next month by itself.</div>
+        <div class="note"><div class="k">Still placeholders</div>The gym name and logo &middot; the FIU room &middot; the video (the frame is where it goes) &middot; the seat number shown here is an example.</div>
       </div>
     </div>
   </div>
