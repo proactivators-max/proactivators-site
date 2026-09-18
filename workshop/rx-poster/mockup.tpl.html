@@ -1,0 +1,166 @@
+<title>Rx Your Life</title>
+<!--
+  RX YOUR LIFE — the CrossFit-wall poster for the Executive Mindset Workshop, plus the phone page its QR lands on.
+  Movie-poster logic: studio mark → key art → title → tagline → release date → billing block. One swappable
+  corner per gym (name + their own QR) so every scan is attributed to the wall it came from.
+  Mock only: the QR points at proactivatorsclub.com/rx (page not built yet); gym slot is a placeholder.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--black:#050505;--deep:#0b0b0b;--blue:#3ab4f2;--off:#f0ebe0;--steel:#888;--steel-lt:#aaa;--line:rgba(255,255,255,.1);
+  --page:#10131a;--page-ink:#e8e4da;--page-muted:#8f98ad;--disp:'Bebas Neue','Arial Narrow',sans-serif;--body:'DM Sans',system-ui,sans-serif;--mono:'Space Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--page);color:var(--page-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;background:var(--page)}
+.wrap{max-width:1240px;margin:0 auto;padding:36px 28px 80px}
+.head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:28px}
+.head .k{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--page-muted)}
+.head h1{font-family:var(--disp);font-size:54px;line-height:.94;letter-spacing:.01em;margin-top:8px}
+.head p{font-size:15px;line-height:1.55;color:var(--page-muted);max-width:62ch;margin-top:10px}
+.head p b{color:var(--page-ink);font-weight:600}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:start}
+@media (max-width:1000px){.stage{grid-template-columns:1fr}.head{grid-template-columns:1fr}}
+
+/* ── THE POSTER · 2:3 (24×36) ── */
+.poster{width:min(680px,92vw);aspect-ratio:2/3;background:var(--black);color:var(--off);position:relative;overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);font-size:calc(min(680px,92vw)/680 * 16px)}
+.poster>*{position:absolute}
+.art{inset:0;background:url(ART_URI) center 28%/118% auto no-repeat;filter:saturate(.9) contrast(1.05)}
+.art:after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.35) 14%,rgba(5,5,5,0) 30%,rgba(5,5,5,0) 46%,rgba(5,5,5,.78) 62%,#050505 76%)}
+.grain{inset:0;opacity:.07;background-image:radial-gradient(rgba(255,255,255,.7) .6px,transparent .7px);background-size:3px 3px;mix-blend-mode:screen}
+.presents{top:5.2%;left:0;right:0;text-align:center;font-family:var(--mono);font-size:.68em;letter-spacing:.42em;text-transform:uppercase;color:var(--steel-lt)}
+.logo{top:7.6%;left:0;right:0;display:flex;justify-content:center}
+.logo img{width:52%;height:auto;display:block}
+.title{left:6%;right:6%;top:48.6%;text-align:center}
+.title .rx{font-family:var(--disp);font-size:8.6em;line-height:.86;letter-spacing:.02em;color:var(--off);text-shadow:0 10px 40px rgba(0,0,0,.6)}
+.title .rx b{color:var(--blue);font-weight:400}
+.title .rx small{display:block;font-size:.5em;letter-spacing:.04em;line-height:.9;margin-top:.06em}
+.tag{left:8%;right:8%;top:66.2%;text-align:center;font-family:var(--mono);font-size:.8em;letter-spacing:.2em;text-transform:uppercase;color:var(--off);line-height:1.6}
+.tag b{color:var(--blue);font-weight:700}
+.rule{left:22%;right:22%;top:70.7%;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent)}
+.date{left:6%;right:6%;top:71.4%;text-align:center}
+.date .d{font-family:var(--disp);font-size:3.3em;line-height:1;letter-spacing:.04em}
+.date .d span{color:var(--blue)}
+.date .w{font-family:var(--mono);font-size:.66em;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-lt);margin-top:.4em}
+.date .k{font-family:var(--mono);font-size:.62em;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.6em}
+.date .p{font-family:var(--disp);font-size:1.3em;letter-spacing:.06em;margin-top:.3em;color:var(--off)}
+.date .p em{font-style:normal;color:var(--blue)}
+.billing{left:5%;right:5%;bottom:10.9%;text-align:center;font-family:'Arial Narrow','Roboto Condensed',var(--body);font-stretch:condensed;font-size:.56em;line-height:1.35;letter-spacing:.02em;text-transform:uppercase;color:var(--steel)}
+.billing b{color:var(--steel-lt);font-weight:600}
+.billing .cast{font-size:1.25em;letter-spacing:.16em;color:var(--off);display:block;margin-bottom:.45em}
+.billing .cast i{font-style:normal;color:var(--blue);margin:0 .35em}
+.foot{left:5%;right:5%;bottom:2.2%;height:6.8%;display:flex;justify-content:space-between;align-items:flex-end}
+.gym{display:flex;align-items:center;gap:.7em}
+.gym .slot{width:3.2em;height:3.2em;border:1px dashed rgba(255,255,255,.35);display:grid;place-items:center;font-family:var(--mono);font-size:.46em;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);text-align:center;line-height:1.3;padding:.3em}
+.gym .t{font-family:var(--mono);font-size:.62em;letter-spacing:.2em;text-transform:uppercase;color:var(--steel-lt);line-height:1.6}
+.gym .t b{color:var(--off);font-weight:700;display:block;font-size:1.05em}
+.rated{border:1.5px solid var(--off);padding:.35em .6em;font-family:'Arial Narrow','Roboto Condensed',var(--body);font-stretch:condensed;font-size:.62em;letter-spacing:.06em;text-transform:uppercase;line-height:1.25;color:var(--off);align-self:center}
+.rated b{font-family:var(--disp);font-size:2.2em;display:block;line-height:.9;letter-spacing:.04em}
+.qr{display:flex;align-items:center;gap:.8em}
+.qr .code{width:5.1em;height:5.1em;background:#fff;padding:.32em;display:block}
+.qr .code canvas,.qr .code img,.qr .code table{width:100%!important;height:100%!important;display:block}
+.qr .t{font-family:var(--mono);font-size:.62em;letter-spacing:.18em;text-transform:uppercase;color:var(--off);line-height:1.6;text-align:right}
+.qr .t b{color:var(--blue);font-weight:700;display:block}
+
+/* ── the phone it lands on ── */
+.side{display:grid;gap:18px}
+.phone{width:390px;max-width:100%;background:var(--black);border-radius:44px;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.6);padding:12px 0 22px;overflow:hidden;color:var(--off)}
+.phone .notch{width:120px;height:32px;background:#000;border-radius:0 0 20px 20px;margin:0 auto 6px}
+.scr{padding:0 20px}
+.scr .k{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);margin-top:6px}
+.scr .k.gym{color:var(--steel-lt);margin-top:10px}
+.scr .k.gym b{color:var(--off)}
+.scr h2{font-family:var(--disp);font-size:52px;line-height:.9;letter-spacing:.02em;margin-top:8px}
+.scr h2 b{color:var(--blue);font-weight:400}
+.scr .sub{font-size:14px;color:var(--steel-lt);line-height:1.5;margin-top:8px}
+.vid{margin-top:14px;aspect-ratio:9/12;border-radius:16px;background:url(ART_URI) center 20%/cover no-repeat;position:relative;overflow:hidden;border:1px solid var(--line)}
+.vid:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.75))}
+.vid .play{position:absolute;left:50%;top:50%;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.7);transform:translate(-50%,-50%);display:grid;place-items:center;z-index:1;backdrop-filter:blur(6px)}
+.vid .play i{width:0;height:0;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.vid .cap{position:absolute;left:14px;right:14px;bottom:12px;z-index:1;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--off)}
+.agenda{margin-top:16px;display:grid;gap:0}
+.agenda div{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px;align-items:baseline}
+.agenda div span{font-family:var(--mono);font-size:10.5px;color:var(--blue);letter-spacing:.06em}
+.agenda div b{font-weight:600;color:var(--off)}
+.agenda div small{color:var(--steel-lt);display:block;font-size:12.5px}
+.inc{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.inc span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:6px 9px;color:var(--steel-lt)}
+.buy{margin-top:16px;background:var(--blue);color:var(--black);font-family:var(--disp);font-size:24px;letter-spacing:.04em;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:12px}
+.buy small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;font-weight:700}
+.fine{margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);text-align:center;line-height:1.7}
+.notes{display:grid;gap:12px}
+.note{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5}
+.note .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--page-muted);margin-bottom:6px}
+.note b{font-weight:600}
+</style>
+
+<div class="wrap">
+  <div class="head">
+    <div>
+      <div class="k">Executive Mindset Workshop &middot; the CrossFit wall</div>
+      <h1>Rx Your Life</h1>
+      <p><b>Left, the poster. Right, the phone page the QR opens.</b> One design for every gym: the bottom-left corner is the only thing that changes &mdash; the gym&rsquo;s name and their own QR, so every scan is credited to the wall it came from. October 24, FIU, $197, lunch &middot; snacks &middot; workbook. Placeholders: the gym slot, the room name, and your 45-second video.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="poster" id="poster">
+      <div class="art"></div>
+      <div class="grain"></div>
+      <div class="presents">ProActivators presents</div>
+      <div class="logo"><img src="LOGO_URI" alt="ProActivators"></div>
+      <div class="title"><div class="rx">RX<br><small>YOUR <b>LIFE.</b></small></div></div>
+      <div class="tag">You track every rep.<br><b>Time to track the other five pillars.</b></div>
+      <div class="rule"></div>
+      <div class="date">
+        <div class="k">The Executive Mindset Workshop &middot; Five hours &middot; Six pillars</div>
+        <div class="d">SATURDAY &middot; OCTOBER <span>24</span></div>
+        <div class="w">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</div>
+        <div class="p"><em>$197</em> &nbsp;&middot;&nbsp; LUNCH, SNACKS &amp; WORKBOOK INCLUDED</div>
+      </div>
+      <div class="billing">
+        <span class="cast">FAITH<i>&middot;</i>FAMILY<i>&middot;</i>FITNESS<i>&middot;</i>FINANCES<i>&middot;</i>FOCUS<i>&middot;</i>FULFILLMENT</span>
+        ProActivators presents a workshop by <b>Gabriel Golindano</b>, author of <b>Unleash The ProActivator</b> &nbsp;&middot;&nbsp; based on the six-pillar framework &nbsp;&middot;&nbsp; you leave with a scoreboard for every pillar of your life &nbsp;&middot;&nbsp; small room by design &middot; seats limited &nbsp;&middot;&nbsp; proactivatorsclub.com/rx
+      </div>
+      <div class="foot">
+        <div class="gym"><div class="slot">gym<br>logo</div><div class="t">Athletes of<b>[GYM NAME]</b></div></div>
+        <div class="rated"><b>RX</b>Rated for discipline.<br>Not for drifters.</div>
+        <div class="qr"><div class="t">Scan.<b>Reserve your seat.</b></div><div class="code" id="qr"></div></div>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="scr">
+          <div class="k">The Executive Mindset Workshop</div>
+          <h2>RX YOUR <b>LIFE.</b></h2>
+          <div class="k gym">You scanned the wall at <b>[Gym Name]</b></div>
+          <p class="sub">You already track every rep. This is the same discipline, pointed at the other five pillars. Five hours, one Saturday, and you leave with a scoreboard for your whole life.</p>
+          <div class="vid"><div class="play"><i></i></div><div class="cap">Gabriel &middot; 45 seconds &middot; who this is for</div></div>
+          <div class="agenda">
+            <div><span>10:00</span><div><b>The Drift</b><small>Why respectable people lose ground without noticing.</small></div></div>
+            <div><span>10:45</span><div><b>Your scoreboard</b><small>Score all six pillars. Find the one dragging the rest.</small></div></div>
+            <div><span>12:00</span><div><b>Lunch &amp; reset</b><small>Included. Real food, real conversation.</small></div></div>
+            <div><span>12:45</span><div><b>Rx each pillar</b><small>The law you set for each one. Written, not felt.</small></div></div>
+            <div><span>2:15</span><div><b>Your first block</b><small>Leave with the plan and the partner who checks it.</small></div></div>
+          </div>
+          <div class="inc"><span>Sat &middot; Oct 24</span><span>FIU &middot; Miami</span><span>Lunch + snacks</span><span>Workbook</span><span>Small room</span></div>
+          <div class="buy"><span>Reserve my seat</span><small>$197 &rarr;</small></div>
+          <div class="fine">Secure checkout &middot; Seats limited &middot; Questions? proactivateyourlife@gmail.com</div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="note"><div class="k">Why it reads as a movie poster</div>The order is the genre&rsquo;s: studio mark &rarr; key art &rarr; title &rarr; tagline &rarr; release date &rarr; the billing block in condensed caps at the bottom, with the six pillars where the cast goes. The rating box is the wink: <b>Rated RX &mdash; for discipline. Not for drifters.</b></div>
+        <div class="note"><div class="k">What changes per gym</div>Only the bottom-left corner and the QR. The link behind each QR is <b>proactivatorsclub.com/rx/&lt;gym&gt;</b>; the phone page greets them by gym, and every seat sold carries the gym&rsquo;s name into the CRM for the owner&rsquo;s cut.</div>
+        <div class="note"><div class="k">Still placeholders</div>The gym name and logo &middot; the FIU room &middot; the video (the frame is where it goes) &middot; whether a gym-only price shows on the phone page.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+new QRCode(document.getElementById('qr'),{text:'https://proactivatorsclub.com/rx',width:512,height:512,correctLevel:QRCode.CorrectLevel.M,colorDark:'#050505',colorLight:'#ffffff'});
+</script>
