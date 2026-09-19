@@ -1,0 +1,11 @@
+{
+  "_": "Rx Your Life — the one place the next workshop date lives. The wall poster has no date; /rx reads this. Add the next session to `upcoming` before the current one passes; the page picks the first date >= today.",
+  "seats": 40,
+  "price": 197,
+  "checkout": "https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4",
+  "manualSold": 0,
+  "video": null,
+  "upcoming": [
+    { "date": "2026-10-24", "label": "Saturday, October 24", "time": "10 AM – 3 PM", "venue": "FIU · Miami", "room": "", "seats": 40, "salesOpen": "2026-09-19" }
+  ]
+}

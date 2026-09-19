@@ -1,0 +1,7 @@
+# rx-seats — live "seats left" for the Rx Your Life workshop page.
+# Reads /rx/session.json from the site, counts paid GHL orders for the workshop products, returns JSON.
+# Secret: GHL_TOKEN (Private Integration token for the CRM sub-account) — `wrangler secret put GHL_TOKEN`.
+name = "rx-seats"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = true

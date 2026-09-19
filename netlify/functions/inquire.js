@@ -17,7 +17,21 @@ const TYPE_TAGS = {
   'workshop-rsvp': 'workshop_rsvp',
   'workshop-exit': 'workshop_exit_survey',
   'workshop-intake': 'workshop_intake',
+  'rx-workshop': 'rx_workshop',          // /rx — the CrossFit-wall funnel; step 1 before the GHL checkout
+  'rx-waitlist': 'rx_waitlist',          // /rx when the session is sold out or has no date yet
 };
+
+// /rx attribution: the wall (gym:<slug>) or the ad (src:<slug>) the person came from. Whitelisted
+// shape only — these become GHL tags, and the owner's cut is counted off gym:<slug>.
+function attributionTags(fields) {
+  const out = [];
+  if (!fields || typeof fields !== 'object') return out;
+  for (const k of ['gym', 'src']) {
+    const v = String(fields[k] || '').toLowerCase();
+    if (/^[a-z0-9-]{2,40}$/.test(v)) out.push(k + ':' + v);
+  }
+  return out;
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -86,7 +100,7 @@ exports.handler = async (event) => {
     name: (name || '').trim(),
     email: email.trim(),
     source: 'website form',
-    tags: ['website', TYPE_TAGS[type]],
+    tags: ['website', TYPE_TAGS[type], ...attributionTags(fields)],
   };
   const phoneNorm = normalizePhone(phone);
   if (phoneNorm) ghlBody.phone = phoneNorm;
@@ -128,7 +142,7 @@ exports.handler = async (event) => {
     const contactId = data.contact?.id || data.id;
     if (contactId) {
       const noteLines = [
-        `${type === 'workshop-exit' ? 'WORKSHOP EXIT SURVEY' : type === 'workshop-intake' ? 'WORKSHOP INTAKE (STEP 2)' : type === 'workshop-rsvp' ? 'WORKSHOP RSVP' : 'B2B INQUIRY'} — ${TYPE_TAGS[type].toUpperCase()}`,
+        `${type === 'workshop-exit' ? 'WORKSHOP EXIT SURVEY' : type === 'workshop-intake' ? 'WORKSHOP INTAKE (STEP 2)' : type === 'workshop-rsvp' ? 'WORKSHOP RSVP' : type === 'rx-workshop' ? 'RX YOUR LIFE — RESERVATION (step 1, before checkout)' : type === 'rx-waitlist' ? 'RX YOUR LIFE — WAITLIST' : 'B2B INQUIRY'} — ${TYPE_TAGS[type].toUpperCase()}`,
         `Name: ${(name || '').trim()}`,
         `Email: ${email.trim()}`,
       ];

@@ -1,0 +1,4 @@
+{
+  "_": "One entry per gym wall. The poster's QR points at /rx/<slug>; the page greets by name and tags every reservation gym:<slug>. Run `node rx/build.js` after adding one.",
+  "crossfit-mia": { "name": "CrossFit MIA", "city": "Miami" }
+}

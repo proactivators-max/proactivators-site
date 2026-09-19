@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rx Your Life — The Executive Mindset Workshop</title>
+<meta name="description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU — five hours, six pillars, forty seats. Reserve yours.">
+<meta property="og:title" content="Rx Your Life — The Executive Mindset Workshop">
+<meta property="og:description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU. Reserve your seat.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">
+<meta property="og:url" content="https://proactivatorsclub.com/rx/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="ProActivators">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://proactivatorsclub.com/rx/">
+<!--
+  RX YOUR LIFE — the page every wall poster's QR opens. One file, many walls:
+    /rx/                  the plain door (ads land here with ?src=ad)
+    /rx/<gym>/            an identical copy per gym (rx/build.js) — the path IS the attribution
+  Data: /rx/session.json (next date, seats, checkout) · rx-seats worker (live count from GHL orders)
+  Flow: Reserve → name/email/phone (tags rx_workshop + gym:<slug>) → GHL checkout ($197, Stripe underneath) → /rx/thanks/
+  Rule: never fake a number. No count → "40 seats", not an invented "27 left".
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;--off:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--blue-border:rgba(58,180,242,.22);--line:rgba(255,255,255,.08);
+  --disp:'Bebas Neue','Arial Narrow',sans-serif;--body:'DM Sans',system-ui,sans-serif;--mono:'Space Mono',monospace}
+html{background:var(--black)}
+body{font-family:var(--body);background:var(--black);color:var(--off);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35}
+a{color:var(--blue)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:22px 20px 60px}
+@media (min-width:900px){.wrap{max-width:520px}}
+
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.top img{height:24px;display:block}
+.top .cred{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);text-align:right;line-height:1.5;max-width:52%}
+.top .cred b{color:var(--steel-lt);font-weight:400;display:block;white-space:nowrap}
+
+.k{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);font-weight:700}
+h1{font-family:var(--disp);font-size:clamp(56px,16vw,76px);line-height:.88;letter-spacing:.02em;margin-top:8px}
+h1 b{color:var(--blue);font-weight:400}
+.gym{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-lt);margin-top:12px;display:none}
+.gym b{color:var(--off)}
+.gym.on{display:block}
+
+.next{margin-top:16px;border:1px solid var(--line);border-left:3px solid var(--blue);background:rgba(255,255,255,.02);padding:12px 16px;display:grid;gap:4px}
+.next .k{color:var(--steel-lt);font-weight:400;letter-spacing:.18em}
+.next .d{font-family:var(--disp);font-size:30px;letter-spacing:.03em;line-height:1;color:var(--off)}
+.next .w{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-lt)}
+.next .s{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-lt);margin-top:4px}
+.next .s i{font-style:normal;color:var(--blue);font-weight:700}
+.next .s.out i{color:var(--off)}
+
+.sub{font-size:15px;color:var(--steel-lt);line-height:1.55;margin-top:14px}
+.sub em{font-style:normal;color:var(--off);font-weight:500}
+
+.hero{margin-top:16px;aspect-ratio:4/5;border:1px solid var(--line);position:relative;overflow:hidden;background:#000}
+.hero img,.hero video{width:100%;height:100%;object-fit:cover;display:block}
+.hero img{object-position:50% 25%}
+.hero .cap{position:absolute;left:14px;right:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--off);text-shadow:0 2px 10px rgba(0,0,0,.8)}
+
+.sec{margin-top:26px}
+.sec .k{display:block;margin-bottom:8px}
+.agenda{display:grid}
+.agenda .row{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.agenda .row:last-child{border-bottom:1px solid var(--line)}
+.agenda span{font-family:var(--mono);font-size:10.5px;color:var(--blue);letter-spacing:.06em}
+.agenda b{font-family:var(--disp);font-size:22px;letter-spacing:.03em;font-weight:400;color:var(--off);line-height:1}
+.agenda small{color:var(--steel-lt);display:block;font-size:13px;margin-top:3px;line-height:1.45}
+.inc{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.inc span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:6px 9px;color:var(--steel-lt)}
+.pillars{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pillars span{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--off);background:rgba(240,235,224,.04);padding:6px 9px;border:1px solid var(--line)}
+
+.buy{margin-top:22px;width:100%;background:var(--blue);color:var(--black);font-family:var(--disp);font-size:24px;letter-spacing:.04em;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;transition:background .15s}
+.buy:hover{background:#fff}
+.buy small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;font-weight:700}
+.buy.out{background:var(--surface2);color:var(--off);border:1px solid var(--line)}
+.fine{margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);text-align:center;line-height:1.7}
+.fine a{color:var(--steel-lt);text-decoration:none}
+
+/* step 1 of 2 — the details before the checkout */
+.form{margin-top:16px;border:1px solid var(--blue-border);background:var(--surface);padding:18px 16px;display:none}
+.form.on{display:block}
+.form .h{font-family:var(--disp);font-size:24px;letter-spacing:.03em;line-height:1}
+.form .h small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.form p{font-size:13px;color:var(--steel-lt);margin-top:6px;line-height:1.5}
+.field{display:flex;flex-direction:column;margin-top:12px}
+.field label{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel-lt);margin-bottom:5px}
+.field input{font-family:var(--body);font-size:16px;padding:12px 13px;background:var(--black);border:1px solid var(--line);color:var(--off);border-radius:2px}
+.field input:focus{outline:0;border-color:var(--blue)}
+.field input.err{border-color:#991f1f}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.form .go{margin-top:14px;width:100%;background:var(--blue);color:var(--black);font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:14px;border-radius:2px}
+.form .go:disabled{opacity:.55}
+.form .note{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-top:8px;text-align:center;line-height:1.6}
+.msg{display:none;margin-top:10px;font-size:13px;color:var(--off);line-height:1.5;border:1px solid rgba(58,180,242,.35);background:var(--blue-dim);padding:10px 12px}
+.msg.on{display:block}
+
+.closing{margin-top:34px;text-align:center}
+.closing .big{font-family:var(--disp);font-size:clamp(26px,8vw,36px);letter-spacing:.03em;line-height:1;color:var(--off)}
+.closing .big span{display:block;color:var(--blue)}
+.closing .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);margin-top:10px}
+footer{margin-top:34px;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--steel);line-height:1.8}
+footer a{color:var(--steel);text-decoration:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="https://proactivatorsclub.com"><img src="/logo.png" alt="ProActivators"></a>
+    <div class="cred">From the author of<b>Unleash The ProActivator</b></div>
+  </div>
+
+  <div class="k">The Executive Mindset Workshop</div>
+  <h1>RX YOUR <b>LIFE.</b></h1>
+  <div class="gym" id="gym">You scanned the wall at <b id="gymName"></b></div>
+
+  <div class="next" id="next">
+    <div class="k">Next session</div>
+    <div class="d" id="nDate">One Saturday a month</div>
+    <div class="w" id="nWhere">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</div>
+    <div class="s" id="nSeats">40 seats</div>
+  </div>
+
+  <p class="sub">You already track every rep. This is the same discipline, pointed at the other five pillars. <em>Five hours, one Saturday, and you leave with a scoreboard for your whole life.</em></p>
+
+  <div class="hero" id="hero">
+    <img src="/rx/key-art.jpg" alt="" id="heroImg">
+    <div class="cap" id="heroCap">Rx &middot; as prescribed. Not the scaled version.</div>
+  </div>
+
+  <div class="sec">
+    <span class="k">The five hours</span>
+    <div class="agenda">
+      <div class="row"><span>Hour 1</span><div><b>The Shift</b><small>The mindset shift. Three human superpowers you already have.</small></div></div>
+      <div class="row"><span>Hour 2</span><div><b>The Path</b><small>How every habit actually runs, and the four moves that change one.</small></div></div>
+      <div class="row"><span>12:00</span><div><b>Lunch &amp; reset</b><small>Included. Real food, real conversation.</small></div></div>
+      <div class="row"><span>Hour 3</span><div><b>The Identity</b><small>The three P&rsquo;s. Who you decide to be before you decide what to do.</small></div></div>
+      <div class="row"><span>Hour 4</span><div><b>The Decision</b><small>Around the table, nobody skipped. What happens next.</small></div></div>
+    </div>
+    <div class="inc"><span>Lunch + snacks</span><span>Workbook</span><span>40 seats</span><span>Closes when full</span></div>
+    <div class="pillars"><span>Faith</span><span>Family</span><span>Fitness</span><span>Finances</span><span>Focus</span><span>Fulfillment</span></div>
+  </div>
+
+  <button class="buy" id="buy" onclick="openForm()"><span id="buyL">Reserve my seat</span><small id="buyR">$197 &rarr;</small></button>
+  <div class="fine" id="fine">Secure checkout &middot; Seats limited &middot; <a href="mailto:proactivateyourlife@gmail.com">Questions?</a></div>
+
+  <form class="form" id="form" onsubmit="return reserve(event)" novalidate>
+    <div class="h"><small id="fStep">Step 1 of 2</small><span id="fTitle">Who&rsquo;s coming?</span></div>
+    <p id="fSub">Your details, then the secure checkout. Thirty seconds.</p>
+    <input class="hp" type="text" name="hp" id="hp" tabindex="-1" autocomplete="off">
+    <div class="field"><label for="name">Name</label><input type="text" id="name" autocomplete="name" placeholder="First and last"></div>
+    <div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" placeholder="you@email.com"></div>
+    <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" autocomplete="tel" placeholder="(305) 555-0100"></div>
+    <button class="go" id="go" type="submit">Continue to checkout &rarr;</button>
+    <div class="msg" id="msg"></div>
+    <div class="note" id="fNote">Next: secure card checkout &middot; $197</div>
+  </form>
+
+  <div class="closing">
+    <div class="big">A light doesn&rsquo;t make noise.<span>It just shines. Come shine.</span></div>
+    <div class="who">Gabriel Golindano &middot; Author, Unleash The ProActivator</div>
+  </div>
+
+  <footer><a href="https://proactivatorsclub.com">proactivatorsclub.com</a> &middot; Terminate. Activate. Lead.<br>&copy; 2026 ProActivators &mdash; We don&rsquo;t drift. We decide.</footer>
+</div>
+
+<script>
+var SEATS_API='https://rx-seats.floridautilities.workers.dev/';
+var INQUIRE='https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
+var S=null, SESSION=null, GYMS={}, gym='', src='', mode='buy';   // mode: buy | waitlist
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function store(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function recall(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
+
+// ── where did they come from: the path is the wall, ?src is the ad ──
+(function(){
+  var m=location.pathname.match(/^\/rx\/([a-z0-9-]{2,40})\/?$/);
+  var q=new URLSearchParams(location.search);
+  gym=(m&&m[1])||q.get('gym')||recall('rx_gym')||'';
+  src=q.get('src')||recall('rx_src')||'';
+  if(gym) store('rx_gym',gym); if(src) store('rx_src',src);
+})();
+
+async function boot(){
+  try{ GYMS=await (await fetch('/rx/gyms.json',{cache:'no-store'})).json(); }catch(e){}
+  if(gym&&GYMS[gym]){ $('gymName').textContent=GYMS[gym].name; $('gym').classList.add('on'); }
+  try{ S=await (await fetch('/rx/session.json',{cache:'no-store'})).json(); }catch(e){ S=null; }
+  var today=new Date().toISOString().slice(0,10);
+  SESSION=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]||null;
+  if(S&&S.price){ $('buyR').innerHTML='$'+S.price+' &rarr;'; $('fNote').textContent='Next: secure card checkout · $'+S.price; }
+  if(S&&S.video){ var h=$('hero'); h.innerHTML='<video controls playsinline preload="metadata" poster="/rx/key-art.jpg"><source src="'+esc(S.video)+'" type="video/mp4"></video><div class="cap">Gabriel &middot; 45 seconds &middot; who this is for</div>'; }
+  renderSession(null);
+  try{ var r=await (await fetch(SEATS_API,{cache:'no-store'})).json(); renderSession(r); }catch(e){ renderSession(null); }
+}
+function renderSession(r){
+  var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
+  if(!SESSION){
+    $('nDate').textContent='Next date coming';
+    $('nWhere').innerHTML='FIU &middot; Miami &middot; One Saturday a month';
+    $('nSeats').textContent=seats+' seats';
+    mode='waitlist'; $('buyL').textContent='Tell me the next date'; $('buyR').innerHTML='Free &rarr;';
+    $('fTitle').textContent='Be first to know.'; $('fSub').textContent='The next date is being set. Leave your details and you hear before the wall does.'; $('go').innerHTML='Put me on the list &rarr;'; $('fNote').textContent='No spam · just the next date'; $('fStep').textContent='One step';
+    return;
+  }
+  $('nDate').textContent=SESSION.label;
+  $('nWhere').innerHTML=esc(SESSION.venue)+(SESSION.room?' &middot; '+esc(SESSION.room):'')+' &middot; '+esc(SESSION.time);
+  var el=$('nSeats');
+  if(r&&typeof r.left==='number'){
+    if(r.soldOut){ el.className='s out'; el.innerHTML=seats+' seats &middot; <i>Sold out</i>'; setSoldOut(); }
+    else { el.className='s'; el.innerHTML=seats+' seats &middot; <i>'+r.left+' left</i>'; $('buyR').innerHTML='$'+((S&&S.price)||197)+' &middot; '+r.left+' left &rarr;'; }
+  } else { el.className='s'; el.textContent=seats+' seats'; }
+}
+function setSoldOut(){
+  mode='waitlist'; var b=$('buy'); b.classList.add('out'); $('buyL').textContent='Sold out — join the waitlist'; $('buyR').innerHTML='Free &rarr;';
+  $('fTitle').textContent='Waitlist.'; $('fSub').textContent='This one is full. Leave your details — a seat opens, or the next date drops, and you hear first.'; $('go').innerHTML='Put me on the list &rarr;'; $('fNote').textContent='No spam · a seat or the next date'; $('fStep').textContent='One step';
+}
+function openForm(){ var f=$('form'); f.classList.add('on'); $('buy').style.display='none'; $('fine').style.display='none'; setTimeout(function(){ $('name').focus(); f.scrollIntoView({behavior:'smooth',block:'start'}); },30); }
+function bad(id){ $(id).classList.add('err'); setTimeout(function(){$(id).classList.remove('err');},1400); }
+function say(html){ var m=$('msg'); m.innerHTML=html; m.classList.add('on'); }
+
+async function reserve(ev){
+  ev.preventDefault();
+  var name=$('name').value.trim(), email=$('email').value.trim(), phone=$('phone').value.trim(), ok=true;
+  if(name.length<2){bad('name');ok=false;} if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){bad('email');ok=false;} if(phone.replace(/\D/g,'').length<10){bad('phone');ok=false;}
+  if(!ok) return false;
+  var go=$('go'); go.disabled=true; go.textContent=mode==='buy'?'One second…':'Saving…';
+  var payload={type:mode==='buy'?'rx-workshop':'rx-waitlist',name:name,email:email,phone:phone,hp:$('hp').value,
+    fields:{gym:gym||'',src:src||'',session:SESSION?SESSION.date:'none',page:location.pathname}};
+  try{ await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); }catch(e){ /* never block the sale on the CRM */ }
+  if(mode!=='buy'){ say('<b>You’re on the list.</b> The next date comes to you first.'); go.textContent='Done'; return false; }
+  var parts=name.split(/\s+/), u=new URL((S&&S.checkout)||'https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4');
+  u.searchParams.set('first_name',parts[0]||''); u.searchParams.set('last_name',parts.slice(1).join(' ')); u.searchParams.set('email',email); u.searchParams.set('phone',phone);
+  u.searchParams.set('utm_source',gym?'gym':(src||'rx')); u.searchParams.set('utm_medium',gym?'poster':'link'); u.searchParams.set('utm_campaign','rx-your-life'); if(gym) u.searchParams.set('utm_content',gym);
+  store('rx_pending',JSON.stringify({name:name,email:email,gym:gym,src:src,session:SESSION?SESSION.date:'',t:Date.now()}));
+  location.href=u.toString();
+  return false;
+}
+boot();
+</script>
+</body>
+</html>

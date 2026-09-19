@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In — Rx Your Life</title>
+<meta name="robots" content="noindex">
+<!-- After the GHL checkout. Set the payment link's after-payment redirect to https://proactivatorsclub.com/rx/thanks/ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--surface:#141414;--surface2:#1c1c1c;--off:#f0ebe0;--steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--line:rgba(255,255,255,.08);
+  --disp:'Bebas Neue','Arial Narrow',sans-serif;--body:'DM Sans',system-ui,sans-serif;--mono:'Space Mono',monospace}
+html{background:var(--black)}
+body{font-family:var(--body);background:var(--black);color:var(--off);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35}
+a{color:var(--blue);text-decoration:none}
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:22px 20px 60px}
+.top img{height:24px;display:block}
+.k{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-top:26px}
+h1{font-family:var(--disp);font-size:clamp(56px,16vw,76px);line-height:.88;letter-spacing:.02em;margin-top:8px}
+h1 b{color:var(--blue);font-weight:400}
+.lead{font-size:15px;color:var(--steel-lt);line-height:1.55;margin-top:14px}
+.lead em{font-style:normal;color:var(--off);font-weight:500}
+.next{margin-top:18px;border:1px solid var(--line);border-left:3px solid var(--blue);background:rgba(255,255,255,.02);padding:12px 16px;display:grid;gap:4px}
+.next .k{margin:0;color:var(--steel-lt);font-weight:400;letter-spacing:.18em}
+.next .d{font-family:var(--disp);font-size:30px;letter-spacing:.03em;line-height:1}
+.next .w{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-lt)}
+.cal{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cal a{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;text-align:center;padding:12px;border:1px solid var(--blue);color:var(--blue);border-radius:2px}
+.cal a:hover{background:var(--blue);color:var(--black)}
+.doors{margin-top:28px;display:grid;gap:8px}
+.door{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;border:1px solid var(--line);background:var(--surface);padding:14px 16px;border-radius:2px;color:var(--off);transition:border-color .15s}
+.door:hover{border-color:rgba(58,180,242,.4)}
+.door b{font-family:var(--disp);font-size:22px;letter-spacing:.03em;font-weight:400;line-height:1;display:block}
+.door small{color:var(--steel-lt);font-size:12.5px;display:block;margin-top:3px}
+.door i{font-style:normal;color:var(--blue);font-family:var(--mono);font-size:14px}
+.prep{margin-top:26px;font-size:14px;color:var(--steel-lt);line-height:1.55;border-top:1px solid var(--line);padding-top:16px}
+.prep b{color:var(--off);font-weight:500}
+footer{margin-top:34px;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--steel);line-height:1.8}
+footer a{color:var(--steel)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="https://proactivatorsclub.com"><img src="/logo.png" alt="ProActivators"></a></div>
+  <div class="k">The Executive Mindset Workshop</div>
+  <h1>YOU&rsquo;RE <b>IN.</b></h1>
+  <p class="lead">Seat reserved. Your receipt is in your inbox. <em>You just did the thing most people only talk about.</em> Now put it where you&rsquo;ll see it.</p>
+
+  <div class="next">
+    <div class="k">Your session</div>
+    <div class="d" id="nDate">Saturday</div>
+    <div class="w" id="nWhere">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</div>
+  </div>
+  <div class="cal" id="cal"></div>
+
+  <div class="doors">
+    <a class="door" href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener"><div><b>Read the book first</b><small>Unleash The ProActivator &mdash; the doctrine the day is built on. $14.99 on Amazon.</small></div><i>&rarr;</i></a>
+    <a class="door" href="https://www.buzzsprout.com/2508502" target="_blank" rel="noopener"><div><b>The podcast</b><small>Mental Meat, not Mental Candy. Start with Chief Freddy Fernandez.</small></div><i>&rarr;</i></a>
+    <a class="door" href="https://proactivatorsclub.com/beta/"><div><b>The app</b><small>Six pillars, one scoreboard. Bring it to the workshop &mdash; we use it.</small></div><i>&rarr;</i></a>
+    <a class="door" href="https://proactivatorsclub.com/#join"><div><b>Weekly dispatches</b><small>No spam. No fluff. Only what builds you.</small></div><i>&rarr;</i></a>
+  </div>
+
+  <p class="prep"><b>What to bring:</b> nothing. Lunch, snacks and the workbook are on us. <b>What to expect a few days before:</b> a text from Gabriel with the room and where to park.</p>
+  <footer><a href="https://proactivatorsclub.com">proactivatorsclub.com</a> &middot; Terminate. Activate. Lead.</footer>
+</div>
+<script>
+(async function(){
+  var S=null; try{ S=await (await fetch('/rx/session.json',{cache:'no-store'})).json(); }catch(e){}
+  var today=new Date().toISOString().slice(0,10);
+  var s=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]; if(!s) return;
+  document.getElementById('nDate').textContent=s.label;
+  document.getElementById('nWhere').textContent=s.venue+(s.room?' · '+s.room:'')+' · '+s.time;
+  // calendar: 10:00–15:00 local (America/New_York)
+  var d=s.date.replace(/-/g,''), start=d+'T100000', end=d+'T150000';
+  var title='The Executive Mindset Workshop — Rx Your Life', loc=s.venue+(s.room?', '+s.room:'');
+  var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+start+'/'+end+'&ctz=America/New_York&location='+encodeURIComponent(loc)+'&details='+encodeURIComponent('Five hours, six pillars. Lunch, snacks and workbook included. proactivatorsclub.com/rx');
+  var ics='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//ProActivators//Rx//EN\r\nBEGIN:VEVENT\r\nUID:rx-'+s.date+'@proactivatorsclub.com\r\nDTSTART;TZID=America/New_York:'+start+'\r\nDTEND;TZID=America/New_York:'+end+'\r\nSUMMARY:'+title+'\r\nLOCATION:'+loc+'\r\nDESCRIPTION:Five hours\\, six pillars. Lunch\\, snacks and workbook included.\r\nEND:VEVENT\r\nEND:VCALENDAR';
+  document.getElementById('cal').innerHTML='<a href="'+g+'" target="_blank" rel="noopener">Google Calendar</a><a href="data:text/calendar;charset=utf-8,'+encodeURIComponent(ics)+'" download="rx-your-life.ics">Apple / Outlook</a>';
+  try{ localStorage.removeItem('rx_pending'); }catch(e){}
+})();
+</script>
+</body>
+</html>
