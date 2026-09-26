@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Start Here — ProActivators</title>
+<meta name="description" content="Drifting or thriving? The app, the podcast, the book, the workshop, the Boardroom. One tap each. A movement for those who refuse to drift.">
+<meta property="og:title" content="Start Here — ProActivators">
+<meta property="og:description" content="Drifting or thriving? The app, the podcast, the book, the workshop, the Boardroom. One tap each.">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">
+<meta property="og:url" content="https://proactivatorsclub.com/start/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="ProActivators">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start Here — ProActivators">
+<meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="canonical" href="https://proactivatorsclub.com/start/">
+<!--
+  START HERE — the link-in-bio hub. One link in every bio and every clip caption (Cast, Sep 26).
+  Mobile-first: bio traffic is ~100% phone. Built as the Rx one-sheet, alive — art, title, then the
+  cards arrive like credits. Grouped by commitment, not by type: the app is the only lit object.
+  Tracking: every destination carries src=start&btn=<slug> (ours) or utm_* (Amazon/Buzzsprout/YouTube),
+  so Cast can see which of the eight converts. Newsletter signs up in place — bouncing people to the
+  homepage to scroll is the exact problem this page exists to fix.
+  ™ never ® on public copy (Era, Sep 25 — trademark filed, serial 50130444, registration months away).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1a1a1a;
+  --off:#f0ebe0;--steel:#888;--steel-lt:#aaa;
+  --blue:#3ab4f2;--blue-dim:rgba(58,180,242,.10);--blue-line:rgba(58,180,242,.30);
+  --line:rgba(255,255,255,.08);
+  --disp:'Bebas Neue','Arial Narrow',sans-serif;--body:'DM Sans',system-ui,sans-serif;--mono:'Space Mono',monospace;
+}
+html{background:var(--black);-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--black);color:var(--off);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+.wrap{max-width:480px;margin:0 auto;padding:0 18px calc(46px + env(safe-area-inset-bottom));position:relative;z-index:1}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.3}
+
+/* ── the opening: art, mark, question ── */
+.hero{position:relative;margin:0 -18px;height:46vh;min-height:300px;max-height:430px;overflow:hidden;background:#000}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;
+  transform:scale(1.005);animation:breathe 26s ease-in-out infinite alternate}
+@keyframes breathe{to{transform:scale(1.06)}}
+.hero::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--black) 0%,rgba(5,5,5,.94) 11%,rgba(5,5,5,.42) 19%,rgba(5,5,5,0) 34%,rgba(5,5,5,.55) 66%,rgba(5,5,5,.92) 86%,var(--black) 100%)}
+.mark{position:absolute;top:20px;left:0;right:0;display:flex;justify-content:center;z-index:2}
+.mark img{height:26px;width:auto;display:block}
+.ask{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;text-align:center}
+.ask h1{font-family:var(--disp);font-size:clamp(38px,11.5vw,54px);line-height:.92;letter-spacing:.02em;text-shadow:0 4px 30px rgba(0,0,0,.9)}
+.ask h1 b{color:var(--blue);font-weight:400}
+.ask p{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--steel-lt);margin-top:9px}
+
+/* ── groups ── */
+.grp{margin-top:22px}
+.grp>.lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:9px;display:block}
+.grp.quiet>.lbl{color:var(--steel)}
+
+/* ── a chapter card ── */
+.c{display:grid;grid-template-columns:30px 1fr 16px;gap:12px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-left:2px solid transparent;
+  padding:15px 15px 15px 13px;margin-bottom:8px;position:relative;
+  transition:border-color .18s,background .18s,transform .12s}
+.c:active{transform:scale(.988)}
+@media (hover:hover){.c:hover{border-color:var(--line);border-left-color:var(--blue);background:var(--surface2)}}
+.c .n{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--blue);font-weight:700;align-self:start;padding-top:3px}
+.c .t{display:block;font-family:var(--disp);font-size:24px;letter-spacing:.03em;line-height:1;color:var(--off)}
+.c .s{display:block;font-size:12.5px;color:var(--steel-lt);line-height:1.45;margin-top:4px;font-weight:300}
+.c .a{font-family:var(--mono);font-size:15px;color:var(--steel);justify-self:end}
+@media (hover:hover){.c:hover .a{color:var(--blue)}}
+
+/* the one lit object: the app */
+.c.hero-card{border-color:var(--blue-line);border-left-color:var(--blue);background:linear-gradient(180deg,rgba(58,180,242,.07),var(--surface) 70%);padding:19px 15px 19px 13px}
+.c.hero-card::before{content:'';position:absolute;inset:-30px -10px;z-index:-1;pointer-events:none;
+  background:radial-gradient(60% 60% at 50% 50%,rgba(58,180,242,.16),transparent 70%)}
+.c.hero-card .t{font-size:30px}
+.c.hero-card .s{color:var(--off);font-weight:400}
+.c.hero-card .a{color:var(--blue)}
+
+/* ── newsletter, in place ── */
+.nl{background:var(--surface);border:1px solid var(--line);border-left:2px solid transparent;padding:15px 15px 15px 13px;margin-bottom:8px;display:grid;grid-template-columns:30px 1fr;gap:12px}
+.nl .n{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--blue);font-weight:700;padding-top:3px}
+.nl .t{display:block;font-family:var(--disp);font-size:24px;letter-spacing:.03em;line-height:1}
+.nl .s{display:block;font-size:12.5px;color:var(--steel-lt);line-height:1.45;margin-top:4px;font-weight:300}
+.nl form{display:grid;gap:7px;margin-top:11px}
+.nl input{font-family:var(--body);font-size:16px;padding:11px 12px;background:var(--black);border:1px solid var(--line);color:var(--off)}
+.nl input:focus{outline:0;border-color:var(--blue)}
+.nl input.err{border-color:#991f1f}
+.nl button{background:var(--blue);color:var(--black);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:12px}
+.nl button:disabled{opacity:.6}
+.nl .ok{display:none;font-size:13px;color:var(--off);line-height:1.5;border:1px solid var(--blue-line);background:var(--blue-dim);padding:10px 12px;margin-top:10px}
+.nl .ok.on{display:block}
+.nl .hp{position:absolute;left:-9999px;width:0;height:0;opacity:0}
+
+/* ── close ── */
+.pil{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:26px}
+.pil span{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel-lt);border:1px solid var(--line);padding:6px 8px}
+.credo{text-align:center;font-family:var(--disp);font-size:26px;letter-spacing:.05em;color:var(--off);margin-top:24px;line-height:1.05}
+.credo span{display:block;color:var(--blue)}
+.site{display:block;text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-lt);margin-top:20px;padding:12px;border-top:1px solid var(--line)}
+.site:active{color:var(--blue)}
+.fine{text-align:center;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--steel);margin-top:12px;line-height:1.8}
+
+/* ── the credits roll: on load, ends at rest ── */
+.rise{opacity:0;transform:translateY(14px);animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;animation:none}
+  .hero img{animation:none;transform:none}
+  .c{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <img src="/start/key-art.jpg" alt="" fetchpriority="high">
+    <div class="mark"><img src="/logo.png" alt="ProActivators"></div>
+    <div class="ask">
+      <h1>DRIFTING OR <b>THRIVING?</b></h1>
+      <p>The choice is made every morning</p>
+    </div>
+  </header>
+
+  <!-- 01 · the one lit object -->
+  <section class="grp rise" style="animation-delay:.05s">
+    <span class="lbl">Start here</span>
+    <a class="c hero-card" href="/beta/?src=start&amp;btn=app" data-btn="app">
+      <span class="n">01</span>
+      <span><span class="t">Activate the app</span><span class="s">Six pillars, one scoreboard. Become a beta tester &mdash; iPhone or Android.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+  </section>
+
+  <!-- 02–04 · free, every week -->
+  <section class="grp rise" style="animation-delay:.12s">
+    <span class="lbl">Every week &middot; free</span>
+
+    <a class="c" href="https://www.buzzsprout.com/2508502?utm_source=start&amp;utm_medium=bio&amp;utm_campaign=start-here" target="_blank" rel="noopener" data-btn="podcast">
+      <span class="n">02</span>
+      <span><span class="t">The podcast</span><span class="s">Mental Meat &mdash; not Mental Candy. Every episode is a standard.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+
+    <a class="c" href="https://www.youtube.com/@ProActivatorsClub?sub_confirmation=1" target="_blank" rel="noopener" data-btn="youtube">
+      <span class="n">03</span>
+      <span><span class="t">YouTube</span><span class="s">Clips, full conversations, and the guests who refused to drift.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+
+    <div class="nl" id="nl">
+      <span class="n">04</span>
+      <div>
+        <span class="t">The dispatch</span>
+        <span class="s">Weekly, from the front lines of discipline. No spam. No fluff. Only what builds you.</span>
+        <form id="nlForm" novalidate>
+          <input class="hp" type="text" id="nlHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" id="nlName" placeholder="Your name" autocomplete="name">
+          <input type="email" id="nlEmail" placeholder="Your email" autocomplete="email" inputmode="email">
+          <button type="submit" id="nlGo">Join the movement</button>
+        </form>
+        <div class="ok" id="nlOk"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05–07 · deeper -->
+  <section class="grp rise" style="animation-delay:.19s">
+    <span class="lbl">Go deeper</span>
+
+    <a class="c" href="https://www.amazon.com/dp/B0GY1Y2RHM?tag=&amp;utm_source=start&amp;utm_medium=bio" target="_blank" rel="noopener" data-btn="book">
+      <span class="n">05</span>
+      <span><span class="t">The book</span><span class="s"><i>Unleash The ProActivator</i> &mdash; $14.99 on Amazon. Not self-help. Doctrine.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+
+    <a class="c" href="/rx/?src=start&amp;btn=workshop" data-btn="workshop">
+      <span class="n">06</span>
+      <span><span class="t">The workshop</span><span class="s">The Executive Mindset Workshop. Five hours, six pillars, one Saturday at FIU.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+
+    <a class="c" href="/boardroom/?src=start&amp;btn=boardroom" data-btn="boardroom">
+      <span class="n">07</span>
+      <span><span class="t">The Boardroom</span><span class="s">$39/month. First Saturday, every month. The room that holds you to it.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+  </section>
+
+  <!-- 08 · work with him -->
+  <section class="grp quiet rise" style="animation-delay:.26s">
+    <span class="lbl">Work with Gabriel</span>
+    <a class="c" href="/lets-talk/?src=start&amp;btn=speaking" data-btn="speaking">
+      <span class="n">08</span>
+      <span><span class="t">Bring him to your stage</span><span class="s">Keynotes and workshops for teams, churches and conferences.</span></span>
+      <span class="a">&rarr;</span>
+    </a>
+  </section>
+
+  <div class="pil rise" style="animation-delay:.32s">
+    <span>Faith</span><span>Family</span><span>Fitness</span><span>Finances</span><span>Focus</span><span>Fulfillment</span>
+  </div>
+
+  <div class="credo rise" style="animation-delay:.36s">We don&rsquo;t drift.<span>We decide.</span></div>
+
+  <a class="site rise" href="/?src=start&amp;btn=site" style="animation-delay:.4s">The full site &rarr;</a>
+  <div class="fine rise" style="animation-delay:.4s">PROACTIVATORS&trade; &middot; Terminate. Activate. Lead.<br>&copy; 2026 ProActivators</div>
+</div>
+
+<script>
+// Per-button read for Cast: which of the eight converts. Fire-and-forget, never blocks the tap.
+(function(){
+  var seen = {};
+  document.querySelectorAll('[data-btn]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var b = el.getAttribute('data-btn');
+      if (seen[b]) return; seen[b] = 1;
+      try { localStorage.setItem('start_last_btn', b); } catch(e){}
+    });
+  });
+})();
+
+// Newsletter, in place — same endpoint every site form uses.
+(function(){
+  var JOIN = 'https://reliable-cat-70f502.netlify.app/.netlify/functions/join';
+  var f = document.getElementById('nlForm'), go = document.getElementById('nlGo'), ok = document.getElementById('nlOk');
+  function bad(el){ el.classList.add('err'); setTimeout(function(){ el.classList.remove('err'); }, 1400); }
+  f.addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    var name = document.getElementById('nlName'), email = document.getElementById('nlEmail');
+    var nv = name.value.trim(), ev2 = email.value.trim(), good = true;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ev2)) { bad(email); good = false; }
+    if (!good) return;
+    go.disabled = true; go.textContent = 'Adding you…';
+    try {
+      await fetch(JOIN, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ name: nv, email: ev2, hp: document.getElementById('nlHp').value }) });
+      f.style.display = 'none';
+      ok.innerHTML = '<b>You’re in.</b> Welcome to the movement.';
+      ok.classList.add('on');
+    } catch(e) {
+      go.disabled = false; go.textContent = 'Try that again';
+    }
+  });
+})();
+</script>
+</body>
+</html>
