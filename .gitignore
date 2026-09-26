@@ -7,3 +7,11 @@
 # Secrets / environment
 .env
 .env.*
+
+# Working files that live beside the site but are not part of it
+flyer-spread/
+PROACTIVATORS-BRAND-DNA.md
+new site.txt
+PROACTIVATORS TM.jpg
+ProActivators Flyer (2).png
+node_modules/
