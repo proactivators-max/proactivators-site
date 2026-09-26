@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drifting or Thriving? — Keynote Spread (Dealership)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+
+@page {
+  size: 17in 11in;
+  margin: 0;
+}
+
+:root {
+  --black:#050505; --deep:#0b0b0b; --surface:#141414; --surface2:#1c1c1c;
+  --off-white:#f0ebe0; --steel:#888; --steel-lt:#aaa;
+  --blue:#3ab4f2; --blue-dim:rgba(58,180,242,.1); --blue-border:rgba(58,180,242,.32);
+  --border:rgba(255,255,255,.08);
+}
+
+html, body {
+  width: 17in; height: 11in;
+  background: var(--black);
+  color: var(--off-white);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.spread {
+  width: 17in; height: 11in;
+  display: grid;
+  grid-template-columns: 8.5in 8.5in;
+  position: relative;
+}
+
+.spread::before {
+  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 0.5in 0.5in;
+  opacity:.6;
+}
+
+.page {
+  position: relative; z-index:1;
+  width: 8.5in; height: 11in;
+  padding: 0.45in 0.5in 0.55in 0.5in;
+  display: flex; flex-direction: column;
+}
+
+.gutter-mark {
+  position:absolute; top:0; bottom:0; left:8.5in;
+  width:1px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.08) 20%, rgba(255,255,255,.08) 80%, transparent 100%);
+  z-index: 2;
+}
+
+.eyebrow {
+  font-family:'Space Mono', monospace;
+  font-size: 9pt;
+  letter-spacing:.32em;
+  text-transform: uppercase;
+  color: var(--blue);
+  font-weight:700;
+  display:flex; align-items:center; gap:.6rem;
+}
+.eyebrow .line {
+  flex:0 0 32px; height:1px; background: var(--blue);
+}
+
+.top-bar {
+  display:flex; justify-content: space-between; align-items: center;
+  padding-bottom: 0.2in;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display:flex; align-items:center; gap:.55rem;
+}
+.brand img { height: 20px; display:block; filter: brightness(1.05); }
+.brand .wordmark {
+  font-family:'Space Mono', monospace;
+  font-size: 8pt;
+  letter-spacing:.28em;
+  color: var(--steel);
+  font-weight:700;
+}
+
+/* corner brackets */
+.bracket {
+  position: absolute;
+  width: 14pt; height: 14pt;
+  border-color: var(--blue);
+  border-style: solid;
+}
+.bracket.tl { top: 0.32in; left: 0.32in; border-width: 1px 0 0 1px; }
+.bracket.tr { top: 0.32in; right: 0.32in; border-width: 1px 1px 0 0; }
+.bracket.bl { bottom: 0.32in; left: 0.32in; border-width: 0 0 1px 1px; }
+.bracket.br { bottom: 0.32in; right: 0.32in; border-width: 0 1px 1px 0; }
+
+/* page numbers — moved into corner-bracket zone to avoid CTA collision */
+.page-num {
+  position: absolute;
+  top: 0.34in;
+  font-family:'Space Mono', monospace;
+  font-size: 6pt;
+  letter-spacing:.32em;
+  color: var(--steel);
+  text-transform: uppercase;
+}
+.cover .page-num { right: 0.62in; }
+.detail .page-num { left: 0.62in; }
+
+/* ============================= */
+/* LEFT PAGE — KEYNOTE HERO       */
+/* ============================= */
+.cover { background: var(--black); }
+
+.cover .hero {
+  flex: 1;
+  display:flex; flex-direction: column; justify-content: center;
+  padding-top: 0.2in;
+}
+
+.cover .kicker {
+  font-family:'Space Mono', monospace;
+  font-size: 8.5pt;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color: var(--blue);
+  font-weight:700;
+  margin-bottom: 0.22in;
+}
+
+.cover h1 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 132pt;
+  line-height: 0.88;
+  letter-spacing: .005em;
+  margin-bottom: 0.25in;
+}
+.cover h1 span { display:block; }
+.cover h1 .blue { color: var(--blue); }
+
+.cover .subtitle {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 22pt;
+  letter-spacing:.04em;
+  line-height: 1.05;
+  color: var(--off-white);
+  max-width: 6.6in;
+  margin-bottom: 0.22in;
+}
+
+.cover .subhead {
+  font-family:'DM Sans', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--steel-lt);
+  font-weight: 300;
+  max-width: 6.6in;
+  margin-bottom: 0.25in;
+}
+.cover .subhead em { font-style: normal; color: var(--off-white); font-weight: 500; }
+
+/* format strip */
+.format-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--blue-border);
+  border-bottom: 1px solid var(--blue-border);
+  margin-bottom: 0.22in;
+}
+.format-strip .cell {
+  padding: 0.16in 0.1in;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.format-strip .cell:last-child { border-right: none; }
+.format-strip .v {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 22pt;
+  letter-spacing: .04em;
+  line-height: 1;
+  color: var(--blue);
+}
+.format-strip .k {
+  font-family:'Space Mono', monospace;
+  font-size: 7pt;
+  letter-spacing: .26em;
+  color: var(--steel);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 6pt;
+}
+
+.doctrine {
+  background: var(--surface);
+  border: 1px solid var(--blue-border);
+  border-left: 3px solid var(--blue);
+  padding: 0.2in 0.28in;
+  position: relative;
+}
+.doctrine .line {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 22pt;
+  letter-spacing:.04em;
+  line-height: 1.05;
+  color: var(--off-white);
+}
+.doctrine .line .blue { color: var(--blue); }
+.doctrine .signoff {
+  font-family:'Space Mono', monospace;
+  font-size: 8pt;
+  letter-spacing:.32em;
+  color: var(--blue);
+  font-weight:700;
+  text-transform: uppercase;
+  margin-top: .4rem;
+}
+
+/* ============================= */
+/* RIGHT PAGE — TAKEAWAYS / TEASE */
+/* ============================= */
+.detail { background: var(--deep); }
+
+.detail .header {
+  margin-top: 0.18in;
+  margin-bottom: 0.18in;
+}
+.detail .header h2 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 38pt;
+  letter-spacing: .03em;
+  line-height: .95;
+  margin-top: .2rem;
+}
+.detail .header h2 .blue { color: var(--blue); }
+.detail .header .lede {
+  margin-top: .3rem;
+  font-family:'DM Sans', sans-serif;
+  font-size: 9.5pt;
+  color: var(--steel-lt);
+  font-weight: 300;
+  max-width: 6.8in;
+  line-height: 1.5;
+}
+
+.takeaways {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.13in;
+  margin-bottom: 0.2in;
+}
+.tk {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--blue);
+  padding: 0.14in 0.18in;
+}
+.tk .n {
+  font-family:'Space Mono', monospace;
+  font-size: 7pt;
+  letter-spacing:.28em;
+  color: var(--blue);
+  font-weight:700;
+  text-transform: uppercase;
+  margin-bottom: 4pt;
+}
+.tk .t {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 14pt;
+  letter-spacing: .04em;
+  line-height: 1.02;
+  color: var(--off-white);
+  margin-bottom: 4pt;
+}
+.tk .d {
+  font-family:'DM Sans', sans-serif;
+  font-size: 8.5pt;
+  line-height: 1.4;
+  color: var(--steel-lt);
+  font-weight: 300;
+}
+
+/* About + Workshop tease — side by side */
+.mid-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 0.22in;
+  padding-top: 0.18in;
+  border-top: 1px solid var(--border);
+  margin-bottom: 0.2in;
+}
+
+.about {
+  display:flex; flex-direction: column;
+}
+.about .label {
+  font-family:'Space Mono', monospace;
+  font-size: 7.5pt;
+  letter-spacing:.3em;
+  color: var(--blue);
+  font-weight:700;
+  text-transform: uppercase;
+  margin-bottom: 7pt;
+}
+.about .name {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 22pt;
+  letter-spacing: .04em;
+  line-height: 1;
+  color: var(--off-white);
+  margin-bottom: 6pt;
+}
+.about .role {
+  font-family:'Space Mono', monospace;
+  font-size: 7.5pt;
+  letter-spacing: .2em;
+  color: var(--steel);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8pt;
+}
+.about .bio {
+  font-family:'DM Sans', sans-serif;
+  font-size: 8.7pt;
+  line-height: 1.5;
+  color: var(--off-white);
+  font-weight: 300;
+}
+.about .bio strong { color: var(--blue); font-weight: 500; }
+.about .quote {
+  margin-top: 8pt;
+  padding-top: 8pt;
+  border-top: 1px solid var(--border);
+  font-family:'DM Sans', sans-serif;
+  font-style: italic;
+  font-size: 9pt;
+  line-height: 1.4;
+  color: var(--off-white);
+  font-weight: 400;
+}
+
+/* workshop tease */
+.tease {
+  background: var(--surface2);
+  border: 1px solid var(--blue-border);
+  padding: 0.18in 0.2in;
+  position: relative;
+}
+.tease .label {
+  font-family:'Space Mono', monospace;
+  font-size: 7pt;
+  letter-spacing:.3em;
+  color: var(--blue);
+  font-weight:700;
+  text-transform: uppercase;
+  margin-bottom: 6pt;
+}
+.tease .ttl {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 22pt;
+  letter-spacing: .04em;
+  line-height: 1;
+  color: var(--off-white);
+  margin-bottom: 4pt;
+}
+.tease .ttl .blue { color: var(--blue); }
+.tease .meta {
+  font-family:'Space Mono', monospace;
+  font-size: 7pt;
+  letter-spacing: .18em;
+  color: var(--steel);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8pt;
+}
+.tease .lede {
+  font-family:'DM Sans', sans-serif;
+  font-size: 8.5pt;
+  line-height: 1.45;
+  color: var(--off-white);
+  font-weight: 300;
+  margin-bottom: 8pt;
+}
+.tease ul {
+  list-style: none;
+  margin-bottom: 6pt;
+}
+.tease ul li {
+  padding: 2.5pt 0 2.5pt 12pt;
+  position: relative;
+  font-family:'Space Mono', monospace;
+  font-size: 7.5pt;
+  letter-spacing: .14em;
+  color: var(--off-white);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.tease ul li::before {
+  content:''; position:absolute; left:0; top:7pt;
+  width: 4pt; height: 4pt;
+  border: 1.2px solid var(--blue);
+  transform: rotate(45deg);
+}
+.tease .fineprint {
+  font-family:'DM Sans', sans-serif;
+  font-style: italic;
+  font-size: 7.5pt;
+  line-height: 1.4;
+  color: var(--steel-lt);
+  font-weight: 300;
+  border-top: 1px solid var(--border);
+  padding-top: 6pt;
+  margin-top: 4pt;
+}
+
+/* CTA */
+.cta {
+  margin-top: auto;
+  padding-top: 0.18in;
+  border-top: 1px solid var(--blue-border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.28in;
+  align-items: end;
+}
+.cta-left .cta-label {
+  font-family:'Space Mono', monospace;
+  font-size: 7.5pt;
+  letter-spacing:.32em;
+  color: var(--blue);
+  font-weight:700;
+  text-transform: uppercase;
+  margin-bottom: 5pt;
+}
+.cta-left .cta-head {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 38pt;
+  letter-spacing:.03em;
+  line-height: .9;
+  color: var(--off-white);
+  margin-bottom: 4pt;
+}
+.cta-left .cta-head .blue { color: var(--blue); }
+.cta-left .cta-sub {
+  font-family:'Space Mono', monospace;
+  font-size: 8pt;
+  letter-spacing:.18em;
+  color: var(--steel-lt);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 9pt;
+}
+.cta-left .cta-meta {
+  font-family:'Space Mono', monospace;
+  font-size: 8pt;
+  letter-spacing: .1em;
+  color: var(--off-white);
+  font-weight: 400;
+  line-height: 1.6;
+}
+.cta-left .cta-meta .row { display:flex; gap: .7rem; }
+.cta-left .cta-meta .k { color: var(--steel); min-width: 0.5in; }
+.cta-left .cta-meta .v { color: var(--off-white); }
+
+.cta-right .signoff {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: 22pt;
+  letter-spacing: .04em;
+  line-height: .95;
+  color: var(--blue);
+  text-align: right;
+}
+.cta-right .credo {
+  font-family:'Space Mono', monospace;
+  font-size: 7pt;
+  letter-spacing: .3em;
+  color: var(--steel);
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 4pt;
+}
+</style>
+</head>
+<body>
+
+<div class="spread">
+  <div class="gutter-mark"></div>
+
+  <!-- ============================= -->
+  <!-- LEFT PAGE — THE KEYNOTE HERO  -->
+  <!-- ============================= -->
+  <section class="page cover">
+    <span class="bracket tl"></span>
+    <span class="bracket tr"></span>
+    <span class="bracket bl"></span>
+    <span class="bracket br"></span>
+
+    <div class="top-bar">
+      <div class="brand">
+        <img src="../logo.png" alt="ProActivators">
+      </div>
+      <div class="eyebrow"><span class="line"></span>Free Keynote &mdash; Dealership Leadership<span class="line"></span></div>
+    </div>
+
+    <div class="hero">
+      <div class="kicker">A 30-Minute Signature Keynote by Gabriel Golindano</div>
+
+      <h1>
+        <span>DRIFTING</span>
+        <span class="blue">OR THRIVING?</span>
+      </h1>
+
+      <p class="subtitle">THE DAILY CHOICE THAT BUILDS <em style="font-style:normal;color:var(--blue);">STATE OF THE ART DEALERSHIPS.</em></p>
+
+      <p class="subhead">Your numbers look respectable. Units are moving. F&amp;I is hitting most months. The service drive is busy. And quietly &mdash; your top closers are sliding, your managers are firefighting, and your sharpest people are starting to plateau. That is the <em>Drift</em>. In thirty minutes, your GMs, sales managers, F&amp;I directors and fixed-ops leads get a confrontation with the silent enemy of every dealership &mdash; and the framework they will be quoting on the drive home.</p>
+
+      <div class="format-strip">
+        <div class="cell"><div class="v">30</div><div class="k">Minutes</div></div>
+        <div class="cell"><div class="v">$0</div><div class="k">No Charge</div></div>
+        <div class="cell"><div class="v">1</div><div class="k">Live, Your Room</div></div>
+        <div class="cell"><div class="v">100%</div><div class="k">No Obligation</div></div>
+      </div>
+
+      <div class="doctrine">
+        <div class="line">TERMINATE WHAT DESTROYS.</div>
+        <div class="line"><span class="blue">ACTIVATE WHAT BUILDS.</span></div>
+        <div class="signoff">We Don't Drift. We Decide.</div>
+      </div>
+    </div>
+
+    <div class="page-num">PG. 01 &mdash; THE INVITATION</div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- RIGHT PAGE — TAKEAWAYS / TEASE -->
+  <!-- ============================= -->
+  <section class="page detail">
+    <span class="bracket tl"></span>
+    <span class="bracket tr"></span>
+    <span class="bracket bl"></span>
+    <span class="bracket br"></span>
+
+    <div class="top-bar">
+      <div class="eyebrow"><span class="line"></span>What The Room Walks Away With<span class="line"></span></div>
+      <div class="brand">
+        <span class="wordmark" style="color:var(--steel);">proactivatorsclub.com</span>
+      </div>
+    </div>
+
+    <div class="header">
+      <h2>THIRTY MINUTES. <span class="blue">FOUR CONFRONTATIONS.</span></h2>
+      <p class="lede">This is not a sales-floor pep talk. No motivational posters. No theory from someone who has never carried a number. A doctrinal keynote &mdash; built for the GMs, sales managers, F&amp;I directors and fixed-ops leads who suspect their store is operating below its capacity and are ready to hear the diagnosis out loud.</p>
+    </div>
+
+    <div class="takeaways">
+      <div class="tk">
+        <div class="n">Confrontation 01</div>
+        <div class="t">THE DRIFT EXPOSED</div>
+        <div class="d">Why your top closers plateau at month 36. Why your service drive looks busy but isn't building. Why F&amp;I keeps missing &mdash; and why the people closest to it can't see it happening.</div>
+      </div>
+      <div class="tk">
+        <div class="n">Confrontation 02</div>
+        <div class="t">THE ORIGIN STORY</div>
+        <div class="d">A Miami apartment, 22 years ago, and the single sentence I said in a mirror that began everything. The hard question every dealer principal and GM must answer.</div>
+      </div>
+      <div class="tk">
+        <div class="n">Confrontation 03</div>
+        <div class="t">THE FRAMEWORK</div>
+        <div class="d">The Six Pillars every elite operator runs on &mdash; and how a crack in one infects the showroom, the service lane, and the back end. A 360&deg; audit your 20 Group does not run.</div>
+      </div>
+      <div class="tk">
+        <div class="n">Confrontation 04</div>
+        <div class="t">THE MONDAY MOVE</div>
+        <div class="d">Not a sales contest. Not a Monday morning rah-rah. One non-negotiable every leader walks out with &mdash; ready to install on the sales floor tomorrow.</div>
+      </div>
+    </div>
+
+    <div class="mid-row">
+      <div class="about">
+        <div class="label">&mdash; About The Speaker</div>
+        <div class="name">GABRIEL GOLINDANO</div>
+        <div class="role">Founder &middot; ProActivators &middot; Author, Unleash The ProActivator</div>
+        <p class="bio">Twenty years at war with inconsistency. Founder of <strong>ProActivators</strong>, a movement for those who refuse to drift. Author of <strong>Unleash The ProActivator</strong>. Built the Executive Mindset Workshop inside <strong>ChargePros</strong> &mdash; a real operating company, not a leadership-coaching brochure. Lives the doctrine he teaches.</p>
+        <p class="quote">&ldquo;I spent 20 years at war with inconsistency. The morning I chose discipline over my feelings &mdash; everything changed.&rdquo;</p>
+      </div>
+
+      <div class="tease">
+        <div class="label">&mdash; When The Room Is Ready For More</div>
+        <div class="ttl">THE EXECUTIVE <span class="blue">MINDSET</span></div>
+        <div class="ttl"><span class="blue">WORKSHOP.</span></div>
+        <div class="meta" style="margin-top:6pt;">4 Hours &middot; Live &middot; In-Room or Virtual</div>
+        <p class="lede">The deeper program for stores that want to install what they heard on the sales floor &mdash; not just feel it in the room. Four hours. Four modules. A signed 30-day commitment from every leader in attendance.</p>
+        <ul>
+          <li>Hour 01 &mdash; Mastering Your Time</li>
+          <li>Hour 02 &mdash; The Paradigm Shift</li>
+          <li>Hour 03 &mdash; The Habit Loop</li>
+          <li>Hour 04 &mdash; The Mastermind Round</li>
+        </ul>
+        <div class="fineprint">Logistics, customization and investment discussed after the keynote.</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div class="cta-left">
+        <div class="cta-label">&mdash; Book The Keynote</div>
+        <div class="cta-head">BRING IT TO <span class="blue">YOUR ROOM.</span></div>
+        <div class="cta-sub">Free &middot; 30 Minutes &middot; Your Sales Floor &middot; No Obligation</div>
+        <div class="cta-meta">
+          <div class="row"><span class="k">EMAIL</span><span class="v">proactivateyourlife@gmail.com</span></div>
+          <div class="row"><span class="k">WEB</span><span class="v">proactivatorsclub.com</span></div>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="signoff">WE DON'T DRIFT.<br>WE DECIDE.</div>
+        <div class="credo">Terminate. Activate. Lead.</div>
+      </div>
+    </div>
+
+    <div class="page-num">PG. 02 &mdash; THE DETAIL</div>
+  </section>
+</div>
+
+</body>
+</html>

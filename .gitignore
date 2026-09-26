@@ -1,0 +1,9 @@
+# Local MCP server config — account-scoped connection (token supplied via env var). Never commit.
+.mcp.json
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Secrets / environment
+.env
+.env.*

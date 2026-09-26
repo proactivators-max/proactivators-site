@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1024px;height:1024px;background:transparent}
+svg{display:block;width:1024px;height:1024px}
+</style>
+</head>
+<body>
+<!--
+  ProActivators power-button icon glyph.
+  ViewBox 1024x1024. Cyan #3ab4f2 on transparent background.
+  Glyph sized to fit inside Android adaptive-icon safe zone (inner ~66%, i.e.
+  174-850 on each axis):
+   - Vertical line visual top: y = 174 (right at safe zone edge)
+   - Circle visual bottom: y = 841 (within safe zone)
+   - Glyph midpoint ≈ canvas center
+  Same glyph used for both adaptive-foreground.png (transparent bg) and
+  app-icon.png (rendered against --default-background-color=050505FF).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Circle: cx=512, cy=545, r=255, stroke=82, ~70° gap at top -->
+  <path d="M 366 336 A 255 255 0 1 0 658 336"
+        fill="none" stroke="#3ab4f2" stroke-width="82" stroke-linecap="round"/>
+  <!-- Vertical line through gap, from above circle to circle center -->
+  <line x1="512" y1="215" x2="512" y2="545"
+        stroke="#3ab4f2" stroke-width="82" stroke-linecap="round"/>
+</svg>
+</body>
+</html>
