@@ -15,3 +15,6 @@ new site.txt
 PROACTIVATORS TM.jpg
 ProActivators Flyer (2).png
 node_modules/
+
+# wrangler writes an account id + account name (an email) here — never publish it
+.wrangler/
