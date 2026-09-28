@@ -1,11 +1,23 @@
 {
   "_": "Rx Your Life — the one place the next workshop date lives. The wall poster has no date; /rx reads this. Add the next session to `upcoming` before the current one passes; the page picks the first date >= today.",
+  "_state": "NO CONFIRMED DATE as of Sep 28 2026. `upcoming` is deliberately empty, which puts the page into its waitlist state on its own: it shows 'Next date coming', the button becomes 'Tell me the next date — Free', and NOBODY IS SENT TO CHECKOUT. Do not re-add a date until the room is actually booked — a live $197 checkout against an unbooked room means refunding people.",
+  "_toRestore": "When the venue confirms, move the entry from `pending` into `upcoming` and fix its date/label. Nothing else needs to change; the page switches itself back to selling.",
   "seats": 40,
   "price": 197,
   "checkout": "https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4",
   "manualSold": 0,
   "video": null,
-  "upcoming": [
-    { "date": "2026-10-24", "label": "Saturday, October 24", "time": "10 AM – 3 PM", "venue": "FIU · Miami", "room": "", "seats": 40, "salesOpen": "2026-09-19" }
+  "upcoming": [],
+  "pending": [
+    {
+      "_why": "Held back Sep 28 2026: Gabriel emailed Isabella Espino at FIU asking about late-Oct / early-Nov Saturdays. Nothing confirmed — not the date, not the room, not the venue. This was live on the page with a working checkout until tonight.",
+      "date": "2026-10-24",
+      "label": "Saturday, October 24",
+      "time": "10 AM – 3 PM",
+      "venue": "FIU · Miami",
+      "room": "",
+      "seats": 40,
+      "salesOpen": "2026-09-19"
+    }
   ]
 }
