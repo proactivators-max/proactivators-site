@@ -1,3 +1,24 @@
+// ⚠️ READ THIS FIRST — Sep 28 2026. THIS SCRIPT WILL REFUSE TO RUN RIGHT NOW.
+//
+// /workshop/live/ was advertising Saturday September 26 two days after it passed, so the
+// page was put into its no-date state: the Date pill reads "Next date coming", the
+// subhead and RSVP copy say the date is being finalized, and the Schema.org Event block
+// was removed (it was telling Google an event was scheduled for a day that had gone).
+//
+// This script looks for a literal date in those exact places. They aren't there any more,
+// so it refuses to write and lists the patterns that didn't match. That refusal is the
+// script working correctly — it never half-updates — but it does mean you cannot roll the
+// page forward with it until the page is put back into date-carrying shape.
+//
+// TO SET THE NEXT DATE:
+//   git show 49f3f67^:workshop/live/index.html   → the version with a real date in it,
+//   and git show 49f3f67 → exactly what was removed and why.
+// Restore the date-bearing lines and the Schema.org block from there with the NEW date,
+// then this script takes over again for future months. Do not restore them with the old
+// September date.
+//
+// Do not "fix" this by loosening the patterns. The refusal is the safety feature.
+
 // Roll the workshop pages to the next date.
 //
 //   node workshop/set-date.js 2026-09-26
