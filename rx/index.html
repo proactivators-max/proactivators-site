@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rx Your Life — The Executive Mindset Workshop</title>
-<meta name="description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU — five hours, six pillars, forty seats. Reserve yours.">
+<!-- Crawled and cached for a long time, and read by link previews when the poster's URL gets
+     shared — so this copy has to be true in BOTH states. "Reserve yours" promised a purchase
+     the page can't currently take. State-neutral wording instead. -->
+<meta name="description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU — five hours, six pillars, forty seats. See the next date.">
 <meta property="og:title" content="Rx Your Life — The Executive Mindset Workshop">
-<meta property="og:description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU. Reserve your seat.">
+<meta property="og:description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU. See the next date.">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">
 <meta property="og:url" content="https://proactivatorsclub.com/rx/">
@@ -150,19 +153,23 @@ footer a{color:var(--steel);text-decoration:none}
     <div class="pillars"><span>Faith</span><span>Family</span><span>Fitness</span><span>Finances</span><span>Focus</span><span>Fulfillment</span></div>
   </div>
 
-  <button class="buy" id="buy" onclick="openForm()"><span id="buyL">Reserve my seat</span><small id="buyR">$197 &rarr;</small></button>
-  <div class="fine" id="fine">Secure checkout &middot; Seats limited &middot; <a href="mailto:proactivateyourlife@gmail.com">Questions?</a></div>
+  <!-- These defaults are the WAITLIST state on purpose. The page only knows whether it can
+       take money after it has fetched session.json, so the markup fails safe: if the script
+       never runs, a stranger is offered a free signup, not a checkout that cannot complete.
+       applyState('buy') upgrades it to selling once a confirmed session is actually loaded. -->
+  <button class="buy" id="buy" onclick="openForm()"><span id="buyL">Tell me the next date</span><small id="buyR">Free &rarr;</small></button>
+  <div class="fine" id="fine">No payment &middot; We text you the date &middot; <a href="mailto:proactivateyourlife@gmail.com">Questions?</a></div>
 
   <form class="form" id="form" onsubmit="return reserve(event)" novalidate>
-    <div class="h"><small id="fStep">Step 1 of 2</small><span id="fTitle">Who&rsquo;s coming?</span></div>
-    <p id="fSub">Your details, then the secure checkout. Thirty seconds.</p>
+    <div class="h"><small id="fStep">One step</small><span id="fTitle">Be first to know.</span></div>
+    <p id="fSub">The next date is being set. Leave your details and you hear before the wall does.</p>
     <input class="hp" type="text" name="hp" id="hp" tabindex="-1" autocomplete="off">
     <div class="field"><label for="name">Name</label><input type="text" id="name" autocomplete="name" placeholder="First and last"></div>
     <div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" placeholder="you@email.com"></div>
     <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" autocomplete="tel" placeholder="(305) 555-0100"></div>
-    <button class="go" id="go" type="submit">Continue to checkout &rarr;</button>
+    <button class="go" id="go" type="submit">Put me on the list &rarr;</button>
     <div class="msg" id="msg"></div>
-    <div class="note" id="fNote">Next: secure card checkout &middot; $197</div>
+    <div class="note" id="fNote">No spam &middot; just the next date</div>
   </form>
 
   <div class="closing">
@@ -176,7 +183,48 @@ footer a{color:var(--steel);text-decoration:none}
 <script>
 var SEATS_API='https://rx-seats.floridautilities.workers.dev/';
 var INQUIRE='https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
-var S=null, SESSION=null, GYMS={}, gym='', src='', mode='buy';   // mode: buy | waitlist
+// starts 'waitlist' to match the fail-safe markup; applyState('buy') flips it once a
+// confirmed session has actually loaded
+var S=null, SESSION=null, GYMS={}, gym='', src='', mode='waitlist';   // mode: buy | waitlist
+
+/* Every line that depends on whether this page can take money lives in ONE table, and
+   the button, the reassurance line under it, and the form all read from the same row.
+   They used to be set separately, which is how the page ended up offering a free
+   waitlist with "Secure checkout" printed one line below it. A stranger seeing "Free"
+   and "checkout" in the same glance hesitates over whether they're about to be charged,
+   and that hesitation is the whole thing the waitlist state exists to avoid.
+   RULE: no word implying a transaction while the page cannot transact. */
+var ASK=' <a href="mailto:proactivateyourlife@gmail.com">Questions?</a>';
+function STATE(k){
+  var p=(S&&S.price)||197;
+  return {
+    buy:{ mode:'buy',
+      btnL:'Reserve my seat', btnR:'$'+p+' &rarr;',
+      fine:'Secure checkout &middot; Seats limited &middot;'+ASK,
+      fStep:'Step 1 of 2', fTitle:'Who&rsquo;s coming?',
+      fSub:'Your details, then the secure checkout. Thirty seconds.',
+      go:'Continue to checkout &rarr;', fNote:'Next: secure card checkout &middot; $'+p },
+    nodate:{ mode:'waitlist',
+      btnL:'Tell me the next date', btnR:'Free &rarr;',
+      fine:'No payment &middot; We text you the date &middot;'+ASK,
+      fStep:'One step', fTitle:'Be first to know.',
+      fSub:'The next date is being set. Leave your details and you hear before the wall does.',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date' },
+    soldout:{ mode:'waitlist',
+      btnL:'Sold out &mdash; join the waitlist', btnR:'Free &rarr;',
+      fine:'No payment &middot; We text you if a seat opens &middot;'+ASK,
+      fStep:'One step', fTitle:'Waitlist.',
+      fSub:'This one is full. Leave your details &mdash; a seat opens, or the next date drops, and you hear first.',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; a seat or the next date' }
+  }[k];
+}
+function applyState(k){
+  var s=STATE(k); if(!s) return;
+  mode=s.mode;
+  $('buyL').innerHTML=s.btnL; $('buyR').innerHTML=s.btnR; $('fine').innerHTML=s.fine;
+  $('fStep').innerHTML=s.fStep; $('fTitle').innerHTML=s.fTitle; $('fSub').innerHTML=s.fSub;
+  $('go').innerHTML=s.go; $('fNote').innerHTML=s.fNote;
+}
 
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -198,7 +246,7 @@ async function boot(){
   try{ S=await (await fetch('/rx/session.json',{cache:'no-store'})).json(); }catch(e){ S=null; }
   var today=new Date().toISOString().slice(0,10);
   SESSION=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]||null;
-  if(S&&S.price){ $('buyR').innerHTML='$'+S.price+' &rarr;'; $('fNote').textContent='Next: secure card checkout · $'+S.price; }
+  // price-dependent copy comes from applyState() below, so nothing is set in two places
   if(S&&S.video){ var h=$('hero'); h.innerHTML='<video controls playsinline preload="metadata" poster="/rx/key-art.jpg"><source src="'+esc(S.video)+'" type="video/mp4"></video><div class="cap">Gabriel &middot; 45 seconds &middot; who this is for</div>'; }
   renderSession(null);
   try{ var r=await (await fetch(SEATS_API,{cache:'no-store'})).json(); renderSession(r); }catch(e){ renderSession(null); }
@@ -209,10 +257,10 @@ function renderSession(r){
     $('nDate').textContent='Next date coming';
     $('nWhere').innerHTML='FIU &middot; Miami &middot; One Saturday a month';
     $('nSeats').textContent=seats+' seats';
-    mode='waitlist'; $('buyL').textContent='Tell me the next date'; $('buyR').innerHTML='Free &rarr;';
-    $('fTitle').textContent='Be first to know.'; $('fSub').textContent='The next date is being set. Leave your details and you hear before the wall does.'; $('go').innerHTML='Put me on the list &rarr;'; $('fNote').textContent='No spam · just the next date'; $('fStep').textContent='One step';
+    applyState('nodate');
     return;
   }
+  applyState('buy');
   $('nDate').textContent=SESSION.label;
   $('nWhere').innerHTML=esc(SESSION.venue)+(SESSION.room?' &middot; '+esc(SESSION.room):'')+' &middot; '+esc(SESSION.time);
   var el=$('nSeats');
@@ -222,8 +270,7 @@ function renderSession(r){
   } else { el.className='s'; el.textContent=seats+' seats'; }
 }
 function setSoldOut(){
-  mode='waitlist'; var b=$('buy'); b.classList.add('out'); $('buyL').textContent='Sold out — join the waitlist'; $('buyR').innerHTML='Free &rarr;';
-  $('fTitle').textContent='Waitlist.'; $('fSub').textContent='This one is full. Leave your details — a seat opens, or the next date drops, and you hear first.'; $('go').innerHTML='Put me on the list &rarr;'; $('fNote').textContent='No spam · a seat or the next date'; $('fStep').textContent='One step';
+  applyState('soldout'); $('buy').classList.add('out');
 }
 function openForm(){ var f=$('form'); f.classList.add('on'); $('buy').style.display='none'; $('fine').style.display='none'; setTimeout(function(){ $('name').focus(); f.scrollIntoView({behavior:'smooth',block:'start'}); },30); }
 function bad(id){ $(id).classList.add('err'); setTimeout(function(){$(id).classList.remove('err');},1400); }
