@@ -287,7 +287,9 @@ async function reserve(ev){
   try{ await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); }catch(e){ /* never block the sale on the CRM */ }
   if(mode!=='buy'){ say('<b>You’re on the list.</b> The next date comes to you first.'); go.textContent='Done'; return false; }
   var parts=name.split(/\s+/), u=new URL((S&&S.checkout)||'https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4');
-  u.searchParams.set('first_name',parts[0]||''); u.searchParams.set('last_name',parts.slice(1).join(' ')); u.searchParams.set('email',email); u.searchParams.set('phone',phone);
+  // GHL's payment link reads camelCase. Verified against the live link on Oct 3 2026:
+  // first_name/last_name populate NOTHING; firstName/lastName populate both fields.
+  u.searchParams.set('firstName',parts[0]||''); u.searchParams.set('lastName',parts.slice(1).join(' ')); u.searchParams.set('email',email); u.searchParams.set('phone',phone);
   u.searchParams.set('utm_source',gym?'gym':(src||'rx')); u.searchParams.set('utm_medium',gym?'poster':'link'); u.searchParams.set('utm_campaign','rx-your-life'); if(gym) u.searchParams.set('utm_content',gym);
   store('rx_pending',JSON.stringify({name:name,email:email,gym:gym,src:src,session:SESSION?SESSION.date:'',t:Date.now()}));
   location.href=u.toString();
