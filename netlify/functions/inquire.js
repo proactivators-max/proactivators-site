@@ -21,6 +21,8 @@ const TYPE_TAGS = {
   'rx-waitlist': 'rx_waitlist',          // /rx when the session is sold out or has no date yet
   'emw-workshop': 'emw_workshop',        // /workshop — the general-public door; step 1 before the SAME GHL checkout as /rx
   'emw-waitlist': 'emw_waitlist',        // /workshop when the session is sold out or has no date yet
+  'boardroom-coach': 'boardroom_coach',   // /boardroom — wants to RUN a room
+  'boardroom-member': 'boardroom_member', // /boardroom — wants a SEAT at the table
 };
 
 // The heading on the contact note. Kept as a table rather than a ternary chain: this had grown
@@ -33,6 +35,8 @@ const TYPE_LABELS = {
   'rx-waitlist': 'RX YOUR LIFE — WAITLIST',
   'emw-workshop': 'EXECUTIVE MINDSET WORKSHOP — RESERVATION (step 1, before checkout)',
   'emw-waitlist': 'EXECUTIVE MINDSET WORKSHOP — WAITLIST',
+  'boardroom-coach': 'THE BOARDROOM — WANTS TO COACH A ROOM',
+  'boardroom-member': 'THE BOARDROOM — WANTS A SEAT',
 };
 
 // /rx attribution: the wall (gym:<slug>) or the ad (src:<slug>) the person came from. Whitelisted
