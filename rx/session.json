@@ -6,7 +6,7 @@
   "seats": 40,
   "price": 197,
   "checkout": "https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4",
-  "manualSold": 0,
+  "manualSold": -1,
   "video": null,
   "speakers": [
     {
@@ -54,5 +54,6 @@
     "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
     "doors": "9:30 AM"
   },
-  "_salesOpen": "Orders BEFORE this date are not seats for this session. It was blank, which fell back to 2026-01-01 and would have counted a May coupon test as a Nov 7 seat."
+  "_salesOpen": "Orders BEFORE this date are not seats for this session. It was blank, which fell back to 2026-01-01 and would have counted a May coupon test as a Nov 7 seat.",
+  "_manualSold": "Added to the counted orders. NEGATIVE cancels orders that are not real attendees. Currently -1 for the Oct 3 VIP100 test, which netted the page back to 40. Run another test seat and this goes to -2; set it to 0 once testing is done. Do NOT fix a test by moving salesOpen forward — that would silently drop a genuine early buyer too."
 }
