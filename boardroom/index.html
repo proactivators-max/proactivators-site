@@ -4,18 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Boardroom — ProActivators</title>
-<meta name="description" content="Once a month, the CEO comes back with the report. First Saturday, every month. $39/month.">
+<meta name="description" content="Once a month, the CEO comes back with the report. First Saturday, every month. Take a seat, or run a room.">
 <meta property="og:title" content="The Boardroom — ProActivators">
 <meta property="og:description" content="Once a month, the CEO comes back with the report. First Saturday, every month.">
 <meta property="og:url" content="https://proactivatorsclub.com/boardroom/">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<!-- NO DATE IN ANY META TAG, ON PURPOSE. This page used to hardcode "October 3" in four
+     places and went stale the moment that Saturday passed. The date is a RULE — first
+     Saturday of every month — computed at runtime from schedule.json. Nothing to edit
+     monthly, and nothing that can rot in a social card. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--black:#050505;--surface:#141414;--surface2:#1c1c1c;--off-white:#f0ebe0;
-  --steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);--border:rgba(255,255,255,.08)}
+  --steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);
+  --blue-border:rgba(58,180,242,.22);--border:rgba(255,255,255,.08)}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;padding:0 0 4rem}
 .wrap{max-width:620px;margin:0 auto;padding:0 1.25rem}
@@ -51,38 +56,53 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.03em;ma
 .inc b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.02em;font-weight:400}
 .inc span{display:block;color:var(--steel-lt);font-size:.93rem;font-weight:300;margin-top:.1rem}
 
-.form{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);
-  padding:1.5rem 1.4rem;margin-top:2.4rem}
+/* two doors */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1rem}
+.door-c{background:var(--surface);border:1px solid var(--border);padding:1.2rem 1.15rem;cursor:pointer;
+  text-align:left;color:inherit;font:inherit;transition:border-color .2s,background .2s}
+.door-c:hover{border-color:var(--blue-border);background:var(--surface2)}
+.door-c.on{border-color:var(--blue);background:var(--blue-dim)}
+.door-c .dk{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--blue);font-weight:700;margin-bottom:.4rem}
+.door-c b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.02em;
+  font-weight:400;margin-bottom:.3rem}
+.door-c span{display:block;color:var(--steel-lt);font-size:.88rem;font-weight:300;line-height:1.5}
+
+.form{display:none;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);
+  padding:1.5rem 1.4rem;margin-top:1rem}
+.form.on{display:block}
 .form .k{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--blue);font-weight:700;margin-bottom:.5rem}
 .form h3{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.02em;margin-bottom:.4rem}
 .form p{color:var(--steel-lt);font-size:.93rem;font-weight:300;margin-bottom:1.1rem}
-input{width:100%;background:var(--black);border:1px solid var(--border);color:var(--off-white);
+input,textarea{width:100%;background:var(--black);border:1px solid var(--border);color:var(--off-white);
   font-family:'DM Sans',sans-serif;font-size:1rem;padding:.95rem 1rem;margin-bottom:.6rem;
   border-radius:0;-webkit-appearance:none;transition:border-color .2s}
-input:focus{outline:none;border-color:var(--blue)}
-input::placeholder{color:#5a5a5a}
-button{width:100%;margin-top:.4rem;background:var(--blue);color:var(--black);border:2px solid var(--blue);
+textarea{min-height:84px;resize:vertical;line-height:1.5}
+input:focus,textarea:focus{outline:none;border-color:var(--blue)}
+input.err{border-color:#991f1f}
+input::placeholder,textarea::placeholder{color:#5a5a5a}
+button.go{width:100%;margin-top:.4rem;background:var(--blue);color:var(--black);border:2px solid var(--blue);
   font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
   font-weight:700;padding:1.1rem;cursor:pointer;border-radius:0;transition:all .2s}
-button:hover{background:#fff;border-color:#fff}
-button:disabled{opacity:.55;cursor:default}
-.msg{margin-top:.8rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.05em;
-  text-align:center;min-height:1.1rem}
+button.go:hover{background:#fff;border-color:#fff}
+button.go:disabled{opacity:.55;cursor:default}
+.msg{margin-top:.8rem;font-size:.93rem;font-weight:300;color:var(--steel-lt);text-align:center;display:none}
+.msg.on{display:block}
 .msg.err{color:#ff8a8a}
 .fineprint{font-size:.85rem;color:var(--steel);font-weight:300;margin-top:1rem;line-height:1.6}
-.door{margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--border);
+.door-note{margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--border);
   font-size:.88rem;color:var(--steel);font-weight:300;line-height:1.6}
-.door b{color:var(--steel-lt);font-weight:500}
+.door-note b{color:var(--steel-lt);font-weight:500}
 .foot{text-align:center;margin-top:2.6rem;font-family:'Space Mono',monospace;font-size:.58rem;
   letter-spacing:.26em;text-transform:uppercase;color:var(--steel)}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 #done{display:none;text-align:center;padding:3rem 0}
 #done .big{font-family:'Bebas Neue',sans-serif;font-size:2.9rem;line-height:1;color:var(--blue);margin-bottom:.8rem}
-#done p{color:var(--steel-lt);font-weight:300;max-width:420px;margin:0 auto 1.4rem}
+#done p{color:var(--steel-lt);font-weight:300;max-width:440px;margin:0 auto 1.4rem}
 #done .credo{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.26em;
   text-transform:uppercase;color:var(--off-white);font-weight:700}
-@media(max-width:520px){.facts{grid-template-columns:1fr}h1{font-size:2.5rem}}
+@media(max-width:520px){.facts,.doors{grid-template-columns:1fr}h1{font-size:2.5rem}}
 </style>
 </head>
 <body>
@@ -95,46 +115,63 @@ button:disabled{opacity:.55;cursor:default}
     <p>Once a month, the CEO comes back with the report.</p>
   </div>
 
-  <div class="why">
-    <div class="q">You didn&rsquo;t choose everything you were entrusted with. But you decide what you do with it.</div>
-    <p>One Saturday a month, the same six departments. Same questions. Different numbers.
-    You bring what actually happened &mdash; and a room of people who will ask.</p>
+  <div id="live">
+    <div class="why">
+      <div class="q">You didn&rsquo;t choose everything you were entrusted with. But you decide what you do with it.</div>
+      <p>One Saturday a month, the same six departments. Same questions. Different numbers.
+      You bring what actually happened &mdash; and a room of people who will ask.</p>
+    </div>
+
+    <!-- STATIC FALLBACK names no date. render() fills these from the cadence rule. -->
+    <div class="facts">
+      <div class="f"><div class="k">When</div><div class="v">First Saturday</div><div class="s">Every month</div></div>
+      <div class="f hot"><div class="k">Next one</div><div class="v" id="nextD">&mdash;</div><div class="s" id="nextS">Loading</div></div>
+      <div class="f"><div class="k">Where</div><div class="v" id="whereV">Online</div><div class="s" id="whereS">Wherever you are</div></div>
+      <div class="f"><div class="k">Why that Saturday</div><div class="v">Your month<br>just closed</div><div class="s">Statements in. Nothing to guess at.</div></div>
+    </div>
+
+    <h2>What happens in the room</h2>
+    <ul class="inc">
+      <li><span class="n">01</span><div><b>You report</b><span>Out loud, to people who know what you committed to last month. Six departments &mdash; Faith, Family, Fitness, Finances, Focus, Fulfillment.</span></div></li>
+      <li><span class="n">02</span><div><b>They ask</b><span>A coach carries the room and asks the question you were hoping nobody would. You look at the numbers together.</span></div></li>
+      <li><span class="n">03</span><div><b>You commit</b><span>One thing, named out loud, that the same room will ask you about next month.</span></div></li>
+    </ul>
+
+    <h2>Two ways in</h2>
+    <div class="doors">
+      <button type="button" class="door-c" id="dMember" onclick="pick('member')">
+        <div class="dk">Take a seat</div>
+        <b>BOARD MEMBER</b>
+        <span>You bring last month&rsquo;s numbers and say them out loud to a room that will ask.</span>
+      </button>
+      <button type="button" class="door-c" id="dCoach" onclick="pick('coach')">
+        <div class="dk">Run a room</div>
+        <b>COACH</b>
+        <span>You carry one room, once a month. You get the questions &mdash; the rest is you.</span>
+      </button>
+    </div>
+
+    <form id="bf" class="form" onsubmit="return send(event)">
+      <input type="text" name="proactivators_hp_check" class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="k" id="fK">Tell me who you are</div>
+      <h3 id="fT">&nbsp;</h3>
+      <p id="fS">&nbsp;</p>
+      <input type="text" id="nm" placeholder="Your name" autocomplete="name">
+      <input type="email" id="em" placeholder="Your email" autocomplete="email">
+      <input type="tel" id="ph" placeholder="Phone (optional)" autocomplete="tel">
+      <textarea id="nt" placeholder=""></textarea>
+      <button type="submit" class="go" id="go">Send it</button>
+      <div class="msg" id="msg"></div>
+      <div class="fineprint" id="fine"></div>
+      <div class="door-note"><b>No payment, and no price yet.</b> The Boardroom is being rebuilt around a
+      tracking system worth sitting at a table for. Tell me which door you want and you&rsquo;ll
+      hear from me before anyone else does.</div>
+    </form>
   </div>
-
-  <div class="facts">
-    <div class="f"><div class="k">When</div><div class="v">First Saturday</div><div class="s">Every month</div></div>
-    <div class="f hot"><div class="k">The first one</div><div class="v">October 3</div><div class="s">2026</div></div>
-    <div class="f"><div class="k">Cost</div><div class="v">$39 / month</div><div class="s">Month to month. Cancel anytime.</div></div>
-    <div class="f"><div class="k">Why that Saturday</div><div class="v">Your month<br>just closed</div><div class="s">Statements in. Nothing to guess at.</div></div>
-  </div>
-
-  <h2>What you get</h2>
-  <ul class="inc">
-    <li><span class="n">01</span><div><b>The room</b><span>The monthly board meeting. Your report, out loud, to people who know what you committed to.</span></div></li>
-    <li><span class="n">02</span><div><b>Your report</b><span>Your own login. The six departments, tracked over time &mdash; so you walk in with numbers instead of a feeling.</span></div></li>
-    <li><span class="n">03</span><div><b>The app, included</b><span>ProActivators OS is yours as long as you&rsquo;re at this table. Your journal, your pillars, your Coach.</span></div></li>
-  </ul>
-
-  <form id="bf" class="form">
-    <input type="text" name="proactivators_hp_check" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="k">Save your seat</div>
-    <h3>Take the seat.</h3>
-    <p>No payment today. I&rsquo;ll send you everything before October 3 &mdash;
-    the details, the login, and the first invoice. You can walk away any time before that.</p>
-    <input type="text" id="nm" placeholder="Your name" autocomplete="name">
-    <input type="email" id="em" placeholder="Your email" autocomplete="email" required>
-    <input type="tel" id="ph" placeholder="Phone (optional)" autocomplete="tel">
-    <button type="submit" id="go">Save my seat</button>
-    <div class="msg" id="msg"></div>
-    <div class="fineprint">$39/month, starting October. Month to month &mdash; you can stop whenever you decide to.</div>
-    <div class="door"><b>And if the cost is the only thing keeping you from this table &mdash;</b>
-    say so when you write to me. We&rsquo;ll work it out. Nobody gets left outside over money.</div>
-  </form>
 
   <div id="done">
-    <div class="big">YOUR SEAT IS SAVED.</div>
-    <p>You&rsquo;ll hear from me before October 3 with everything you need.
-    Bring last month&rsquo;s numbers. Bring the promise you made.</p>
+    <div class="big" id="doneBig">GOT IT.</div>
+    <p id="doneP"></p>
     <div class="credo">We don&rsquo;t drift. We decide.</div>
   </div>
 
@@ -142,44 +179,121 @@ button:disabled{opacity:.55;cursor:default}
 </div>
 
 <script>
-(function(){
-  var form=document.getElementById('bf'),btn=document.getElementById('go'),msg=document.getElementById('msg');
-  var qs=new URLSearchParams(location.search);
-  if(qs.get('e')) document.getElementById('em').value=qs.get('e');
-  if(qs.get('n')) document.getElementById('nm').value=qs.get('n');
+/* ──────────────────────────────────────────────────────────────────────────────
+   THE BOARDROOM — evergreen on purpose.
 
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var email=document.getElementById('em').value.trim();
-    if(!email){msg.className='msg err';msg.textContent='Email needed so I can send you the details.';return;}
-    btn.disabled=true;btn.textContent='Saving...';msg.className='msg';msg.textContent='';
-    // NOTE: the site is on GitHub Pages; the functions live on a SEPARATE Netlify
-    // project. This URL must stay absolute or every submission 404s silently.
-    fetch('https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        type:'boardroom',
-        name:document.getElementById('nm').value,
-        email:email,
-        phone:document.getElementById('ph').value,
-        hp:form.proactivators_hp_check.value,
+   This page used to hardcode "October 3" in four places, including two promises
+   written in a tense that expired the next morning. The Boardroom is not a date,
+   it is a RULE: the first Saturday of every month. So the page computes the next
+   one and nobody edits anything monthly.
+
+   boardroom/schedule.json only carries what a rule cannot know: when the series
+   resumes, any month to skip, the time once it is decided, and where.
+   ────────────────────────────────────────────────────────────────────────────── */
+var INQUIRE='https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
+var SCHED=null, NEXT=null, role='';
+
+function $(id){return document.getElementById(id);}
+function iso(d){return d.toISOString().slice(0,10);}
+
+// First Saturday of a given month. m may be out of range; Date normalises it.
+function firstSaturday(y,m){
+  var d=new Date(Date.UTC(y,m,1));
+  return new Date(Date.UTC(y,m,1+((6-d.getUTCDay()+7)%7)));
+}
+// The next one that is not before today, not before `resumes`, and not skipped.
+// Comparing ISO strings keeps this identical to how /rx picks its session.
+function nextRoom(todayISO,S){
+  var floor=[todayISO,(S&&S.resumes)||''].sort().pop();
+  var skip={}; ((S&&S.skip)||[]).forEach(function(k){skip[k]=1;});
+  var t=new Date(floor+'T00:00:00Z');
+  for(var i=0;i<24;i++){
+    var d=firstSaturday(t.getUTCFullYear(),t.getUTCMonth()+i), s=iso(d);
+    if(s>=floor && !skip[s]) return d;
+  }
+  return null;
+}
+
+var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function render(){
+  if(!NEXT) return;                       // leave the static fallback; it names no date
+  $('nextD').textContent=MON[NEXT.getUTCMonth()]+' '+NEXT.getUTCDate();
+  // Say the day. Only say a TIME once one actually exists.
+  $('nextS').textContent=(SCHED&&SCHED.time) ? ('Saturday · '+SCHED.time) : 'Saturday · '+NEXT.getUTCFullYear();
+  if(SCHED&&SCHED.where){ $('whereV').textContent=SCHED.where; }
+  $('whereS').textContent=(SCHED&&SCHED.time)?'Link sent before the room':'Time announced with the invite';
+}
+
+/* One table for both doors, so the heading, the placeholder, the button and the
+   confirmation can never describe a different role than the one they clicked. */
+function ROLE(k){
+  return {
+    member:{ type:'boardroom-member',
+      k:'Take a seat', t:'Pull up a chair.',
+      s:'Six departments, once a month, out loud. Tell me where you are now and I’ll send you the details before the room fills.',
+      ph:'Which pillar is costing you the most right now? (optional)',
+      go:'Save my seat', fine:'No payment. No price yet. You hear from me before it is public.',
+      big:'YOUR SEAT IS SAVED.',
+      done:'You’ll hear from me before the next room with everything you need. Bring last month’s numbers. Bring the promise you made.' },
+    coach:{ type:'boardroom-coach',
+      k:'Run a room', t:'Carry a room.',
+      s:'You get the questions and the structure. The rest is you — you ask what nobody else will, and you look at the numbers with them.',
+      ph:'Who have you led, and why do you want this room? (optional)',
+      go:'I want to coach', fine:'No payment. I read every one of these myself.',
+      big:'GOT IT.',
+      done:'I read these myself. If it’s a fit, we’ll talk before the next room — coaches are chosen, not signed up.' }
+  }[k];
+}
+function pick(k){
+  var r=ROLE(k); if(!r) return;
+  role=k;
+  $('dMember').classList.toggle('on',k==='member');
+  $('dCoach').classList.toggle('on',k==='coach');
+  $('fK').textContent=r.k; $('fT').textContent=r.t; $('fS').textContent=r.s;
+  $('nt').placeholder=r.ph; $('go').textContent=r.go; $('fine').textContent=r.fine;
+  var f=$('bf'); f.classList.add('on');
+  setTimeout(function(){ $('nm').focus(); f.scrollIntoView({behavior:'smooth',block:'center'}); },30);
+}
+function bad(id){ $(id).classList.add('err'); setTimeout(function(){$(id).classList.remove('err');},1400); }
+
+async function send(ev){
+  ev.preventDefault();
+  var r=ROLE(role); if(!r) return false;
+  var nm=$('nm').value.trim(), em=$('em').value.trim(), ok=true;
+  if(nm.length<2){bad('nm');ok=false;}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){bad('em');ok=false;}
+  if(!ok){ var m=$('msg'); m.className='msg on err'; m.textContent='Check the highlighted fields.'; return false; }
+
+  var go=$('go'); go.disabled=true; go.textContent='Sending…';
+  try{
+    var res=await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ type:r.type, name:nm, email:em, phone:$('ph').value, hp:$('hp').value,
         fields:{
-          'Interest':'The Boardroom — monthly membership',
-          'First session':'Saturday October 3, 2026',
-          'Price quoted':'$39/month, month to month',
+          'Door': role==='coach'?'WANTS TO COACH':'WANTS A SEAT',
+          'Next room': NEXT?iso(NEXT):'(not computed)',
+          'In their words': $('nt').value,
           'Source':'boardroom page'
-        }
-      })
-    }).then(function(r){
-      if(!r.ok) throw new Error('bad response');
-      form.style.display='none';
-      document.getElementById('done').style.display='block';
-      window.scrollTo({top:0,behavior:'smooth'});
-    }).catch(function(){
-      btn.disabled=false;btn.textContent='Save my seat';
-      msg.className='msg err';msg.textContent='Did not go through — tap again.';
-    });
-  });
+        }})});
+    if(!res.ok) throw new Error('bad');
+  }catch(e){
+    go.disabled=false; go.textContent=r.go;
+    var m2=$('msg'); m2.className='msg on err'; m2.textContent='That didn’t go through — tap again.';
+    return false;
+  }
+  $('doneBig').textContent=r.big; $('doneP').textContent=r.done;
+  $('live').style.display='none'; $('done').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+  return false;
+}
+
+(function(){
+  var qs=new URLSearchParams(location.search);
+  if(qs.get('e')) $('em').value=qs.get('e');
+  if(qs.get('n')) $('nm').value=qs.get('n');
+  fetch('/boardroom/schedule.json',{cache:'no-store'})
+    .then(function(r){return r.json();})
+    .then(function(S){ SCHED=S; NEXT=nextRoom(new Date().toISOString().slice(0,10),S); render(); })
+    .catch(function(){});
 })();
 </script>
 </body>

@@ -1,0 +1,13 @@
+{
+  "_": "The Boardroom is a RULE, not a date: the first Saturday of every month. The page COMPUTES the next one, so nobody edits this file monthly and no page can go stale. Touch this only to pause the series, skip a month, or set the time/venue.",
+  "cadence": "first-saturday",
+  "resumes": "2026-12-01",
+  "_resumes": "The first qualifying Saturday on or after this date. Set to December because Nov 7 — November's first Saturday — is the Executive Mindset Workshop, 10 AM to 3 PM at FIU. Gabriel's call Oct 3.",
+  "skip": [],
+  "_skip": "One-off exceptions AFTER `resumes`, as YYYY-MM-DD of a first-Saturday to pass over.",
+  "time": "",
+  "_time": "Blank on purpose — not yet decided. While it is blank the page says the day and NOT a time, instead of printing an hour we would have to take back.",
+  "where": "Online",
+  "price": null,
+  "_price": "Null on purpose. Gabriel's call Oct 3: no price while the Command Center is being built and coaches are being recruited. The page shows no number at all rather than one we would have to retract."
+}
