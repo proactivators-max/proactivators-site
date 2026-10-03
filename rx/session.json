@@ -36,7 +36,7 @@
       "venue": "FIU · Graham Center",
       "room": "Room GC 243",
       "seats": 40,
-      "salesOpen": "",
+      "salesOpen": "2026-10-03",
       "address": "10955 SW 15th Terrace, Miami, FL 33199",
       "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
       "doors": "9:30 AM"
@@ -53,5 +53,6 @@
     "address": "10955 SW 15th Terrace, Miami, FL 33199",
     "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
     "doors": "9:30 AM"
-  }
+  },
+  "_salesOpen": "Orders BEFORE this date are not seats for this session. It was blank, which fell back to 2026-01-01 and would have counted a May coupon test as a Nov 7 seat."
 }
