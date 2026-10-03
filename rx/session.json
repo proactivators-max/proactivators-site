@@ -1,13 +1,23 @@
 {
-  "_": "Rx Your Life — the one place the next workshop date lives. The wall poster has no date; /rx reads this. Add the next session to `upcoming` before the current one passes; the page picks the first date >= today.",
-  "_state": "NO CONFIRMED DATE as of Sep 28 2026. `upcoming` is deliberately empty, which puts the page into its waitlist state on its own: it shows 'Next date coming', the button becomes 'Tell me the next date — Free', and NOBODY IS SENT TO CHECKOUT. Do not re-add a date until the room is actually booked — a live $197 checkout against an unbooked room means refunding people.",
-  "_toRestore": "When a venue confirms: copy `template` into `upcoming`, set `date` (YYYY-MM-DD) and `label` (e.g. 'Saturday, November 14'), and check the venue line. Nothing else changes — the page switches itself back to selling. This file is publicly fetchable, so no unconfirmed date is written here.",
+  "_": "Rx Your Life — the one place the next workshop date lives. The wall poster has no date; /rx reads this. Add the next session to `upcoming` before the current one passes; the page picks the first date >= today (UTC, lexical compare, so `date` must be YYYY-MM-DD).",
+  "_state": "SELLING as of Oct 3 2026. Saturday Nov 7 2026 at FIU is BOOKED AND PAID (30% deposit cleared — $282.72 of $942.40). The page is back in its buy state: 'Reserve my seat — $197' goes to the checkout link below. This is the only date that goes anywhere; anything still saying October or 'date TBA' is wrong.",
+  "_toRestore": "When this date passes and a venue confirms the next one: copy `template` into `upcoming`, set `date` (YYYY-MM-DD) and `label`, and check the venue line. If NO date is confirmed yet, empty `upcoming` instead — that puts the page into its waitlist state on its own and NOBODY is sent to checkout. Never write an unconfirmed date here; this file is publicly fetchable.",
   "seats": 40,
   "price": 197,
   "checkout": "https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4",
   "manualSold": 0,
   "video": null,
-  "upcoming": [],
+  "upcoming": [
+    {
+      "date": "2026-11-07",
+      "label": "Saturday, November 7",
+      "time": "10 AM – 3 PM",
+      "venue": "FIU · Miami",
+      "room": "",
+      "seats": 40,
+      "salesOpen": ""
+    }
+  ],
   "template": {
     "date": "",
     "label": "",
