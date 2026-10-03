@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Executive Mindset Workshop — ProActivators</title>
+<meta name="description" content="One Saturday at FIU in Miami. Five hours, six pillars, forty seats. Are you drifting, thriving, or shifting? Reserve your seat.">
+<meta property="og:title" content="The Executive Mindset Workshop — Miami">
+<meta property="og:description" content="One Saturday at FIU. Five hours, six pillars, forty seats. Are you drifting, thriving, or shifting?">
+<meta property="og:url" content="https://proactivatorsclub.com/workshop/">
+<meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProActivators">
+<!-- NOTE: description + og: + twitter: all say the same thing in several places. /workshop/live
+     once sat live for a week advertising a date that had passed because the twitter: pair was
+     missed. NONE of these carry a date on purpose — the date lives in one JSON file and is
+     rendered at runtime. Keep it that way: if a date ever goes in a meta tag, it will go stale. -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Executive Mindset Workshop — Miami">
+<meta name="twitter:description" content="One Saturday at FIU. Five hours, six pillars, forty seats. Are you drifting, thriving, or shifting?">
+<meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--surface:#141414;--surface2:#1c1c1c;--off-white:#f0ebe0;
+  --steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.1);
+  --blue-border:rgba(58,180,242,.22);--border:rgba(255,255,255,.08)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--off-white);line-height:1.6;padding:0 0 4rem}
+.wrap{max-width:620px;margin:0 auto;padding:0 1.25rem}
+
+.top{padding:2.6rem 0 2rem;text-align:center;border-bottom:1px solid var(--border)}
+.logo{height:26px;margin-bottom:1.6rem}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--blue);font-weight:700;margin-bottom:.8rem}
+h1{font-family:'Bebas Neue',sans-serif;font-size:3.1rem;line-height:.98;letter-spacing:.02em;margin-bottom:.9rem}
+.top p{color:var(--steel-lt);font-size:1.02rem;font-weight:300;max-width:460px;margin:0 auto}
+
+/* The machine/man face is the same key art as the printed CrossFit poster and /rx —
+   referenced, not copied, so the two funnels can never drift to different artwork.
+   It fades into the page background instead of sitting in a hard-edged box. */
+.art{position:relative;margin:0 -1.25rem;overflow:hidden;background:var(--black)}
+.art img{display:block;width:100%;height:auto}
+.art::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:38%;
+  background:linear-gradient(to bottom,rgba(5,5,5,0) 0%,rgba(5,5,5,.75) 55%,var(--black) 100%);pointer-events:none}
+.art .cap{position:absolute;left:0;right:0;bottom:.9rem;text-align:center;z-index:2;
+  font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--steel-lt)}
+
+.why{padding:2.2rem 0 .6rem;text-align:center}
+.why .q{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;line-height:1.12;letter-spacing:.02em;
+  max-width:520px;margin:0 auto .8rem}
+.why .q i{font-style:normal;color:var(--blue)}
+.why p{color:var(--steel-lt);font-size:.98rem;font-weight:300;max-width:500px;margin:0 auto}
+
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:2rem 0 .4rem}
+.f{background:var(--surface);border:1px solid var(--border);padding:1.1rem 1.15rem}
+.f .k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--steel);font-weight:700;margin-bottom:.35rem}
+.f .v{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;line-height:1.05;letter-spacing:.02em}
+.f .s{font-size:.85rem;color:var(--steel);font-weight:300;margin-top:.15rem}
+.f.hot{border-color:var(--blue);background:var(--blue-dim)}
+.f.hot .v{color:var(--blue)}
+
+h2{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.03em;margin:2.4rem 0 1rem;
+  padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.inc{list-style:none}
+.inc li{padding:.95rem 0;border-bottom:1px solid var(--border);display:flex;gap:.9rem;align-items:flex-start}
+.inc li:last-child{border-bottom:0}
+.inc .n{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;color:var(--blue);
+  font-weight:700;flex:0 0 auto;padding-top:.28rem;min-width:3.4rem}
+.inc .n.rest{color:var(--steel)}
+.inc b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.02em;font-weight:400}
+.inc span.d{display:block;color:var(--steel-lt);font-size:.93rem;font-weight:300;margin-top:.1rem}
+
+.who{list-style:none;margin-top:.2rem}
+.who li{padding:.9rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;align-items:center}
+.who li:last-child{border-bottom:0}
+.who .pic{flex:0 0 auto;width:64px;height:64px;border-radius:50%;overflow:hidden;
+  background:var(--surface2);border:1px solid var(--blue-border);
+  display:flex;align-items:center;justify-content:center}
+.who .pic img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+/* No photo yet -> initials, never a broken image and never a stock face. */
+.who .pic .ini{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;color:var(--steel)}
+.who b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.32rem;letter-spacing:.02em;font-weight:400}
+.who span{display:block;color:var(--steel);font-size:.88rem;font-weight:300;margin-top:.05rem}
+.more{margin-top:1rem;padding:.9rem 1rem;background:var(--surface);border:1px dashed var(--blue-border);
+  font-size:.9rem;color:var(--steel-lt);font-weight:300}
+
+.strip{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.6rem 0 .2rem;justify-content:center}
+.strip span{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--steel);border:1px solid var(--border);padding:.45rem .7rem}
+
+.cta{margin-top:2.4rem}
+.buy{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--blue);color:var(--black);border:2px solid var(--blue);
+  font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;padding:1.15rem 1.2rem;cursor:pointer;border-radius:0;transition:all .2s;text-align:left}
+.buy:hover{background:#fff;border-color:#fff}
+.buy small{font-size:.86rem;letter-spacing:.1em;white-space:nowrap}
+.fine{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);text-align:center;margin-top:.8rem;line-height:1.8}
+.fine a{color:var(--steel-lt)}
+
+.form{display:none;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);
+  padding:1.5rem 1.4rem;margin-top:1.4rem}
+.form.on{display:block}
+.form .k{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--blue);font-weight:700;margin-bottom:.5rem}
+.form h3{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.02em;margin-bottom:.4rem}
+.form p{color:var(--steel-lt);font-size:.93rem;font-weight:300;margin-bottom:1.1rem}
+input{width:100%;background:var(--black);border:1px solid var(--border);color:var(--off-white);
+  font-family:'DM Sans',sans-serif;font-size:1rem;padding:.95rem 1rem;margin-bottom:.6rem;
+  border-radius:0;-webkit-appearance:none;transition:border-color .2s}
+input:focus{outline:none;border-color:var(--blue)}
+input.err{border-color:#991f1f}
+input::placeholder{color:#5a5a5a}
+button.go{width:100%;margin-top:.4rem;background:var(--blue);color:var(--black);border:2px solid var(--blue);
+  font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;padding:1.1rem;cursor:pointer;border-radius:0;transition:all .2s}
+button.go:hover{background:#fff;border-color:#fff}
+button.go:disabled{opacity:.55;cursor:default}
+.fnote{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);text-align:center;margin-top:.7rem}
+.msg{margin-top:.8rem;font-size:.93rem;font-weight:300;color:var(--steel-lt);text-align:center;display:none}
+.msg.on{display:block}
+.msg.err{color:#ff8a8a}
+.door{margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid var(--border);
+  font-size:.88rem;color:var(--steel);font-weight:300;line-height:1.6}
+.door b{color:var(--steel-lt);font-weight:500}
+.close{text-align:center;margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--border)}
+.close .line{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;line-height:1.15;letter-spacing:.02em;
+  max-width:420px;margin:0 auto .5rem}
+.foot{text-align:center;margin-top:1.6rem;font-family:'Space Mono',monospace;font-size:.58rem;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--steel);line-height:2.2}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+@media(max-width:520px){.facts{grid-template-columns:1fr}h1{font-size:2.5rem}.why .q{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <img src="/logo.png" alt="ProActivators" class="logo">
+    <div class="eyebrow">One Saturday &middot; Six pillars &middot; Miami</div>
+    <h1>THE EXECUTIVE<br>MINDSET WORKSHOP</h1>
+    <p>Five hours in one room, and you leave with a scoreboard for your whole life &mdash;
+    not a feeling that fades by Tuesday.</p>
+  </div>
+
+  <div class="art">
+    <img src="/rx/key-art.jpg" alt="A face split down the middle — one half machine, one half man"
+         width="1080" height="927" loading="eager" decoding="async">
+    <div class="cap">Terminate what destroys &middot; Activate what builds</div>
+  </div>
+
+  <div class="why">
+    <div class="q">Are you drifting? Are you thriving? Or are you <i>shifting?</i></div>
+    <p>Most programs try to change what you do. This one changes how you see &mdash; because
+    behavior that isn&rsquo;t rooted in a shifted mindset always fades. The shift is the bridge:
+    when identity changes, everything downstream changes with it.</p>
+  </div>
+
+  <!-- STATIC FALLBACK = the waitlist state, on purpose. With JS dead the form cannot submit
+       either way, so the page must not promise a transaction it cannot make. Nothing here
+       names a date; renderSession() fills these in from the one shared JSON file. -->
+  <div class="facts">
+    <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nYear">Next date coming</div></div>
+    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">FIU &middot; Miami</div><div class="s" id="nTime">10 AM &ndash; 3 PM</div></div>
+    <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">$197</div><div class="s">Lunch and workbook included</div></div>
+    <div class="f"><div class="k">The room</div><div class="v" id="nSeats">40 seats</div><div class="s">Closes when full</div></div>
+  </div>
+
+  <h2>The five hours</h2>
+  <ul class="inc">
+    <li><span class="n">Hour 1</span><div><b>The Shift</b><span class="d">The mindset shift. Three human superpowers you already have.</span></div></li>
+    <li><span class="n">Hour 2</span><div><b>The Path</b><span class="d">How every habit actually runs, and the four moves that change one.</span></div></li>
+    <li><span class="n rest">12:00</span><div><b>Lunch &amp; reset</b><span class="d">Included. Real food, real conversation.</span></div></li>
+    <li><span class="n">Hour 3</span><div><b>The Identity</b><span class="d">The three P&rsquo;s. Who you decide to be before you decide what to do.</span></div></li>
+    <li><span class="n">Hour 4</span><div><b>The Decision</b><span class="d">Around the table, nobody skipped. What happens next.</span></div></li>
+  </ul>
+
+  <h2>Who&rsquo;s in the room</h2>
+  <ul class="who" id="who"></ul>
+  <div class="more" id="more"></div>
+
+  <div class="strip">
+    <span>Faith</span><span>Family</span><span>Fitness</span>
+    <span>Finances</span><span>Focus</span><span>Fulfillment</span>
+  </div>
+
+  <div class="cta">
+    <button class="buy" id="buy" onclick="openForm()">
+      <span id="buyL">Tell me the next date</span><small id="buyR">Free &rarr;</small>
+    </button>
+    <div class="fine" id="fine">No payment &middot; We email you the date &middot;
+      <a href="mailto:proactivateyourlife@gmail.com">Questions?</a></div>
+
+    <form class="form" id="form" onsubmit="return reserve(event)">
+      <input type="text" name="proactivators_hp_check" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="k" id="fStep">One step</div>
+      <h3 id="fTitle">Be first to know.</h3>
+      <p id="fSub">The next date is being set. Leave your details and you hear before anyone else.</p>
+      <input type="text" id="name" placeholder="Your name" autocomplete="name">
+      <input type="email" id="email" placeholder="Your email" autocomplete="email">
+      <input type="tel" id="phone" placeholder="Your phone" autocomplete="tel">
+      <button type="submit" class="go" id="go">Put me on the list &rarr;</button>
+      <div class="fnote" id="fNote">No spam &middot; just the next date</div>
+      <div class="msg" id="msg"></div>
+      <div class="door"><b>And if the price is the only thing keeping you out of this room &mdash;</b>
+      say so when you write to me. We&rsquo;ll work it out. Nobody gets left outside over money.</div>
+    </form>
+  </div>
+
+  <div class="close">
+    <div class="line">A light doesn&rsquo;t make noise. It just shines. Come shine.</div>
+  </div>
+
+  <div class="foot">
+    Gabriel Golindano &middot; Author, Unleash The ProActivator<br>
+    We don&rsquo;t drift. We decide.
+  </div>
+</div>
+
+<script>
+/* ──────────────────────────────────────────────────────────────────────────────
+   /workshop — the general-public door to the Executive Mindset Workshop.
+   /rx is the same event behind CrossFit framing. SAME date, SAME price, SAME
+   checkout link, and both read the SAME json, so the two pages cannot drift
+   apart. This page carries no CrossFit vocabulary by rule.
+
+   Data: /rx/session.json  (shared; the rx/ path is historical — see _shared in it)
+   Seats: the same rx-seats worker, so availability can never differ by page.
+   Rule: never fake a number. No live count -> "40 seats", never an invented
+   "27 left". And no word implying a transaction while the page cannot transact.
+   ────────────────────────────────────────────────────────────────────────────── */
+var SESSION_JSON='/rx/session.json';
+var SEATS_API='https://rx-seats.floridautilities.workers.dev/';
+var INQUIRE='https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
+var S=null, SESSION=null, src='', mode='waitlist';   // mode: buy | waitlist
+
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function store(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function recall(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
+
+(function(){
+  var q=new URLSearchParams(location.search);
+  src=q.get('src')||recall('emw_src')||'';
+  if(src) store('emw_src',src);
+  if(q.get('e')) $('email').value=q.get('e');
+  if(q.get('n')) $('name').value=q.get('n');
+})();
+
+/* ONE table for every state. The button, the reassurance line under it, and the
+   form's own heading/button/footnote all come from here, so they can never say
+   three different things — which is exactly how /rx ended up promising "Secure
+   checkout" under a free waitlist button. */
+var ASK=' <a href="mailto:proactivateyourlife@gmail.com">Questions?</a>';
+function STATE(k){
+  var p=(S&&S.price)||197;
+  return {
+    buy:{ mode:'buy',
+      btnL:'Reserve my seat', btnR:'$'+p+' &rarr;',
+      fine:'Secure checkout &middot; Seats limited &middot;'+ASK,
+      fStep:'Step 1 of 2', fTitle:'Who&rsquo;s coming?',
+      fSub:'Your details, then the secure checkout. Thirty seconds.',
+      go:'Continue to checkout &rarr;', fNote:'Next: secure card checkout &middot; $'+p },
+    nodate:{ mode:'waitlist',
+      btnL:'Tell me the next date', btnR:'Free &rarr;',
+      fine:'No payment &middot; We email you the date &middot;'+ASK,
+      fStep:'One step', fTitle:'Be first to know.',
+      fSub:'The next date is being set. Leave your details and you hear before anyone else.',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date' },
+    soldout:{ mode:'waitlist',
+      btnL:'Sold out &mdash; join the waitlist', btnR:'Free &rarr;',
+      fine:'No payment &middot; We email you if a seat opens &middot;'+ASK,
+      fStep:'One step', fTitle:'Waitlist.',
+      fSub:'This one is full. Leave your details &mdash; a seat opens, or the next date drops, and you hear first.',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; a seat or the next date' }
+  }[k];
+}
+function applyState(k){
+  var s=STATE(k); if(!s) return;
+  mode=s.mode;
+  $('buyL').innerHTML=s.btnL; $('buyR').innerHTML=s.btnR; $('fine').innerHTML=s.fine;
+  $('fStep').innerHTML=s.fStep; $('fTitle').innerHTML=s.fTitle; $('fSub').innerHTML=s.fSub;
+  $('go').innerHTML=s.go; $('fNote').innerHTML=s.fNote;
+}
+
+function renderSpeakers(){
+  var list=(S&&S.speakers)||[], ul=$('who'), more=$('more');
+  // Era's rule: no unconfirmed name or face on a live page. Only confirmed:true renders.
+  var shown=list.filter(function(x){return x && x.confirmed;});
+  ul.innerHTML=shown.map(function(x){
+    var ini=String(x.name||'').split(/\s+/).filter(function(w){return /^[A-Za-z]/.test(w);})
+              .slice(-2).map(function(w){return w[0];}).join('').toUpperCase();
+    // Optional focal crop. A source photo is rarely framed for a 64px circle — Freddy's
+    // has a podcast mic at mouth level. Zooming past it must keep his FACE centred, so:
+    // scaling about origin O maps a point p to O+(p-O)*S, therefore O=(f*S-50)/(S-1)
+    // lands the focus point f dead centre. Stored per speaker, so the next headshot
+    // needs a focus pair, not a hand-nudged stylesheet.
+    var sty='';
+    if(x.photo && x.zoom > 1 && x.focus && x.focus.length === 2){
+      var S=x.zoom;
+      var o=x.focus.map(function(v){ return ((v*S-50)/(S-1)).toFixed(1)+'%'; });
+      sty=' style="transform:scale('+S+');transform-origin:'+o.join(' ')+'"';
+    }
+    var pic=x.photo
+      ? '<img src="'+esc(x.photo)+'" alt="'+esc(x.name)+'" loading="lazy" decoding="async"'+sty+'>'
+      : '<span class="ini">'+esc(ini)+'</span>';
+    return '<li><div class="pic">'+pic+'</div>'
+         +     '<div><b>'+esc(x.name)+'</b><span>'+esc(x.title||'')+'</span></div></li>';
+  }).join('');
+  var pending=(S&&S.speakersPending)||0;
+  if(pending>0){
+    more.style.display='block';
+    more.innerHTML=pending===1
+      ? 'One more speaker is being announced.'
+      : pending+' more speakers are being announced. You&rsquo;ll hear the names before the room does.';
+  } else { more.style.display='none'; }
+}
+
+function renderSession(seatInfo){
+  var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
+  $('nPrice').textContent='$'+((S&&S.price)||197);
+
+  if(!SESSION){ applyState('nodate'); $('nSeats').textContent=seats+' seats'; return; }
+
+  $('nDate').textContent=SESSION.label||'One Saturday';
+  $('nYear').textContent=(SESSION.date||'').slice(0,4)||'';
+  // venue and time are separate cells — rendering the whole string into the sub-line printed "FIU" twice
+  $('nVenue').textContent=SESSION.venue||'FIU · Miami';
+  $('nTime').textContent=(SESSION.room?SESSION.room+' · ':'')+(SESSION.time||'');
+  applyState('buy');
+
+  if(seatInfo && typeof seatInfo.left==='number'){
+    if(seatInfo.soldOut){ $('nSeats').textContent='Sold out'; applyState('soldout'); }
+    else { $('nSeats').textContent=seatInfo.left+' left'; $('buyR').innerHTML='$'+((S&&S.price)||197)+' &middot; '+seatInfo.left+' left &rarr;'; }
+  } else {
+    $('nSeats').textContent=seats+' seats';   // no count -> the honest number, never a guess
+  }
+}
+
+function openForm(){
+  var f=$('form'); f.classList.add('on');
+  $('buy').style.display='none'; $('fine').style.display='none';
+  setTimeout(function(){ $('name').focus(); f.scrollIntoView({behavior:'smooth',block:'start'}); },30);
+}
+function bad(id){ $(id).classList.add('err'); setTimeout(function(){$(id).classList.remove('err');},1400); }
+function say(html,isErr){ var m=$('msg'); m.innerHTML=html; m.className='msg on'+(isErr?' err':''); }
+
+async function reserve(ev){
+  ev.preventDefault();
+  var name=$('name').value.trim(), email=$('email').value.trim(), phone=$('phone').value.trim(), ok=true;
+  if(name.length<2){bad('name');ok=false;}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){bad('email');ok=false;}
+  if(phone.replace(/\D/g,'').length<10){bad('phone');ok=false;}
+  if(!ok){ say('Check the highlighted fields.',true); return false; }
+
+  var go=$('go'); go.disabled=true; go.textContent=mode==='buy'?'One second…':'Saving…';
+  var payload={
+    type: mode==='buy' ? 'emw-workshop' : 'emw-waitlist',
+    name:name, email:email, phone:phone, hp:$('hp').value,
+    fields:{ src:src||'', session:SESSION?SESSION.date:'none', page:location.pathname }
+  };
+  // Never block the sale on the CRM. NOTE: this swallows failures, which is why
+  // emw-workshop/emw-waitlist MUST be registered in netlify/functions/inquire.js —
+  // an unknown type 400s here, silently, and the lead is simply lost.
+  try{ await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
+
+  if(mode!=='buy'){
+    say('<b>You&rsquo;re on the list.</b> The next date comes to you first.');
+    go.textContent='Done'; return false;
+  }
+
+  var parts=name.split(/\s+/);
+  var u=new URL((S&&S.checkout)||'https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4');
+  // GHL's payment link reads camelCase. Verified against the live link on Oct 3 2026:
+  // first_name/last_name populate NOTHING; firstName/lastName populate both fields.
+  u.searchParams.set('firstName',parts[0]||'');
+  u.searchParams.set('lastName',parts.slice(1).join(' '));
+  u.searchParams.set('email',email);
+  u.searchParams.set('phone',phone);
+  u.searchParams.set('utm_source',src||'workshop');
+  u.searchParams.set('utm_medium','link');
+  u.searchParams.set('utm_campaign','executive-mindset');
+  store('emw_pending',JSON.stringify({name:name,email:email,src:src,session:SESSION?SESSION.date:'',t:Date.now()}));
+  location.href=u.toString();
+  return false;
+}
+
+async function boot(){
+  try{ S=await (await fetch(SESSION_JSON,{cache:'no-store'})).json(); }catch(e){ S=null; }
+  var today=new Date().toISOString().slice(0,10);   // same UTC lexical compare as /rx
+  SESSION=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]||null;
+  renderSpeakers();
+  renderSession(null);
+  try{ var r=await (await fetch(SEATS_API,{cache:'no-store'})).json(); renderSession(r); }catch(e){ renderSession(null); }
+}
+boot();
+</script>
+</body>
+</html>
