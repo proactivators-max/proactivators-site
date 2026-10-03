@@ -76,6 +76,8 @@ h1 b{color:var(--blue);font-weight:400}
 .agenda span{font-family:var(--mono);font-size:10.5px;color:var(--blue);letter-spacing:.06em}
 .agenda b{font-family:var(--disp);font-size:22px;letter-spacing:.03em;font-weight:400;color:var(--off);line-height:1}
 .agenda small{color:var(--steel-lt);display:block;font-size:13px;margin-top:3px;line-height:1.45}
+.addr{display:none;color:var(--steel);text-decoration:underline;text-underline-offset:3px}
+.addr:hover{color:var(--blue)}
 .inc{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .inc span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:6px 9px;color:var(--steel-lt)}
 .pillars{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
@@ -129,7 +131,8 @@ footer a{color:var(--steel);text-decoration:none}
   <div class="next" id="next">
     <div class="k">Next session</div>
     <div class="d" id="nDate">One Saturday a month</div>
-    <div class="w" id="nWhere">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</div>
+    <div class="w" id="nWhere">FIU &middot; Graham Center &middot; 10 AM &ndash; 3 PM</div>
+    <a class="w addr" id="nAddr" target="_blank" rel="noopener"></a>
     <div class="s" id="nSeats">40 seats</div>
   </div>
 
@@ -263,6 +266,10 @@ function renderSession(r){
   applyState('buy');
   $('nDate').textContent=SESSION.label;
   $('nWhere').innerHTML=esc(SESSION.venue)+(SESSION.room?' &middot; '+esc(SESSION.room):'')+' &middot; '+esc(SESSION.time);
+  // Street address is its own tappable line: "FIU" is not something you can drive to.
+  var ad=$('nAddr');
+  if(SESSION.address){ ad.textContent=SESSION.address; ad.href=SESSION.map||('https://maps.google.com/?q='+encodeURIComponent(SESSION.address)); ad.style.display='block'; }
+  else { ad.style.display='none'; }
   var el=$('nSeats');
   if(r&&typeof r.left==='number'){
     if(r.soldOut){ el.className='s out'; el.innerHTML=seats+' seats &middot; <i>Sold out</i>'; setSoldOut(); }

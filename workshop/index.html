@@ -57,6 +57,9 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:3.1rem;line-height:.98;letter-s
 
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:2rem 0 .4rem}
 .f{background:var(--surface);border:1px solid var(--border);padding:1.1rem 1.15rem}
+.addr{display:none;margin-top:.4rem;font-size:.8rem;color:var(--steel);font-weight:300;
+  text-decoration:underline;text-underline-offset:3px}
+.addr:hover{color:var(--blue)}
 .f .k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--steel);font-weight:700;margin-bottom:.35rem}
 .f .v{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;line-height:1.05;letter-spacing:.02em}
@@ -168,7 +171,7 @@ button.go:disabled{opacity:.55;cursor:default}
        names a date; renderSession() fills these in from the one shared JSON file. -->
   <div class="facts">
     <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nYear">Next date coming</div></div>
-    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">FIU &middot; Miami</div><div class="s" id="nTime">10 AM &ndash; 3 PM</div></div>
+    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">FIU &middot; Graham Center</div><div class="s" id="nTime">10 AM &ndash; 3 PM</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
     <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">$197</div><div class="s">Lunch and workbook included</div></div>
     <div class="f"><div class="k">The room</div><div class="v" id="nSeats">40 seats</div><div class="s">Closes when full</div></div>
   </div>
@@ -334,6 +337,10 @@ function renderSession(seatInfo){
   // venue and time are separate cells — rendering the whole string into the sub-line printed "FIU" twice
   $('nVenue').textContent=SESSION.venue||'FIU · Miami';
   $('nTime').textContent=(SESSION.room?SESSION.room+' · ':'')+(SESSION.time||'');
+  // "FIU" is not something you can drive to. The street address gets its own tappable line.
+  var ad=$('nAddr');
+  if(SESSION.address){ ad.textContent=SESSION.address; ad.href=SESSION.map||('https://maps.google.com/?q='+encodeURIComponent(SESSION.address)); ad.style.display='block'; }
+  else { ad.style.display='none'; }
   applyState('buy');
 
   if(seatInfo && typeof seatInfo.left==='number'){
