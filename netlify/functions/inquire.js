@@ -19,6 +19,20 @@ const TYPE_TAGS = {
   'workshop-intake': 'workshop_intake',
   'rx-workshop': 'rx_workshop',          // /rx — the CrossFit-wall funnel; step 1 before the GHL checkout
   'rx-waitlist': 'rx_waitlist',          // /rx when the session is sold out or has no date yet
+  'emw-workshop': 'emw_workshop',        // /workshop — the general-public door; step 1 before the SAME GHL checkout as /rx
+  'emw-waitlist': 'emw_waitlist',        // /workshop when the session is sold out or has no date yet
+};
+
+// The heading on the contact note. Kept as a table rather than a ternary chain: this had grown
+// eight branches deep, and the next person adding a funnel should not have to edit an expression.
+const TYPE_LABELS = {
+  'workshop-exit': 'WORKSHOP EXIT SURVEY',
+  'workshop-intake': 'WORKSHOP INTAKE (STEP 2)',
+  'workshop-rsvp': 'WORKSHOP RSVP',
+  'rx-workshop': 'RX YOUR LIFE — RESERVATION (step 1, before checkout)',
+  'rx-waitlist': 'RX YOUR LIFE — WAITLIST',
+  'emw-workshop': 'EXECUTIVE MINDSET WORKSHOP — RESERVATION (step 1, before checkout)',
+  'emw-waitlist': 'EXECUTIVE MINDSET WORKSHOP — WAITLIST',
 };
 
 // /rx attribution: the wall (gym:<slug>) or the ad (src:<slug>) the person came from. Whitelisted
@@ -142,7 +156,7 @@ exports.handler = async (event) => {
     const contactId = data.contact?.id || data.id;
     if (contactId) {
       const noteLines = [
-        `${type === 'workshop-exit' ? 'WORKSHOP EXIT SURVEY' : type === 'workshop-intake' ? 'WORKSHOP INTAKE (STEP 2)' : type === 'workshop-rsvp' ? 'WORKSHOP RSVP' : type === 'rx-workshop' ? 'RX YOUR LIFE — RESERVATION (step 1, before checkout)' : type === 'rx-waitlist' ? 'RX YOUR LIFE — WAITLIST' : 'B2B INQUIRY'} — ${TYPE_TAGS[type].toUpperCase()}`,
+        `${TYPE_LABELS[type] || 'B2B INQUIRY'} — ${TYPE_TAGS[type].toUpperCase()}`,
         `Name: ${(name || '').trim()}`,
         `Email: ${email.trim()}`,
       ];
