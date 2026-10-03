@@ -57,6 +57,19 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
 #done .big{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--blue);margin-bottom:1rem}
 #done p{color:var(--steel-lt);font-weight:300;max-width:400px;margin:0 auto 1.6rem}
 #done .credo{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:var(--off-white);font-weight:700}
+.which{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:#3ab4f2;font-weight:700;margin-bottom:.6rem}
+.app{margin:1.6rem auto 0;max-width:420px;text-align:left;background:#141414;
+  border:1px solid rgba(255,255,255,.08);border-left:3px solid #3ab4f2;padding:1.3rem 1.25rem}
+.app-k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:#3ab4f2;font-weight:700;margin-bottom:.45rem}
+.app b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.02em;
+  font-weight:400;margin-bottom:.35rem}
+.app p{font-size:.92rem;font-weight:300;color:#aaa;margin-bottom:1rem}
+.app-btn{display:block;text-align:center;background:#3ab4f2;color:#050505;text-decoration:none;
+  font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;padding:.95rem 1rem;border:2px solid #3ab4f2;transition:all .2s}
+.app-btn:hover{background:#fff;border-color:#fff}
 </style>
 </head>
 <body>
@@ -68,6 +81,7 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
     <div class="seat">Your seat is saved</div>
     <div class="eyebrow">One More Thing</div>
     <h1>HELP ME PREPARE<br>FOR YOU.</h1>
+    <p class="which" id="which"></p>
     <p>Six questions. Two minutes. I build Saturday around the people actually in the room — not a generic crowd. Nobody sees these but me.</p>
   </div>
 
@@ -152,12 +166,36 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
   <div id="done">
     <div class="big">GOT IT.</div>
     <p>I'll read every one of these before Saturday. Come ready to work — and bring the thing you just named.</p>
+    <div class="app">
+      <div class="app-k">Do this before Saturday</div>
+      <b>Download the app.</b>
+      <p>You'll use it in the room. It's how you track what you decide on Saturday instead of
+      leaving with a feeling that fades by Tuesday. It's in beta, it costs you nothing, and it
+      takes a minute &mdash; do it now so you're not doing it at the door.</p>
+      <a class="app-btn" href="/beta">Install the app &rarr;</a>
+    </div>
+
     <div class="credo">We don't drift. We decide.</div>
   </div>
 
 </div>
 
 <script>
+// Which workshop this form belongs to comes from the SAME file /rx and /workshop read.
+// It was a hardcoded string, which is how it was still saying "Sept 26 2026 - True North
+// Gateway" a week after that date had passed.
+var WORKSHOP_LABEL = 'Next session';
+(function(){
+  fetch('/rx/session.json', {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(S){
+    var today = new Date().toISOString().slice(0,10);
+    var n = (S.upcoming || []).filter(function(u){ return u.date >= today; })[0];
+    if(!n) return;
+    WORKSHOP_LABEL = n.label + ' ' + String(n.date||'').slice(0,4) + ' — ' + n.venue + (n.room ? ' · ' + n.room : '');
+    var el = document.getElementById('which');
+    if(el) el.textContent = n.label + ' · ' + n.venue + ' · ' + n.time;
+  }).catch(function(){});
+})();
+
 (function(){
   var picked = {};
   document.querySelectorAll('[data-group]').forEach(function(group){
@@ -203,7 +241,7 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
           'Book / podcast': picked.q4 || '',
           'Food allergies': document.getElementById('q5').value,
           'Anything else': document.getElementById('q6').value,
-          'Workshop': 'Sept 26 2026 — True North Gateway'
+          'Workshop': WORKSHOP_LABEL
         }
       })
     }).then(function(r){
