@@ -126,7 +126,7 @@ footer a{color:var(--steel);text-decoration:none}
 
   <div class="k">The Executive Mindset Workshop</div>
   <h1>RX YOUR <b>LIFE.</b></h1>
-  <div class="gym" id="gym">You scanned the wall at <b id="gymName"></b></div>
+  <div class="gym" id="gym"><span id="gymLead">You scanned the wall at</span> <b id="gymName"></b></div>
 
   <div class="next" id="next">
     <div class="k">Next session</div>
@@ -246,7 +246,14 @@ function recall(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
 
 async function boot(){
   try{ GYMS=await (await fetch('/rx/gyms.json',{cache:'no-store'})).json(); }catch(e){}
-  if(gym&&GYMS[gym]){ $('gymName').textContent=GYMS[gym].name; $('gym').classList.add('on'); }
+  if(gym&&GYMS[gym]){
+    $('gymName').textContent=GYMS[gym].name; $('gym').classList.add('on');
+    // "You scanned the wall" is true for the poster and false for anyone who clicked a
+    // link in their gym's email. Same page, same gym:<slug> tag, same URL the poster
+    // points at — only the opening line changes, so it stops telling people they did
+    // something they didn't do. Any ?src= that isn't a scan gets the link wording.
+    if(src && src !== 'wall' && src !== 'poster' && src !== 'qr') $('gymLead').textContent='For the members of';
+  }
   try{ S=await (await fetch('/rx/session.json',{cache:'no-store'})).json(); }catch(e){ S=null; }
   var today=new Date().toISOString().slice(0,10);
   SESSION=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]||null;
