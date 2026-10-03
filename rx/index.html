@@ -132,6 +132,7 @@ footer a{color:var(--steel);text-decoration:none}
     <div class="k">Next session</div>
     <div class="d" id="nDate">One Saturday a month</div>
     <div class="w" id="nWhere">FIU &middot; Graham Center &middot; 10 AM &ndash; 3 PM</div>
+    <div class="w" id="nDoors"></div>
     <a class="w addr" id="nAddr" target="_blank" rel="noopener"></a>
     <div class="s" id="nSeats">40 seats</div>
   </div>
@@ -266,6 +267,7 @@ function renderSession(r){
   applyState('buy');
   $('nDate').textContent=SESSION.label;
   $('nWhere').innerHTML=esc(SESSION.venue)+(SESSION.room?' &middot; '+esc(SESSION.room):'')+' &middot; '+esc(SESSION.time);
+  $('nDoors').textContent=SESSION.doors ? ('Doors '+SESSION.doors+' · starts 10 sharp') : '';
   // Street address is its own tappable line: "FIU" is not something you can drive to.
   var ad=$('nAddr');
   if(SESSION.address){ ad.textContent=SESSION.address; ad.href=SESSION.map||('https://maps.google.com/?q='+encodeURIComponent(SESSION.address)); ad.style.display='block'; }

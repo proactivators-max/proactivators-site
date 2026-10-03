@@ -333,7 +333,9 @@ function renderSession(seatInfo){
   if(!SESSION){ applyState('nodate'); $('nSeats').textContent=seats+' seats'; return; }
 
   $('nDate').textContent=SESSION.label||'One Saturday';
-  $('nYear').textContent=(SESSION.date||'').slice(0,4)||'';
+  // The year is dead weight next to a date that already says November. Arrival is not:
+  // FIU is a big campus, and someone who reads "10 AM" turns up at 10 and parks at 10.
+  $('nYear').textContent=SESSION.doors ? ('Doors '+SESSION.doors+' · starts 10 sharp') : ((SESSION.date||'').slice(0,4)||'');
   // venue and time are separate cells — rendering the whole string into the sub-line printed "FIU" twice
   $('nVenue').textContent=SESSION.venue||'FIU · Miami';
   $('nTime').textContent=(SESSION.room?SESSION.room+' · ':'')+(SESSION.time||'');

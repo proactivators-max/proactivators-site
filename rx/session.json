@@ -38,7 +38,8 @@
       "seats": 40,
       "salesOpen": "",
       "address": "10955 SW 15th Terrace, Miami, FL 33199",
-      "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199"
+      "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
+      "doors": "9:30 AM"
     }
   ],
   "template": {
@@ -50,6 +51,7 @@
     "seats": 40,
     "salesOpen": "",
     "address": "10955 SW 15th Terrace, Miami, FL 33199",
-    "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199"
+    "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
+    "doors": "9:30 AM"
   }
 }
