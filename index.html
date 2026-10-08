@@ -179,6 +179,25 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
   display:flex;gap:1rem;align-items:center;flex-wrap:wrap;
   padding-top:.3rem;
 }
+
+/* ── next-event band ── */
+#next-event{position:relative;background:linear-gradient(180deg,rgba(58,180,242,.10),rgba(58,180,242,.03));
+  border-top:1px solid var(--blue);border-bottom:1px solid var(--blue-border);padding:34px 5vw}
+#next-event[hidden]{display:none}
+.ne-wrap{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap}
+.ne-eyebrow{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.5rem}
+.ne-title{font-size:clamp(26px,3.4vw,42px);line-height:1;letter-spacing:.02em;color:var(--off-white);margin:0 0 .55rem}
+.ne-when{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.ne-meta{font-size:.93rem;color:var(--steel-lt);font-weight:300;margin-top:.35rem}
+.ne-right{display:flex;flex-direction:column;align-items:flex-end;gap:.6rem}
+.ne-cta{text-decoration:none;display:inline-block;white-space:nowrap}
+.ne-seats{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+@media(max-width:760px){
+  #next-event{padding:26px 5vw}
+  .ne-wrap{flex-direction:column;align-items:flex-start;gap:1.3rem}
+  .ne-right{align-items:flex-start;width:100%}
+  .ne-cta{width:100%;text-align:center}
+}
 .btn-blue{
   font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.17em;
   text-transform:uppercase;color:var(--black);background:var(--blue);
@@ -925,6 +944,26 @@ footer{
   <div class="hero-bottom"></div>
 </section>
 
+<!-- NEXT EVENT — first thing after the hero, by Gabriel Oct 7: it is the number one earner
+     and it should not need a scroll. Every fact comes from /rx/session.json, the same file
+     /rx, /workshop and /workshop/prepare read, so the homepage cannot advertise a date that
+     has passed. The whole band REMOVES ITSELF when there is no upcoming session rather than
+     sitting there with a stale headline. Seats come from the live counter. -->
+<section id="next-event" hidden>
+  <div class="ne-wrap">
+    <div class="ne-left">
+      <div class="ne-eyebrow mono">Next event</div>
+      <h2 class="ne-title bebas">The Executive Mindset Workshop</h2>
+      <div class="ne-when mono" id="neWhen"></div>
+      <div class="ne-meta" id="neMeta"></div>
+    </div>
+    <div class="ne-right">
+      <a class="btn-blue mono ne-cta" href="/workshop/?src=home">Reserve your seat</a>
+      <div class="ne-seats mono" id="neSeats"></div>
+    </div>
+  </div>
+</section>
+
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
@@ -1476,6 +1515,30 @@ function handleSummit(){
 }
 document.getElementById('summit-email-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleSummit()});
 document.getElementById('summit-name-input').addEventListener('keydown',e=>{if(e.key==='Enter')handleSummit()});
+</script>
+<script>
+/* next-event band: one source of truth, and it hides rather than lies */
+(function(){
+  var sec = document.getElementById("next-event");
+  if (!sec) return;
+  fetch("/rx/session.json", {cache:"no-store"}).then(function(r){ return r.json(); }).then(function(S){
+    var today = new Date().toISOString().slice(0,10);
+    var n = (S.upcoming || []).filter(function(u){ return u.date >= today; })[0];
+    if (!n) return;                                   // no date -> band stays hidden
+    document.getElementById("neWhen").textContent =
+      n.label + (n.doors ? "  ·  Doors " + n.doors : "") + "  ·  " + n.time;
+    document.getElementById("neMeta").textContent =
+      n.venue + (n.room ? ", " + n.room : "") + "  ·  $" + (S.price || 197) + "  ·  Lunch, snacks and workbook included";
+    sec.hidden = false;
+    /* live seats, never a faked number */
+    fetch("https://rx-seats.floridautilities.workers.dev/", {cache:"no-store"})
+      .then(function(r){ return r.json(); }).then(function(k){
+        var el = document.getElementById("neSeats");
+        if (k && k.soldOut) { el.textContent = "Sold out"; }
+        else if (k && typeof k.left === "number") { el.textContent = k.left + " seats left"; }
+      }).catch(function(){});
+  }).catch(function(){});
+})();
 </script>
 </body>
 </html>
