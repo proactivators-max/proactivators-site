@@ -56,6 +56,17 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:3.1rem;line-height:.98;letter-s
 .why p{color:var(--steel-lt);font-size:.98rem;font-weight:300;max-width:500px;margin:0 auto}
 
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:2rem 0 .4rem}
+.faq{margin-top:.2rem}
+.faq-i{border-bottom:1px solid var(--border)}
+.faq-i:last-child{border-bottom:0}
+.faq-i summary{list-style:none;cursor:pointer;padding:1rem 2rem 1rem 0;position:relative;
+  font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.02em;color:var(--off-white)}
+.faq-i summary::-webkit-details-marker{display:none}
+.faq-i summary::after{content:"+";position:absolute;right:.2rem;top:.85rem;color:var(--blue);
+  font-family:var(--mono,'Space Mono',monospace);font-size:1.1rem;transition:transform .2s}
+.faq-i[open] summary::after{content:"2"}
+.faq-i p{color:var(--steel-lt);font-size:.95rem;font-weight:300;line-height:1.65;padding:0 0 1.1rem}
+.faq-i p b{color:var(--off-white);font-weight:500}
 .f{background:var(--surface);border:1px solid var(--border);padding:1.1rem 1.15rem}
 .addr{display:none;margin-top:.4rem;font-size:.8rem;color:var(--steel);font-weight:300;
   text-decoration:underline;text-underline-offset:3px}
@@ -141,6 +152,70 @@ button.go:disabled{opacity:.55;cursor:default}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
 @media(max-width:520px){.facts{grid-template-columns:1fr}h1{font-size:2.5rem}.why .q{font-size:1.6rem}}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Why can’t I stick to anything?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because you keep stopping right before it would have worked. A habit takes a median of about 66 days to become automatic, and most people quit between week three and week twelve — the window just short of that. You were never lazy. You stopped a few weeks early and then concluded something about yourself that wasn’t true. What fixes it isn’t more motivation. It’s a rule you keep on the days you don’t feel like it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "I’m busy all day and nothing gets done. Why?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because you are never all the way inside one thing. Knowledge workers switch tasks every few minutes, and research from UC Irvine puts the cost of a single interruption at about 23 minutes to fully return. Run that arithmetic across an eight-hour day. You weren’t unproductive — you were never once at full depth. Focus isn’t a personality trait you were born without. It’s a structure."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is this all there is?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You hit the number, the title, the house. It landed for about a week and then the quiet came back. That isn’t ingratitude and it usually isn’t depression. It’s what happens when the goals that organised your life stop being enough and nothing has replaced them. A life can be successful and still not be yours."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why do I feel disconnected from my family when I’m home every night?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because presence isn’t proximity. When the only conversations left are daycare, dinner and who’s picking up, you’ve stopped being a family and started co-managing a household. Nobody chooses that. It happens quietly, while everything else is urgent."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What actually happens in the room?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Five hours on one Saturday. The mindset shift and the three human superpowers you already have. How habits actually run, and the four moves that change one. The three P’s — who you decide to be before you decide what to do. Then the table, where nobody gets skipped. Lunch is included. You leave with a scoreboard for all six pillars, not a feeling that fades by Tuesday."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Who is this for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "People who look fine from the outside. You are not in crisis. Your life works. That’s exactly what makes the drift hard to see and easy to keep. It is not a seminar for people who have given up — it is for people who are still winning in one area and quietly losing in four."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is it religious?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Faith is one of the six pillars and it is the first one, because an anchor outside your own moods matters. You do not have to share mine to use the framework. Nobody is asked to pray, and nobody is asked to believe anything to be in the room."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -215,6 +290,38 @@ button.go:disabled{opacity:.55;cursor:default}
       <div class="door"><b>And if the price is the only thing keeping you out of this room &mdash;</b>
       say so when you write to me. We&rsquo;ll work it out. Nobody gets left outside over money.</div>
     </form>
+  </div>
+
+  <h2>Questions people actually ask</h2>
+  <div class="faq">
+    <details class="faq-i" open>
+      <summary>Why can&rsquo;t I stick to anything?</summary>
+      <p>Because you keep stopping right before it would have worked. A habit takes a median of about <b>66 days</b> to become automatic, and most people quit between week three and week twelve &mdash; the window just short of that. You were never lazy. You stopped a few weeks early and then concluded something about yourself that wasn&rsquo;t true. What fixes it isn&rsquo;t more motivation. It&rsquo;s a rule you keep on the days you don&rsquo;t feel like it.</p>
+    </details>
+    <details class="faq-i">
+      <summary>I&rsquo;m busy all day and nothing gets done. Why?</summary>
+      <p>Because you are never all the way inside one thing. Knowledge workers switch tasks every few minutes, and research from UC Irvine puts the cost of a single interruption at about <b>23 minutes</b> to fully return. Run that arithmetic across an eight-hour day. You weren&rsquo;t unproductive &mdash; you were never once at full depth. Focus isn&rsquo;t a personality trait you were born without. It&rsquo;s a structure.</p>
+    </details>
+    <details class="faq-i">
+      <summary>Is this all there is?</summary>
+      <p>You hit the number, the title, the house. It landed for about a week and then the quiet came back. That isn&rsquo;t ingratitude and it usually isn&rsquo;t depression. It&rsquo;s what happens when the goals that organised your life stop being enough and nothing has replaced them. <b>A life can be successful and still not be yours.</b></p>
+    </details>
+    <details class="faq-i">
+      <summary>Why do I feel disconnected from my family when I&rsquo;m home every night?</summary>
+      <p>Because presence isn&rsquo;t proximity. When the only conversations left are daycare, dinner and who&rsquo;s picking up, you&rsquo;ve stopped being a family and started co-managing a household. Nobody chooses that. It happens quietly, while everything else is urgent.</p>
+    </details>
+    <details class="faq-i">
+      <summary>What actually happens in the room?</summary>
+      <p>Five hours on one Saturday. The mindset shift and the three human superpowers you already have. How habits actually run, and the four moves that change one. The three P&rsquo;s &mdash; who you decide to be before you decide what to do. Then the table, where nobody gets skipped. Lunch is included. <b>You leave with a scoreboard for all six pillars</b>, not a feeling that fades by Tuesday.</p>
+    </details>
+    <details class="faq-i">
+      <summary>Who is this for?</summary>
+      <p>People who look fine from the outside. You are not in crisis. Your life works. That&rsquo;s exactly what makes the drift hard to see and easy to keep. It is not a seminar for people who have given up &mdash; it is for people who are still winning in one area and quietly losing in four.</p>
+    </details>
+    <details class="faq-i">
+      <summary>Is it religious?</summary>
+      <p>Faith is one of the six pillars and it is the first one, because an anchor outside your own moods matters. <b>You do not have to share mine to use the framework.</b> Nobody is asked to pray, and nobody is asked to believe anything to be in the room.</p>
+    </details>
   </div>
 
   <div class="close">
