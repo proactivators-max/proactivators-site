@@ -16,15 +16,27 @@
       "confirmed": true
     },
     {
-      "name": "Chief Freddy Fernandez",
-      "title": "Author, Fire Assessment Center 360 · Retired deputy chief, City of Miami Fire Department",
-      "photo": "/speakers/freddy-fernandez.jpg",
+      "name": "Chief Freddie Fernandez",
+      "title": "Author, Fire Assessment Center 360 · Deputy Fire Chief (ret.), Miami Fire Rescue",
+      "photo": "/speakers/freddie-fernandez.jpg",
       "focus": [
         55,
-        29
+        42
       ],
-      "zoom": 2.6,
+      "zoom": 1.45,
       "confirmed": true
+    },
+    {
+      "name": "Tucker Stipe",
+      "title": "Broadcast Campus Pastor, Christ Fellowship · 4,500 congregation, 1,100 volunteers",
+      "photo": "/speakers/tucker-stipe.jpg",
+      "focus": [
+        50,
+        32
+      ],
+      "zoom": 1.5,
+      "confirmed": false,
+      "bio": "A passionate follower of Jesus who uses that passion to influence everything he does. Married to Kaleigha, raising three sons on a little funny farm in Miami. BS in Religion, Liberty University; MA in Biblical and Theological Studies, Knox Theological Seminary."
     }
   ],
   "speakersPending": 2,
