@@ -13,7 +13,8 @@
       "name": "Gabriel Golindano",
       "title": "Author, Unleash The ProActivator · Founder, ProActivators",
       "photo": "/launch/gabriel.png",
-      "confirmed": true
+      "confirmed": true,
+      "angle": "Twenty years at war with inconsistency. He teaches the way out he had to find."
     },
     {
       "name": "Chief Freddie Fernandez",
@@ -24,7 +25,8 @@
         42
       ],
       "zoom": 1.45,
-      "confirmed": true
+      "confirmed": true,
+      "angle": "Thirty-two years in a job where how you feel does not get a vote."
     },
     {
       "name": "Tucker Stipe",
@@ -35,11 +37,11 @@
         32
       ],
       "zoom": 1.5,
-      "confirmed": false,
-      "bio": "A passionate follower of Jesus who uses that passion to influence everything he does. Married to Kaleigha, raising three sons on a little funny farm in Miami. BS in Religion, Liberty University; MA in Biblical and Theological Studies, Knox Theological Seminary."
+      "confirmed": true,
+      "angle": "They will tell you to pick &mdash; your career or your home. He says that is a lie."
     }
   ],
-  "speakersPending": 2,
+  "speakersPending": 1,
   "upcoming": [
     {
       "date": "2026-11-07",

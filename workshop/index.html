@@ -90,7 +90,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.03em;ma
 .inc span.d{display:block;color:var(--steel-lt);font-size:.93rem;font-weight:300;margin-top:.1rem}
 
 .who{list-style:none;margin-top:.2rem}
-.who li{padding:.9rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;align-items:center}
+.who li{padding:1.15rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;align-items:flex-start}
 .who li:last-child{border-bottom:0}
 .who .pic{flex:0 0 auto;width:64px;height:64px;border-radius:50%;overflow:hidden;
   background:var(--surface2);border:1px solid var(--blue-border);
@@ -98,6 +98,8 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.03em;ma
 .who .pic img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 /* No photo yet -> initials, never a broken image and never a stock face. */
 .who .pic .ini{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;color:var(--steel)}
+.who .ang{display:block;color:var(--off-white);font-size:.92rem;font-weight:400;
+  line-height:1.45;margin-top:.4rem;font-style:italic}
 .who b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.32rem;letter-spacing:.02em;font-weight:400}
 .who span{display:block;color:var(--steel);font-size:.88rem;font-weight:300;margin-top:.05rem}
 .more{margin-top:1rem;padding:.9rem 1rem;background:var(--surface);border:1px dashed var(--blue-border);
@@ -421,8 +423,11 @@ function renderSpeakers(){
     var pic=x.photo
       ? '<img src="'+esc(x.photo)+'" alt="'+esc(x.name)+'" loading="lazy" decoding="async"'+sty+'>'
       : '<span class="ini">'+esc(ini)+'</span>';
+    // angle carries intentional markup (an em dash), so it is NOT escaped — it comes
+    // from our own data file, never from user input.
+    var angle = x.angle ? '<span class="ang">'+x.angle+'</span>' : '';
     return '<li><div class="pic">'+pic+'</div>'
-         +     '<div><b>'+esc(x.name)+'</b><span>'+esc(x.title||'')+'</span></div></li>';
+         +     '<div><b>'+esc(x.name)+'</b><span>'+esc(x.title||'')+'</span>'+angle+'</div></li>';
   }).join('');
   var pending=(S&&S.speakersPending)||0;
   if(pending>0){
