@@ -1,0 +1,43 @@
+{
+  "_": "HELD FOR 2027. This is the intended Summit lineup, parked here so it is not lost. It is NOT rendered by any page.",
+  "_why": "Gabriel, Oct 9 2026: the Summit is next year's push, gated behind roughly five more Executive Mindset Workshops. These names were live on /summit before that was clear. Era's standing rule -- no unconfirmed speaker name or face on a live page -- so they come off until each one is signed, the same way Tucker Stipe was held off /workshop until he answered.",
+  "_toRestore": "When the Summit is real and each speaker has confirmed IN WRITING: rebuild the .speakers-grid in summit/index.html from these entries, set the date, drop the noindex, and put Summit back in the homepage nav if it has earned the slot back.",
+  "speakers": [
+    {
+      "name": "Tucker Stipe",
+      "pillar": "Faith",
+      "title": "Broadcast Campus Pastor, Christ Fellowship",
+      "confirmed": false,
+      "note": "Confirmed for the Nov 7 2026 workshop, NOT for the Summit. Separate ask. Note also: this event stays out of Christ Fellowship -- he cannot promote it through the church, so do not put the congregation headcount on a page.",
+      "originalCopy": "Campus Pastor — Christ Fellowship, Palmetto Bay. A life that shows the foundation in motion."
+    },
+    {
+      "name": "Ken Shafer",
+      "pillar": "Finances",
+      "title": "Former Financial Peace University Director, Christ Fellowship",
+      "confirmed": false,
+      "note": "Gabriel, Oct 9 2026: \"he agreed in a way to do it\" -- nothing concrete. Needs a real yes before his name goes live again.",
+      "originalCopy": "Former Financial Peace University Director — Christ Fellowship. Worked alongside Dave Ramsey for years. Order and freedom, taught from the front lines."
+    },
+    {
+      "name": "Luke Eggebraaten",
+      "pillar": "Fulfillment",
+      "title": "ProActivators Podcast guest",
+      "confirmed": false,
+      "note": "Named by Gabriel as the Fulfillment speaker for the Summit. Not yet asked/confirmed for it.",
+      "originalCopy": "ProActivators Podcast Guest — A life that shows fulfillment lived out. Living beyond yourself, in practice."
+    },
+    {
+      "name": "Gabriel Golindano",
+      "pillar": "Fitness · Focus",
+      "title": "Founder, ProActivators",
+      "confirmed": true,
+      "note": "His own event. Confirmed by definition.",
+      "originalCopy": "Founder, ProActivators — 60 lbs lost. CrossFit athlete. The first arena of discipline, and the currency of the life that follows."
+    }
+  ],
+  "_openPillars": [
+    "Family"
+  ],
+  "_note": "Six pillars, six speakers. Faith/Finances/Fulfillment/Fitness+Focus are spoken for above. Family has no name against it yet."
+}

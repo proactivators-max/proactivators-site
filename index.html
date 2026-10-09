@@ -615,8 +615,8 @@ nav.scrolled{background:rgba(5,5,5,.97);border-bottom:1px solid var(--border);ba
 .summit-stack-item .blue{color:var(--blue);font-weight:700;margin-left:.2rem}
 .summit-stack-active{color:var(--blue)}
 .summit-stack-sep{color:var(--border);font-weight:400}
-.summit-cta{display:inline-block;font-size:.66rem;letter-spacing:.17em;text-transform:uppercase;color:var(--black);background:var(--blue);border:1px solid var(--blue);padding:1.1rem 2.2rem;cursor:pointer;text-decoration:none;transition:opacity .2s;margin-bottom:2.8rem}
-.summit-cta:hover{opacity:.85}
+.summit-cta{display:inline-block;font-size:.66rem;letter-spacing:.17em;text-transform:uppercase;color:var(--blue);background:transparent;border:1px solid var(--blue-border,rgba(58,180,242,.22));padding:1.1rem 2.2rem;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s;margin-bottom:2.8rem}
+.summit-cta:hover{background:rgba(58,180,242,.1);border-color:var(--blue)}
 .summit-form{display:flex;flex-direction:column;max-width:500px;margin:0 auto;gap:.75rem;position:relative;border-top:1px solid var(--border);padding-top:2rem}
 .summit-form-label{font-size:.6rem;letter-spacing:.22em;color:var(--steel);text-transform:uppercase;margin-bottom:.4rem;font-weight:700}
 .summit-form-note{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.1em;color:var(--steel);margin-top:1rem;text-transform:uppercase}
@@ -894,7 +894,7 @@ footer{
   <a href="#podcast" onclick="closeMobileMenu()">Podcast</a>
   <a href="#book" onclick="closeMobileMenu()">Book</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
-  <a href="/summit" onclick="closeMobileMenu()">Summit</a>
+  <a href="/workshop" onclick="closeMobileMenu()">Workshop</a>
   <a href="#work-with-gabriel" onclick="closeMobileMenu()">Work With Me</a>
   <a href="/blog/" onclick="closeMobileMenu()">Blog</a>
   <button class="mobile-cta" onclick="closeMobileMenu();document.getElementById('join').scrollIntoView({behavior:'smooth'})">Join the Movement</button>
@@ -908,7 +908,7 @@ footer{
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#book">Book</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="/summit">Summit</a></li>
+    <li><a href="/workshop">Workshop</a></li>
     <li><a href="#work-with-gabriel">Work With Me</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
@@ -1275,7 +1275,7 @@ footer{
     <h2 class="section-h2 bebas">The ProActivators<br/><span class="blue">Summit</span></h2>
   </div>
   <div class="summit-promo reveal">
-    <div class="summit-eyebrow mono">&mdash; Coming Soon &mdash;</div>
+    <div class="summit-eyebrow mono">&mdash; Coming 2027 &mdash;</div>
     <p class="summit-pitch">Six pillars. Elite speakers. One room. The Summit is the loop where ProActivators <em>assemble, mastermind, and multiply</em> &mdash; each pillar taught by someone who lives it at a 10.</p>
     <div class="summit-stack mono">
       <span class="summit-stack-item">Book &rarr; <span class="steel">The Ignition</span></span>
@@ -1284,7 +1284,7 @@ footer{
       <span class="summit-stack-sep">&middot;</span>
       <span class="summit-stack-item summit-stack-active">Summit &rarr; <span class="blue">The Loop</span></span>
     </div>
-    <a href="/summit" class="btn-blue mono summit-cta">See The Lineup &rarr;</a>
+    <a href="/summit" class="btn-outline mono summit-cta">What The Summit Is &rarr;</a>
 
     <form id="summit-form" class="summit-form" onsubmit="event.preventDefault();handleSummit()">
       <p class="summit-form-label mono">Or get the announcement first</p>
@@ -1294,7 +1294,7 @@ footer{
       <button type="submit" class="join-submit">Notify Me When Details Drop</button>
     </form>
     <div id="summit-success" class="join-success">You're on the list. The movement assembles.</div>
-    <p class="summit-form-note mono">Get the date, lineup, and tickets before they go public.</p>
+    <p class="summit-form-note mono">Get the date, lineup and tickets before they go public.</p>
   </div>
 </section>
 
