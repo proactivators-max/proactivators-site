@@ -1,12 +1,12 @@
 {
   "_": "Rx Your Life — the one place the next workshop date lives. The wall poster has no date; /rx reads this. Add the next session to `upcoming` before the current one passes; the page picks the first date >= today (UTC, lexical compare, so `date` must be YYYY-MM-DD).",
-  "_state": "SELLING as of Oct 3 2026. Saturday Nov 7 2026 at FIU is BOOKED AND PAID (30% deposit cleared — $282.72 of $942.40). The page is back in its buy state: 'Reserve my seat — $197' goes to the checkout link below. This is the only date that goes anywhere; anything still saying October or 'date TBA' is wrong.",
+  "_state": "SELLING as of Oct 3 2026. Saturday Nov 7 2026 at FIU is BOOKED AND PAID (30% deposit cleared -- $282.72 of $942.40). CHECKOUT PROVEN LIVE Oct 10 2026: a $5 coupon test cleared as a payment_intent, succeeded, liveMode true, through the Regular payment link from the homepage band (tags carried src:home). The two earlier \"tests\" were setup_intents at $0 -- they saved a card and moved no money, so until Oct 10 nothing had ever proven this link could take a dollar. The page is in its buy state: \"Reserve my seat -- $197\" goes to the checkout link below.",
   "_toRestore": "When this date passes and a venue confirms the next one: copy `template` into `upcoming`, set `date` (YYYY-MM-DD) and `label`, and check the venue line. If NO date is confirmed yet, empty `upcoming` instead — that puts the page into its waitlist state on its own and NOBODY is sent to checkout. Never write an unconfirmed date here; this file is publicly fetchable.",
   "_shared": "READ BY TWO PAGES: /rx (the CrossFit wall) and /workshop (the general public). Era's rule — the date, time, price, venue and speaker lineup live in ONE place so the two pages can never disagree. The path says `rx/` for historical reasons only; /rx's fetch of this file is the most load-bearing line on a page that is actively selling, so moving it is a 3-step migration (add a fallback fetch, push, verify both /rx/ and /rx/<gym>/, then drop the old path) and not worth doing on a day the page is taking money.",
   "seats": 40,
   "price": 197,
   "checkout": "https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4",
-  "manualSold": -1,
+  "manualSold": -2,
   "video": null,
   "speakers": [
     {
@@ -69,5 +69,5 @@
     "doors": "9:30 AM"
   },
   "_salesOpen": "Orders BEFORE this date are not seats for this session. It was blank, which fell back to 2026-01-01 and would have counted a May coupon test as a Nov 7 seat.",
-  "_manualSold": "Added to the counted orders. NEGATIVE cancels orders that are not real attendees. Currently -1 for the Oct 3 VIP100 test, which netted the page back to 40. Run another test seat and this goes to -2; set it to 0 once testing is done. Do NOT fix a test by moving salesOpen forward — that would silently drop a genuine early buyer too."
+  "_manualSold": "Added to the counted orders. NEGATIVE cancels orders that are not real attendees. Currently -2: the Oct 3 VIP100 setup-intent test and the Oct 10 LIVETEST5 $5 live-charge test, both on the Regular link, both Gabriel. Net = 40 seats. Run another test seat and this goes to -3; set it to 0 once testing is done. Do NOT fix a test by moving salesOpen forward -- that would silently drop a genuine early buyer too."
 }
