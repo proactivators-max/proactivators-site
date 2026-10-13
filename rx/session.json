@@ -6,7 +6,7 @@
   "seats": 40,
   "price": 197,
   "checkout": "https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4",
-  "manualSold": -2,
+  "manualSold": 5,
   "video": null,
   "speakers": [
     {
@@ -81,5 +81,5 @@
     "doors": "9:30 AM"
   },
   "_salesOpen": "Orders BEFORE this date are not seats for this session. It was blank, which fell back to 2026-01-01 and would have counted a May coupon test as a Nov 7 seat.",
-  "_manualSold": "Added to the counted orders. NEGATIVE cancels orders that are not real attendees. Currently -2: the Oct 3 VIP100 setup-intent test and the Oct 10 LIVETEST5 $5 live-charge test, both on the Regular link, both Gabriel. Net = 40 seats. Run another test seat and this goes to -3; set it to 0 once testing is done. Do NOT fix a test by moving salesOpen forward -- that would silently drop a genuine early buyer too."
+  "_manualSold": "Added to the counted orders. Two components, kept as one number because the worker only reads one field: (-2) cancels the two test orders that are not real attendees (Oct 3 VIP100 setup-intent, Oct 10 LIVETEST5 $5 live charge), and (+7) holds the chairs that are not for sale -- Freddie, Tucker and Tony, a guest each, and Ty working the room. -2 + 7 = 5, so the page reads 33 left of 40. These are REAL holds, not invented scarcity: if a held seat is released, drop this number by one. Run another test seat and it goes to 4. Do NOT fix a test by moving salesOpen forward -- that would silently drop a genuine early buyer too."
 }
