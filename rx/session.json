@@ -39,9 +39,21 @@
       "zoom": 2.65,
       "confirmed": true,
       "angle": "They will tell you to pick &mdash; your career or your home. He says that is a lie."
+    },
+    {
+      "name": "Tony Noisom",
+      "title": "CERTIFIED FINANCIAL PLANNER® · Financial Advisor, Raymond James",
+      "photo": "/speakers/tony-noisom.jpg",
+      "focus": [
+        43,
+        41
+      ],
+      "zoom": 1.18,
+      "confirmed": true,
+      "angle": "Thirty years inside other people’s finances. The drift shows up in a bank statement first."
     }
   ],
-  "speakersPending": 1,
+  "speakersPending": 0,
   "upcoming": [
     {
       "date": "2026-11-07",
