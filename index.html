@@ -1534,8 +1534,10 @@ document.getElementById('summit-name-input').addEventListener('keydown',e=>{if(e
     fetch("https://rx-seats.floridautilities.workers.dev/", {cache:"no-store"})
       .then(function(r){ return r.json(); }).then(function(k){
         var el = document.getElementById("neSeats");
+        // Sold out only. Gabriel's call, Oct 17 — a running count that barely moves
+        // advertises the opposite of scarcity. Matching change in /workshop and /rx.
         if (k && k.soldOut) { el.textContent = "Sold out"; }
-        else if (k && typeof k.left === "number") { el.textContent = k.left + " seats left"; }
+        else { el.textContent = "Seats limited"; }
       }).catch(function(){});
   }).catch(function(){});
 })();

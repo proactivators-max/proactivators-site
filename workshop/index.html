@@ -250,7 +250,7 @@ button.go:disabled{opacity:.55;cursor:default}
     <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nYear">Next date coming</div></div>
     <div class="f"><div class="k">Where</div><div class="v" id="nVenue">FIU &middot; Graham Center</div><div class="s" id="nTime">10 AM &ndash; 3 PM</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
     <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">$197</div><div class="s">Lunch and workbook included</div></div>
-    <div class="f"><div class="k">The room</div><div class="v" id="nSeats">40 seats</div><div class="s">Closes when full</div></div>
+    <div class="f"><div class="k">The room</div><div class="v" id="nSeats">Seats limited</div><div class="s">Closes when full</div></div>
   </div>
 
   <h2>The five hours</h2>
@@ -457,12 +457,12 @@ function renderSession(seatInfo){
   else { ad.style.display='none'; }
   applyState('buy');
 
-  if(seatInfo && typeof seatInfo.left==='number'){
-    if(seatInfo.soldOut){ $('nSeats').textContent='Sold out'; applyState('soldout'); }
-    else { $('nSeats').textContent=seatInfo.left+' left'; $('buyR').innerHTML='$'+((S&&S.price)||197)+' &middot; '+seatInfo.left+' left &rarr;'; }
-  } else {
-    $('nSeats').textContent=seats+' seats';   // no count -> the honest number, never a guess
-  }
+  // SOLD OUT is the only count worth publishing. Gabriel's call, Oct 17: a running
+  // "33 left" that barely moves is anti-scarcity — a number a visitor can watch stand
+  // still is evidence nobody is coming. The worker still counts and he still reads it;
+  // we just stop printing it on the page.
+  if(seatInfo && seatInfo.soldOut){ $('nSeats').textContent='Sold out'; applyState('soldout'); }
+  else { $('nSeats').textContent='Seats limited'; $('buyR').innerHTML='$'+((S&&S.price)||197)+' &rarr;'; }
 }
 
 function openForm(){
