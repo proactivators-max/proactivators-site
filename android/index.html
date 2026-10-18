@@ -18,14 +18,28 @@
      dead link, which is how it survived weeks unnoticed and nearly went out in a text to
      paying workshop attendees.
 
-     THE FIX (EX, in flight): the .apk gets hosted at a FIXED public URL — same filename
-     every release, overwritten in place, no expiry. It needs a new native build, which is
-     gated behind Era's no-native-build rule while the launch-stall fix is measured
-     (clock runs to ~Oct 7). EX sends the URL when the file is up.
+     THE FIX — decided with EX, Oct 18 2026. The .apk gets ONE URL, forever, overwritten in
+     place on every release so nothing that points at it can ever rot:
 
-     TO RESTORE: delete the .hold block below, put back the <a class="btn" download> with
-     the permanent URL, and restore the install <ol> kept in the comment underneath it.
-     iOS is unaffected — /iphone and /ios stay on TestFlight and are untouched. -->
+         https://releases.proactivatorsclub.com/proactivators-android.apk
+
+     Cloudflare R2, bucket `proactivators-releases`, public-read, no listing. A CUSTOM
+     domain, not the default pub-<id>.r2.dev, and the reason is install rate, not taste:
+     sideloading already throws two alarming dialogs at the user ("this type of file can
+     harm your device", then unknown-apps permission). A random r2.dev host sitting next to
+     a malware warning is what people are trained to back out of. The brand they just
+     scanned a QR code for is not.
+
+     BLOCKED ON GABRIEL: R2 is not enabled on the floridautilities Cloudflare account
+     (error 10042, dashboard click). Build is done and waiting — EAS e8a1c882, commit
+     d2be389, 101,055,321 bytes. EX confirms with an anonymous HEAD before telling us it
+     is live; do not flip on anything less.
+
+     TO RESTORE: delete the .hold block below and paste in the stub kept underneath it —
+     it already carries the final URL, so there is nothing to look up and nothing to typo.
+     /beta needs no change: it links to this page rather than carrying the URL itself.
+     iOS is unaffected — /iphone and /ios stay on TestFlight. That build is valid to
+     ~Nov 25, comfortably past the Nov 7 workshop. -->
 <title>ProActivators — Android Beta</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,17 +89,27 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
     If you're coming to the workshop, you'll get the link by text before the day.</p>
   </div>
 
-  <!-- RESTORE WHEN THE PERMANENT URL LANDS — put this back in place of .hold above:
-  <a href="PERMANENT_URL_HERE" class="btn" download>Download for Android &darr;</a>
+  <!-- RESTORE WHEN EX CONFIRMS THE HEAD RETURNS 200 — paste this in place of .hold above.
+       The URL is final and permanent; it does not change between releases.
+  <a href="https://releases.proactivatorsclub.com/proactivators-android.apk"
+     class="btn" download>Download for Android &darr;</a>
   <div class="steps">
-    <div class="k">Install (30 seconds)</div>
+    <div class="k">Install (30 seconds) &middot; 101 MB</div>
     <ol>
       <li>Tap the button — the <strong>.apk</strong> downloads straight away.</li>
       <li>Open it from your notifications or Downloads folder.</li>
-      <li>If Android asks, allow installs from your browser, then tap <strong>Install</strong>.</li>
+      <li>Android will warn you about installing from your browser. That warning is normal
+          for an app that is not in the Play Store yet — allow it, then tap
+          <strong>Install</strong>.</li>
       <li>Open ProActivators and sign in. That's it.</li>
     </ol>
   </div>
+
+  Two things that are deliberate and should survive editing:
+  - The SIZE is on the button line. 101 MB on cell data is a thing people deserve to know
+    before they tap, not after.
+  - Step 3 names the scary dialog BEFORE they see it. Someone forewarned taps through;
+    someone ambushed closes the page. That sentence is most of the install rate.
   ...and restore the .steps CSS, which is kept below with the rest of the stylesheet.
   ICON NOTE, still true: build 8 is the correct binary. Build 9's ring filled ~71% of the
   tile and Android's adaptive mask clips past ~61%, so the glyph rendered bloated and cut.
