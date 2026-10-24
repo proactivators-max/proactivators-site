@@ -11,43 +11,23 @@
   gtag('config', 'G-CNQ4P8TJC6');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ╔══════════════════════════════════════════════════════════════════════════════╗
-     ║ HOLDING STATE — Oct 3 2026. There is no Android build to download right now. ║
-     ╚══════════════════════════════════════════════════════════════════════════════╝
+<!-- ╔═══════════════════════════════════════════════════════════════════════════════╗
+     ║ LIVE — Oct 24 2026. The Android build downloads from a permanent address.     ║
+     ╚═══════════════════════════════════════════════════════════════════════════════╝
 
-     WHY: this page pointed at
-       https://expo.dev/artifacts/eas/LaAdjOSgFx0S81F2HO9fPtpJH6FWljXhox8KYRQPHAU.apk
-     which now returns HTTP 404, 0 bytes. Not a one-off — per EX, the EAS plan DELETES
-     build artifacts 14 days after the build. The newest Android build is Aug 27, so it
-     expired Sep 10. Every EAS artifact URL will do this, by design.
+     Cloudflare R2, bucket `proactivators-releases`, served from a CUSTOM domain rather
+     than the default pub-<id>.r2.dev. That choice is about install rate, not taste:
+     sideloading already throws two alarming dialogs at the user, and a random r2.dev host
+     sitting next to a malware warning is what people are trained to back out of. The brand
+     they just scanned a QR code for is not.
 
-     ⛔ NEVER point this page at an expo.dev/artifacts URL again. It is guaranteed to rot,
-     and it rots silently — the page keeps rendering a confident download button over a
-     dead link, which is how it survived weeks unnoticed and nearly went out in a text to
-     paying workshop attendees.
+     The full restore note, the verification evidence, and the three things that must
+     survive editing are in the comment beside the button below. Read that before changing
+     anything on this page.
 
-     THE FIX — decided with EX, Oct 18 2026. The .apk gets ONE URL, forever, overwritten in
-     place on every release so nothing that points at it can ever rot:
-
-         https://releases.proactivatorsclub.com/proactivators-android.apk
-
-     Cloudflare R2, bucket `proactivators-releases`, public-read, no listing. A CUSTOM
-     domain, not the default pub-<id>.r2.dev, and the reason is install rate, not taste:
-     sideloading already throws two alarming dialogs at the user ("this type of file can
-     harm your device", then unknown-apps permission). A random r2.dev host sitting next to
-     a malware warning is what people are trained to back out of. The brand they just
-     scanned a QR code for is not.
-
-     BLOCKED ON GABRIEL: R2 is not enabled on the floridautilities Cloudflare account
-     (error 10042, dashboard click). Build is done and waiting — EAS e8a1c882, commit
-     d2be389, 101,055,321 bytes. EX confirms with an anonymous HEAD before telling us it
-     is live; do not flip on anything less.
-
-     TO RESTORE: delete the .hold block below and paste in the stub kept underneath it —
-     it already carries the final URL, so there is nothing to look up and nothing to typo.
-     /beta needs no change: it links to this page rather than carrying the URL itself.
-     iOS is unaffected — /iphone and /ios stay on TestFlight. That build is valid to
-     ~Nov 25, comfortably past the Nov 7 workshop. -->
+     /beta carries its own copy of this URL now (it lists three install paths), so a change
+     of address means editing BOTH. iOS is unaffected — /iphone and /ios stay on TestFlight;
+     that invite is valid to ~Nov 25, comfortably past Nov 7. -->
 <title>ProActivators — Android Beta</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,6 +55,17 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
 .hold p{color:var(--steel-lt);font-size:.93rem;font-weight:300;margin:0 0 .9rem}
 .hold p:last-child{margin-bottom:0}
 .hold a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(58,180,242,.4)}
+/* The holding block above is kept, unused, so this page can go back to it in one swap if a
+   release ever breaks. .steps is the live state. NOTE: the old restore comment claimed this
+   CSS was "kept below with the rest of the stylesheet" — it was not. It never existed, so
+   pasting that stub would have shipped unstyled steps. Written for real on Oct 24. */
+.steps{text-align:left;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);padding:1.3rem 1.4rem;margin-top:1.4rem}
+.steps .k{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.75rem}
+.steps ol{margin:0;padding-left:1.15rem;color:var(--steel-lt);font-size:.93rem;font-weight:300;line-height:1.55}
+.steps li{margin-bottom:.55rem;padding-left:.15rem}
+.steps li:last-child{margin-bottom:0}
+.steps strong{color:var(--off-white);font-weight:500}
+.btn .sz{font-weight:400;letter-spacing:.1em;opacity:.72}
 .foot{margin-top:2rem;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel)}
 .foot a{color:var(--steel);text-decoration:none;border-bottom:1px solid var(--border)}
 </style>
@@ -82,47 +73,52 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
 <body>
 <div class="card">
   <img src="/logo.png" alt="ProActivators" class="logo">
-  <div class="eyebrow">Android Beta &middot; Refreshing</div>
-  <h1>THE ANDROID BUILD IS <span class="blue">BEING REBUILT.</span></h1>
-  <p>Straight answer: the last download expired, and we'd rather tell you that
-  than hand you a button that fails.</p>
+  <div class="eyebrow">Android Beta</div>
+  <h1>GET THE <span class="blue">ANDROID BUILD.</span></h1>
+  <p>One tap, about thirty seconds. This link never expires &mdash; it is the same
+  address for every release from here on.</p>
 
-  <div class="hold">
-    <div class="k">Where it stands</div>
-    <b>A new build is days away.</b>
-    <p>It's going to a permanent address this time, so it stops expiring on people.</p>
-    <p><strong>On an iPhone?</strong> You can install right now &mdash;
-    <a href="/iphone">proactivatorsclub.com/iphone</a></p>
-    <p><strong>On Android?</strong> Nothing to do yet. Check back in a few days.
-    If you're coming to the workshop, you'll get the link by text before the day.</p>
-  </div>
-
-  <!-- RESTORE WHEN EX CONFIRMS THE HEAD RETURNS 200 — paste this in place of .hold above.
-       The URL is final and permanent; it does not change between releases.
   <a href="https://releases.proactivatorsclub.com/proactivators-android.apk"
-     class="btn" download>Download for Android &darr;</a>
+     class="btn" download>Download for Android &darr; <span class="sz">101 MB</span></a>
+
   <div class="steps">
-    <div class="k">Install (30 seconds) &middot; 101 MB</div>
+    <div class="k">Install &middot; about 30 seconds</div>
     <ol>
-      <li>Tap the button — the <strong>.apk</strong> downloads straight away.</li>
-      <li>Open it from your notifications or Downloads folder.</li>
-      <li>Android will warn you about installing from your browser. That warning is normal
-          for an app that is not in the Play Store yet — allow it, then tap
-          <strong>Install</strong>.</li>
-      <li>Open ProActivators and sign in. That's it.</li>
+      <li>Tap the button &mdash; the <strong>.apk</strong> downloads straight away. Use wifi if you can.</li>
+      <li>Open it from your notifications, or from your <strong>Downloads</strong> folder.</li>
+      <li>Android will warn you about installing from your browser. <strong>That warning is
+          normal</strong> for an app that is not in the Play Store yet &mdash; allow it.</li>
+      <li>Tap <strong>Install</strong>, then <strong>Open</strong>, and sign up:
+          <strong>pick your pillars</strong>, then <strong>write your Why</strong>.</li>
+      <li>Your coach greets you by voice on the home screen. New builds come to you by text.</li>
     </ol>
   </div>
 
-  Two things that are deliberate and should survive editing:
-  - The SIZE is on the button line. 101 MB on cell data is a thing people deserve to know
-    before they tap, not after.
-  - Step 3 names the scary dialog BEFORE they see it. Someone forewarned taps through;
-    someone ambushed closes the page. That sentence is most of the install rate.
-  ...and restore the .steps CSS, which is kept below with the rest of the stylesheet.
-  ICON NOTE, still true: build 8 is the correct binary. Build 9's ring filled ~71% of the
-  tile and Android's adaptive mask clips past ~61%, so the glyph rendered bloated and cut.
-  Do NOT "fix" the icon by enlarging it — no Android glyph can exceed ~61% of its tile.
-  Apps that look bigger have brighter tiles, not larger glyphs. The lever is colour. -->
+  <!-- RESTORED Oct 24 2026, after EX posted outside-verified evidence and Web re-checked it
+       independently: anonymous HEAD 200, 101,055,321 bytes,
+       content-type application/vnd.android.package-archive, range GET starts "PK\x03\x04"
+       (a real APK), bucket root 404 with no listing, anonymous PUT 401.
+
+       THE URL IS PERMANENT and overwritten in place each release, so nothing that points at
+       it can rot. ⛔ NEVER point this page at an expo.dev/artifacts URL again: EAS deletes
+       build artifacts 14 days after the build, silently, and that is how this page served a
+       confident Download button over a dead link for weeks.
+
+       TO PUT IT BACK IN HOLDING if a release ever breaks: swap the <a class="btn"> and
+       .steps block for the .hold markup (its CSS is still in the stylesheet above), and say
+       plainly what is wrong. A greyed-out button still invites the tap and still disappoints.
+
+       Three things that are deliberate and should survive editing:
+       - The SIZE is on the button line. 101 MB on cell data is something people deserve to
+         know before they tap, not after.
+       - Step 3 names the scary dialog BEFORE they meet it. Someone forewarned taps through;
+         someone ambushed closes the page. That sentence is most of the install rate.
+       - Steps 4-5 describe the REAL first launch (two onboarding screens, then the Coach's
+         voice welcome), confirmed by EX on Oct 24. The old stub said "sign in. That's it."
+       ICON NOTE, still true: build 8 is the correct binary. Build 9's ring filled ~71% of the
+       tile and Android's adaptive mask clips past ~61%, so the glyph rendered bloated and cut.
+       Do NOT "fix" the icon by enlarging it — no Android glyph can exceed ~61% of its tile.
+       Apps that look bigger have brighter tiles, not larger glyphs. The lever is colour. -->
 
   <div class="foot">iPhone instead? Go to <a href="/iphone">proactivatorsclub.com/iphone</a></div>
 </div>
