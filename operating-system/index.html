@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════════╗
+     ║ THE EXPLAINER — what the ProActivators operating system is.  NOINDEX. NOT ANNOUNCED. ║
+     ╚══════════════════════════════════════════════════════════════════════════════════════╝
+
+     Every factual claim here comes from strategy/program/PROGRAM-OPERATING-BLUEPRINT-v1
+     (the six Foundation weeks, the on-ramp, the daily question, the Coach's limits, the
+     Win/Wall/Brick format, the Witness questions, the momentum and grace rules). Nothing
+     about the program was written from memory. If a rule changes there, it changes here.
+
+     FOUR THINGS THAT ARE DELIBERATE AND SHOULD SURVIVE EDITING:
+     · NO PRICES AND NO TIERS, anywhere. The Boardroom's monthly price exists and is
+       deliberately absent — this page explains the system, the sales page sells it.
+     · NO "MEN". The room is not men-only and the copy must not imply it. Cast caught this
+       on a speakers post ("Four men. One Saturday.") and was right: it is the line that
+       tells half the audience the room is not theirs.
+     · ONE CTA, to /workshop. Until a sales page exists, a second destination just splits
+       the only action worth taking.
+     · The Coach's "what it never does" list stays. It is the most distinctive thing on the
+       page — every competitor nags, and saying plainly that this one does not is the claim
+       a drifting reader actually needs to hear.
+
+     The Command Center stills are real screens from the working preview, not mock-ups, with
+     the review scaffold hidden. There is no link to it: it is not live. -->
+<title>The ProActivators Operating System</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="What the ProActivators operating system actually is: the Drift, the Program, the app, the Command Center, the Boardroom, the Witness.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--deep:#0b0b0b;--surface:#141414;--surface2:#1c1c1c;--off-white:#f0ebe0;
+  --steel:#888;--steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.10);
+  --blue-bd:rgba(58,180,242,.22);--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.14)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--black);color:var(--off-white);
+  line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.35}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:var(--off-white)}
+img{max-width:100%;height:auto;display:block}
+
+header{border-bottom:1px solid var(--border);padding:18px 0;position:relative;z-index:2}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header img{height:24px;width:auto}
+header .back{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--steel)}
+
+.hero{padding:56px 0 20px;text-align:center}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1rem}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2.6rem,10vw,4.2rem);
+  line-height:.96;letter-spacing:.02em;margin-bottom:1.1rem}
+h1 .b{color:var(--blue)}
+.lede{font-size:1.08rem;color:var(--steel-lt);max-width:34em;margin:0 auto}
+
+section.s{padding:44px 0;border-top:1px solid var(--border)}
+.num{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.24em;color:var(--blue);
+  font-weight:700;margin-bottom:.7rem}
+h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(1.9rem,6.5vw,2.7rem);
+  line-height:1;letter-spacing:.02em;margin-bottom:.9rem}
+.s p{margin-bottom:1rem;max-width:36em}
+.s p:last-child{margin-bottom:0}
+strong{color:var(--off-white);font-weight:500}
+.pull{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.3rem,4.6vw,1.75rem);line-height:1.12;
+  letter-spacing:.02em;color:var(--off-white);border-left:3px solid var(--blue);
+  padding-left:1rem;margin:1.6rem 0;max-width:24em}
+.quote{border-left:2px solid var(--border2);padding-left:1rem;margin:1.3rem 0;color:var(--steel-lt);
+  font-style:italic;max-width:34em}
+
+.weeks{list-style:none;margin:1.3rem 0;border-top:1px solid var(--border)}
+.weeks li{display:flex;gap:1rem;align-items:baseline;padding:.7rem 0;border-bottom:1px solid var(--border)}
+.weeks .w{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;color:var(--steel);
+  flex:0 0 3.6em;text-transform:uppercase}
+.weeks .t{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.03em;flex:0 0 7.4em}
+.weeks .d{font-size:.92rem;color:var(--steel-lt);flex:1;min-width:0}
+
+.rhythm{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin:1.4rem 0}
+.rhythm div{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:13px}
+.rhythm b{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.05em;
+  color:var(--blue);font-weight:400;margin-bottom:.15rem}
+.rhythm span{font-size:.84rem;color:var(--steel-lt);line-height:1.45}
+
+.never{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);
+  border-radius:11px;padding:18px 20px;margin:1.4rem 0;max-width:36em}
+.never .k{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.6rem}
+.never ul{list-style:none}
+.never li{padding:.3rem 0 .3rem 1.3rem;position:relative;color:var(--steel-lt);font-size:.95rem}
+.never li::before{content:'\2715';position:absolute;left:0;color:var(--steel);font-size:.7rem;top:.55rem}
+
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1.6rem 0}
+.shots figure{background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:10px;overflow:hidden}
+.shots img{border-radius:8px;border:1px solid var(--border)}
+.shots figcaption{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);margin-top:9px;text-align:center;line-height:1.7}
+
+.govern{text-align:center;padding:40px 0;border-top:1px solid var(--border)}
+.govern p{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.35rem,5vw,2rem);line-height:1.14;
+  letter-spacing:.02em;max-width:18em;margin:0 auto}
+.govern .by{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel);margin-top:.9rem}
+
+.close{padding:52px 0 16px;text-align:center;border-top:1px solid var(--border)}
+.close .big{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,6vw,2.4rem);line-height:1.08;
+  letter-spacing:.02em;max-width:17em;margin:0 auto 1.6rem}
+.btn{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;background:var(--blue);color:var(--black);padding:1.15rem 2rem;
+  display:inline-block;border:2px solid var(--blue);transition:all .2s}
+.btn:hover{background:#fff;border-color:#fff;color:var(--black)}
+.close .fine{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);margin-top:1rem;line-height:2}
+
+footer{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 44px;text-align:center}
+footer .credo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:var(--blue)}
+footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);margin-top:.5rem}
+
+@media (max-width:560px){
+  .shots{grid-template-columns:1fr}
+  .weeks li{flex-wrap:wrap;gap:.3rem 1rem}
+  .weeks .t{flex:0 0 auto}
+  .weeks .d{flex:1 0 100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="/logo.png" alt="ProActivators">
+    <a class="back" href="/">proactivatorsclub.com</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">The Operating System</div>
+    <h1>IT IS NOT A COURSE.<br>IT IS A <span class="b">STRUCTURE.</span></h1>
+    <p class="lede">Six weeks to begin. Then one pillar at a time, at a level you set yourself,
+      for as long as it takes. Here is exactly how it works.</p>
+  </div>
+
+  <!-- 1 ───────────────────────────────────────────────────────────────────────────────── -->
+  <section class="s">
+    <div class="num">01 · The problem</div>
+    <h2>THE DRIFT</h2>
+    <p>Nobody decides to drift. You stop following through quietly, in one area, while the rest
+      of your life still looks fine from the outside. The calendar fills. The years move. And
+      the thing you meant to become stays a thing you meant to become.</p>
+    <p class="pull">Most people are not failing.<br>They are drifting.</p>
+    <p>Drift is not a character flaw and this system does not treat it as one. It is simply
+      <strong>lost forward movement</strong> — and the first useful thing anyone can do about it
+      is see it clearly, on a screen, without excuses and without shame.</p>
+  </section>
+
+  <!-- 2 ───────────────────────────────────────────────────────────────────────────────── -->
+  <section class="s">
+    <div class="num">02 · The program</div>
+    <h2>SIX WEEKS, THEN THE PILLARS</h2>
+    <p><strong>Foundation</strong> is six weeks, and it deliberately asks very little at the start.
+      Week one is about thirty seconds of journaling a day. That is the whole assignment.</p>
+    <ul class="weeks">
+      <li><span class="w">Week 1</span><span class="t">THE DRIFT</span><span class="d">Recognize autopilot, and start watching yourself honestly.</span></li>
+      <li><span class="w">Week 2</span><span class="t">YOUR TABLE</span><span class="d">Examine the people and influences shaping your decisions.</span></li>
+      <li><span class="w">Week 3</span><span class="t">NO MORE MOMENT</span><span class="d">What it takes to make a decision that is actually settled.</span></li>
+      <li><span class="w">Week 4</span><span class="t">THE SHIFT</span><span class="d">Moving from reacting to your life to directing it.</span></li>
+      <li><span class="w">Week 5</span><span class="t">THE IDENTITY</span><span class="d">What it means to become a ProActivator, not just act like one.</span></li>
+      <li><span class="w">Week 6</span><span class="t">THE FRAMEWORK</span><span class="d">The Six Pillars, and how to use them from here.</span></li>
+    </ul>
+    <p>The first victory is not a dramatic life change. It is discovering that you can keep a
+      small promise to yourself — which, if you have broken a lot of them, is not small at all.</p>
+    <p>After Foundation comes <strong>the Pillars</strong>: Faith, Family, Fitness, Finances,
+      Focus, Fulfillment. You work on one at a time and you set the commitment yourself. Someone
+      who has not exercised in years might choose to walk ten minutes, three days a week.
+      Someone else might choose something far harder. Both are ownership. You are not being
+      measured against each other — you are measured against what <em>you</em> said you would do.</p>
+    <p class="pull">Did I do what I said<br>I was going to do?</p>
+  </section>
+
+  <!-- 3 ───────────────────────────────────────────────────────────────────────────────── -->
+  <section class="s">
+    <div class="num">03 · The app</div>
+    <h2>WHERE THE WEEK HAPPENS</h2>
+    <p>The rhythm is the same every week, so it stops being a decision and starts being a habit.</p>
+    <div class="rhythm">
+      <div><b>LISTEN</b><span>A short teaching, eight to twelve minutes.</span></div>
+      <div><b>REFLECT</b><span>A Field Note connecting it to your own life.</span></div>
+      <div><b>PRACTICE</b><span>One small action you actually commit to.</span></div>
+      <div><b>MEET</b><span>The Boardroom, with people doing the same work.</span></div>
+      <div><b>COACH</b><span>Think it through and decide what comes next.</span></div>
+    </div>
+    <p>The <strong>Coach</strong> is not a generic chatbot. It knows what week you are in, which
+      pillar you chose, what you committed to, and the words you used when you wrote about it.
+      It can encourage you, reflect your own patterns back to you, and — when you have been
+      comfortable for a while — ask whether there is more in you.</p>
+    <div class="never">
+      <div class="k">What the Coach never does</div>
+      <ul>
+        <li>Nag you, chase you, or send you guilt dressed up as a reminder</li>
+        <li>Raise your level without asking</li>
+        <li>Force a commitment you did not choose</li>
+        <li>Treat a low number as a verdict on who you are</li>
+      </ul>
+    </div>
+    <p>You own your life. The Coach helps you think clearly about it. That distinction is the
+      whole design.</p>
+  </section>
+
+  <!-- 4 ───────────────────────────────────────────────────────────────────────────────── -->
+  <section class="s">
+    <div class="num">04 · The Command Center</div>
+    <h2>MOMENTUM, NOT STREAKS</h2>
+    <p>A streak resets to zero the first day you miss. That is how most apps work, and it is why
+      most people quit them in week three — one bad Tuesday and the whole thing is gone.</p>
+    <p><strong>This does not reset.</strong> Every scheduled practice you complete adds to a
+      momentum balance. A missed day never subtracts. Only genuine inactivity does, and only
+      after seven days of grace — so a hard week costs you nothing, and a hard month costs you
+      slowly, visibly, with a way back the whole time.</p>
+    <div class="shots">
+      <figure>
+        <img src="img/cc-home.png" alt="The Command Center home screen showing a momentum balance and all six pillars" loading="lazy">
+        <figcaption>All six, and where you are</figcaption>
+      </figure>
+      <figure>
+        <img src="img/cc-pillar.png" alt="A single pillar page showing its commitment, history and the option to declare a Reset" loading="lazy">
+        <figcaption>One pillar, in full</figcaption>
+      </figure>
+    </div>
+    <p>It will also tell you when it does not know. A pillar without enough days behind it reads
+      <strong>“not enough days yet”</strong> rather than showing a number we invented. And when
+      you fall, you do not start again from nothing — you declare a <strong>Reset</strong>,
+      which pauses the decline while you get going, records what changed, and erases none of it.</p>
+  </section>
+
+  <!-- 5 ───────────────────────────────────────────────────────────────────────────────── -->
+  <section class="s">
+    <div class="num">05 · The Boardroom</div>
+    <h2>THE ROOM</h2>
+    <p>You cannot do this alone, and the people around you are not optional equipment. The
+      Boardroom is where members meet, and it runs on three questions:</p>
+    <div class="rhythm">
+      <div><b>WIN</b><span>What progress have you made?</span></div>
+      <div><b>WALL</b><span>What is in your way right now?</span></div>
+      <div><b>BRICK</b><span>What are you going to do about it?</span></div>
+    </div>
+    <p>Nobody is policed and nobody is chased. The leader facilitates; they do not discipline.
+      The point of the room is that when you have drifted — and most people do — you can walk
+      back in without humiliation.</p>
+    <p class="pull">You may have fallen.<br>You can still get up and continue.</p>
+  </section>
+
+  <!-- 6 ───────────────────────────────────────────────────────────────────────────────── -->
+  <section class="s">
+    <div class="num">06 · The Witness</div>
+    <h2>SOMEBODY WHO ALREADY KNOWS YOU</h2>
+    <p>You choose one person who sees your life up close — a spouse, a friend, a pastor, a
+      coach — and you ask them for a favor. Not to monitor you. Not to remind you. Just to
+      tell you, later, whether they noticed anything.</p>
+    <p class="quote">“I am working on becoming more present with my family. I am not asking you
+      to remind me or make sure I do anything. I just want to know whether, over the next
+      couple of months, you notice any improvement.”</p>
+    <p>At about thirty days and again at ninety, they are asked one question and given five
+      honest options — including <em>no noticeable change</em> and <em>things appear to have
+      declined</em>. Their answer comes back to you in their own words.</p>
+    <p>They never see your journal. They are not responsible for your transformation. They are
+      simply in a position to notice the fruit of it, which is the one thing a log of your own
+      promises can never tell you.</p>
+  </section>
+
+  <div class="govern">
+    <p>“A higher level does not always mean doing more. Sometimes it means doing what matters
+      better.”</p>
+    <div class="by">The principle every part of this is checked against</div>
+  </div>
+
+  <div class="close">
+    <p class="big">A ProActivator is not someone who never falls. A ProActivator is someone who
+      has decided that falling will not be the end of the story.</p>
+    <a class="btn" href="/workshop">See the next workshop &rarr;</a>
+    <div class="fine">One Saturday &middot; Where the whole system starts</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="credo">WE DON&rsquo;T DRIFT. WE DECIDE.</div>
+    <div class="c">&copy; 2026 ProActivators&trade;</div>
+  </div>
+</footer>
+
+</body>
+</html>
