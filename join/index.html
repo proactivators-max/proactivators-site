@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ╔══════════════════════════════════════════════════════════════════════════════════════╗
+     ║ SALES PAGE SHELL.  NOINDEX. NOT PUSHED. Billing is undecided, so nothing can be bought║
+     ╚══════════════════════════════════════════════════════════════════════════════════════╝
+
+     ─────────────────────────────────────────────────────────────────────────────────────
+     ⚠️ PRICES ARE FROM THE BLUEPRINT, NOT THE PITCH DOC — AND NEED ERA'S CONFIRMATION.
+     Era's instruction was to take names and prices from the Claude Doc "ProActivators — The
+     Pitch" and NOT from memory. That doc is not shared with my account; reading it is denied.
+     So rather than type prices I cannot see a source for, every figure here comes from
+     PROGRAM-OPERATING-BLUEPRINT-v1 §19:
+
+         Scoreboard  $39/month   app, Program, Coach, Command Center, pillars, momentum,
+                                 levels, history, Witness — the self-directed tier
+         Boardroom   $97/month   Scoreboard plus the facilitated room
+         Workshop    $197/seat   the five-hour live experience
+
+     Era's own message independently confirms Scoreboard at $39, so the two sources agree at
+     least there. STILL OPEN, asked and unanswered: (a) do the pitch doc's numbers match
+     these exactly, and (b) Era said "three tiers … the Boardroom tier and anything above" —
+     the blueprint has nothing above Boardroom, and Workshop is an event, not a subscription.
+     If the pitch doc has a fourth thing, it is missing from this page.
+     Every price below is marked data-src="blueprint-s19" so a find-and-replace is trivial.
+     ─────────────────────────────────────────────────────────────────────────────────────
+
+     WHY THE WORKSHOP BUTTON IS LIVE AND THE OTHER TWO ARE NOT. Era specced inert buy buttons
+     in an "Opens January" state because Stripe-web vs in-app billing is undecided. That is
+     right for the two SUBSCRIPTIONS. It is wrong for the Workshop: Nov 7 seats are on sale
+     today at $197 through the existing checkout, and labelling a live product "Opens January"
+     would turn the one thing we can actually sell into a thing nobody tries to buy. So the
+     Workshop card links to /workshop and the two subscription cards are inert.
+
+     THE SIGN-IN BUTTON POINTS AT A HOST THAT DOES NOT RESOLVE YET. command.proactivatorsclub.com
+     is the intended permanent address but the custom domain is not attached — verified, it
+     does not resolve. Harmless while this page is unpublished; it MUST be confirmed live
+     before publish, or this becomes another confident button over a dead link, which is
+     exactly what /android did for weeks.
+
+     NO "MEN". NO "STREAK". The room is not men-only, and the word streak is banned brand-wide.
+     -->
+<title>Join ProActivators</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Three ways in: the self-directed Scoreboard, the Boardroom with its facilitated room, and the live Workshop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--surface:#141414;--surface2:#1c1c1c;--off-white:#f0ebe0;--steel:#888;
+  --steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.10);--border:rgba(255,255,255,.07);
+  --border2:rgba(255,255,255,.14)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--black);color:var(--off-white);
+  line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.35}
+.wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 20px}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+header{border-bottom:1px solid var(--border);padding:18px 0;position:relative;z-index:2}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+header img{height:24px;width:auto}
+header .signin{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel-lt);border:1px solid var(--border2);
+  border-radius:5px;padding:8px 11px;transition:all .2s}
+header .signin:hover{color:var(--off-white);border-color:var(--blue)}
+
+.hero{padding:60px 0 14px;text-align:center;max-width:720px;margin:0 auto}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1rem}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2.6rem,10vw,4rem);
+  line-height:.96;letter-spacing:.02em;margin-bottom:1.1rem}
+h1 .b{color:var(--blue)}
+.hero p{font-size:1.06rem;color:var(--steel-lt);max-width:34em;margin:0 auto .9rem}
+.hero p.last{color:var(--off-white)}
+.hero .more{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;margin-top:1.3rem;display:inline-block}
+
+.tiers{display:grid;grid-template-columns:1fr;gap:16px;padding:40px 0 10px}
+.t{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:26px 24px;
+  display:flex;flex-direction:column}
+.t.feature{border-color:rgba(58,180,242,.35);background:linear-gradient(180deg,var(--blue-dim),transparent 55%),var(--surface)}
+.t .k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:.5rem;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.t .k .flag{color:var(--blue);font-weight:700}
+.t h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:2rem;letter-spacing:.04em;line-height:1}
+.t .price{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;line-height:1;margin:.5rem 0 .1rem}
+.t .per{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--steel)}
+.t .sum{font-size:.95rem;color:var(--steel-lt);margin:.9rem 0 1rem}
+.t ul{list-style:none;margin-bottom:1.4rem}
+.t li{font-size:.92rem;color:var(--steel-lt);padding:.3rem 0 .3rem 1.4rem;position:relative}
+.t li::before{content:'';position:absolute;left:.25rem;top:.95rem;width:5px;height:5px;
+  border-radius:50%;background:var(--blue)}
+.t .act{margin-top:auto}
+.btn{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;padding:1.05rem 1.5rem;display:block;text-align:center;border:2px solid var(--blue);
+  background:var(--blue);color:var(--black);transition:all .2s;width:100%}
+.btn:hover{background:#fff;border-color:#fff;color:var(--black)}
+/* Deliberately NOT a disabled button. A greyed-out button still invites the tap and still
+   disappoints; this states the situation instead. */
+.soon{background:var(--surface2);border:1px dashed var(--border2);border-radius:7px;
+  padding:.95rem 1rem;text-align:center;font-family:'Space Mono',monospace;font-size:.62rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--steel);line-height:1.7}
+.soon b{color:var(--steel-lt);font-weight:400;display:block}
+
+.note{text-align:center;padding:28px 0 0;font-size:.92rem;color:var(--steel);max-width:40em;margin:0 auto}
+.close{padding:48px 0 16px;text-align:center;border-top:1px solid var(--border);margin-top:40px}
+.close .big{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,5.5vw,2.2rem);line-height:1.1;
+  letter-spacing:.02em;max-width:17em;margin:0 auto 1.3rem}
+footer{border-top:1px solid var(--border);margin-top:36px;padding:26px 0 44px;text-align:center}
+footer .credo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:var(--blue)}
+footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);margin-top:.5rem}
+
+@media (min-width:760px){ .tiers{grid-template-columns:repeat(3,1fr);gap:18px} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="/logo.png" alt="ProActivators">
+    <!-- ⚠️ command.proactivatorsclub.com does not resolve yet — custom domain unattached.
+         Confirm it is live BEFORE this page is ever published. -->
+    <a class="signin" href="https://command.proactivatorsclub.com">Sign in to your Command Center</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Join</div>
+    <h1>STOP DRIFTING.<br>START <span class="b">DECIDING.</span></h1>
+    <p>You already know what you should be doing. What you have never had is a structure that
+      makes it survivable on the days you don&rsquo;t feel like it.</p>
+    <p class="last">Three ways in. Start where you actually are.</p>
+    <a class="more" href="/operating-system">See how the whole system works &rarr;</a>
+  </div>
+
+  <div class="tiers">
+
+    <div class="t">
+      <div class="k"><span>Self-directed</span></div>
+      <h2>SCOREBOARD</h2>
+      <div class="price" data-src="blueprint-s19">$39</div>
+      <div class="per">per month</div>
+      <p class="sum">Everything you need to run the system on your own.</p>
+      <ul>
+        <li>The six-week Foundation and the Pillars that follow</li>
+        <li>The app: journal, practice, the week&rsquo;s teaching</li>
+        <li>The Coach, which reflects and never chases you</li>
+        <li>The Command Center: all six pillars, Momentum, your history</li>
+        <li>Reset whenever you need it, with nothing erased</li>
+        <li>The Witness, if you choose to invite one</li>
+      </ul>
+      <div class="act">
+        <div class="soon"><b>Opens January</b>Billing isn&rsquo;t open yet</div>
+      </div>
+    </div>
+
+    <div class="t feature">
+      <div class="k"><span>With the room</span><span class="flag">Most support</span></div>
+      <h2>BOARDROOM</h2>
+      <div class="price" data-src="blueprint-s19">$97</div>
+      <div class="per">per month</div>
+      <p class="sum">Everything in Scoreboard, plus the people.</p>
+      <ul>
+        <li>Everything in Scoreboard</li>
+        <li>The facilitated room: Win, Wall, Brick</li>
+        <li>People building the same identity, who know what you&rsquo;re doing</li>
+        <li>Somewhere to come back to after you drift, without humiliation</li>
+      </ul>
+      <div class="act">
+        <div class="soon"><b>Opens January</b>Billing isn&rsquo;t open yet</div>
+      </div>
+    </div>
+
+    <div class="t">
+      <div class="k"><span>One Saturday</span></div>
+      <h2>WORKSHOP</h2>
+      <div class="price" data-src="blueprint-s19">$197</div>
+      <div class="per">per seat</div>
+      <p class="sum">The live room where the whole thing starts.</p>
+      <ul>
+        <li>Five hours, in person</li>
+        <li>You leave with a decision in your own handwriting</li>
+        <li>Lunch included</li>
+        <li>No subscription, nothing to cancel</li>
+      </ul>
+      <!-- LIVE, unlike the two above: Nov 7 seats are on sale today through the existing
+           checkout. Labelling a sellable product "Opens January" would be a lie that costs
+           money. -->
+      <div class="act"><a class="btn" href="/workshop">See the next workshop &rarr;</a></div>
+    </div>
+
+  </div>
+
+  <p class="note">Already a member? <a href="https://command.proactivatorsclub.com">Open your
+    Command Center</a>.</p>
+
+  <div class="close">
+    <p class="big">A ProActivator is not someone who never falls. A ProActivator is someone who
+      has decided that falling will not be the end of the story.</p>
+    <a class="more" href="/operating-system" style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase">Read how it works &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="credo">WE DON&rsquo;T DRIFT. WE DECIDE.</div>
+    <div class="c">&copy; 2026 ProActivators&trade;</div>
+  </div>
+</footer>
+
+</body>
+</html>
