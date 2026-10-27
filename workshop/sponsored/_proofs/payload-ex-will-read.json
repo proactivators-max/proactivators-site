@@ -1,0 +1,14 @@
+{
+  "type": "emw-sponsored",
+  "name": "Maria Restrepo",
+  "email": "maria@example.com",
+  "phone": "3055550123",
+  "hp": "",
+  "fields": {
+    "sponsor": "Green Street Cafe",
+    "src": "green-street-cafe",
+    "session": "2026-11-07",
+    "venue": "FIU · Graham Center",
+    "page": "/workshop/sponsored/"
+  }
+}

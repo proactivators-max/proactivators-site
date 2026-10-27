@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sponsored Seat &mdash; Executive Mindset Workshop</title>
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────
+     SPONSORED SEATS — Green Street Cafe. Built Oct 27 2026, HELD until Gabriel's word.
+
+     WHY A SEPARATE PAGE rather than a code on /workshop's own form:
+       /workshop is actively selling at $197 and its form is a state machine whose heading,
+       button and footnote all come from one table, specifically so the page can never say
+       "checkout" under a free button. Adding a third, free mode to that machine risks the
+       one invariant protecting a live paying flow. This page cannot touch it.
+
+     NO CHECKOUT ANYWHERE ON THIS PAGE. That is the point. Green Street Cafe is invoiced
+     once, afterwards, for the staff who actually came and stayed. Nobody pays per seat.
+
+     NO HEADCOUNT ANYWHERE. Gabriel has not talked to the staff yet. This page must never
+     imply a number of reserved seats, and it never reads or writes the seat count.
+
+     SEATS-SOLD IS NOT TOUCHED. `manualSold` in rx/session.json remains the single source
+     for seats-sold on every surface. A sponsored registration is not a sale and must not
+     move that number. If Gabriel wants held chairs reflected, he edits that file — the
+     comment inside it explains the arithmetic.
+
+     ⚠️ SHIPS WITH A BACKEND CHANGE. This posts type `emw-sponsored`, which must exist in
+     netlify/functions/inquire.js. An unknown type 400s, and the page swallows the failure
+     by design (never block a person on the CRM) — so if the page deploys without the
+     function, every sponsored registration is lost SILENTLY. They go together or not at all.
+
+     ⚠️ THE CODE IS A DOORKEEPER, NOT A LOCK. It is checked in the browser and anyone who
+     reads the source can bypass it. That is acceptable and deliberate: the real control is
+     that Gabriel reconciles the list against Green Street Cafe before invoicing, so a name
+     the restaurant does not recognise is caught there. Do not represent it as security.
+
+     The person's name is deliberately absent. The business name is what the staff recognise,
+     and Gabriel's own records and this dispatch disagree on the spelling of his first name.
+     ─────────────────────────────────────────────────────────────────────────────────── -->
+
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Sponsored seat registration for the Executive Mindset Workshop.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#050505; --deep:#0b0b0b; --surface:#141414; --surface2:#1c1c1c;
+  --off-white:#f0ebe0; --steel:#888; --steel-lt:#aaa;
+  --blue:#3ab4f2; --blue-dim:rgba(58,180,242,.1); --blue-border:rgba(58,180,242,.22);
+  --border:rgba(255,255,255,.07); --err:#991f1f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--off-white);font-family:'DM Sans',sans-serif;
+  font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:620px;margin:0 auto;padding:3rem 1.25rem 4rem}
+
+.logo{height:30px;width:auto;display:block;margin-bottom:2.6rem}
+
+.eyebrow{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.85rem}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.3rem,8vw,3.3rem);line-height:.98;
+  letter-spacing:.01em;margin-bottom:1rem}
+.lede{color:var(--steel-lt);font-size:1.02rem;margin-bottom:.9rem}
+.lede b{color:var(--off-white);font-weight:500}
+
+/* The condition is the sponsor's, not ours. It is stated plainly and early rather than
+   buried in fine print, because someone who leaves at lunch costs the restaurant money. */
+.cond{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--blue);
+  padding:1rem 1.1rem;margin:1.6rem 0 2.2rem}
+.cond .k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.45rem}
+.cond p{font-size:.95rem;color:var(--steel-lt)}
+.cond b{color:var(--off-white);font-weight:500}
+
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);
+  border:1px solid var(--border);margin-bottom:2.2rem}
+.f{background:var(--deep);padding:1rem 1.05rem}
+.f .k{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel);margin-bottom:.4rem}
+.f .v{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.02em;line-height:1.1}
+.f .s{font-size:.8rem;color:var(--steel);margin-top:.15rem}
+.f a{color:var(--blue);font-size:.78rem;text-decoration:none;border-bottom:1px solid var(--blue-border);
+  display:inline-block;margin-top:.35rem}
+
+form{background:var(--surface);border:1px solid var(--border);padding:1.5rem 1.3rem 1.4rem}
+form h2{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:.02em;margin-bottom:.3rem}
+form .sub{color:var(--steel-lt);font-size:.92rem;margin-bottom:1.2rem}
+label{display:block;font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel);margin:0 0 .35rem}
+input{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--off-white);
+  font-family:'DM Sans',sans-serif;font-size:1rem;padding:.8rem .85rem;margin-bottom:1rem;
+  border-radius:0;transition:border-color .2s}
+input:focus{outline:none;border-color:var(--blue-border)}
+input.err{border-color:var(--err)}
+input#code{font-family:'Space Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+button{width:100%;background:var(--blue);color:#000;border:0;cursor:pointer;
+  font-family:'Space Mono',monospace;font-size:.8rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;padding:.95rem 1rem;transition:opacity .2s}
+button:hover{opacity:.9}
+button:disabled{opacity:.5;cursor:default}
+.fnote{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--steel);text-align:center;margin-top:.7rem}
+
+.msg{display:none;margin-top:1rem;padding:.85rem .95rem;font-size:.92rem;
+  background:var(--blue-dim);border-left:2px solid var(--blue);color:var(--off-white)}
+.msg.on{display:block}
+.msg.err{background:rgba(153,31,31,.12);border-left-color:var(--err)}
+.msg b{font-weight:500}
+
+.done{display:none;text-align:center;padding:1.2rem .5rem}
+.done.on{display:block}
+.done h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:.6rem}
+.done p{color:var(--steel-lt);font-size:.96rem}
+
+footer{margin-top:2.6rem;text-align:center;font-family:'Space Mono',monospace;
+  font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);line-height:2.2}
+footer a{color:var(--steel);text-decoration:none}
+
+@media(max-width:430px){ .facts{grid-template-columns:1fr} .wrap{padding-top:2.2rem} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <img class="logo" src="/logo.png" alt="ProActivators">
+
+  <div class="eyebrow">Sponsored seat</div>
+  <h1>Your seat is covered.</h1>
+  <p class="lede"><b>Green Street Cafe is paying for your seat</b> at the Executive Mindset
+  Workshop. There is nothing for you to pay, now or at the door.</p>
+  <p class="lede">Register below so we know to expect you and can set a place for lunch.</p>
+
+  <div class="cond">
+    <div class="k">One condition</div>
+    <p><b>Stay the full five hours.</b> That is the arrangement with the restaurant, and
+    it is the only thing asked of you. The day is built as one piece &mdash; leaving at
+    lunch means leaving before the part that matters.</p>
+  </div>
+
+  <!-- Static text = the no-date state. renderSession() fills these from rx/session.json,
+       the one file /rx and /workshop also read, so the three pages cannot drift. -->
+  <div class="facts">
+    <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nTime">Date coming</div></div>
+    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">To be confirmed</div><div class="s" id="nRoom"></div><a id="nAddr" target="_blank" rel="noopener"></a></div>
+  </div>
+
+  <form id="form" onsubmit="return submitSeat(event)">
+    <input type="text" name="proactivators_hp_check" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <h2>Claim your seat</h2>
+    <p class="sub">Four fields. Your manager has the code.</p>
+
+    <label for="code">Staff code</label>
+    <input type="text" id="code" placeholder="From your manager" autocomplete="off" autocapitalize="characters">
+
+    <label for="name">Your name</label>
+    <input type="text" id="name" placeholder="First and last" autocomplete="name">
+
+    <label for="email">Your email</label>
+    <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+
+    <label for="phone">Your phone</label>
+    <input type="tel" id="phone" placeholder="(305) 555-0123" autocomplete="tel">
+
+    <button type="submit" id="go">Claim my seat &rarr;</button>
+    <div class="fnote">No payment &middot; no card &middot; nothing to bring</div>
+    <div class="msg" id="msg"></div>
+  </form>
+
+  <div class="done" id="done">
+    <h2>You&rsquo;re in.</h2>
+    <p id="doneP">Your seat is held. We&rsquo;ll email you the details before the day.</p>
+  </div>
+
+  <footer>
+    <a href="/">ProActivators</a> &middot; We don&rsquo;t drift. We decide.
+  </footer>
+</div>
+
+<script>
+/* The sponsor. Business name only — it is what the staff recognise, and it is what the
+   record needs to carry so Gabriel can reconcile the list before invoicing. */
+var SPONSOR       = 'Green Street Cafe';
+var SPONSOR_SLUG  = 'green-street-cafe';
+
+/* Change this one line to change the code. Say it out loud to the staff; it is not a secret
+   worth protecting, it only stops a stranger who stumbles onto an unlinked page. */
+var STAFF_CODE    = 'GREENST-NOV7';
+
+var INQUIRE     = 'https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
+var SESSION_JSON= '/rx/session.json';
+var S=null, SESSION=null;
+function $(id){ return document.getElementById(id); }
+
+function bad(id){ $(id).classList.add('err'); setTimeout(function(){ $(id).classList.remove('err'); },1400); }
+function say(html,isErr){ var m=$('msg'); m.innerHTML=html; m.className='msg on'+(isErr?' err':''); }
+
+function renderSession(){
+  if(!SESSION) return;                       // no confirmed date -> the static no-date text stays
+  if(SESSION.label) $('nDate').textContent = SESSION.label;
+  if(SESSION.time)  $('nTime').textContent = SESSION.time + (SESSION.doors ? ' · doors ' + SESSION.doors : '');
+  if(SESSION.venue) $('nVenue').textContent = SESSION.venue;
+  if(SESSION.room)  $('nRoom').textContent  = SESSION.room;
+  if(SESSION.address){ var a=$('nAddr'); a.textContent=SESSION.address; if(SESSION.map) a.href=SESSION.map; }
+}
+
+async function submitSeat(ev){
+  ev.preventDefault();
+  var code =$('code').value.trim().toUpperCase(),
+      name =$('name').value.trim(),
+      email=$('email').value.trim(),
+      phone=$('phone').value.trim(), ok=true;
+
+  if(code !== STAFF_CODE){ bad('code'); ok=false; }
+  if(name.length<2){ bad('name'); ok=false; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ bad('email'); ok=false; }
+  if(phone.replace(/\D/g,'').length<10){ bad('phone'); ok=false; }
+
+  if(!ok){
+    say(code && code!==STAFF_CODE
+      ? 'That code isn&rsquo;t right. Check with your manager.'
+      : 'Check the highlighted fields.', true);
+    return false;
+  }
+
+  var go=$('go'); go.disabled=true; go.textContent='Saving…';
+
+  var payload={
+    type:'emw-sponsored',
+    name:name, email:email, phone:phone, hp:$('hp').value,
+    fields:{
+      sponsor: SPONSOR,                                   // human-readable, for the CRM note
+      src: SPONSOR_SLUG,                                  // becomes the tag src:green-street-cafe
+      session: SESSION ? SESSION.date : 'none',
+      venue: SESSION ? (SESSION.venue||'') : '',
+      page: location.pathname
+    }
+  };
+
+  /* Same rule as /workshop: never block a person on the CRM. But this path has NO checkout
+     to fall through to, so a silent loss here means the seat is simply never recorded —
+     which is why the failure is surfaced to the person instead of swallowed. */
+  var sent=false;
+  try{
+    var r=await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    sent = r && r.ok;
+  }catch(e){ sent=false; }
+
+  if(!sent){
+    go.disabled=false; go.textContent='Try again →';
+    say('<b>That didn&rsquo;t save.</b> Try once more &mdash; or email '
+      + '<a href="mailto:proactivateyourlife@gmail.com" style="color:var(--blue)">proactivateyourlife@gmail.com</a> '
+      + 'with your name and phone and we&rsquo;ll add you by hand.', true);
+    return false;
+  }
+
+  $('form').style.display='none';
+  var d=$('done'); d.classList.add('on');
+  if(SESSION && SESSION.label){
+    $('doneP').innerHTML = 'Your seat is held for <b>'+SESSION.label+'</b>'
+      + (SESSION.venue ? ' at '+SESSION.venue : '') + '. We&rsquo;ll email you the details before the day.';
+  }
+  d.scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
+}
+
+(async function boot(){
+  try{ S=await (await fetch(SESSION_JSON,{cache:'no-store'})).json(); }catch(e){ S=null; }
+  var today=new Date().toISOString().slice(0,10);     // same UTC lexical compare as /rx and /workshop
+  SESSION = S && (S.upcoming||[]).filter(function(u){ return u.date>=today; })[0] || null;
+  renderSession();
+})();
+</script>
+</body>
+</html>

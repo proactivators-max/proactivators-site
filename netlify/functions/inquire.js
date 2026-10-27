@@ -21,6 +21,8 @@ const TYPE_TAGS = {
   'rx-waitlist': 'rx_waitlist',          // /rx when the session is sold out or has no date yet
   'emw-workshop': 'emw_workshop',        // /workshop — the general-public door; step 1 before the SAME GHL checkout as /rx
   'emw-waitlist': 'emw_waitlist',        // /workshop when the session is sold out or has no date yet
+  'emw-sponsored': 'emw_sponsored',      // /workshop/sponsored — an employer pays once, afterwards. NO per-seat checkout:
+                                         // this tag is the ONLY record that the seat exists, so a 400 here loses it outright.
   'boardroom-coach': 'boardroom_coach',   // /boardroom — wants to RUN a room
   'boardroom-member': 'boardroom_member', // /boardroom — wants a SEAT at the table
 };
@@ -35,6 +37,7 @@ const TYPE_LABELS = {
   'rx-waitlist': 'RX YOUR LIFE — WAITLIST',
   'emw-workshop': 'EXECUTIVE MINDSET WORKSHOP — RESERVATION (step 1, before checkout)',
   'emw-waitlist': 'EXECUTIVE MINDSET WORKSHOP — WAITLIST',
+  'emw-sponsored': 'EXECUTIVE MINDSET WORKSHOP — SPONSORED SEAT (employer invoiced once, afterwards — NOT a sale)',
   'boardroom-coach': 'THE BOARDROOM — WANTS TO COACH A ROOM',
   'boardroom-member': 'THE BOARDROOM — WANTS A SEAT',
 };
