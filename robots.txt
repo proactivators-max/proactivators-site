@@ -13,6 +13,7 @@ Disallow: /workshop/live/thank-you/
 # that the server will hand them over, and in no other sense.
 Disallow: /workshop/_proofs/
 Disallow: /workshop/sponsored/_proofs/
+Disallow: /rx/_proofs/
 
 # Invitation-only (Gabriel sends the link by hand)
 Disallow: /podcast-guest/

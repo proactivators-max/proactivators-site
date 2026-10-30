@@ -1,0 +1,15 @@
+{
+  "type": "rx-waitlist",
+  "name": "Harness Tester",
+  "email": "harness@example.com",
+  "phone": "3055550123",
+  "hp": "",
+  "fields": {
+    "gym": "crossfit-mia",
+    "src": "wall",
+    "session": "none",
+    "page": "/rx/crossfit-mia/",
+    "state": "happened",
+    "last": "2026-11-07"
+  }
+}

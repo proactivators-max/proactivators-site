@@ -301,9 +301,14 @@ button.go:disabled{opacity:.55;cursor:default}
     <li><span class="n">Hour 4</span><div><b>The Decision</b><span class="d">Around the table, nobody skipped. What happens next.</span></div></li>
   </ul>
 
-  <!-- Past tense when there is no dated session: every speaker in that list is confirmed for a
-       SPECIFIC workshop, not for the brand. Leaving "Who's in the room" over four names after
-       the date passes advertises a lineup for a room nobody has been asked to be in. -->
+  <!-- When there is no dated session this reads "The lineup" — Era's ruling, Oct 30. Two
+       separate problems, and the first draft only fixed one. (a) Every speaker in that list is
+       confirmed for a SPECIFIC workshop, not for the brand, so leaving "Who's in the room" over
+       four faces after the date passes advertises a lineup for a room nobody has been asked to
+       be in. (b) The obvious fix, "Who WAS in the room", is worse in one way: it asserts
+       ATTENDANCE, which nothing here can ever verify — if a speaker cancels on the day, a page
+       cached that morning says they were there forever. A lineup is who was BILLED. That is a
+       claim this page is the source of truth for. -->
   <h2 id="whoH">Who&rsquo;s in the room</h2>
   <ul class="who" id="who"></ul>
   <div class="more" id="more"></div>
@@ -445,7 +450,7 @@ function STATE(k){
       fStep:'One step', fTitle:'Be first to know.',
       fSub:'The next date is being set. Leave your details and you hear before anyone else.',
       go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date',
-      whoH:'Who was in the room', pending:false, door:false, after:'',
+      whoH:'The lineup', pending:false, door:false, after:'',
       done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' },
     soldout:{ mode:'waitlist',
       btnL:'Sold out &mdash; join the waitlist', btnR:'Free &rarr;',
@@ -467,7 +472,7 @@ function STATE(k){
       fStep:'One step', fTitle:'Be first on the next one.',
       fSub:last+' is done. The next one isn&rsquo;t dated yet &mdash; leave your details and you hear before anyone else.',
       go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date',
-      whoH:'Who was in the room', pending:false, door:false,
+      whoH:'The lineup', pending:false, door:false,
       after:'<b>'+last+' has happened.</b> The next one isn&rsquo;t dated yet. When it is, the '
           + 'people on this list hear it first &mdash; before it goes anywhere public.',
       done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' }

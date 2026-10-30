@@ -13,14 +13,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rx Your Life — The Executive Mindset Workshop</title>
 <!-- Crawled and cached for a long time, and read by link previews when the poster's URL gets
-     shared — so this copy has to be true in BOTH states. "Reserve yours" promised a purchase
-     the page can't currently take. State-neutral wording instead. -->
-<!-- These tags are crawled and cached and follow no page state, so every word has to be
-     true whether or not a date is set: no venue, no scarcity claim, no reserve verb. The
-     city stays, and so does the invitation to see the next date -- true in either state. -->
-<meta name="description" content="You track every rep. Time to track the other five pillars. One Saturday a month in Miami — five hours, six pillars. See the next date.">
+     shared — so this copy has to be true in EVERY state. "Reserve yours" promised a purchase
+     the page can't currently take. State-neutral wording instead.
+
+     Oct 30, Era's ruling: the rule above was right and the copy still broke it in three
+     places. "One Saturday a month" is a CADENCE — a date pattern printed on a page is a date,
+     and Gabriel has not set the next one. "at FIU" is a venue for a room that is only booked
+     while a session is dated. "seats limited" is a count of a room that may not exist. All
+     three are false the morning after a session, and all three sit in a string Google and
+     iMessage keep for weeks after they read it. What is left is true with or without a date. -->
+<meta name="description" content="You track every rep. Time to track the other five pillars. Five hours, six pillars, one room in Miami — and a scoreboard for your whole life.">
 <meta property="og:title" content="Rx Your Life — The Executive Mindset Workshop">
-<meta property="og:description" content="You track every rep. Time to track the other five pillars. One Saturday a month in Miami. See the next date.">
+<meta property="og:description" content="You track every rep. Time to track the other five pillars. Five hours, six pillars, one room in Miami — and a scoreboard for your whole life.">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">
 <meta property="og:url" content="https://proactivatorsclub.com/rx/">
@@ -91,6 +95,11 @@ h1 b{color:var(--blue);font-weight:400}
 .addr:hover{color:var(--blue)}
 .inc{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .inc span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:6px 9px;color:var(--steel-lt)}
+/* Two of those four chips are claims about AVAILABILITY rather than about the day itself.
+   Hidden by default so the no-JS page makes neither claim, and turned on from the state table
+   only while a session is actually dated — same fail-safe direction as the button. */
+.inc .avail{display:none}
+.inc.dated .avail{display:inline-block}
 .pillars{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .pillars span{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--off);background:rgba(240,235,224,.04);padding:6px 9px;border:1px solid var(--line)}
 
@@ -139,18 +148,18 @@ footer a{color:var(--steel);text-decoration:none}
   <h1>RX YOUR <b>LIFE.</b></h1>
   <div class="gym" id="gym"><span id="gymLead">You scanned the wall at</span> <b id="gymName"></b></div>
 
+  <!-- STATIC = the honest minimum, not a state. With JS dead this page cannot read the date,
+       cannot submit the form and cannot know which state it is in, so it claims no venue, no
+       cadence and no count. It used to read "One Saturday a month" and "FIU · Graham Center",
+       which were a date pattern and a room booking that only held while a session was dated.
+       applyState() fills every line below from the one table. -->
   <div class="next" id="next">
-    <div class="k">Next session</div>
-    <div class="d" id="nDate">One Saturday a month</div>
-    <!-- The JS-less default, and the fail-safe if the script dies: city and cadence only.
-         renderSession() prints the real venue and room whenever a session is set. -->
-    <div class="w" id="nWhere">Miami &middot; One Saturday a month</div>
+    <div class="k" id="nKind">Next session</div>
+    <div class="d" id="nDate">Next date coming</div>
+    <div class="w" id="nWhere">Miami &middot; the room is set with the date</div>
     <div class="w" id="nDoors"></div>
     <a class="w addr" id="nAddr" target="_blank" rel="noopener"></a>
-    <!-- Default is the room's size, not a scarcity claim: this is what a JS-less crawler
-         sees, before anything has checked whether a session exists. renderSession() sets the
-         real figure in both states. -->
-    <div class="s" id="nSeats">40 seats</div>
+    <div class="s" id="nSeats"></div>
   </div>
 
   <p class="sub">You already track every rep. This is the same discipline, pointed at the other five pillars. <em>Five hours, one Saturday, and you leave with a scoreboard for your whole life.</em></p>
@@ -169,11 +178,7 @@ footer a{color:var(--steel);text-decoration:none}
       <div class="row"><span>Hour 3</span><div><b>The Identity</b><small>The three P&rsquo;s. Who you decide to be before you decide what to do.</small></div></div>
       <div class="row"><span>Hour 4</span><div><b>The Decision</b><small>Around the table, nobody skipped. What happens next.</small></div></div>
     </div>
-    <!-- This strip is static and shows in EVERY state. "Seats limited" was a scarcity claim
-         rendered with nothing on sale -- and it is not an inclusion either, which is what the
-         rest of this list is. The room's size is the factual version, and "Closes when full"
-         already carries the urgency honestly. -->
-    <div class="inc"><span>Lunch + snacks</span><span>Workbook</span><span>40 seats</span><span>Closes when full</span></div>
+    <div class="inc" id="inc"><span>Lunch + snacks</span><span>Workbook</span><span class="avail">Seats limited</span><span class="avail">Closes when full</span></div>
     <div class="pillars"><span>Faith</span><span>Family</span><span>Fitness</span><span>Finances</span><span>Focus</span><span>Fulfillment</span></div>
   </div>
 
@@ -209,7 +214,12 @@ var SEATS_API='https://rx-seats.floridautilities.workers.dev/';
 var INQUIRE='https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
 // starts 'waitlist' to match the fail-safe markup; applyState('buy') flips it once a
 // confirmed session has actually loaded
-var S=null, SESSION=null, GYMS={}, gym='', src='', mode='waitlist';   // mode: buy | waitlist
+var S=null, SESSION=null, LAST=null, GYMS={}, gym='', src='', mode='waitlist';   // mode: buy | waitlist
+var STATEKEY='nodate';                                                           // which state actually rendered
+/* LAST = the most recent session in `upcoming` whose date has PASSED. It is the whole reason
+   this page can say WHICH workshop happened rather than only that there is no next one, and it
+   comes out of the same array as SESSION — so nothing has to be edited the evening the session
+   passes, and setting the next date is still one entry added to that one file. */
 
 /* Every line that depends on whether this page can take money lives in ONE table, and
    the button, the reassurance line under it, and the form all read from the same row.
@@ -219,35 +229,99 @@ var S=null, SESSION=null, GYMS={}, gym='', src='', mode='waitlist';   // mode: b
    and that hesitation is the whole thing the waitlist state exists to avoid.
    RULE: no word implying a transaction while the page cannot transact. */
 var ASK=' <a href="mailto:proactivateyourlife@gmail.com">Questions?</a>';
+/* FOUR STATES, decided by `upcoming` alone — the same four /workshop has, reading the same
+   file, so the wall funnel and the public page can never disagree about whether a workshop is
+   ahead or behind:
+     buy       a session is dated and ahead  -> seats are for sale
+     soldout   the same, and the worker says the room is full
+     happened  no session ahead, one behind  -> names it, takes emails, sells nothing
+     nodate    no session either way         -> the pre-announcement / fully-reset state
+   `happened` is reached with no edit to anything: the UTC compare stops matching at 7 PM Miami
+   on the day of the session, and the page changes on its own. */
 function STATE(k){
   var p=(S&&S.price)||197;
+  var last=esc((LAST&&LAST.label)||'The last session');
   return {
-    buy:{ mode:'buy',
+    buy:{ mode:'buy', avail:true,
       btnL:'Reserve my seat', btnR:'$'+p+' &rarr;',
       fine:'Secure checkout &middot; Seats limited &middot;'+ASK,
       fStep:'Step 1 of 2', fTitle:'Who&rsquo;s coming?',
       fSub:'Your details, then the secure checkout. Thirty seconds.',
-      go:'Continue to checkout &rarr;', fNote:'Next: secure card checkout &middot; $'+p },
-    nodate:{ mode:'waitlist',
+      go:'Continue to checkout &rarr;', fNote:'Next: secure card checkout &middot; $'+p,
+      done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' },
+    nodate:{ mode:'waitlist', avail:false,
       btnL:'Tell me the next date', btnR:'Free &rarr;',
       fine:'No payment &middot; We text you the date &middot;'+ASK,
       fStep:'One step', fTitle:'Be first to know.',
       fSub:'The next date is being set. Leave your details and you hear before the wall does.',
-      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date' },
-    soldout:{ mode:'waitlist',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date',
+      done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' },
+    soldout:{ mode:'waitlist', avail:true,
       btnL:'Sold out &mdash; join the waitlist', btnR:'Free &rarr;',
       fine:'No payment &middot; We text you if a seat opens &middot;'+ASK,
       fStep:'One step', fTitle:'Waitlist.',
       fSub:'This one is full. Leave your details &mdash; a seat opens, or the next date drops, and you hear first.',
-      go:'Put me on the list &rarr;', fNote:'No spam &middot; a seat or the next date' }
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; a seat or the next date',
+      done:'<b>You&rsquo;re on the list.</b> A seat opens, or the next date drops, and you hear first.' },
+    /* THE WORKSHOP HAPPENED. It names the one that happened and nothing else: no next date,
+       no next room, no cadence, no headcount. The wall poster carries no date by design, so
+       a stranger scanning it the week after is the exact person this state is written for. */
+    happened:{ mode:'waitlist', avail:false,
+      btnL:'Tell me the next date', btnR:'Free &rarr;',
+      fine:'No payment &middot; We text you the date &middot;'+ASK,
+      fStep:'One step', fTitle:'Be first on the next one.',
+      fSub:last+' is done. The next one isn&rsquo;t dated yet &mdash; leave your details and you hear before the wall does.',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date',
+      done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' }
   }[k];
+}
+
+/* The session block is state too. A date, a venue, a cadence and a seat count are each a
+   claim, and once the last session is behind us this page can make none of them. It used to
+   be patched line by line inside renderSession(), and the no-session branch wrote back
+   "FIU · Miami · One Saturday a month" and "40 seats" — a room nobody has booked, a date
+   pattern, and a count of a session that had already happened. */
+function NEXT(k){
+  var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
+  if(k==='buy'||k==='soldout'){
+    return { kind:'Next session',
+      d:SESSION.label||'One Saturday',
+      w:esc(SESSION.venue||'Miami')+(SESSION.room?' &middot; '+esc(SESSION.room):'')+' &middot; '+esc(SESSION.time||''),
+      doors:SESSION.doors ? ('Doors '+SESSION.doors+' · starts 10 sharp') : '',
+      // Street address is its own tappable line: "FIU" is not something you can drive to.
+      addr:SESSION.address||'', map:SESSION.map||'',
+      // Sold out is the only count that goes on the page. Gabriel's call, Oct 17 — see the
+      // matching note in /workshop. The seats worker is unchanged and still counts for him.
+      s:(k==='soldout' ? seats+' seats &middot; <i>Sold out</i>' : 'Seats limited'), out:(k==='soldout') };
+  }
+  if(k==='happened'){
+    return { kind:'The last one',
+      d:(LAST&&LAST.label)||'One Saturday',
+      w:((LAST&&LAST.venue)?esc(LAST.venue)+' &mdash; ':'')+'it happened',
+      doors:'', addr:'', map:'',
+      s:'The next one isn&rsquo;t dated yet', out:false };
+  }
+  return { kind:'Next session', d:'Next date coming',
+    w:'Miami &middot; the room is set with the date',
+    doors:'', addr:'', map:'', s:'', out:false };
 }
 function applyState(k){
   var s=STATE(k); if(!s) return;
-  mode=s.mode;
+  mode=s.mode; STATEKEY=k;
   $('buyL').innerHTML=s.btnL; $('buyR').innerHTML=s.btnR; $('fine').innerHTML=s.fine;
   $('fStep').innerHTML=s.fStep; $('fTitle').innerHTML=s.fTitle; $('fSub').innerHTML=s.fSub;
   $('go').innerHTML=s.go; $('fNote').innerHTML=s.fNote;
+  var n=NEXT(k);
+  $('nKind').textContent=n.kind;
+  $('nDate').textContent=n.d;
+  $('nWhere').innerHTML=n.w;
+  $('nDoors').textContent=n.doors;
+  var ad=$('nAddr');
+  if(n.addr){ ad.textContent=n.addr; ad.href=n.map||('https://maps.google.com/?q='+encodeURIComponent(n.addr)); ad.style.display='block'; }
+  else { ad.textContent=''; ad.removeAttribute('href'); ad.style.display='none'; }
+  var se=$('nSeats');
+  se.innerHTML=n.s; se.className='s'+(n.out?' out':''); se.style.display=n.s?'':'none';
+  $('inc').className='inc'+(s.avail?' dated':'');
 }
 
 function $(id){return document.getElementById(id);}
@@ -276,37 +350,25 @@ async function boot(){
   }
   try{ S=await (await fetch('/rx/session.json',{cache:'no-store'})).json(); }catch(e){ S=null; }
   var today=new Date().toISOString().slice(0,10);
-  SESSION=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]||null;
+  var all=(S&&S.upcoming)||[];
+  SESSION=all.filter(function(u){return u&&u.date>=today;})[0]||null;
+  /* The latest session that HAS passed, by date rather than array order — the same read
+     /workshop does, out of the same array, so the wall and the public page name the same
+     workshop as the one that happened. If `upcoming` is ever emptied this is null and the
+     page falls back to `nodate`: honest, just less specific. */
+  LAST=all.filter(function(u){return u&&u.date&&u.date<today;})
+          .sort(function(a,b){return a.date<b.date?1:(a.date>b.date?-1:0);})[0]||null;
   // price-dependent copy comes from applyState() below, so nothing is set in two places
   if(S&&S.video){ var h=$('hero'); h.innerHTML='<video controls playsinline preload="metadata" poster="/rx/key-art.jpg"><source src="'+esc(S.video)+'" type="video/mp4"></video><div class="cap">Gabriel &middot; 45 seconds &middot; who this is for</div>'; }
   renderSession(null);
   try{ var r=await (await fetch(SEATS_API,{cache:'no-store'})).json(); renderSession(r); }catch(e){ renderSession(null); }
 }
+/* Which state, and nothing else. Every line it used to set by hand now comes out of the one
+   table, so there is no second place for a venue, a cadence or a count to survive a date. */
 function renderSession(r){
-  var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
-  if(!SESSION){
-    $('nDate').textContent='Next date coming';
-    /* No venue in this state -- city only. With no date set there is no room to name, and
-       naming last session's would promise one. This comment ships in the page source, so it
-       says what the rule is and not why. */
-    $('nWhere').innerHTML='Miami &middot; One Saturday a month';
-    $('nSeats').textContent=seats+' seats';
-    applyState('nodate');
-    return;
-  }
+  if(!SESSION){ applyState(LAST ? 'happened' : 'nodate'); return; }
   applyState('buy');
-  $('nDate').textContent=SESSION.label;
-  $('nWhere').innerHTML=esc(SESSION.venue)+(SESSION.room?' &middot; '+esc(SESSION.room):'')+' &middot; '+esc(SESSION.time);
-  $('nDoors').textContent=SESSION.doors ? ('Doors '+SESSION.doors+' · starts 10 sharp') : '';
-  // Street address is its own tappable line: "FIU" is not something you can drive to.
-  var ad=$('nAddr');
-  if(SESSION.address){ ad.textContent=SESSION.address; ad.href=SESSION.map||('https://maps.google.com/?q='+encodeURIComponent(SESSION.address)); ad.style.display='block'; }
-  else { ad.style.display='none'; }
-  // Sold out is the only count that goes on the page. Gabriel's call, Oct 17 — see the
-  // matching note in /workshop. The seats worker is unchanged and still counts for him.
-  var el=$('nSeats');
-  if(r&&r.soldOut){ el.className='s out'; el.innerHTML=seats+' seats &middot; <i>Sold out</i>'; setSoldOut(); }
-  else { el.className='s'; el.textContent='Seats limited'; $('buyR').innerHTML='$'+((S&&S.price)||197)+' &rarr;'; }
+  if(r && r.soldOut) setSoldOut();
 }
 function setSoldOut(){
   applyState('soldout'); $('buy').classList.add('out');
@@ -321,10 +383,17 @@ async function reserve(ev){
   if(name.length<2){bad('name');ok=false;} if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){bad('email');ok=false;} if(phone.replace(/\D/g,'').length<10){bad('phone');ok=false;}
   if(!ok) return false;
   var go=$('go'); go.disabled=true; go.textContent=mode==='buy'?'One second…':'Saving…';
+  /* `state` and `last` are fields, not a new type: rx-waitlist is already the live tag that
+     separates interest from a buyer, and an unregistered type 400s until inquire.js deploys
+     while the fetch below swallows failures by design — so a new type would lose leads
+     silently in the window between the two deploys. Same call as /workshop. */
   var payload={type:mode==='buy'?'rx-workshop':'rx-waitlist',name:name,email:email,phone:phone,hp:$('hp').value,
-    fields:{gym:gym||'',src:src||'',session:SESSION?SESSION.date:'none',page:location.pathname}};
+    fields:{gym:gym||'',src:src||'',session:SESSION?SESSION.date:'none',page:location.pathname,
+            state:STATEKEY,last:LAST?LAST.date:''}};
   try{ await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); }catch(e){ /* never block the sale on the CRM */ }
-  if(mode!=='buy'){ say('<b>You’re on the list.</b> The next date comes to you first.'); go.textContent='Done'; return false; }
+  // From the table too, so the sold-out list and the after-the-event list are told
+  // different true things and neither is told the other one's.
+  if(mode!=='buy'){ say(STATE(STATEKEY).done); go.textContent='Done'; return false; }
   var parts=name.split(/\s+/), u=new URL((S&&S.checkout)||'https://link.conversiondash.com/payment-link/6a120c64ee2395af2c17fec4');
   // GHL's payment link reads camelCase. Verified against the live link on Oct 3 2026:
   // first_name/last_name populate NOTHING; firstName/lastName populate both fields.
