@@ -115,6 +115,16 @@ button:disabled{opacity:.5;cursor:default}
 
 .done{display:none;text-align:center;padding:1.2rem .5rem}
 .done.on{display:block}
+/* Everything that only makes sense while a seat exists to claim. Hidden as a set by the one
+   predicate, rather than each piece remembering for itself. */
+.offer{display:block}
+.closed{display:none;background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--blue);padding:1.3rem 1.25rem;margin-top:.4rem}
+.closed.on{display:block}
+.closed h2{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.02em;margin-bottom:.5rem}
+.closed p{color:var(--steel-lt);font-size:.96rem;line-height:1.65}
+.closed p+p{margin-top:.7rem}
+.closed b{color:var(--off-white);font-weight:500}
 .done h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:.6rem}
 .done p{color:var(--steel-lt);font-size:.96rem}
 
@@ -130,13 +140,21 @@ footer a{color:var(--steel);text-decoration:none}
 
   <img class="logo" src="/logo.png" alt="ProActivators">
 
-  <div class="eyebrow">Sponsored seat</div>
-  <h1>Your seat is covered.</h1>
-  <p class="lede"><b>Green Street Cafe is paying for your seat</b> at the Executive Mindset
+  <!-- ⚠️ EVERY ELEMENT DOWN TO AND INCLUDING THE FORM CARRIES class="offer", because every one
+       of them is in the present tense about a seat. "Your seat is covered", "is paying for your
+       seat", "Stay the full five hours", "Register below" and the form itself are all false the
+       morning after the session — and a page that still takes a claim for a workshop that has
+       happened promises a day that is not coming. They are hidden as one set by the same
+       `date >= today` predicate /workshop and /rx use. Marked per element rather than wrapped in
+       a container so that adding a line here means deciding, at the line, whether it survives
+       the date. -->
+  <div class="eyebrow offer">Sponsored seat</div>
+  <h1 class="offer">Your seat is covered.</h1>
+  <p class="lede offer"><b>Green Street Cafe is paying for your seat</b> at the Executive Mindset
   Workshop. There is nothing for you to pay, now or at the door.</p>
-  <p class="lede">Register below so we know to expect you and can set a place for lunch.</p>
+  <p class="lede offer">Register below so we know to expect you and can set a place for lunch.</p>
 
-  <div class="cond">
+  <div class="cond offer">
     <div class="k">One condition</div>
     <p><b>Stay the full five hours.</b> That is the arrangement with the restaurant, and
     it is the only thing asked of you. The day is built as one piece &mdash; leaving at
@@ -145,12 +163,16 @@ footer a{color:var(--steel);text-decoration:none}
 
   <!-- Static text = the no-date state. renderSession() fills these from rx/session.json,
        the one file /rx and /workshop also read, so the three pages cannot drift. -->
-  <div class="facts">
+  <div class="facts offer">
     <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nTime">Date coming</div></div>
     <div class="f"><div class="k">Where</div><div class="v" id="nVenue">To be confirmed</div><div class="s" id="nRoom"></div><a id="nAddr" target="_blank" rel="noopener"></a></div>
   </div>
 
-  <form id="form" onsubmit="return submitSeat(event)">
+  <!-- What stands in its place. Filled from script so the date it names comes from the file
+       rather than from this markup, which is how a page ends up naming a date it has outlived. -->
+  <div class="closed" id="closed"></div>
+
+  <form id="form" class="offer" onsubmit="return submitSeat(event)">
     <input type="text" name="proactivators_hp_check" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <h2>Claim your seat</h2>
     <p class="sub">Four fields. Your manager has the code.</p>
@@ -194,14 +216,34 @@ var STAFF_CODE    = 'GREENST-NOV7';
 
 var INQUIRE     = 'https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
 var SESSION_JSON= '/rx/session.json';
-var S=null, SESSION=null;
+var S=null, SESSION=null, LAST=null;
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function $(id){ return document.getElementById(id); }
 
 function bad(id){ $(id).classList.add('err'); setTimeout(function(){ $(id).classList.remove('err'); },1400); }
 function say(html,isErr){ var m=$('msg'); m.innerHTML=html; m.className='msg on'+(isErr?' err':''); }
 
 function renderSession(){
-  if(!SESSION) return;                       // no confirmed date -> the static no-date text stays
+  /* NO SESSION AHEAD -> THE OFFER COMES DOWN. Returning early used to leave the whole page
+     standing in the present tense with "One Saturday / Date coming" in the grid, so a Green
+     Street staffer who opened this link the week after could still type the code and be told
+     "Your seat is held. We'll email you the details before the day." There is no day. */
+  if(!SESSION){
+    var off=document.querySelectorAll('.offer');
+    for(var i=0;i<off.length;i++) off[i].style.display='none';
+    var c=$('closed');
+    c.innerHTML = LAST
+      /* It names the session from the file, and claims nothing about the next one: whether the
+         restaurant sponsors another is the restaurant's decision, not this page's. */
+      ? '<h2>That one has happened.</h2>'
+        + '<p>The seat ' + SPONSOR + ' covered was for <b>' + esc(LAST.label)
+        + '</b>. That day is done, so there is nothing to claim here.</p>'
+        + '<p>If ' + SPONSOR + ' covers seats at the next one, your manager will have a new code.</p>'
+      : '<h2>Nothing to claim yet.</h2>'
+        + '<p>The next workshop isn&rsquo;t dated. Your manager will have a code when it is.</p>';
+    c.className='closed on';
+    return;
+  }
   if(SESSION.label) $('nDate').textContent = SESSION.label;
   if(SESSION.time)  $('nTime').textContent = SESSION.time + (SESSION.doors ? ' · doors ' + SESSION.doors : '');
   if(SESSION.venue) $('nVenue').textContent = SESSION.venue;
@@ -272,7 +314,11 @@ async function submitSeat(ev){
 (async function boot(){
   try{ S=await (await fetch(SESSION_JSON,{cache:'no-store'})).json(); }catch(e){ S=null; }
   var today=new Date().toISOString().slice(0,10);     // same UTC lexical compare as /rx and /workshop
-  SESSION = S && (S.upcoming||[]).filter(function(u){ return u.date>=today; })[0] || null;
+  var all=(S&&S.upcoming)||[];
+  SESSION = all.filter(function(u){ return u&&u.date>=today; })[0] || null;
+  // The latest session that HAS passed, by date rather than array order — same rule as /workshop.
+  LAST = all.filter(function(u){ return u&&u.date&&u.date<today; })
+            .sort(function(a,b){ return a.date<b.date?1:(a.date>b.date?-1:0); })[0] || null;
   renderSession();
 })();
 </script>

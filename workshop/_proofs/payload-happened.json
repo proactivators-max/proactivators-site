@@ -1,0 +1,14 @@
+{
+  "type": "emw-waitlist",
+  "name": "Harness Tester",
+  "email": "harness@example.com",
+  "phone": "3055550123",
+  "hp": "",
+  "fields": {
+    "src": "",
+    "session": "none",
+    "page": "/workshop/",
+    "state": "happened",
+    "last": "2026-11-07"
+  }
+}

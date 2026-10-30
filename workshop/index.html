@@ -25,7 +25,14 @@
 <!-- NOTE: description + og: + twitter: all say the same thing in several places. /workshop/live
      once sat live for a week advertising a date that had passed because the twitter: pair was
      missed. NONE of these carry a date on purpose — the date lives in one JSON file and is
-     rendered at runtime. Keep it that way: if a date ever goes in a meta tag, it will go stale. -->
+     rendered at runtime. Keep it that way: if a date ever goes in a meta tag, it will go stale.
+
+     AND NONE OF THEM CARRY A VENUE, A SEAT COUNT OR A TRANSACTION VERB EITHER — Era's ruling,
+     Oct 30: these strings get CACHED by Google, Facebook and iMessage, so they must be true in
+     EVERY state this page can be in, not only the one it is in the day they are scraped. They
+     used to read "at FIU ... seats limited ... Reserve your seat", which was three claims with
+     a shelf life: the moment the session passed there was no seat to reserve, no count to be
+     limited, and the next room was not FIU. What is left is true whether or not a date exists. -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Executive Mindset Workshop — Miami">
 <meta name="twitter:description" content="One Saturday in Miami. Five hours, six pillars. Are you drifting, thriving, or shifting?">
@@ -66,6 +73,14 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:3.1rem;line-height:.98;letter-s
 .why .q i{font-style:normal;color:var(--blue)}
 .why p{color:var(--steel-lt);font-size:.98rem;font-weight:300;max-width:500px;margin:0 auto}
 
+/* The "that one has happened" line. It only ever renders from the state table, and only in
+   the state that has a past session to name. */
+.after{margin:1.7rem 0 .2rem;padding:1.05rem 1.15rem;background:var(--surface);
+  border:1px solid var(--border);border-left:3px solid var(--blue);
+  font-size:.95rem;font-weight:300;line-height:1.6;color:var(--steel-lt);display:none}
+.after.on{display:block}
+.after b{color:var(--off-white);font-weight:500}
+
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:2rem 0 .4rem}
 .faq{margin-top:.2rem}
 .faq-i{border-bottom:1px solid var(--border)}
@@ -79,7 +94,9 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:3.1rem;line-height:.98;letter-s
 .faq-i p{color:var(--steel-lt);font-size:.95rem;font-weight:300;line-height:1.65;padding:0 0 1.1rem}
 .faq-i p b{color:var(--off-white);font-weight:500}
 .f{background:var(--surface);border:1px solid var(--border);padding:1.1rem 1.15rem}
-.addr{display:none;margin-top:.4rem;font-size:.8rem;color:var(--steel);font-weight:300;
+/* display:block, not none-then-shown: this line is now rendered only when a session actually
+   carries an address, so there is no hidden-by-default state left to forget to turn on. */
+.addr{display:block;margin-top:.4rem;font-size:.8rem;color:var(--steel);font-weight:300;
   text-decoration:underline;text-underline-offset:3px}
 .addr:hover{color:var(--blue)}
 .f .k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
@@ -254,21 +271,25 @@ button.go:disabled{opacity:.55;cursor:default}
     when identity changes, everything downstream changes with it.</p>
   </div>
 
-  <!-- STATIC FALLBACK = the waitlist state, on purpose. With JS dead the form cannot submit
-       either way, so the page must not promise a transaction it cannot make. Nothing here
-       names a date; renderSession() fills these in from the one shared JSON file. -->
-  <div class="facts">
-    <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nYear">Next date coming</div></div>
-    <!-- These defaults are what a crawler that does not run JS sees, and what renders if the
-         script ever fails. They used to read "FIU - Graham Center", "10 AM - 3 PM", "$197"
-         and "Seats limited" -- a venue, a time, a price and a scarcity claim, served before
-         anything has checked whether a session exists. The button above already defaults to
-         the safe state for exactly this reason; these cells now follow the same rule.
-         renderSession() overwrites every one of them from the shared JSON whenever a session
-         IS set, so the real venue, time and price still print when there is a date. -->
-    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">Miami</div><div class="s" id="nTime">Five hours</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
-    <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">With the date</div><div class="s">Lunch and workbook included</div></div>
-    <div class="f"><div class="k">The room</div><div class="v" id="nSeats">40 seats</div><div class="s">Closes when full</div></div>
+  <!-- Filled from the state table, empty in every state with a dated session. It names the
+       session it is talking about and nothing else: no attendance number, no next date, and
+       no venue for a room nobody has booked. -->
+  <div class="after" id="after"></div>
+
+  <!-- STATIC FALLBACK, and it is the honest MINIMUM rather than any one state. With JS dead
+       this page cannot read the date, cannot submit the form and cannot know which state it is
+       in — so it claims no venue (the next room is not booked), no price (there may be nothing
+       to buy) and no seat count (there may be no room). renderFacts() replaces this whole grid
+       from the one state table.
+
+       It used to print "FIU · Graham Center" and "$197" here. Both were true only while Nov 7
+       was selling, and neither was patched by the no-date branch — so a visitor the day after
+       the session read a venue for a room that was not booked and a price for a seat that did
+       not exist. That is exactly the class of thing the state table was built to prevent, and
+       the fix is that the cells come from the table like everything else. -->
+  <div class="facts" id="facts">
+    <div class="f"><div class="k">When</div><div class="v">One Saturday</div><div class="s">Next date coming</div></div>
+    <div class="f"><div class="k">Where</div><div class="v">Miami</div><div class="s">The room is set with the date</div></div>
   </div>
 
   <h2>The five hours</h2>
@@ -280,7 +301,10 @@ button.go:disabled{opacity:.55;cursor:default}
     <li><span class="n">Hour 4</span><div><b>The Decision</b><span class="d">Around the table, nobody skipped. What happens next.</span></div></li>
   </ul>
 
-  <h2>Who&rsquo;s in the room</h2>
+  <!-- Past tense when there is no dated session: every speaker in that list is confirmed for a
+       SPECIFIC workshop, not for the brand. Leaving "Who's in the room" over four names after
+       the date passes advertises a lineup for a room nobody has been asked to be in. -->
+  <h2 id="whoH">Who&rsquo;s in the room</h2>
   <ul class="who" id="who"></ul>
   <div class="more" id="more"></div>
 
@@ -307,7 +331,7 @@ button.go:disabled{opacity:.55;cursor:default}
       <button type="submit" class="go" id="go">Put me on the list &rarr;</button>
       <div class="fnote" id="fNote">No spam &middot; just the next date</div>
       <div class="msg" id="msg"></div>
-      <div class="door"><b>And if the price is the only thing keeping you out of this room &mdash;</b>
+      <div class="door" id="door"><b>And if the price is the only thing keeping you out of this room &mdash;</b>
       say so when you write to me. We&rsquo;ll work it out. Nobody gets left outside over money.</div>
     </form>
   </div>
@@ -369,7 +393,12 @@ button.go:disabled{opacity:.55;cursor:default}
 var SESSION_JSON='/rx/session.json';
 var SEATS_API='https://rx-seats.floridautilities.workers.dev/';
 var INQUIRE='https://reliable-cat-70f502.netlify.app/.netlify/functions/inquire';
-var S=null, SESSION=null, src='', mode='waitlist';   // mode: buy | waitlist
+var S=null, SESSION=null, LAST=null, src='', mode='waitlist';   // mode: buy | waitlist
+var STATEKEY='nodate';                               // which state actually rendered
+/* LAST = the most recent session in `upcoming` whose date has PASSED. It is the whole reason
+   this page can say WHICH workshop happened rather than only that there is no next one, and it
+   comes out of the same array as SESSION — so nothing has to be edited the evening the session
+   passes, and setting the next date is still one entry added to that one file. */
 
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -384,44 +413,140 @@ function recall(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
   if(q.get('n')) $('name').value=q.get('n');
 })();
 
-/* ONE table for every state. The button, the reassurance line under it, and the
-   form's own heading/button/footnote all come from here, so they can never say
-   three different things — which is exactly how /rx ended up promising "Secure
-   checkout" under a free waitlist button. */
+/* ONE table for every state. The button, the reassurance line under it, the form's own
+   heading/button/footnote, the fact cells, the speaker heading and the confirmation all come
+   from here, so they can never say several different things — which is exactly how /rx ended
+   up promising "Secure checkout" under a free waitlist button, and how this page's own fact
+   grid kept printing "FIU · Graham Center" and "$197" for a session that had passed.
+
+   FOUR STATES, and which one renders is decided by `upcoming` alone:
+     buy       a session is dated and ahead  -> seats are for sale
+     soldout   the same, and the worker says the room is full
+     happened  no session ahead, one behind  -> names it, takes emails, sells nothing
+     nodate    no session either way         -> the pre-announcement / fully-reset state
+   `happened` is reached with no edit to anything: the UTC date compare stops matching and the
+   page changes on its own. Setting the next date is one entry added to `upcoming`. */
 var ASK=' <a href="mailto:proactivateyourlife@gmail.com">Questions?</a>';
 function STATE(k){
   var p=(S&&S.price)||197;
+  var last=esc((LAST&&LAST.label)||'The last session');
   return {
     buy:{ mode:'buy',
       btnL:'Reserve my seat', btnR:'$'+p+' &rarr;',
       fine:'Secure checkout &middot; Seats limited &middot;'+ASK,
       fStep:'Step 1 of 2', fTitle:'Who&rsquo;s coming?',
       fSub:'Your details, then the secure checkout. Thirty seconds.',
-      go:'Continue to checkout &rarr;', fNote:'Next: secure card checkout &middot; $'+p },
+      go:'Continue to checkout &rarr;', fNote:'Next: secure card checkout &middot; $'+p,
+      whoH:'Who&rsquo;s in the room', pending:true, door:true, after:'',
+      done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' },
     nodate:{ mode:'waitlist',
       btnL:'Tell me the next date', btnR:'Free &rarr;',
       fine:'No payment &middot; We email you the date &middot;'+ASK,
       fStep:'One step', fTitle:'Be first to know.',
       fSub:'The next date is being set. Leave your details and you hear before anyone else.',
-      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date' },
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date',
+      whoH:'Who was in the room', pending:false, door:false, after:'',
+      done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' },
     soldout:{ mode:'waitlist',
       btnL:'Sold out &mdash; join the waitlist', btnR:'Free &rarr;',
       fine:'No payment &middot; We email you if a seat opens &middot;'+ASK,
       fStep:'One step', fTitle:'Waitlist.',
       fSub:'This one is full. Leave your details &mdash; a seat opens, or the next date drops, and you hear first.',
-      go:'Put me on the list &rarr;', fNote:'No spam &middot; a seat or the next date' }
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; a seat or the next date',
+      whoH:'Who&rsquo;s in the room', pending:true, door:true, after:'',
+      done:'<b>You&rsquo;re on the list.</b> A seat opens, or the next date drops, and you hear first.' },
+    /* THE WORKSHOP HAPPENED. Three claims and no fourth: it happened, the next one has no
+       date, and the list hears first. Deliberately NOT here: how many people came (nobody
+       counted the chairs and this page must not invent a number), where the next one is (a
+       room is being discussed, which is not a booking), and when it might be (a cadence
+       printed on a page is a date, and Gabriel has not set one). `door` is off because there
+       is no price left to be the thing keeping anyone out of the room. */
+    happened:{ mode:'waitlist',
+      btnL:'Tell me the next date', btnR:'Free &rarr;',
+      fine:'No payment &middot; We email you the date &middot;'+ASK,
+      fStep:'One step', fTitle:'Be first on the next one.',
+      fSub:last+' is done. The next one isn&rsquo;t dated yet &mdash; leave your details and you hear before anyone else.',
+      go:'Put me on the list &rarr;', fNote:'No spam &middot; just the next date',
+      whoH:'Who was in the room', pending:false, door:false,
+      after:'<b>'+last+' has happened.</b> The next one isn&rsquo;t dated yet. When it is, the '
+          + 'people on this list hear it first &mdash; before it goes anywhere public.',
+      done:'<b>You&rsquo;re on the list.</b> The next date comes to you first.' }
   }[k];
+}
+
+/* The fact cells are state, not furniture: a date, a venue, a price and a seat count are each
+   a claim, and once the last session is behind us this page can make none of them. So the grid
+   is BUILT from the table rather than patched cell by cell — patching is what left a stale
+   venue and a live price standing on the page after the date had passed. */
+function FACTS(k){
+  var p=(S&&S.price)||197;
+  if(k==='buy'||k==='soldout'){
+    return [
+      // The year is dead weight next to a date that already says November. Arrival is not:
+      // FIU is a big campus, and someone who reads "10 AM" turns up at 10 and parks at 10.
+      { k:'When', v:SESSION.label||'One Saturday',
+        s:SESSION.doors?('Doors '+SESSION.doors+' · starts 10 sharp'):((SESSION.date||'').slice(0,4)||'') },
+      // venue and time stay separate — rendering the whole string into the sub-line printed "FIU" twice.
+      // And "FIU" is not something you can drive to, so the street address gets its own tappable line.
+      { k:'Where', v:SESSION.venue||'Miami',
+        s:(SESSION.room?SESSION.room+' · ':'')+(SESSION.time||''),
+        addr:SESSION.address||'', map:SESSION.map||'' },
+      { k:'Seat', v:'$'+p, s:'Lunch and workbook included', hot:true },
+      // SOLD OUT is the only count worth publishing. Gabriel's call, Oct 17: a running "33 left"
+      // that barely moves is anti-scarcity — a number a visitor can watch stand still is evidence
+      // nobody is coming. The worker still counts it and he still reads it; we stop printing it.
+      { k:'The room', v:(k==='soldout'?'Sold out':'Seats limited'), s:'Closes when full' }
+    ];
+  }
+  if(k==='happened'){
+    return [
+      { k:'The last one', v:(LAST&&LAST.label)||'One Saturday',
+        s:((LAST&&LAST.venue)?LAST.venue+' — ':'')+'it happened' },
+      { k:'The next one', v:'Not dated yet', s:'You hear before it goes public' }
+    ];
+  }
+  return [
+    { k:'When', v:'One Saturday', s:'Next date coming' },
+    { k:'Where', v:'Miami', s:'The room is set with the date' }
+  ];
+}
+function renderFacts(k){
+  $('facts').innerHTML=FACTS(k).map(function(c){
+    var a=c.addr
+      ? '<a class="addr" href="'+esc(c.map||('https://maps.google.com/?q='+encodeURIComponent(c.addr)))
+        +'" target="_blank" rel="noopener">'+esc(c.addr)+'</a>'
+      : '';
+    return '<div class="f'+(c.hot?' hot':'')+'">'
+         + '<div class="k">'+esc(c.k)+'</div><div class="v">'+esc(c.v)+'</div>'
+         + (c.s?'<div class="s">'+esc(c.s)+'</div>':'')+a+'</div>';
+  }).join('');
+}
+/* The "more speakers are being announced" line is a promise about a room, so it runs only
+   while there is a dated room to promise one for. The state table decides, not this function. */
+function renderPending(show){
+  var more=$('more'), n=(S&&S.speakersPending)||0;
+  if(show && n>0){
+    more.style.display='block';
+    more.innerHTML=n===1
+      ? 'One more speaker is being announced.'
+      : n+' more speakers are being announced. You&rsquo;ll hear the names before the room does.';
+  } else { more.style.display='none'; }
 }
 function applyState(k){
   var s=STATE(k); if(!s) return;
-  mode=s.mode;
+  mode=s.mode; STATEKEY=k;
   $('buyL').innerHTML=s.btnL; $('buyR').innerHTML=s.btnR; $('fine').innerHTML=s.fine;
   $('fStep').innerHTML=s.fStep; $('fTitle').innerHTML=s.fTitle; $('fSub').innerHTML=s.fSub;
   $('go').innerHTML=s.go; $('fNote').innerHTML=s.fNote;
+  $('whoH').innerHTML=s.whoH;
+  $('door').style.display=s.door?'block':'none';
+  var a=$('after'); a.innerHTML=s.after||''; a.className='after'+(s.after?' on':'');
+  renderFacts(k);
+  renderPending(s.pending);
 }
 
 function renderSpeakers(){
-  var list=(S&&S.speakers)||[], ul=$('who'), more=$('more');
+  var list=(S&&S.speakers)||[], ul=$('who');
   // Era's rule: no unconfirmed name or face on a live page. Only confirmed:true renders.
   var shown=list.filter(function(x){return x && x.confirmed;});
   ul.innerHTML=shown.map(function(x){
@@ -447,67 +572,15 @@ function renderSpeakers(){
     return '<li><div class="pic">'+pic+'</div>'
          +     '<div><b>'+esc(x.name)+'</b><span>'+esc(x.title||'')+'</span>'+angle+'</div></li>';
   }).join('');
-  var pending=(S&&S.speakersPending)||0;
-  if(pending>0){
-    more.style.display='block';
-    more.innerHTML=pending===1
-      ? 'One more speaker is being announced.'
-      : pending+' more speakers are being announced. You&rsquo;ll hear the names before the room does.';
-  } else { more.style.display='none'; }
 }
 
+/* Which state, and nothing else. Every string and every cell it used to set by hand now comes
+   out of the one table, so there is no second place for a venue or a price to survive a date. */
 function renderSession(seatInfo){
-  var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
-  $('nPrice').textContent='$'+((S&&S.price)||197);
-
-  if(!SESSION){
-    applyState('nodate'); $('nSeats').textContent=seats+' seats';
-    /* The facts strip is hardcoded in the markup, and three of its cells were only ever
-       true while a date stood: "FIU - Graham Center", "10 AM - 3 PM" and "$197". With no
-       date they state a venue, a time and a PRICE for a session nobody has scheduled --
-       and the $197 payment link is still live, so a price beside no date is an invitation
-       to pay for nothing.
-       The price CELL stays and its number goes. Removing the cell was the first attempt and
-       it looked wrong: .facts is a fixed two-column grid, so three cards leave an empty
-       quadrant that reads as a broken layout rather than a shorter strip. Keeping four
-       cells also means no DOM is mutated, so there is no way for this to leak into the
-       selling state.
-       NOTE FOR THE MERGE: held commit 9f93853 fixes this properly, by moving every cell
-       into the one STATES table so a venue or a price has no second place to survive a
-       date. That is the better fix. If this branch and the held work ever meet, 9f93853
-       wins and this block goes. It exists only so the postponed state can ship alone. */
-    $('nVenue').textContent='Miami';
-    /* "one Saturday" is already the WHEN cell's headline; repeating it as the WHERE cell's
-       sub-line read as a stutter on the live page. This slot is the time, so with no date it
-       is the duration and nothing else. The selling state still puts SESSION.time here. */
-    $('nTime').textContent='Five hours';
-    $('nPrice').textContent='With the date';
-    return;
-  }
-
-  $('nDate').textContent=SESSION.label||'One Saturday';
-  // The year is dead weight next to a date that already says November. Arrival is not:
-  // FIU is a big campus, and someone who reads "10 AM" turns up at 10 and parks at 10.
-  $('nYear').textContent=SESSION.doors ? ('Doors '+SESSION.doors+' · starts 10 sharp') : ((SESSION.date||'').slice(0,4)||'');
-  // venue and time are separate cells — rendering the whole string into the sub-line printed "FIU" twice
-  // Fallback is the CITY. A session entered without a venue must not silently inherit the
-  // last one's room; if a venue is set, it prints.
-  $('nVenue').textContent=SESSION.venue||'Miami';
-  $('nTime').textContent=(SESSION.room?SESSION.room+' · ':'')+(SESSION.time||'');
-  // "FIU" is not something you can drive to. The street address gets its own tappable line.
-  var ad=$('nAddr');
-  if(SESSION.address){ ad.textContent=SESSION.address; ad.href=SESSION.map||('https://maps.google.com/?q='+encodeURIComponent(SESSION.address)); ad.style.display='block'; }
-  else { ad.style.display='none'; }
+  if(!SESSION){ applyState(LAST ? 'happened' : 'nodate'); return; }
   applyState('buy');
-
-  // SOLD OUT is the only count worth publishing. Gabriel's call, Oct 17: a running
-  // "33 left" that barely moves is anti-scarcity — a number a visitor can watch stand
-  // still is evidence nobody is coming. The worker still counts and he still reads it;
-  // we just stop printing it on the page.
-  if(seatInfo && seatInfo.soldOut){ $('nSeats').textContent='Sold out'; applyState('soldout'); }
-  else { $('nSeats').textContent='Seats limited'; $('buyR').innerHTML='$'+((S&&S.price)||197)+' &rarr;'; }
+  if(seatInfo && seatInfo.soldOut) applyState('soldout');
 }
-
 function openForm(){
   var f=$('form'); f.classList.add('on');
   $('buy').style.display='none'; $('fine').style.display='none';
@@ -528,7 +601,15 @@ async function reserve(ev){
   var payload={
     type: mode==='buy' ? 'emw-workshop' : 'emw-waitlist',
     name:name, email:email, phone:phone, hp:$('hp').value,
-    fields:{ src:src||'', session:SESSION?SESSION.date:'none', page:location.pathname }
+    /* `state` and `last` are the only new fields, and they are fields on purpose rather than a
+       new type. `emw-waitlist` is ALREADY the live tag that separates interest from a buyer
+       (`emw_workshop`), which is the distinction asked for; what it does not say is WHICH
+       waitlist, and these two say that in the contact note. A new type would be a tag, but it
+       400s until netlify/functions/inquire.js deploys with it registered — and the fetch above
+       swallows failures by design, so inventing one here would lose every lead silently in the
+       window between the two deploys. `emw-sponsored` is sitting in exactly that window now. */
+    fields:{ src:src||'', session:SESSION?SESSION.date:'none', page:location.pathname,
+             state:STATEKEY, last:LAST?LAST.date:'' }
   };
   // Never block the sale on the CRM. NOTE: this swallows failures, which is why
   // emw-workshop/emw-waitlist MUST be registered in netlify/functions/inquire.js —
@@ -536,7 +617,9 @@ async function reserve(ev){
   try{ await fetch(INQUIRE,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
 
   if(mode!=='buy'){
-    say('<b>You&rsquo;re on the list.</b> The next date comes to you first.');
+    // From the table too: the sold-out list and the after-the-event list are told different
+    // true things, and neither is told the other one's.
+    say(STATE(STATEKEY).done);
     go.textContent='Done'; return false;
   }
 
@@ -558,8 +641,20 @@ async function reserve(ev){
 
 async function boot(){
   try{ S=await (await fetch(SESSION_JSON,{cache:'no-store'})).json(); }catch(e){ S=null; }
-  var today=new Date().toISOString().slice(0,10);   // same UTC lexical compare as /rx
-  SESSION=S&&(S.upcoming||[]).filter(function(u){return u.date>=today;})[0]||null;
+  /* The same UTC lexical compare /rx, /rx/<gym>, /rx/thanks, the homepage band, /start,
+     /workshop/prepare, /workshop/sponsored and the seats worker all use — so no two surfaces
+     can disagree about whether a date has passed. Miami is UTC-5 in November, which means
+     "passed" becomes true at 7 PM Miami on the day itself: after a workshop that ends at 3,
+     and not at some hour nobody is awake for. */
+  var today=new Date().toISOString().slice(0,10);
+  var all=(S&&S.upcoming)||[];
+  SESSION=all.filter(function(u){return u&&u.date>=today;})[0]||null;
+  /* The latest session that HAS passed, picked by date rather than by array order, so it does
+     not matter where in the file the next one gets added. If `upcoming` is ever emptied this is
+     null and the page falls back to `nodate` — honest, just less specific: it can still say
+     there is no next date, it just cannot say which one happened. */
+  LAST=all.filter(function(u){return u&&u.date&&u.date<today;})
+          .sort(function(a,b){return a.date<b.date?1:(a.date>b.date?-1:0);})[0]||null;
   renderSpeakers();
   renderSession(null);
   try{ var r=await (await fetch(SEATS_API,{cache:'no-store'})).json(); renderSession(r); }catch(e){ renderSession(null); }

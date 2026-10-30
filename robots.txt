@@ -9,6 +9,11 @@ Disallow: /iphone/
 Disallow: /beta/
 Disallow: /workshop/live/thank-you/
 
+# Build artefacts — the renders kept beside the code they prove. They are pages in the sense
+# that the server will hand them over, and in no other sense.
+Disallow: /workshop/_proofs/
+Disallow: /workshop/sponsored/_proofs/
+
 # Invitation-only (Gabriel sends the link by hand)
 Disallow: /podcast-guest/
 Disallow: /guest/
