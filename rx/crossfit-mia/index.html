@@ -126,6 +126,10 @@ h1 b{color:var(--blue);font-weight:400}
 .form .go:disabled{opacity:.55}
 .form .note{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-top:8px;text-align:center;line-height:1.6}
 .msg{display:none;margin-top:10px;font-size:13px;color:var(--off);line-height:1.5;border:1px solid rgba(58,180,242,.35);background:var(--blue-dim);padding:10px 12px}
+/* The same box in its error colours. Three red borders and no sentence left a person to
+   work out which field was wrong from the outline alone — /workshop has said which since
+   it was built, and this says it in the same words. */
+.msg.err{color:#ff8a8a;border-color:#991f1f;background:rgba(153,31,31,.12)}
 .msg.on{display:block}
 
 .closing{margin-top:34px;text-align:center}
@@ -155,7 +159,10 @@ footer a{color:var(--steel);text-decoration:none}
        applyState() fills every line below from the one table. -->
   <div class="next" id="next">
     <div class="k" id="nKind">Next session</div>
-    <div class="d" id="nDate">Next date coming</div>
+    <!-- NOT "Not dated yet": this block is what a no-JS visitor sees in EVERY state, so
+         that would be false during the weeks a session IS dated. "One Saturday" is the
+         format and is true whether or not a date exists. No promise either way. -->
+    <div class="d" id="nDate">One Saturday</div>
     <div class="w" id="nWhere">Miami &middot; the room is set with the date</div>
     <div class="w" id="nDoors"></div>
     <a class="w addr" id="nAddr" target="_blank" rel="noopener"></a>
@@ -301,7 +308,10 @@ function NEXT(k){
       doors:'', addr:'', map:'',
       s:'The next one isn&rsquo;t dated yet', out:false };
   }
-  return { kind:'Next session', d:'Next date coming',
+  /* "Not dated yet" and not "Next date coming": Era's ruling, Oct 30. One is a fact about
+     now, which this page can stand behind; the other is a promise about a future nobody has
+     set. /workshop says the fact, and two pages reading one file should say one thing. */
+  return { kind:'Next session', d:'Not dated yet',
     w:'Miami &middot; the room is set with the date',
     doors:'', addr:'', map:'', s:'', out:false };
 }
@@ -375,13 +385,13 @@ function setSoldOut(){
 }
 function openForm(){ var f=$('form'); f.classList.add('on'); $('buy').style.display='none'; $('fine').style.display='none'; setTimeout(function(){ $('name').focus(); f.scrollIntoView({behavior:'smooth',block:'start'}); },30); }
 function bad(id){ $(id).classList.add('err'); setTimeout(function(){$(id).classList.remove('err');},1400); }
-function say(html){ var m=$('msg'); m.innerHTML=html; m.classList.add('on'); }
+function say(html,isErr){ var m=$('msg'); m.innerHTML=html; m.className='msg on'+(isErr?' err':''); }
 
 async function reserve(ev){
   ev.preventDefault();
   var name=$('name').value.trim(), email=$('email').value.trim(), phone=$('phone').value.trim(), ok=true;
   if(name.length<2){bad('name');ok=false;} if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){bad('email');ok=false;} if(phone.replace(/\D/g,'').length<10){bad('phone');ok=false;}
-  if(!ok) return false;
+  if(!ok){ say('Check the highlighted fields.',true); return false; }
   var go=$('go'); go.disabled=true; go.textContent=mode==='buy'?'One second…':'Saving…';
   /* `state` and `last` are fields, not a new type: rx-waitlist is already the live tag that
      separates interest from a buyer, and an unregistered type 400s until inquire.js deploys

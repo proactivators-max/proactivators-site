@@ -288,7 +288,7 @@ button.go:disabled{opacity:.55;cursor:default}
        not exist. That is exactly the class of thing the state table was built to prevent, and
        the fix is that the cells come from the table like everything else. -->
   <div class="facts" id="facts">
-    <div class="f"><div class="k">When</div><div class="v">One Saturday</div><div class="s">Next date coming</div></div>
+    <div class="f"><div class="k">When</div><div class="v">One Saturday</div></div>
     <div class="f"><div class="k">Where</div><div class="v">Miami</div><div class="s">The room is set with the date</div></div>
   </div>
 
@@ -510,8 +510,11 @@ function FACTS(k){
       { k:'The next one', v:'Not dated yet', s:'You hear before it goes public' }
     ];
   }
+  /* "Not dated yet", not "Next date coming" — Era's ruling, Oct 30: a fact about now rather
+     than a promise about a future nobody has set. Same words as the `happened` state's
+     second cell, and the same words /rx now uses. */
   return [
-    { k:'When', v:'One Saturday', s:'Next date coming' },
+    { k:'When', v:'Not dated yet', s:'You hear before it goes public' },
     { k:'Where', v:'Miami', s:'The room is set with the date' }
   ];
 }
