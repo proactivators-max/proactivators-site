@@ -26,8 +26,14 @@
      anything on this page.
 
      /beta carries its own copy of this URL now (it lists three install paths), so a change
-     of address means editing BOTH. iOS is unaffected — /iphone and /ios stay on TestFlight;
-     that invite is valid to ~Nov 25, comfortably past Nov 7. -->
+     of address means editing BOTH. iOS: this note used to say the TestFlight invite was
+     valid to ~Nov 25, comfortably past Nov 7. THAT IS NO LONGER TRUE. Checked Oct 31 2026:
+     testflight.apple.com/join/x39s4fXN answers HTTP 200 — as a dead TestFlight link always
+     does — and the rendered page carries no app name and the sentence "This beta isn't
+     accepting any new testers right now." The page does not say whether that is an expiry or
+     a switched-off setting, and guessing between those two is how /iphone stayed broken for
+     days last time, so it is EX's to answer. Until then /iphone and /ios dead-end every
+     iPhone visitor on Apple's own page. -->
 <title>ProActivators — Android Beta</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,8 +92,13 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
     <ol>
       <li>Tap the button &mdash; the <strong>.apk</strong> downloads straight away. Use wifi if you can.</li>
       <li>Open it from your notifications, or from your <strong>Downloads</strong> folder.</li>
-      <li>Android will warn you about installing from your browser. <strong>That warning is
-          normal</strong> for an app that is not in the Play Store yet &mdash; allow it.</li>
+      <li>The first screen says your phone <strong>is not allowed to install unknown apps from
+          this source</strong>. That is normal for anything not in the Play Store. Tap
+          <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then press
+          back.</li>
+      <li>Play Protect may then say <strong>Unsafe app blocked</strong>. The install button is
+          hidden on that screen &mdash; tap <strong>More details</strong>, then
+          <strong>Install anyway</strong>.</li>
       <li>Tap <strong>Install</strong>, then <strong>Open</strong>, and sign up:
           <strong>pick your pillars</strong>, then <strong>write your Why</strong>.</li>
       <li>Your coach greets you by voice on the home screen. New builds come to you by text.</li>
@@ -111,8 +122,13 @@ p{color:var(--steel-lt);font-size:1rem;margin-bottom:2rem;font-weight:300}
        Three things that are deliberate and should survive editing:
        - The SIZE is on the button line. 101 MB on cell data is something people deserve to
          know before they tap, not after.
-       - Step 3 names the scary dialog BEFORE they meet it. Someone forewarned taps through;
-         someone ambushed closes the page. That sentence is most of the install rate.
+       - Steps 3-4 name the scary dialogs BEFORE they meet them, and name the exact words and
+         the exact tap. Someone forewarned taps through; someone ambushed closes the page.
+         Those two sentences are most of the install rate. There are TWO screens on Android 13+,
+         and the second one matters more: Play Protect hides the install button behind
+         "More details", so a person who is not told simply sees a blocked app and leaves.
+         (Oct 31 2026: the old step 3 covered the first screen loosely and the second not at
+         all. Held for Gabriel's word with the rest of the Nov 7 walk.)
        - Steps 4-5 describe the REAL first launch (two onboarding screens, then the Coach's
          voice welcome), confirmed by EX on Oct 24. The old stub said "sign in. That's it."
        ICON NOTE, still true: build 8 is the correct binary. Build 9's ring filled ~71% of the

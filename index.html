@@ -1419,10 +1419,19 @@ footer{
 (function(){
   var container=document.getElementById('podcast-episodes');
   if(!container)return;
-  fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.buzzsprout.com%2F2508502.rss&count=4')
+  /* No &count: it is a paid-tier parameter now, and asking for it made the API answer 422 with
+     no items at all — which this page then reported as "No episodes found." The slice below
+     already takes four. */
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.buzzsprout.com%2F2508502.rss')
     .then(function(r){return r.json()})
     .then(function(data){
-      if(!data.items||!data.items.length){container.innerHTML='<p class="ep-loading mono">No episodes found.</p>';return;}
+      /* An API error and a show with no episodes are not the same sentence. Saying the first
+         one in the words of the second is how the homepage spent days announcing there was no
+         podcast while four episodes published that week. */
+      if(!data.items||!data.items.length){
+        container.innerHTML='<p class="ep-loading mono">Latest episodes are on Buzzsprout. <a href="https://www.buzzsprout.com/2508502" target="_blank" rel="noopener" style="color:var(--blue)">Listen now &rsaquo;</a></p>';
+        return;
+      }
       var html='';
       data.items.slice(0,4).forEach(function(ep,i){
         var mins=ep.itunes_duration?Math.round(ep.itunes_duration/60)+'&nbsp;min':'';
