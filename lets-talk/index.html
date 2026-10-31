@@ -164,6 +164,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   .phone-cta{padding:1rem 1.6rem}
   .form-wrap{padding:1.8rem 1.3rem}
 }
+
+/* The refusal path. Flagging a field red says nothing to someone whose thumb is over the
+   button and whose flagged field is off-screen — this is the sentence that says it. */
+.formerr{display:none;margin-top:.8rem;font-size:.93rem;font-weight:300;color:#ff8a8a;text-align:center}
+.formerr.on{display:block}
 </style>
 </head>
 <body>
@@ -293,6 +298,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
         </div>
         <div class="form-submit-wrap">
           <button type="submit" class="form-submit" id="lt-submit">Call Me Back &rarr;</button>
+          <p class="formerr" id="lt-err">Check the highlighted fields.</p>
         </div>
       </form>
     </div>
@@ -340,12 +346,14 @@ const successEl = document.getElementById('lt-success');
 
 function flagError(el) {
   el.classList.add('error');
+  var e = document.getElementById('lt-err'); if (e) e.className = 'formerr on';
   el.focus();
   setTimeout(() => el.classList.remove('error'), 1400);
 }
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  var ltOk = document.getElementById('lt-err'); if (ltOk) ltOk.className = 'formerr';
   const required = ['lt-name','lt-phone','lt-email'];
   for (const id of required) {
     const el = document.getElementById(id);

@@ -188,6 +188,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   .nav-cta{padding:.5rem 1rem;font-size:.7rem}
   .btn-outline{margin-left:0;margin-top:.7rem;display:block;text-align:center}
 }
+
+/* The refusal path. Flagging a field red says nothing to someone whose thumb is over the
+   button and whose flagged field is off-screen — this is the sentence that says it. */
+.formerr{display:none;margin-top:.8rem;font-size:.93rem;font-weight:300;color:#ff8a8a;text-align:center}
+.formerr.on{display:block}
 </style>
 </head>
 <body>
@@ -288,6 +293,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       <input type="email" id="wl-email" name="email" placeholder="Your email" required autocomplete="email">
       <input type="text" id="wl-hp" name="proactivators_hp_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
       <button type="submit" id="wl-submit">Notify Me &rarr;</button>
+          <p class="formerr" id="wl-err">Check the highlighted fields.</p>
     </form>
     <div class="waitlist-success" id="waitlist-success">You're on the list. The movement assembles.</div>
     <div class="waitlist-note">No spam. No fluff. Only the announcement.</div>
@@ -314,9 +320,11 @@ const successEl = document.getElementById('waitlist-success');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  var wlOk = document.getElementById('wl-err'); if (wlOk) wlOk.className = 'formerr';
   const email = emailInput.value.trim();
   if (!email || !email.includes('@')) {
     emailInput.classList.add('error');
+    var we = document.getElementById('wl-err'); if (we) we.className = 'formerr on';
     setTimeout(() => emailInput.classList.remove('error'), 1400);
     return;
   }

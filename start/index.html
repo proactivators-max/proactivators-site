@@ -126,6 +126,11 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   .hero img{animation:none;transform:none}
   .c{transition:none}
 }
+
+/* The refusal path. Flagging a field red says nothing to someone whose thumb is over the
+   button and whose flagged field is off-screen — this is the sentence that says it. */
+.formerr{display:none;margin-top:.8rem;font-size:.93rem;font-weight:300;color:#ff8a8a;text-align:center}
+.formerr.on{display:block}
 </style>
 </head>
 <body>
@@ -183,6 +188,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
           <input class="hp" type="text" id="nlHp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="text" id="nlName" placeholder="Your name" autocomplete="name">
           <input type="email" id="nlEmail" placeholder="Your email" autocomplete="email" inputmode="email">
+<p class="formerr" id="nlErr">Check the highlighted fields.</p>
           <button type="submit" id="nlGo">Join the movement</button>
         </form>
         <div class="ok" id="nlOk"></div>
@@ -275,9 +281,12 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 (function(){
   var JOIN = 'https://reliable-cat-70f502.netlify.app/.netlify/functions/join';
   var f = document.getElementById('nlForm'), go = document.getElementById('nlGo'), ok = document.getElementById('nlOk');
-  function bad(el){ el.classList.add('err'); setTimeout(function(){ el.classList.remove('err'); }, 1400); }
+  function formErr(){ var e=document.getElementById('nlErr'); if(e) e.className='formerr on'; }
+  function bad(el){ el.classList.add('err'); formErr(); setTimeout(function(){ el.classList.remove('err'); }, 1400); }
+  function formOk(){ var e=document.getElementById('nlErr'); if(e) e.className='formerr'; }
   f.addEventListener('submit', async function(ev){
     ev.preventDefault();
+    formOk();
     var name = document.getElementById('nlName'), email = document.getElementById('nlEmail');
     var nv = name.value.trim(), ev2 = email.value.trim(), good = true;
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ev2)) { bad(email); good = false; }

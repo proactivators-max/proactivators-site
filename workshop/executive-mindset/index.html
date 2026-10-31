@@ -185,6 +185,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
   .nav-cta{padding:.5rem 1rem;font-size:.7rem}
   .hour-num{position:static;display:inline-block;margin-bottom:.8rem}
 }
+
+/* The refusal path. Flagging a field red says nothing to someone whose thumb is over the
+   button and whose flagged field is off-screen — this is the sentence that says it. */
+.formerr{display:none;margin-top:.8rem;font-size:.93rem;font-weight:300;color:#ff8a8a;text-align:center}
+.formerr.on{display:block}
 </style>
 </head>
 <body>
@@ -477,6 +482,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
         </div>
         <div class="form-submit-wrap">
           <button type="submit" class="form-submit" id="ws-submit">Request The Workshop &rarr;</button>
+          <p class="formerr" id="ws-err">Check the highlighted fields.</p>
         </div>
       </form>
     </div>
@@ -530,12 +536,14 @@ const successEl = document.getElementById('workshop-success');
 
 function flagError(el) {
   el.classList.add('error');
+  var e = document.getElementById('ws-err'); if (e) e.className = 'formerr on';
   el.focus();
   setTimeout(() => el.classList.remove('error'), 1400);
 }
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  var wsOk = document.getElementById('ws-err'); if (wsOk) wsOk.className = 'formerr';
   const required = ['ws-name','ws-email','ws-org','ws-role','ws-team','ws-format','ws-industry','ws-budget','ws-outcome'];
   for (const id of required) {
     const el = document.getElementById(id);
