@@ -11,10 +11,14 @@
   gtag('config', 'G-CNQ4P8TJC6');
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Unleash The ProActivator — Book Launch Event | May 3, 2026</title>
-<meta name="description" content="Join Gabriel Golindano for the launch of Unleash The ProActivator. Live speech, guest speakers, book signing. May 3, 2026 at FIU. Free RSVP — limited capacity.">
+<!-- noindex, and every tag past tense. These are CACHED: a crawler that read this page in
+     April is still showing "Reserve your spot — free, limited capacity" for an event that
+     happened on May 3 2026. The page itself stays; it just stops claiming a future. -->
+<meta name="robots" content="noindex, follow">
+<title>The Book Launch — May 3, 2026 | Unleash The ProActivator</title>
+<meta name="description" content="On May 3, 2026, a room at FIU watched Unleash The ProActivator launch — the speech, the guest speakers, the signing, and 100 copies activated by 4:15 PM. The book is out now.">
 <meta property="og:title" content="Unleash The ProActivator — Book Launch Event">
-<meta property="og:description" content="Live speech, guest speakers, and book signing. May 3, 2026 at FIU Graham Center. Reserve your spot — free, limited capacity.">
+<meta property="og:description" content="The night the book launched: May 3, 2026 at FIU Graham Center. The speech, the guest speakers, the signing — and the counter hitting 100 in real time.">
 <meta property="og:image" content="https://proactivatorsclub.com/launch/book-cover.png">
 <meta property="og:url" content="https://proactivatorsclub.com/launch">
 <meta property="og:type" content="website">
@@ -187,7 +191,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 <!-- NAV -->
 <nav>
   <a href="https://proactivatorsclub.com" class="nav-logo"><img src="logo.png" alt="ProActivators" class="nav-logo-img"></a>
-  <a href="#rsvp" class="nav-cta">Reserve Your Spot</a>
+  <a href="https://www.amazon.com/dp/B0GY1Y2RHM" class="nav-cta" target="_blank" rel="noopener">Get the Book</a>
 </nav>
 
 <!-- HERO -->
@@ -207,7 +211,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
           <div class="countdown-item"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Sec</div></div>
         </div>
         <div class="hero-buttons">
-          <a href="#rsvp" class="btn-blue">Reserve Your Spot &mdash; Free</a>
+          <a href="https://www.amazon.com/dp/B0GY1Y2RHM" class="btn-blue" target="_blank" rel="noopener">Get the Book &mdash; $14.99</a>
           <a href="#book" class="btn-outline">About the Book</a>
         </div>
       </div>
@@ -222,7 +226,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 <section id="event">
   <div class="container">
     <div class="section-label">01 &mdash; The Event</div>
-    <h2>YOU'RE INVITED TO THE LAUNCH</h2>
+    <h2>THE LAUNCH, ON THE RECORD</h2>
 
     <div class="event-grid">
       <div class="event-card">
@@ -245,12 +249,12 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       <div class="event-card">
         <div class="label">Admission</div>
         <div class="value" style="color:var(--blue)">Free</div>
-        <div class="sub">Limited capacity &mdash; RSVP required</div>
+        <div class="sub">The room was free and by RSVP</div>
       </div>
     </div>
 
     <div class="event-expect">
-      <h3>WHAT TO EXPECT</h3>
+      <h3>WHAT THE NIGHT HELD</h3>
       <ul>
         <li>Live speech by Gabriel Golindano</li>
         <li>Guest speakers</li>
@@ -264,14 +268,20 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 <!-- RSVP -->
 <section id="rsvp">
   <div class="container">
-    <div class="section-label">02 &mdash; Reserve Your Spot</div>
-    <h2>RESERVE YOUR SPOT</h2>
+    <div class="section-label">02 &mdash; The Night</div>
+    <h2>WHAT HAPPENED THAT NIGHT</h2>
 
     <div class="rsvp-box" id="rsvp-form-container">
-      <div class="price">FREE</div>
-      <div class="price-label">Limited Capacity &mdash; RSVP Required</div>
+      <div class="price">DONE</div>
+      <div class="price-label">Sunday, May 3, 2026 &middot; FIU Graham Center</div>
 
-      <form id="rsvp-form" autocomplete="on">
+      <!-- HELD-STATE NOTE (Oct 31 2026): this form is left in the source deliberately. The
+           event is six months past, so the block below replaces it on load and nothing here
+           can be filled or submitted. If this event is ever re-run, delete the .past block
+           and the script line that hides this, and the form works again untouched. The
+           Netlify `rsvp` function is NOT changed: the 36 contacts tagged book-launch stay
+           exactly where they are. -->
+      <form id="rsvp-form" autocomplete="on" hidden>
         <div class="form-group">
           <label for="rsvp-name">Your Name</label>
           <input type="text" id="rsvp-name" name="name" placeholder="Gabriel Golindano" required>
@@ -302,6 +312,21 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
       <div class="form-success" id="form-success">
         <h3>YOU'RE IN.</h3>
         <p style="color:var(--steel)">Confirming your spot...</p>
+      </div>
+
+      <div class="past" id="rsvp-past">
+        <p style="color:var(--off-white);font-size:1.05rem;line-height:1.6;margin-bottom:1rem">
+          <b>The launch happened on Sunday, May 3, 2026</b>, at FIU Graham Center &mdash; the
+          speech, the guest speakers, the signing, and a room that watched the counter hit 100
+          by 4:15 PM.
+        </p>
+        <p style="color:var(--steel);font-size:.95rem;line-height:1.6;margin-bottom:1.4rem">
+          There is nothing to reserve here any more. The book is out, and the next thing in a
+          room is the workshop.
+        </p>
+        <a href="https://www.amazon.com/dp/B0GY1Y2RHM" class="btn-blue" target="_blank" rel="noopener"
+           style="display:inline-block;margin:0 .6rem .6rem 0">Get the Book &mdash; $14.99</a>
+        <a href="/workshop/?src=launch" class="btn-outline" style="display:inline-block;margin-bottom:.6rem">The Workshop</a>
       </div>
     </div>
   </div>
@@ -334,9 +359,13 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
         -->
         <div class="book-availability" style="margin-top:2rem;padding:1.75rem;border:1px solid var(--blue-border);background:var(--blue-dim);border-left:3px solid var(--blue)">
           <div style="font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.25em;color:var(--blue);text-transform:uppercase;margin-bottom:.5rem">Available</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;color:var(--off-white);line-height:1;margin-bottom:1rem">MAY 3, 2026</div>
-          <p style="font-size:.95rem;line-height:1.6;color:var(--steel-lt);margin-bottom:1.25rem">The book drops on a single day &mdash; by design. Every order on May 3 pushes <em>Unleash The ProActivator</em> toward Amazon bestseller. One day. One movement. One mission.</p>
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Buy+Unleash+The+ProActivator+on+Amazon&dates=20260503T120000Z/20260503T130000Z&details=Order+your+copy+of+Unleash+The+ProActivator+today.+Every+purchase+on+launch+day+helps+push+the+book+to+Amazon+bestseller.+https%3A%2F%2Fproactivatorsclub.com%2Flaunch%2F" target="_blank" rel="noopener" class="btn-blue" style="display:inline-block;text-decoration:none">+ Remind Me May 3</a>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;color:var(--off-white);line-height:1;margin-bottom:1rem">NOW</div>
+          <p style="font-size:.95rem;line-height:1.6;color:var(--steel-lt);margin-bottom:1.25rem">The book dropped on a single day &mdash; by design. Every order on May 3, 2026 pushed <em>Unleash The ProActivator</em> toward Amazon bestseller. One day. One movement. One mission. That day is done, and the book is out.</p>
+          <!-- This was "+ Remind Me May 3" and it pointed at a Google Calendar template dated
+               20260503. It never stopped working: tapping it in November files a reminder into
+               a week six months gone. The reminder existed to get someone to the book, so it
+               goes to the book. -->
+          <a href="https://www.amazon.com/dp/B0GY1Y2RHM" target="_blank" rel="noopener" class="btn-blue" style="display:inline-block;text-decoration:none">Get the Book &mdash; $14.99</a>
         </div>
       </div>
 
@@ -406,12 +435,15 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 </footer>
 
 <script>
+/* The event is past, so the form never runs and never posts. The listener is not attached
+   at all rather than being short-circuited inside, so there is no path to the endpoint. */
+const LAUNCH_HAS_HAPPENED = true;
 const form = document.getElementById('rsvp-form');
 const submitBtn = document.getElementById('submit-btn');
 const errorEl = document.getElementById('form-error');
 const successEl = document.getElementById('form-success');
 
-form.addEventListener('submit', async (e) => {
+if (!LAUNCH_HAS_HAPPENED) form.addEventListener('submit', async (e) => {
   e.preventDefault();
   errorEl.style.display = 'none';
   submitBtn.disabled = true;
@@ -461,7 +493,9 @@ function updateCountdown() {
   const now = Date.now();
   const diff = launchDate - now;
   if (diff <= 0) {
-    document.getElementById('countdown').innerHTML = '<div style="font-family:Space Mono,monospace;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);padding:.8rem 0">The event is live!</div>';
+    /* It said "The event is live!" for six months after the night. Now it says what the
+       night was, which is true on every day from here on. */
+    document.getElementById('countdown').innerHTML = '<div style="font-family:Space Mono,monospace;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);padding:.8rem 0">This happened &middot; May 3, 2026 &middot; FIU Graham Center</div>';
     return;
   }
   const d = Math.floor(diff / 86400000);
