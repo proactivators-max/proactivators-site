@@ -59,8 +59,13 @@ footer a{color:var(--steel)}
 
   <div class="next">
     <div class="k">Your session</div>
-    <div class="d" id="nDate">Saturday</div>
-    <div class="w" id="nWhere">FIU &middot; Miami &middot; 10 AM &ndash; 3 PM</div>
+    <!-- These defaults are the NO-DATE state on purpose. The script below returns early when
+         session.json has no upcoming session, so whatever stands here is what a reserved
+         attendee reads. It used to name a venue and a time, which outlived the session that
+         confirmed them. The conservative state is the safe default: a real date overwrites
+         both lines, and nothing here claims a room. -->
+    <div class="d" id="nDate">Next date coming</div>
+    <div class="w" id="nWhere">Miami &middot; Gabriel texts you the date</div>
   </div>
   <div class="cal" id="cal"></div>
 

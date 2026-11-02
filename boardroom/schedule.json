@@ -2,7 +2,7 @@
   "_": "The Boardroom is a RULE, not a date: the first Saturday of every month. The page COMPUTES the next one, so nobody edits this file monthly and no page can go stale. Touch this only to pause the series, skip a month, or set the time/venue.",
   "cadence": "first-saturday",
   "resumes": "2026-12-01",
-  "_resumes": "The first qualifying Saturday on or after this date. Set to December because Nov 7 — November's first Saturday — is the Executive Mindset Workshop, 10 AM to 3 PM at FIU. Gabriel's call Oct 3.",
+  "_resumes": "The first qualifying Saturday on or after this date. Set to December because Nov 7 — November's first Saturday — is the Executive Mindset Workshop, 10 AM to 3 PM at FIU. Gabriel's call Oct 3. POSTPONED Nov 2 2026: the workshop is no longer on Nov 7 and the venue is released, so the reason recorded above no longer holds. December is NOT changed by that -- this date stands on its own and moving it would be a separate decision, Gabriel's to make. The original reasoning is kept rather than rewritten so the record of why December was picked survives.",
   "skip": [],
   "_skip": "One-off exceptions AFTER `resumes`, as YYYY-MM-DD of a first-Saturday to pass over.",
   "time": "",
