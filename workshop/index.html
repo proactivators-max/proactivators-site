@@ -266,7 +266,7 @@ button.go:disabled{opacity:.55;cursor:default}
          the safe state for exactly this reason; these cells now follow the same rule.
          renderSession() overwrites every one of them from the shared JSON whenever a session
          IS set, so the real venue, time and price still print when there is a date. -->
-    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">Miami</div><div class="s" id="nTime">Five hours, one Saturday</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
+    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">Miami</div><div class="s" id="nTime">Five hours</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
     <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">With the date</div><div class="s">Lunch and workbook included</div></div>
     <div class="f"><div class="k">The room</div><div class="v" id="nSeats">40 seats</div><div class="s">Closes when full</div></div>
   </div>
@@ -477,7 +477,10 @@ function renderSession(seatInfo){
        date. That is the better fix. If this branch and the held work ever meet, 9f93853
        wins and this block goes. It exists only so the postponed state can ship alone. */
     $('nVenue').textContent='Miami';
-    $('nTime').textContent='Five hours, one Saturday';
+    /* "one Saturday" is already the WHEN cell's headline; repeating it as the WHERE cell's
+       sub-line read as a stutter on the live page. This slot is the time, so with no date it
+       is the duration and nothing else. The selling state still puts SESSION.time here. */
+    $('nTime').textContent='Five hours';
     $('nPrice').textContent='With the date';
     return;
   }
