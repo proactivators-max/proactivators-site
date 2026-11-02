@@ -59,14 +59,15 @@
     "date": "",
     "label": "",
     "time": "10 AM – 3 PM",
-    "venue": "FIU · Graham Center",
+    "venue": "",
     "room": "",
     "seats": 40,
     "salesOpen": "",
-    "address": "10955 SW 15th Terrace, Miami, FL 33199",
-    "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
+    "address": "",
+    "map": "",
     "doors": "9:30 AM"
   },
+  "_template": "venue, room, address and map are BLANK ON PURPOSE -- type them in when a venue is actually confirmed. _toRestore tells you to copy this block into `upcoming`, so anything pre-filled here is inherited by the next session by default, and a stale room would have been published without anyone deciding to. `address` is the one that matters most: both pages render it as a tappable directions line, and the map href falls back to a Google Maps query built from `address` whenever `map` is empty -- so blanking `map` alone would have changed nothing while the page still sent people to the old room. `time`, `doors` and `seats` are kept: 10-3, doors 9:30, 40 seats have held across every session and are not a claim about a room.",
   "_salesOpen": "Orders BEFORE this date are not seats for this session. It was blank, which fell back to 2026-01-01 and would have counted a May coupon test as a Nov 7 seat.",
   "_manualSold": "Added to the counted orders. Two components, kept as one number because the worker only reads one field: (-2) cancels the two test orders that are not real attendees (Oct 3 VIP100 setup-intent, Oct 10 LIVETEST5 $5 live charge), and (+7) holds the chairs that are not for sale -- Freddie, Tucker and Tony, a guest each, and Ty working the room. CORRECTED Nov 2 2026, 5 -> 2: that note said 'the page reads 33 left of 40' and the page was actually reading 30, because the arithmetic double-counted three people. Freddie, Tucker and Tony ALREADY arrive as counted orders on the payment link, so adding all seven counted those three a second time. Only chairs that are NOT already an order belong here: (+4) three guests and Ty. With (-2) still cancelling the two test orders (Oct 3 VIP100 setup-intent, Oct 10 LIVETEST5 $5 live charge), -2 + 4 = 2, which makes sold 7 and left 33 -- exactly what the original note said it wanted. These are REAL holds, not invented scarcity: if a held seat is released, drop this number by one. Run another test seat and it goes to 1. Do NOT fix a test by moving salesOpen forward -- that would silently drop a genuine early buyer too. AND: none of the three paid. All three are $0 setup_intents -- a saved card, no money moved -- so 'sold 7' means seven chairs committed, not seven tickets bought. With the session postponed these holds all need re-deciding against whatever date comes next, and that is Gabriel's call, not an edit here -- this number is stale until he makes it."
 }
