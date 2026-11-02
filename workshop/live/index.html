@@ -14,7 +14,7 @@
 <title>The Executive Mindset Workshop | ProActivators</title>
 <meta name="description" content="A free 5-hour live workshop in Miami — mindset, habits, and the six pillars. Lunch included. Small room by design. Get the next date.">
 <meta property="og:title" content="The Executive Mindset Workshop - Free, Miami">
-<meta property="og:description" content="True North Classical Academy at Gateway, Miami. Free, lunch included. Five hours that end the drift. Get the next date.">
+<meta property="og:description" content="Miami. Free, lunch included. Five hours that end the drift. Get the next date.">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
 <meta property="og:url" content="https://proactivatorsclub.com/workshop/live/">
 <meta property="og:type" content="website">
@@ -24,7 +24,7 @@
        first three were de-dated Sep 28; this twitter: pair was missed and sat live advertising
        a date that had already passed. Change one, change all four. -->
 <meta name="twitter:title" content="The Executive Mindset Workshop - Free, Miami">
-<meta name="twitter:description" content="True North Classical Academy at Gateway, Miami. Free, lunch included. Five hours that end the drift. Get the next date.">
+<meta name="twitter:description" content="Miami. Free, lunch included. Five hours that end the drift. Get the next date.">
 <meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
 
 <!-- Schema.org Event block REMOVED Sep 28 2026 — it declared startDate 2026-09-26 with
@@ -222,8 +222,13 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
 </head>
 <body>
 
-<!-- True North Classical Academy at Gateway — cafeteria. FREE + lunch, one Saturday a
-     month (the last Saturday), and the room is small on purpose.
+<!-- FREE + lunch, one Saturday a month (the last Saturday), and the room is small on purpose.
+
+     ⚠️ NO CONFIRMED VENUE as of Nov 2 2026, and the venue NAME and STREET ADDRESS were taken
+     out of this page on Gabriel's word the same day. City level only until a room is actually
+     booked: no campus, no building, no street, and no map link. The rule is the same one the
+     /rx and /workshop pages now follow — an unconfirmed room may not sit on a live page, and
+     a room named here is a room a reader will drive to.
 
      ⚠️ NO CONFIRMED DATE as of Sep 28 2026. The page is deliberately in its no-date state.
      workshop/set-date.js will REFUSE to run until a real date is put back — read its header
@@ -249,16 +254,17 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     </h1>
     <p class="tagline">The Executive Mindset Workshop</p>
 
-    <!-- Event meta — NO CONFIRMED DATE as of Sep 28 2026. Put the real date back in the Date
-           pill and the subhead below only when the room is booked. -->
+    <!-- Event meta — NO CONFIRMED DATE and NO CONFIRMED VENUE. Put the real date back in the
+           Date pill and the subhead below only when the room is booked, and the venue in the
+           Where pill only then too; until then the Where pill is the city and nothing more. -->
     <div class="event-meta">
       <span class="event-meta-pill"><span class="label">Date</span>Next date coming</span>
       <span class="event-meta-pill"><span class="label">Time</span>Doors 9:30 &middot; 10:00 AM &ndash; 3:00 PM</span>
-      <span class="event-meta-pill"><span class="label">Where</span>Gateway &middot; Miami</span>
+      <span class="event-meta-pill"><span class="label">Where</span>Miami</span>
       <span class="event-meta-pill"><span class="label">Cost</span>Free &middot; Lunch Included</span>
     </div>
 
-    <p class="subhead"><em style="color:var(--off-white);font-style:normal;font-weight:500">The next date is being finalized &middot; 10 AM&ndash;3 PM &middot; the cafeteria at True North Classical Academy at Gateway, 6500 SW 97th Ave, Miami.</em> Five hours. You walk in operating on autopilot. You walk out with the framework, a signed commitment, and an accountability partner. <em>Completely free — lunch is on me. The room is small on purpose.</em></p>
+    <p class="subhead"><em style="color:var(--off-white);font-style:normal;font-weight:500">The next date is being finalized &middot; 10 AM&ndash;3 PM &middot; Miami.</em> Five hours. You walk in operating on autopilot. You walk out with the framework, a signed commitment, and an accountability partner. <em>Completely free — lunch is on me. The room is small on purpose.</em></p>
 
     <div class="hero-cta">
       <a href="#rsvp" class="btn-blue large">Tell me the next date &rarr;</a>
@@ -272,7 +278,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     <div class="section-header reveal">
       <div class="section-label">One Saturday A Month</div>
       <h2>BE FIRST TO <span class="blue">KNOW.</span></h2>
-      <p>The next Executive Mindset Workshop date is being finalized. It runs 10 AM&ndash;3 PM at True North Classical Academy at Gateway, 6500 SW 97th Ave, Miami &mdash; free, lunch provided, and the room is small on purpose. Leave your details and you hear the date before anyone else.</p>
+      <p>The next Executive Mindset Workshop date is being finalized. It runs 10 AM&ndash;3 PM in Miami &mdash; free, lunch provided, and the room is small on purpose. Leave your details and you hear the date and the room before anyone else.</p>
     </div>
     <form id="rsvp-form" class="reveal" style="display:grid;gap:.9rem;margin-top:2rem">
       <input type="text" name="proactivators_hp_check" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
@@ -301,7 +307,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
         email:document.getElementById("rsvp-email").value,
         phone:document.getElementById("rsvp-phone").value,
         hp:f.proactivators_hp_check.value,
-        fields:{event:"Executive Mindset Workshop — next date TBC",venue:"True North Classical Academy at Gateway"}
+        // `venue` is not on screen, but it is written onto every contact this form creates,
+        // so leaving the old room here would stamp a room nobody has booked onto each new
+        // lead and read back from the CRM later as if it had been confirmed. The key stays
+        // so the field mapping does not break; the value is the truth.
+        fields:{event:"Executive Mindset Workshop — next date TBC",venue:"TBD"}
       })
     }).then(function(r){
       if(!r.ok) throw new Error("bad");
@@ -495,7 +505,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:3rem 1.
     <div class="reveal">
       <div class="section-label">One Saturday A Month</div>
       <h2>THE NEXT ONE IS <span class="blue">COMING.</span></h2>
-      <p>Gateway, Miami. Five hours, free, lunch included, and the room stays small on purpose. Leave your details and the date reaches you before it goes public.</p>
+      <p>Miami. Five hours, free, lunch included, and the room stays small on purpose. Leave your details and the date reaches you before it goes public.</p>
       <!-- Goes to the RSVP form, not a mailto: a form captures into the CRM with the workshop
            tag; a mailto lands in an inbox and gets lost. -->
       <a href="#rsvp" class="btn-blue large">Tell me the next date &rarr;</a>
