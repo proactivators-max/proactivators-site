@@ -12,9 +12,12 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Executive Mindset Workshop — ProActivators</title>
-<meta name="description" content="One Saturday at FIU in Miami. Five hours, six pillars, seats limited. Are you drifting, thriving, or shifting? Reserve your seat.">
+<!-- Crawled and cached, and they follow no page state, so they have to be true whether or
+     not a date is set: no venue, no scarcity claim, no reserve verb -- there is nothing to
+     reserve when no date is set. Gabriel's line stays exactly as he wrote it. -->
+<meta name="description" content="One Saturday in Miami. Five hours, six pillars. Are you drifting, thriving, or shifting? See the next date.">
 <meta property="og:title" content="The Executive Mindset Workshop — Miami">
-<meta property="og:description" content="One Saturday at FIU. Five hours, six pillars, seats limited. Are you drifting, thriving, or shifting?">
+<meta property="og:description" content="One Saturday in Miami. Five hours, six pillars. Are you drifting, thriving, or shifting?">
 <meta property="og:url" content="https://proactivatorsclub.com/workshop/">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
 <meta property="og:type" content="website">
@@ -25,7 +28,7 @@
      rendered at runtime. Keep it that way: if a date ever goes in a meta tag, it will go stale. -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Executive Mindset Workshop — Miami">
-<meta name="twitter:description" content="One Saturday at FIU. Five hours, six pillars, seats limited. Are you drifting, thriving, or shifting?">
+<meta name="twitter:description" content="One Saturday in Miami. Five hours, six pillars. Are you drifting, thriving, or shifting?">
 <meta name="twitter:image" content="https://proactivatorsclub.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,9 +259,16 @@ button.go:disabled{opacity:.55;cursor:default}
        names a date; renderSession() fills these in from the one shared JSON file. -->
   <div class="facts">
     <div class="f"><div class="k">When</div><div class="v" id="nDate">One Saturday</div><div class="s" id="nYear">Next date coming</div></div>
-    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">FIU &middot; Graham Center</div><div class="s" id="nTime">10 AM &ndash; 3 PM</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
-    <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">$197</div><div class="s">Lunch and workbook included</div></div>
-    <div class="f"><div class="k">The room</div><div class="v" id="nSeats">Seats limited</div><div class="s">Closes when full</div></div>
+    <!-- These defaults are what a crawler that does not run JS sees, and what renders if the
+         script ever fails. They used to read "FIU - Graham Center", "10 AM - 3 PM", "$197"
+         and "Seats limited" -- a venue, a time, a price and a scarcity claim, served before
+         anything has checked whether a session exists. The button above already defaults to
+         the safe state for exactly this reason; these cells now follow the same rule.
+         renderSession() overwrites every one of them from the shared JSON whenever a session
+         IS set, so the real venue, time and price still print when there is a date. -->
+    <div class="f"><div class="k">Where</div><div class="v" id="nVenue">Miami</div><div class="s" id="nTime">Five hours, one Saturday</div><a class="addr" id="nAddr" target="_blank" rel="noopener"></a></div>
+    <div class="f hot"><div class="k">Seat</div><div class="v" id="nPrice">With the date</div><div class="s">Lunch and workbook included</div></div>
+    <div class="f"><div class="k">The room</div><div class="v" id="nSeats">40 seats</div><div class="s">Closes when full</div></div>
   </div>
 
   <h2>The five hours</h2>
@@ -477,7 +487,9 @@ function renderSession(seatInfo){
   // FIU is a big campus, and someone who reads "10 AM" turns up at 10 and parks at 10.
   $('nYear').textContent=SESSION.doors ? ('Doors '+SESSION.doors+' · starts 10 sharp') : ((SESSION.date||'').slice(0,4)||'');
   // venue and time are separate cells — rendering the whole string into the sub-line printed "FIU" twice
-  $('nVenue').textContent=SESSION.venue||'FIU · Miami';
+  // Fallback is the CITY. A session entered without a venue must not silently inherit the
+  // last one's room; if a venue is set, it prints.
+  $('nVenue').textContent=SESSION.venue||'Miami';
   $('nTime').textContent=(SESSION.room?SESSION.room+' · ':'')+(SESSION.time||'');
   // "FIU" is not something you can drive to. The street address gets its own tappable line.
   var ad=$('nAddr');

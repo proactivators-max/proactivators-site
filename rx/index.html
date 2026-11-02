@@ -15,9 +15,12 @@
 <!-- Crawled and cached for a long time, and read by link previews when the poster's URL gets
      shared — so this copy has to be true in BOTH states. "Reserve yours" promised a purchase
      the page can't currently take. State-neutral wording instead. -->
-<meta name="description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU — five hours, six pillars, seats limited. See the next date.">
+<!-- These tags are crawled and cached and follow no page state, so every word has to be
+     true whether or not a date is set: no venue, no scarcity claim, no reserve verb. The
+     city stays, and so does the invitation to see the next date -- true in either state. -->
+<meta name="description" content="You track every rep. Time to track the other five pillars. One Saturday a month in Miami — five hours, six pillars. See the next date.">
 <meta property="og:title" content="Rx Your Life — The Executive Mindset Workshop">
-<meta property="og:description" content="You track every rep. Time to track the other five pillars. One Saturday a month at FIU. See the next date.">
+<meta property="og:description" content="You track every rep. Time to track the other five pillars. One Saturday a month in Miami. See the next date.">
 <meta property="og:image" content="https://proactivatorsclub.com/og-image.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">
 <meta property="og:url" content="https://proactivatorsclub.com/rx/">
@@ -139,10 +142,15 @@ footer a{color:var(--steel);text-decoration:none}
   <div class="next" id="next">
     <div class="k">Next session</div>
     <div class="d" id="nDate">One Saturday a month</div>
-    <div class="w" id="nWhere">FIU &middot; Graham Center &middot; 10 AM &ndash; 3 PM</div>
+    <!-- The JS-less default, and the fail-safe if the script dies: city and cadence only.
+         renderSession() prints the real venue and room whenever a session is set. -->
+    <div class="w" id="nWhere">Miami &middot; One Saturday a month</div>
     <div class="w" id="nDoors"></div>
     <a class="w addr" id="nAddr" target="_blank" rel="noopener"></a>
-    <div class="s" id="nSeats">Seats limited</div>
+    <!-- Default is the room's size, not a scarcity claim: this is what a JS-less crawler
+         sees, before anything has checked whether a session exists. renderSession() sets the
+         real figure in both states. -->
+    <div class="s" id="nSeats">40 seats</div>
   </div>
 
   <p class="sub">You already track every rep. This is the same discipline, pointed at the other five pillars. <em>Five hours, one Saturday, and you leave with a scoreboard for your whole life.</em></p>
@@ -161,7 +169,11 @@ footer a{color:var(--steel);text-decoration:none}
       <div class="row"><span>Hour 3</span><div><b>The Identity</b><small>The three P&rsquo;s. Who you decide to be before you decide what to do.</small></div></div>
       <div class="row"><span>Hour 4</span><div><b>The Decision</b><small>Around the table, nobody skipped. What happens next.</small></div></div>
     </div>
-    <div class="inc"><span>Lunch + snacks</span><span>Workbook</span><span>Seats limited</span><span>Closes when full</span></div>
+    <!-- This strip is static and shows in EVERY state. "Seats limited" was a scarcity claim
+         rendered with nothing on sale -- and it is not an inclusion either, which is what the
+         rest of this list is. The room's size is the factual version, and "Closes when full"
+         already carries the urgency honestly. -->
+    <div class="inc"><span>Lunch + snacks</span><span>Workbook</span><span>40 seats</span><span>Closes when full</span></div>
     <div class="pillars"><span>Faith</span><span>Family</span><span>Fitness</span><span>Finances</span><span>Focus</span><span>Fulfillment</span></div>
   </div>
 
@@ -274,7 +286,10 @@ function renderSession(r){
   var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
   if(!SESSION){
     $('nDate').textContent='Next date coming';
-    $('nWhere').innerHTML='FIU &middot; Miami &middot; One Saturday a month';
+    /* No venue in this state -- city only. With no date set there is no room to name, and
+       naming last session's would promise one. This comment ships in the page source, so it
+       says what the rule is and not why. */
+    $('nWhere').innerHTML='Miami &middot; One Saturday a month';
     $('nSeats').textContent=seats+' seats';
     applyState('nodate');
     return;
