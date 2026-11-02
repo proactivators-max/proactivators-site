@@ -450,7 +450,27 @@ function renderSession(seatInfo){
   var seats=(SESSION&&SESSION.seats)||(S&&S.seats)||40;
   $('nPrice').textContent='$'+((S&&S.price)||197);
 
-  if(!SESSION){ applyState('nodate'); $('nSeats').textContent=seats+' seats'; return; }
+  if(!SESSION){
+    applyState('nodate'); $('nSeats').textContent=seats+' seats';
+    /* The facts strip is hardcoded in the markup, and three of its cells were only ever
+       true while a date stood: "FIU - Graham Center", "10 AM - 3 PM" and "$197". With no
+       date they state a venue, a time and a PRICE for a session nobody has scheduled --
+       and the $197 payment link is still live, so a price beside no date is an invitation
+       to pay for nothing.
+       The price CELL stays and its number goes. Removing the cell was the first attempt and
+       it looked wrong: .facts is a fixed two-column grid, so three cards leave an empty
+       quadrant that reads as a broken layout rather than a shorter strip. Keeping four
+       cells also means no DOM is mutated, so there is no way for this to leak into the
+       selling state.
+       NOTE FOR THE MERGE: held commit 9f93853 fixes this properly, by moving every cell
+       into the one STATES table so a venue or a price has no second place to survive a
+       date. That is the better fix. If this branch and the held work ever meet, 9f93853
+       wins and this block goes. It exists only so the postponed state can ship alone. */
+    $('nVenue').textContent='Miami';
+    $('nTime').textContent='Five hours, one Saturday';
+    $('nPrice').textContent='With the date';
+    return;
+  }
 
   $('nDate').textContent=SESSION.label||'One Saturday';
   // The year is dead weight next to a date that already says November. Arrival is not:

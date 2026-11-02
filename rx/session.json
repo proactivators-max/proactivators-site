@@ -54,20 +54,7 @@
     }
   ],
   "speakersPending": 0,
-  "upcoming": [
-    {
-      "date": "2026-11-07",
-      "label": "Saturday, November 7",
-      "time": "10 AM – 3 PM",
-      "venue": "FIU · Graham Center",
-      "room": "Room GC 243",
-      "seats": 40,
-      "salesOpen": "2026-10-03",
-      "address": "10955 SW 15th Terrace, Miami, FL 33199",
-      "map": "https://maps.google.com/?q=Graham+Center+FIU+10955+SW+15th+Terrace+Miami+FL+33199",
-      "doors": "9:30 AM"
-    }
-  ],
+  "upcoming": [],
   "template": {
     "date": "",
     "label": "",
