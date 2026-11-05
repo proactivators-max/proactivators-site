@@ -185,7 +185,14 @@ footer a{color:var(--steel);text-decoration:none}
       <div class="row"><span>Hour 3</span><div><b>The Identity</b><small>The three P&rsquo;s. Who you decide to be before you decide what to do.</small></div></div>
       <div class="row"><span>Hour 4</span><div><b>The Decision</b><small>Around the table, nobody skipped. What happens next.</small></div></div>
     </div>
-    <div class="inc" id="inc"><span>Lunch + snacks</span><span>Workbook</span><span class="avail">Seats limited</span><span class="avail">Closes when full</span></div>
+    <!-- The `avail` hook stays: the state table hides these two in every state that is not
+         selling, and `.inc .avail{display:none}` is the DEFAULT, so it is fail-safe on screen.
+         The STRING is the part that could not stay. "Seats limited" is a scarcity claim about
+         a room that may not exist, and display:none does not keep it off the wire -- a crawler
+         caches the bytes, and cached text is read on days this page is not in the state it was
+         scraped in. The room's size is the factual version and is true whether or not a
+         session is dated. Era's ruling, Nov 5. -->
+    <div class="inc" id="inc"><span>Lunch + snacks</span><span>Workbook</span><span class="avail">40 seats</span><span class="avail">Closes when full</span></div>
     <div class="pillars"><span>Faith</span><span>Family</span><span>Fitness</span><span>Finances</span><span>Focus</span><span>Fulfillment</span></div>
   </div>
 
