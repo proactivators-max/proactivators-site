@@ -1,0 +1,10 @@
+# Run artifacts, not checkers. The suites write debug dumps of rendered pages beside
+# themselves; verify-postponed-branch drops an 82KB postponed-dump.json every run.
+#
+# They are ignored for two reasons, and the second is the one that matters: they dirty the
+# worktree after every run, AND a dump is whatever the page happened to contain that day.
+# Today that is public copy. Nothing guarantees the next one is, and this directory may be
+# served. A checker is reviewed before it lands here; a dump never is.
+*.json
+*.png
+*.jpg
