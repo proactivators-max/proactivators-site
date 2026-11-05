@@ -60,7 +60,11 @@ h1 .blue{color:var(--blue)}
   </div>
   <!-- Android says "refreshing" because the EAS artifact expired (see /android for the
        full why). Flagged HERE too so nobody taps into the dead end expecting a download. -->
-  <div class="note">Free &middot; 30-second install &middot; iPhone is live now &middot; Android build is being refreshed</div>
+  <!-- Each clause here is a claim about a platform, and it has to agree with the page its
+       button leads to. "Android build is being refreshed" described the per-build chore that
+       ended on Oct 24 when the APK moved to a permanent R2 address -- /android has said "This
+       link never expires" ever since, so this line contradicted it. -->
+  <div class="note">Free &middot; 30-second install &middot; iPhone is live now &middot; Android is live too</div>
   <div class="doctrine">We don't drift. We decide.</div>
 </div>
 </body>
