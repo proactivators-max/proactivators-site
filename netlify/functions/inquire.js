@@ -25,6 +25,8 @@ const TYPE_TAGS = {
                                          // this tag is the ONLY record that the seat exists, so a 400 here loses it outright.
   'boardroom-coach': 'boardroom_coach',   // /boardroom — wants to RUN a room
   'boardroom-member': 'boardroom_member', // /boardroom — wants a SEAT at the table
+  'coaching-intake': 'coaching_intake',   // /first-session — the six questions before a ONE-ON-ONE
+                                          // intro call. Not an event: no date, no venue, no seat.
 };
 
 // The heading on the contact note. Kept as a table rather than a ternary chain: this had grown
@@ -40,6 +42,7 @@ const TYPE_LABELS = {
   'emw-sponsored': 'EXECUTIVE MINDSET WORKSHOP — SPONSORED SEAT (employer invoiced once, afterwards — NOT a sale)',
   'boardroom-coach': 'THE BOARDROOM — WANTS TO COACH A ROOM',
   'boardroom-member': 'THE BOARDROOM — WANTS A SEAT',
+  'coaching-intake': 'ONE-ON-ONE — INTAKE BEFORE THE FIRST CALL',
 };
 
 // /rx attribution: the wall (gym:<slug>) or the ad (src:<slug>) the person came from. Whitelisted

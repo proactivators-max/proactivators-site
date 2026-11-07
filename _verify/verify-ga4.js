@@ -72,6 +72,17 @@ function trackedPages() {
   return out.split('\n').map(s => s.trim()).filter(Boolean).filter(r => !NOT_A_PAGE.has(r));
 }
 
+/* A page that exists but is not staged is INVISIBLE to the list above — and "written but not
+   committed yet" is exactly the moment a page is most likely to be missing its tag. This suite
+   caught itself with that on the day it was written: /first-session/ was built, the run said
+   "38 pages", and the new page was simply not in the set. An absence that reads as a clean
+   number is the whole failure this file exists to prevent, so it is a check now, not a comment. */
+function untrackedPages() {
+  const out = execFileSync('git', ['ls-files', '--others', '--exclude-standard', '*.html'],
+    { cwd: REPO, encoding: 'utf8' });
+  return out.split('\n').map(s => s.trim()).filter(Boolean).filter(r => !NOT_A_PAGE.has(r));
+}
+
 /* A page's URL is its path, with /index.html collapsed to the directory the way Pages serves it. */
 const urlFor = rel => '/' + rel.replace(/(^|\/)index\.html$/, '$1');
 
@@ -228,6 +239,14 @@ const urlFor = rel => '/' + rel.replace(/(^|\/)index\.html$/, '$1');
   say(twice.every(r => r === 'guest/index.html'),
     'only the /guest/ redirect shim requests the loader twice (it hands off to /podcast-guest/)',
     twice.length ? twice.join(', ') : 'no page requested it twice');
+
+  /* An unstaged page is not in `git ls-files`, so nothing above looked at it. Fail rather than
+     report a page count that quietly excludes the newest page on the site. */
+  let untracked = [];
+  try { untracked = untrackedPages(); } catch (_) {}
+  say(untracked.length === 0,
+    'no page exists outside the set this suite just measured',
+    untracked.length ? 'UNTRACKED, so UNCHECKED: ' + untracked.join(', ') : 'all pages are staged');
 
   say(offBoxBlocked > 0, 'hermetic: off-box requests were blocked, not fetched',
     offBoxBlocked + ' blocked across ' + blockedHosts.size + ' hosts');

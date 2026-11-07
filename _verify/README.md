@@ -12,7 +12,8 @@
 | `verify-sweep.js` | `/rx/<gym>/`, `/rx/thanks/`, `/start/` | the same, on the three pages the postponed suite does not cover |
 | `verify-selling-intact.js` | `/workshop/` **selling** | the negative suites passing over a page that simply failed to render. Set `VS_FROM_TEMPLATE=1` for a session copied from the blank template |
 | `verify-payload-consumers.js` | `netlify/functions/inquire.js` | `session:"none"` or `venue:""` reaching the CRM as a tag, a blank line, or anything shaped like a date. Stubs `fetch`, so **no CRM record is created** |
-| `verify-ga4.js` | **every tracked page** | a page shipping with no analytics tag, a page firing twice, or a second measurement property. Measures the rendered DOM and the request that leaves it, not the bytes |
+| `verify-ga4.js` | **every tracked page** | a page shipping with no analytics tag, a page firing twice, or a second measurement property. Measures the rendered DOM and the request that leaves it, not the bytes — and fails on an **untracked** page, since one is invisible to its own page list |
+| `verify-first-session.js` | `/first-session/` **and** `inquire.js` | the one-on-one intake drifting back into workshop language (Saturday, a seat, lunch), and `type:'coaching-intake'` going missing from the backend — which makes a perfect-looking page unable to submit. Stubs both fetches, so **no CRM record is created** |
 
 ## Four things that will bite you
 
