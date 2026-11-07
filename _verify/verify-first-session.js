@@ -181,6 +181,21 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
         saturday: /saturday/i.test(t), lunch: /lunch/i.test(t), allerg: /allerg/i.test(t),
         yourSeat: /your seat/i.test(t), revolving: /what made it stop/i.test(t),
         oneThing: /keeping you stuck/i.test(t),
+        hasAvail: !!document.getElementById('av'),
+        /* ROT GUARD. The availability question is undated on purpose; a specific week baked
+           into a reusable page is what left the workshop form announcing a venue a week after
+           the date had passed. Any month name followed by a number, any numeric date, or any
+           year in the visible copy fails.
+
+           NOT ONE BACKSLASH IN THIS REGEX, deliberately. This whole expression is a JS
+           template literal, so the engine eats escapes before the regex is ever parsed:
+           the first draft used \\d and \\/ and \\b, where \\b became a literal BACKSPACE
+           byte and \\/ closed the regex early — a SyntaxError that surfaced only as
+           "Cannot read properties of undefined", which reads exactly like a selector miss.
+           Character classes do the same job and survive the template: [0-9] for \\d, [/]
+           for the slash. "may" is left out of the month list because it collides with
+           ordinary prose. */
+        datey: (t.match(/(jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)[a-z]* ?[0-9]|[0-9]{1,2}[/][0-9]{1,2}|20[0-9][0-9]/gi) || []),
         doneHidden: getComputedStyle(document.getElementById('done')).display === 'none',
         formVisible: getComputedStyle(document.getElementById('pf')).display !== 'none',
         logoImg: !!document.querySelector('img.logo'),
@@ -204,6 +219,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     ck(r.logoImg && !r.logoTyped, 'the wordmark is the IMAGE, never typed');
     ck(r.emailRequired, 'email is required');
     ck(r.hpEmpty, 'the honeypot starts empty (a probe must never type in it)');
+    ck(r.hasAvail, 'the availability question is there');
+    ck(r.datey.length === 0, 'and it carries NO date, day or year that can go stale',
+      r.datey.length ? 'found: ' + r.datey.join(', ') : 'nothing datey on the page');
 
     /* chips must be single-select */
     const chip = await js(`(() => {
@@ -224,6 +242,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
       document.getElementById('nm').value = 'Proof Run';
       document.getElementById('em').value = 'proof@example.com';
       document.getElementById('ph').value = '3055550100';
+      document.getElementById('av').value = 'weekday evenings';
       document.getElementById('go').click();
       await new Promise(r => setTimeout(r, 300));
       const s = window.__sent;
@@ -238,8 +257,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     if (sub) {
       ck(sub.type === 'coaching-intake', 'posts type coaching-intake', sub.type);
       ck(/\/inquire$/.test(sub.url), 'posts to the inquire function', sub.url.replace(/^https?:\/\//, '').slice(0, 55));
-      ck(sub.keys.length === 6, 'six answer fields in the payload', sub.keys.length + ': ' + sub.keys.join(' | '));
+      ck(sub.keys.length === 7, 'seven fields in the payload (six answers + availability)', sub.keys.length + ': ' + sub.keys.join(' | '));
       ck(sub.keys.some(k => /Already tried/.test(k)), 'the Revolving Door answer is in the payload');
+      ck(sub.keys.some(k => /Usually free/.test(k)), 'availability rides along for scheduling');
       ck(!sub.keys.some(k => /Workshop|Food|allerg/i.test(k)), 'no Workshop or Food field rides along', sub.keys.join(','));
       ck(sub.hp === '', 'the honeypot went out empty');
       ck(sub.doneShown && sub.formHidden, 'on success the thank-you replaces the form');

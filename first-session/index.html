@@ -178,10 +178,19 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
     <div class="q">
       <div class="q-n">07</div>
       <div class="q-t">Remind me who this is?</div>
-      <div class="q-h">So I know where to send the call link.</div>
+      <div class="q-h">So I know where to send the call link &mdash; and roughly when you're reachable.</div>
       <input type="text" id="nm" placeholder="Name" autocomplete="name" style="margin-bottom:.6rem">
       <input type="email" id="em" placeholder="Email" autocomplete="email" required style="margin-bottom:.6rem">
-      <input type="tel" id="ph" placeholder="Phone (optional)" autocomplete="tel">
+      <input type="tel" id="ph" placeholder="Phone (optional)" autocomplete="tel" style="margin-bottom:.6rem">
+      <!-- DELIBERATELY FREE TEXT AND DELIBERATELY UNDATED. Era asked for a day/time question
+           carrying this week's actual availability ("Fri 11-4 / Sat 9-6"). The question is
+           right; the dates are not. A specific week baked into a page is the exact rot that
+           left /workshop/prepare/ announcing "Sept 26 2026 - True North Gateway" a week after
+           it passed, and this page is reusable for every client after this one. Free text also
+           beats chips here: real availability is "evenings after 7, or Saturday morning", which
+           no fixed set of options captures. It sits in block 07 with the other logistics so the
+           page still keeps its promise of SIX questions. -->
+      <input type="text" id="av" placeholder="When are you usually free? (e.g. weekday evenings, Saturday morning)">
     </div>
 
     <button type="submit" class="send" id="go">Send It To Gabriel</button>
@@ -249,7 +258,8 @@ textarea::placeholder,input::placeholder{color:#5a5a5a}
           'Sounds most like me (P-read)': picked.q3 || '',
           'Already tried / why it stopped': document.getElementById('q4').value,
           'Book / podcast': picked.q5 || '',
-          'Anything else': document.getElementById('q6').value
+          'Anything else': document.getElementById('q6').value,
+          'Usually free': document.getElementById('av').value
         }
       })
     }).then(function(r){
