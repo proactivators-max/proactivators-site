@@ -42,6 +42,24 @@
      .apk because sideloading throws two alarming dialogs and that page walks them through it.
      ─────────────────────────────────────────────────────────────────────────────────────
 
+     ─────────────────────────────────────────────────────────────────────────────────────
+     STEP 2 SAYS "SIGN UP", NOT "SIGN IN", AND THAT IS A CORRECTION
+     ─────────────────────────────────────────────────────────────────────────────────────
+     This page first shipped saying "Use the same email and phone number you just entered at
+     checkout. That pair is your account — you do not need to create anything." THAT WAS
+     FALSE, and it was the single most load-bearing instruction here: a new member would have
+     tried to sign in to an account that does not exist. Era caught it before anyone paid.
+
+     Paying in HighLevel creates a CRM contact and a transaction. It creates NOTHING in the
+     app. Verified in `proactivators-app`: no source file outside node_modules mentions
+     HighLevel, GoHighLevel, ConversionDash or LeadConnector, so no payment event reaches the
+     app at all, and `src/services/auth.ts` exposes its own `signUp(email, password,
+     fullName)` against Supabase. Name, email, password — NOT the phone number, which is
+     collected at checkout and never used to sign in.
+
+     The same-email instruction is load-bearing too: it is the only thing linking the payment
+     to the account, because nothing links them automatically.
+
      NO COMMAND CENTER LINK. Era's Nov 7 ruling: EX turns a new member's momentum flag on
      before their first login, so the link goes out by text once the account is set up. The
      host (command.proactivatorsclub.com) also still does not resolve — DNS failure, checked
@@ -98,6 +116,9 @@ ol.steps h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.65re
   letter-spacing:.04em;line-height:1.05;margin-bottom:.6rem}
 ol.steps p{font-size:.95rem;color:var(--steel-lt)}
 ol.steps p + p{margin-top:.7rem}
+/* the same-email instruction is the only thing tying a payment to an account, so it is the
+   one phrase on this page allowed to lift out of the body colour */
+ol.steps p b{color:var(--off-white);font-weight:500}
 
 .btn{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.14em;
   text-transform:uppercase;font-weight:700;padding:1.05rem 1.5rem;display:block;
@@ -161,9 +182,11 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 
       <li>
         <span class="n">STEP 02</span>
-        <h2>SIGN IN</h2>
-        <p>Use the same email and phone number you just entered at checkout. That pair is your
-          account &mdash; you do not need to create anything.</p>
+        <h2>CREATE YOUR ACCOUNT</h2>
+        <p>Open the app and sign up: your name, your email, a password. Paying does not build
+          the account &mdash; this is the step that does.</p>
+        <p><b>Use the same email you just used at checkout.</b> That is how Gabriel matches
+          your payment to your account.</p>
       </li>
 
       <li>
