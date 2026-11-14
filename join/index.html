@@ -11,9 +11,27 @@
   gtag('config', 'G-CNQ4P8TJC6');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ╔══════════════════════════════════════════════════════════════════════════════════════╗
-     ║ SALES PAGE SHELL.  NOINDEX. NOT PUSHED. Billing is undecided, so nothing can be bought║
-     ╚══════════════════════════════════════════════════════════════════════════════════════╝
+<!-- ╔════════════════════════════════════════════════════════════════════════════════════╗
+     ║ LIVE SALES PAGE.  NOINDEX, sent by link.  BILLING IS OPEN — two real payment links ║
+     ╚════════════════════════════════════════════════════════════════════════════════════╝
+
+     BILLING OPENED Nov 14 2026, on Gabriel's word: "if we gotta create a $97 a month
+     payment link, let's go ahead and do that... I want to send him to a legitimate sales
+     page." Era built both recurring products in the ProActivators CRM account that night.
+     The "Opens January" state these two cards used to sit in is RETIRED — the cohort it was
+     written for was the Nov 7 workshop, which never ran.
+
+         Scoreboard  $39/month   payment-link/6af8edda906a8b62055d68c7
+         Boardroom   $97/month   payment-link/6af8ecff906a8b62055d68c3
+                                 (both on link.conversiondash.com)
+
+     Verified Nov 14 by READING THE RENDERED PAGE, never the status code — a dead link on
+     that host answers 200 exactly like a live one. The Scoreboard link serves
+     "ProActivators Scoreboard Membership" at $39.00 monthly recurring; the Boardroom link
+     serves "ProActivators Boardroom Membership" at $97.00. Both require a phone number and
+     both redirect to /beta/ after payment.
+     THE CRM PRODUCT IS WHAT CHARGES THE CARD. Changing a price in this file changes the
+     poster, not the charge. Change it in the CRM too or the page and the invoice disagree.
 
      ─────────────────────────────────────────────────────────────────────────────────────
      PRICES CONFIRMED by Era against the pitch doc TEXT (not memory), Oct 25. The pitch doc
@@ -33,25 +51,23 @@
        "NOT IN THE MODEL: cheaper tiers with fewer pillars." Do not invent a starter tier
        that drops pillars. The six are the product.
 
-     WHY "OPENS JANUARY" AND NOT A DATE: cohort 1 is free through January and the first $39
-     charge is Feb 1 2027 (Gabriel, Oct 18). So sign-up opening in January is accurate.
-     NEVER promise a December open anywhere on this page.
-     The cohort-1 free period is deliberately NOT in the page copy — it is true of one
-     cohort, this page is read by everyone, and by January that cohort is already inside.
+     NO DATES IN THE COPY, ON THIS PAGE OR ANY OTHER. The room, the next workshop and the
+     sign-up window have each moved at least once. The cohort-1 free period stays out of the
+     copy for the same reason it always did: it is true of one cohort, this page is read by
+     everyone, and by the time it matters that cohort is already inside.
      ─────────────────────────────────────────────────────────────────────────────────────
 
-     WHY THE WORKSHOP BUTTON IS LIVE AND THE OTHER TWO ARE NOT. Era specced inert buy buttons
-     in an "Opens January" state because Stripe-web vs in-app billing is undecided. That is
-     right for the two SUBSCRIPTIONS. It is wrong for the Workshop: Nov 7 seats are on sale
-     today at $197 through the existing checkout, and labelling a live product "Opens January"
-     would turn the one thing we can actually sell into a thing nobody tries to buy. So the
-     Workshop card links to /workshop and the two subscription cards are inert.
+     ALL THREE CARDS SELL NOW. The two subscriptions go to the payment links above; the
+     Workshop still goes to /workshop, which carries its own checkout. Nothing on this page
+     is inert any more, so there is no "coming soon" state left to maintain and no greyed
+     box to keep in sync with reality.
 
-     THE SIGN-IN BUTTON POINTS AT A HOST THAT DOES NOT RESOLVE YET. command.proactivatorsclub.com
-     is the intended permanent address but the custom domain is not attached — verified, it
-     does not resolve. Harmless while this page is unpublished; it MUST be confirmed live
-     before publish, or this becomes another confident button over a dead link, which is
-     exactly what /android did for weeks.
+     NO COMMAND CENTER LINK HERE, AND ITS ABSENCE IS DELIBERATE. Two used to be on this page
+     — a header "Sign in" button and a footer note — both pointing at
+     command.proactivatorsclub.com, which STILL does not resolve: checked Nov 14 2026, it is
+     a DNS failure, not a 404. Era's Nov 7 ruling lands in the same place for a different
+     reason: EX turns a new member's momentum flag on before their first login, so the link
+     is sent by text once the account is set up. Do not put either link back.
 
      NO "MEN". NO "STREAK". The room is not men-only, and the word streak is banned brand-wide.
      -->
@@ -80,11 +96,6 @@ img{max-width:100%;height:auto;display:block}
 header{border-bottom:1px solid var(--border);padding:18px 0;position:relative;z-index:2}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 header img{height:24px;width:auto}
-header .signin{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--steel-lt);border:1px solid var(--border2);
-  border-radius:5px;padding:8px 11px;transition:all .2s}
-header .signin:hover{color:var(--off-white);border-color:var(--blue)}
-
 .hero{padding:60px 0 14px;text-align:center;max-width:720px;margin:0 auto}
 .eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.26em;
   text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1rem}
@@ -117,12 +128,11 @@ h1 .b{color:var(--blue)}
   font-weight:700;padding:1.05rem 1.5rem;display:block;text-align:center;border:2px solid var(--blue);
   background:var(--blue);color:var(--black);transition:all .2s;width:100%}
 .btn:hover{background:#fff;border-color:#fff;color:var(--black)}
-/* Deliberately NOT a disabled button. A greyed-out button still invites the tap and still
-   disappoints; this states the situation instead. */
-.soon{background:var(--surface2);border:1px dashed var(--border2);border-radius:7px;
-  padding:.95rem 1rem;text-align:center;font-family:'Space Mono',monospace;font-size:.62rem;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--steel);line-height:1.7}
-.soon b{color:var(--steel-lt);font-weight:400;display:block}
+/* The Boardroom sells a room that is still filling. This states that in the card, above the
+   button, where someone decides -- not in small print under it, where they find out after. */
+.t .honest{font-size:.86rem;line-height:1.55;color:var(--steel-lt);background:var(--surface2);
+  border-left:2px solid rgba(58,180,242,.35);border-radius:0 6px 6px 0;padding:.8rem .95rem;
+  margin:-.4rem 0 1.3rem}
 
 .note{text-align:center;padding:28px 0 0;font-size:.92rem;color:var(--steel);max-width:40em;margin:0 auto}
 .close{padding:48px 0 16px;text-align:center;border-top:1px solid var(--border);margin-top:40px}
@@ -142,9 +152,7 @@ footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14
 <header>
   <div class="wrap">
     <img src="/logo.png" alt="ProActivators">
-    <!-- ⚠️ command.proactivatorsclub.com does not resolve yet — custom domain unattached.
-         Confirm it is live BEFORE this page is ever published. -->
-    <a class="signin" href="https://command.proactivatorsclub.com">Sign in to your Command Center</a>
+    <!-- No sign-in button here on purpose: see the Command Center note at the top of this file. -->
   </div>
 </header>
 
@@ -176,7 +184,7 @@ footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14
         <li>The Witness, if you choose to invite one</li>
       </ul>
       <div class="act">
-        <div class="soon"><b>Opens January</b>Billing isn&rsquo;t open yet</div>
+        <a class="btn" href="https://link.conversiondash.com/payment-link/6af8edda906a8b62055d68c7">Join Scoreboard &rarr;</a>
       </div>
     </div>
 
@@ -192,8 +200,10 @@ footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14
         <li>People building the same identity, who know what you&rsquo;re doing</li>
         <li>Somewhere to come back to after you drift, without humiliation</li>
       </ul>
+      <p class="honest">The room opens as members arrive. Until it does, founding members
+        meet with Gabriel one-on-one.</p>
       <div class="act">
-        <div class="soon"><b>Opens January</b>Billing isn&rsquo;t open yet</div>
+        <a class="btn" href="https://link.conversiondash.com/payment-link/6af8ecff906a8b62055d68c3">Join the Boardroom &rarr;</a>
       </div>
     </div>
 
@@ -217,8 +227,8 @@ footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14
 
   </div>
 
-  <p class="note">Already a member? <a href="https://command.proactivatorsclub.com">Open your
-    Command Center</a>.</p>
+  <p class="note">Just joined? Your Command Center link comes from Gabriel by text once your
+    account is set up. Nothing to hunt for here &mdash; it comes to you.</p>
 
   <div class="close">
     <p class="big">A ProActivator is not someone who never falls. A ProActivator is someone who

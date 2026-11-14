@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CNQ4P8TJC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CNQ4P8TJC6');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ╔═══════════════════════════════════════════════════════════════════════════════════╗
+     ║ POST-PAYMENT LANDING. Someone has just been charged when they reach this page.    ║
+     ╚═══════════════════════════════════════════════════════════════════════════════════╝
+
+     WHO ARRIVES HERE: both recurring payment links are set to redirect here after payment
+     (Scoreboard $39/mo and Boardroom $97/mo, built in the ProActivators CRM account Nov 14
+     2026). They used to redirect to /beta/. THE COPY CANNOT NAME A TIER — both links land on
+     this one page and nothing in the URL says which was bought.
+
+     ─────────────────────────────────────────────────────────────────────────────────────
+     WHY THERE IS NO "INSTALL FOR IPHONE" BUTTON, AND WHY ADDING ONE WOULD BE A REGRESSION
+     ─────────────────────────────────────────────────────────────────────────────────────
+     Era's brief for this page said "iPhone / Android buttons from /beta/". /beta/'s iPhone
+     button goes to /iphone, which auto-redirects to testflight.apple.com/join/x39s4fXN
+     after 900ms. THAT LINK IS CLOSED. Checked Nov 14 2026 by reading the rendered HTML, not
+     the status code — it answers HTTP 200, as a dead TestFlight link always does, carries no
+     app name, and says: "This beta isn't accepting any new testers right now."
+
+     So a paying member on an iPhone, sent to /beta/, pays and then hits a wall with no
+     explanation. That is the /android failure again with money attached. Until the public
+     TestFlight link is switched back on, iPhone says plainly that the invite comes from
+     Gabriel — which is true regardless, since he has to add the tester by email.
+     IF THE PUBLIC LINK IS RESTORED: check it by rendered content (an app name on the page),
+     then swap the iPhone block for a button to /iphone. Never trust the 200.
+
+     Android is unaffected — releases.proactivatorsclub.com/proactivators-android.apk is a
+     permanent R2 address, verified Nov 14: 200, 101,055,321 bytes,
+     application/vnd.android.package-archive. The button points at /android rather than the
+     .apk because sideloading throws two alarming dialogs and that page walks them through it.
+     ─────────────────────────────────────────────────────────────────────────────────────
+
+     NO COMMAND CENTER LINK. Era's Nov 7 ruling: EX turns a new member's momentum flag on
+     before their first login, so the link goes out by text once the account is set up. The
+     host (command.proactivatorsclub.com) also still does not resolve — DNS failure, checked
+     Nov 14. Both reasons point the same way. Do not add the link here.
+
+     NO DATES. NO "MEN". NO "STREAK". NO RECEIPT CLAIM — nobody has verified what the payment
+     processor emails, so this page does not promise an email it cannot produce.
+     -->
+<title>You're In</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Your membership is active. Three steps to start running the system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#050505;--surface:#141414;--surface2:#1c1c1c;--off-white:#f0ebe0;--steel:#888;
+  --steel-lt:#aaa;--blue:#3ab4f2;--blue-dim:rgba(58,180,242,.10);--blue-line:rgba(58,180,242,.35);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.14)}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--black);color:var(--off-white);
+  line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased;min-height:100vh;
+  display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.35}
+.wrap{position:relative;z-index:1;width:100%;max-width:580px;margin:0 auto;padding:0 20px}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+main{flex:1 0 auto;padding:48px 0 8px}
+.logo{height:26px;width:auto;margin:0 auto 2.6rem}
+
+.top{text-align:center;margin-bottom:3rem}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:1rem;
+  display:inline-flex;align-items:center;gap:.6rem}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue)}
+h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(3rem,13vw,4.4rem);
+  line-height:.94;letter-spacing:.02em;margin-bottom:1.1rem;text-wrap:balance}
+h1 .b{color:var(--blue)}
+.top p{font-size:1.04rem;color:var(--steel-lt);max-width:30em;margin:0 auto}
+.top p.after{margin-top:.8rem;font-family:'Space Mono',monospace;font-size:.62rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+
+/* The numbering is real: these happen in this order and step 3 cannot happen first. */
+ol.steps{list-style:none;display:flex;flex-direction:column;gap:14px}
+ol.steps > li{background:var(--surface);border:1px solid var(--border);
+  border-left:2px solid var(--blue-line);border-radius:0 13px 13px 0;padding:22px 22px 24px}
+.n{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--blue);
+  font-weight:700;display:block;margin-bottom:.5rem}
+ol.steps h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.65rem;
+  letter-spacing:.04em;line-height:1.05;margin-bottom:.6rem}
+ol.steps p{font-size:.95rem;color:var(--steel-lt)}
+ol.steps p + p{margin-top:.7rem}
+
+.btn{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:700;padding:1.05rem 1.5rem;display:block;
+  text-align:center;border:2px solid var(--blue);background:var(--blue);color:var(--black);
+  transition:all .2s;margin-top:1.2rem}
+.btn:hover,.btn:focus-visible{background:#fff;border-color:#fff;color:var(--black)}
+
+/* iPhone has no button on purpose -- see the note at the top of this file. A styled block
+   says "this is handled" where a missing button would read as a missing feature. */
+.by-hand{background:var(--surface2);border:1px solid var(--border2);border-radius:8px;
+  padding:.9rem 1.05rem;margin-top:1.1rem}
+.by-hand .k{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel);font-weight:700;display:block;margin-bottom:.3rem}
+.by-hand p{font-size:.9rem;color:var(--steel-lt)}
+
+.help{text-align:center;margin-top:2.4rem;font-size:.93rem;color:var(--steel)}
+.close{text-align:center;padding:44px 0 10px;margin-top:40px;border-top:1px solid var(--border)}
+.close .big{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,5.4vw,2rem);
+  line-height:1.12;letter-spacing:.02em;max-width:19em;margin:0 auto;text-wrap:balance}
+
+footer{flex-shrink:0;border-top:1px solid var(--border);margin-top:30px;padding:26px 0 40px;
+  text-align:center;position:relative;z-index:1}
+footer .credo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;
+  color:var(--blue)}
+footer .c{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--steel);margin-top:.5rem}
+
+a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+
+    <img class="logo" src="/logo.png" alt="ProActivators">
+
+    <div class="top">
+      <div class="eyebrow">Membership active</div>
+      <h1>YOU&rsquo;RE <span class="b">IN.</span></h1>
+      <p>You decided. That is the part nobody else could do for you. The rest is structure,
+        and it starts right now.</p>
+      <p class="after">Three steps &middot; about five minutes</p>
+    </div>
+
+    <ol class="steps">
+
+      <li>
+        <span class="n">STEP 01</span>
+        <h2>GET THE APP</h2>
+        <p>The journal, the practice, the week&rsquo;s teaching and the Coach all live in the
+          app. It is where the system actually runs.</p>
+        <a class="btn" href="/android">Install on Android &rarr;</a>
+        <div class="by-hand">
+          <span class="k">On iPhone</span>
+          <p>Your invite comes from Gabriel directly &mdash; watch your email. The iPhone build
+            is invitation-only right now, so there is nothing for you to download yet.</p>
+        </div>
+      </li>
+
+      <li>
+        <span class="n">STEP 02</span>
+        <h2>SIGN IN</h2>
+        <p>Use the same email and phone number you just entered at checkout. That pair is your
+          account &mdash; you do not need to create anything.</p>
+      </li>
+
+      <li>
+        <span class="n">STEP 03</span>
+        <h2>GABRIEL SENDS YOUR COMMAND CENTER</h2>
+        <p>Once your account is set up, your Command Center link arrives by text: all six
+          pillars, your Momentum, your whole history in one place.</p>
+        <p>Nothing to hunt for. It comes to you.</p>
+      </li>
+
+    </ol>
+
+    <p class="help">Something not working? <a href="/lets-talk">Tell Gabriel</a> and he will
+      sort it out himself.</p>
+
+    <div class="close">
+      <p class="big">A ProActivator is not someone who never falls. A ProActivator is someone
+        who has decided that falling will not be the end of the story.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="credo">WE DON&rsquo;T DRIFT. WE DECIDE.</div>
+    <div class="c">&copy; 2026 ProActivators&trade;</div>
+  </div>
+</footer>
+
+</body>
+</html>
