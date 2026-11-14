@@ -1584,6 +1584,16 @@ document.getElementById('summit-name-input').addEventListener('keydown',e=>{if(e
     catch (e) { el.scrollIntoView(true); }
   }
 
+  /* Try early and then correct, rather than only after load. Waiting for 'load'
+     alone means the reader watches the hero for a beat and then gets thrown
+     12,000px down; going early makes the jump happen before first paint in most
+     cases. Every pass is idempotent and all of them stop once the reader moves. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', settle, { once: true });
+  } else {
+    settle();
+  }
+  requestAnimationFrame(function () { requestAnimationFrame(settle); });
   window.addEventListener('load', function () {
     requestAnimationFrame(function () { requestAnimationFrame(settle); });
     setTimeout(settle, 400);
