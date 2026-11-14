@@ -1551,5 +1551,44 @@ document.getElementById('summit-name-input').addEventListener('keydown',e=>{if(e
   }).catch(function(){});
 })();
 </script>
+
+<script>
+/* Deep links to a section (/#join and friends) did not land on the section.
+   Measured Nov 14 2026 on the live page: loading /#join left scrollY at 0 while
+   #join sat 12,157px down, so every cross-page link dropped the reader at the top
+   of a 12,000px homepage instead of the form. 44 links across the site point at
+   /#join, plus the /newsletter alias. The homepage's own buttons were fine — they
+   call scrollIntoView on click; only the on-load fragment was broken, because the
+   browser scrolls before fonts, images and the reveal sections settle the layout.
+
+   So: re-apply the scroll once the page has actually settled, and never fight the
+   reader — if they have touched the page, leave them where they are. 'instant'
+   rather than the inherited scroll-behavior:smooth, which animates 12,000px and
+   gets cancelled by the very layout shift this works around. */
+(function () {
+  if (!location.hash || location.hash.length < 2) return;
+  var id;
+  try { id = decodeURIComponent(location.hash.slice(1)); } catch (e) { return; }
+
+  var userMoved = false;
+  function moved() { userMoved = true; }
+  ['wheel', 'touchstart', 'keydown'].forEach(function (evt) {
+    window.addEventListener(evt, moved, { passive: true, once: true });
+  });
+
+  function settle() {
+    if (userMoved) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    try { el.scrollIntoView({ behavior: 'instant', block: 'start' }); }
+    catch (e) { el.scrollIntoView(true); }
+  }
+
+  window.addEventListener('load', function () {
+    requestAnimationFrame(function () { requestAnimationFrame(settle); });
+    setTimeout(settle, 400);
+  });
+})();
+</script>
 </body>
 </html>
