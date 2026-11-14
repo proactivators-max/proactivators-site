@@ -229,15 +229,23 @@ const urlFor = rel => '/' + rel.replace(/(^|\/)index\.html$/, '$1');
   say(!!home && home.cfgCalls === 1 && home.loaders === 1,
     'the homepage did NOT start firing twice', home ? 'loader=' + home.loaders + ' config=' + home.cfgCalls : 'homepage missing');
 
-  /* /guest/ is a client-side redirect shim: a meta-refresh plus location.replace() to
-     /podcast-guest/. It therefore fires its own config and then the destination fires again,
-     so a visit to /guest/ is TWO pageviews in GA4. That is deliberate and worth keeping —
-     it is the only way to see which of the two links is actually circulating — and it is
-     asserted here so nobody later reads the 2 as a double-tag and "fixes" it. Anything OTHER
-     than /guest/ requesting the loader twice is a real double-count and fails. */
+  /* A redirect shim is a meta-refresh plus location.replace(). It fires its own config and
+     then the destination fires again, so a visit to one is TWO pageviews in GA4. That is
+     deliberate and worth keeping — it is the only way to see which of the two links is
+     actually circulating — and it is asserted here so nobody later reads the 2 as a
+     double-tag and "fixes" it. Anything OTHER than a shim on this list requesting the
+     loader twice is a real double-count and fails.
+
+     This host is GitHub Pages with no Jekyll, so a true 301 is not available on any path.
+     Every alias on the site is therefore one of these shims, and the list grows when an
+     alias is added — /newsletter/ joined on Nov 14 2026. */
+  const SHIMS = new Set([
+    'guest/index.html',      // -> /podcast-guest/
+    'newsletter/index.html'  // -> /#join
+  ]);
   const twice = good.filter(r => r.attempted > 1).map(r => r.rel);
-  say(twice.every(r => r === 'guest/index.html'),
-    'only the /guest/ redirect shim requests the loader twice (it hands off to /podcast-guest/)',
+  say(twice.every(r => SHIMS.has(r)),
+    'only the known redirect shims request the loader twice (' + [...SHIMS].join(', ') + ')',
     twice.length ? twice.join(', ') : 'no page requested it twice');
 
   /* An unstaged page is not in `git ls-files`, so nothing above looked at it. Fail rather than
